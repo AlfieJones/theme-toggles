@@ -1,6 +1,7 @@
 {
-  "name": "site",
+  "name": "theme-toggles",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "prettier": {
     "semi": false
@@ -10,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "del -rf node_modules/.cache & next build && next export && fsutil file createnew out/.nojekyll 0"
   },
   "dependencies": {
     "@headlessui/react": "^1.3.0",

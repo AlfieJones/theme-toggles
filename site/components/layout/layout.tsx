@@ -15,7 +15,7 @@ const navigation = [
 const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   const router = useRouter()
   const { toggle } = useTheme()
-  console.log(router.pathname)
+
   return (
     <div className="relative overflow-hidden dark:bg-dark-900 min-h-screen">
       <div className="relative pt-6 pb-16 xs:pb-24">
