@@ -1,0 +1,12 @@
+button,
+label {
+	&.theme-toggle {
+		all: unset;
+		cursor: pointer;
+		line-height: 0;
+		input[type="checkbox"] {
+			all: unset;
+			position: absolute;
+		}
+	}
+}

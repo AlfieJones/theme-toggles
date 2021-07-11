@@ -1,1 +1,1 @@
-# dark-toggles
+# theme-toggles
