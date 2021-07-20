@@ -1,15 +1,13 @@
 {
   "name": "theme-toggles",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A collection of theme toggles",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "files": [
-    "build/"
+    "build/",
+    "assets/svg/"
   ],
-  "scripts": {
-    "deploySite": "git add site/out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix site/out origin gh-pages"
-  },
   "author": {
     "name": "Alfie Jones",
     "url": "https://alfie-jones.com"
