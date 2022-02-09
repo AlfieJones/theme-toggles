@@ -20,15 +20,15 @@ module.exports = function (grunt) {
         sass: {
             dist: {      
                 options: {
-                    sourcemap: "none",
+                    sourcemap: false,
                 },
-                files: {
-                    "build/bundle.css": "src/bundle.scss",
-                    "build/base.css": "src/scss/index.scss",
-                    "build/utilities.css": "src/utilities/index.scss",
-                    "build/inner-moon.css": "src/inner-moon/index.scss",
-                    "build/classic.css": "src/classic/index.scss",
-                }
+                files: [{
+                    "./build/bundle.css": "src/bundle.scss",
+                    "./build/base.css": "src/base/index.scss",
+                    "./build/utilities.css": "src/utilities/index.scss",
+                    "./build/inner-moon.css": "src/inner-moon/index.scss",
+                    "./build/classic.css": "src/classic/index.scss",
+                }]
             }
           },
 
