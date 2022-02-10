@@ -23,11 +23,10 @@ module.exports = function (grunt) {
                     sourcemap: false,
                 },
                 files: [{
-                    "./build/bundle.css": "src/bundle.scss",
-                    "./build/base.css": "src/base/index.scss",
-                    "./build/utilities.css": "src/utilities/index.scss",
-                    "./build/inner-moon.css": "src/inner-moon/index.scss",
-                    "./build/classic.css": "src/classic/index.scss",
+                    "build/bundle.css": "src/bundle.scss",
+                    "build/base.css": "src/base/index.scss",
+                    "build/inner-moon.css": "src/inner-moon/index.scss",
+                    "build/classic.css": "src/classic/index.scss",
                 }]
             }
           },

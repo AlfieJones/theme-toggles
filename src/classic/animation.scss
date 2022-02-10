@@ -1,7 +1,9 @@
+@import "../variables.scss";
+
 .#{$prefix}theme-toggle {
     ##{$prefix}classic {
         &, * {
-            transition-property: opacity transition;
+            transition-property: opacity, transform;
             transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
             transition-duration: 750ms;
             transform-origin: center center;
@@ -19,16 +21,13 @@
 }
 
 #{$darkSelector} :not(label).#{$prefix}theme-toggle,
+#{$darkSelector}:not(label).#{$prefix}theme-toggle,
 .#{$prefix}theme-toggle input[type="checkbox"]:checked ~ {
     ##{$prefix}classic {
-        ##{$prefix}sun_rays {
-            @for $i from 1 through 8 {
-                line:nth-child(#{$i}) {
-                    transform: scale(0.5) rotate(45deg);
-                    opacity: 0;
-                    transition-delay: 0ms;
-                }
-            }
+        ##{$prefix}sun_rays  line {
+            transform: scale(0.5) rotate(45deg);
+            opacity: 0;
+            transition-delay: 0ms;
         }
         ##{$prefix}cutout {
             transform: translate(-7px, 10px);

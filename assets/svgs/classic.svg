@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="classic" viewBox="0 0 32 32">
-  <mask id="classic_mask">
+  <mask id="classic_mask" color="#000">
     <rect width="32" height="32" fill="#fff"></rect>
     <circle cx="30" cy="2" r="8" id="cutout"></circle>
   </mask>
