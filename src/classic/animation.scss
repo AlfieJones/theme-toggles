@@ -8,6 +8,7 @@
             transition-duration: 750ms;
             transform-origin: center center;
             transition-delay: 150ms;
+            will-change: transform, opacity;
         }
         ##{$prefix}cutout {
             transition-delay: 0ms;
