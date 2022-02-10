@@ -2,7 +2,7 @@
 
 .#{$prefix}theme-toggle {
     ##{$prefix}classic {
-        &, * {
+        * {
             transition-property: opacity, transform;
             transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
             transition-duration: 750ms;
@@ -11,6 +11,8 @@
         }
         ##{$prefix}cutout {
             transition-delay: 0ms;
+            transform: none;
+            will-change: transform;
         }
     }
     &.#{$prefix}reversed {
@@ -24,7 +26,7 @@
 #{$darkSelector}:not(label).#{$prefix}theme-toggle,
 .#{$prefix}theme-toggle input[type="checkbox"]:checked ~ {
     ##{$prefix}classic {
-        ##{$prefix}sun_rays  line {
+        ##{$prefix}sun_rays  * {
             transform: scale(0.5) rotate(45deg);
             opacity: 0;
             transition-delay: 0ms;
