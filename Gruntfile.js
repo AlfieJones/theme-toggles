@@ -27,6 +27,7 @@ module.exports = function (grunt) {
                     "build/base.css": "src/base/index.scss",
                     "build/inner-moon.css": "src/inner-moon/index.scss",
                     "build/classic.css": "src/classic/index.scss",
+                    "build/lightbulb.css": "src/lightbulb/index.scss",
                 }]
             }
           },
