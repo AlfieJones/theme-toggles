@@ -1,0 +1,18 @@
+@import "../variables.scss";
+
+.#{$prefix}theme-toggle{
+    ##{$prefix}dark-side path{
+        will-change: transform;
+        transform-origin: center center;
+        transition: transform 500ms cubic-bezier(0, 0, .15, 1);
+    }
+}
+
+
+#{$darkSelector} :not(label).#{$prefix}theme-toggle,
+#{$darkSelector}:not(label).#{$prefix}theme-toggle,
+.#{$prefix}theme-toggle input[type="checkbox"]:checked ~ {
+    ##{$prefix}dark-side path {
+        transform: rotate(180deg);
+    }
+}
