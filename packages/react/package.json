@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -20,7 +20,9 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/*",
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/css/*.css",
     "README.md"
   ],
   "sideEffects": false,
