@@ -1,37 +1,41 @@
 @import "../variables.scss";
 
-.#{$prefix}theme-toggle{
-    ##{$prefix}inner-moon {
-        * {
-            will-change: transform;
-        }
-        ##{$prefix}toggle-outer {
+.theme-toggle,
+.theme-toggle--reversed {
+    .theme-toggle__inner-moon {
+        --theme-toggle__inner-moon--duration: #{$duration};
+        .theme-toggle__inner-moon__toggle-outer {
             transform-origin: center center;
-            transition: transform 750ms cubic-bezier(0, 0, .15, 1.25);
+            transition: transform var(--theme-toggle__inner-moon--duration) cubic-bezier(0, 0, .15, 1.25);
         }
-    
-        ##{$prefix}toggle-inner {
-            transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        .theme-toggle__inner-moon__toggle-inner {
+            transition: transform calc(var(--theme-toggle__inner-moon--duration) / 1.5) cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
     }
 }
 
-
-#{$darkSelector} :not(label).#{$prefix}theme-toggle,
-#{$darkSelector}:not(label).#{$prefix}theme-toggle,
-.#{$prefix}theme-toggle input[type="checkbox"]:checked ~ {
-    ##{$prefix}inner-moon {
-        ##{$prefix}toggle-outer {
+#{$darkSelector} :not(label).theme-toggle,
+#{$darkSelector}:not(label).theme-toggle,
+.theme-toggle input[type="checkbox"]:checked ~,
+#{$darkSelector} :not(label).theme-toggle--reversed,
+#{$darkSelector}:not(label).theme-toggle--reversed,
+.theme-toggle--reversed input[type="checkbox"]:checked ~ {
+    .theme-toggle__inner-moon {
+        .theme-toggle__inner-moon__toggle-outer {
             transform: rotate(180deg);
         }
-        ##{$prefix}toggle-inner {
+        .theme-toggle__inner-moon__toggle-inner {
             transform: translateX(15%);
         }
-        &##{$prefix}reversed {
-            ##{$prefix}toggle-inner {
-                transform: translateX(-15%);
-            }
+    }
+}
+
+#{$darkSelector} :not(label).theme-toggle--reversed,
+#{$darkSelector}:not(label).theme-toggle--reversed,
+.theme-toggle--reversed input[type="checkbox"]:checked ~ {
+    .theme-toggle__inner-moon {
+        .theme-toggle__inner-moon__toggle-inner {
+            transform: translateX(-15%);
         }
     }
 }

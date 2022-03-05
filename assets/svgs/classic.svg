@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="classic" viewBox="0 0 32 32">
-  <mask id="classic_mask" color="#000">
-    <rect width="32" height="32" fill="#fff"></rect>
-    <circle cx="30" cy="2" r="8" id="cutout"></circle>
+<svg xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" fill="currentColor" class="theme-toggle__classic" viewBox="0 0 32 32">
+  <mask id="theme-toggle__classic__cutout" color="#000">
+    <rect width="32" height="32" fill="#fff"/>
+    <circle cx="30" cy="2" r="8"/>
   </mask>
-  <mask id="sun_rays_mask" color="#000">
+  <mask id="theme-toggle__classic__inner" color="#000">
     <rect width="32" height="32" fill="#fff" />
     <circle cx="16" cy="16" r="9.34" />
   </mask>
-  <circle mask="url(#classic_mask)" fill="currentColor" cx="16" cy="16" r="9.34"></circle>
-  <g id="sun_rays" mask="url(#sun_rays_mask)">
+  <circle mask="url(#theme-toggle__classic__cutout)" fill="currentColor" cx="16" cy="16" r="9.34"></circle>
+  <g class="theme-toggle__classic__sun-rays" mask="url(#theme-toggle__classic__inner)">
     <line stroke="currentColor" x1="16" y1="5.5" x2="16" y2="1.5"></line>
     <line stroke="currentColor" x1="16" y1="30.5" x2="16" y2="26.5"></line>
     <line stroke="currentColor" x1="1.5" y1="16" x2="5.5" y2="16"></line>

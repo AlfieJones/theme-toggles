@@ -2,7 +2,5 @@
 
 // The selector used to change the toggle styles
 $darkSelector: ".dark";
-// Adds a prefix to every css class, eg 'themes-'
-$prefix: "";
-// Total duration of each animation in ms
-$duration: 750;
+// Total duration of each animation
+$duration: 750ms;
