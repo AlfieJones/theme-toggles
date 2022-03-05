@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -11,8 +11,8 @@
     "access": "public"
   },
   "scripts": {
-    "clean-react": "rimraf src",
-    "build-react": "yarn clean-react && svgr --ref --typescript --no-svgo --icon --template templates/button.js --out-dir src -- ../../assets/svgs",
+    "clean-react": "rimraf src/toggles",
+    "build-react": "yarn clean-react && svgr --typescript --no-svgo --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ../../assets/svgs",
     "types": "tsc --emitDeclarationOnly --outDir dist",
     "build": "node build.js",
     "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
