@@ -9,9 +9,12 @@
 #{$darkSelector}:not(label).theme-toggle,
 .theme-toggle input[type="checkbox"]:checked ~ {
     .theme-toggle__lightbulb--reversed {
-        .theme-toggle__lightbulb__rays *, 
-        .theme-toggle__lightbulb__coil {
+        .theme-toggle__lightbulb__rays * {
             stroke-dashoffset: 1;
+            opacity: 0;
+        }
+        .theme-toggle__lightbulb__coil {
+            stroke-dashoffset: -1;
             opacity: 0;
         }
     }
