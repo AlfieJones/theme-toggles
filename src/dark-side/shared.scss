@@ -1,0 +1,7 @@
+%shared__theme-toggle__dark-side {
+        --theme-toggle__dark-side--duration: #{$duration};
+        path {
+            transform-origin: center;
+            transition: transform var(--theme-toggle__dark-side--duration) cubic-bezier(0, 0, .15, 1);
+        }
+}

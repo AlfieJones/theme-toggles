@@ -10,9 +10,7 @@ module.exports = function (grunt) {
         // -- Clean Config ---------------------------------------------------------
 
         clean: {
-            build    : ['build/'],
-            build_res: ['build/*-r.css'],
-            release  : ['release/<%= pkg.version %>/']
+            build: ['build/*'],
         },
 
         // -- Sass Config --------------------------------------------------------
@@ -24,11 +22,14 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     "build/bundle.css": "src/bundle.scss",
-                    "build/base.css": "src/base/index.scss",
-                    "build/inner-moon.css": "src/inner-moon/index.scss",
-                    "build/classic.css": "src/classic/index.scss",
-                    "build/lightbulb.css": "src/lightbulb/index.scss",
-                    "build/dark-side.css": "src/dark-side/index.scss",
+                    "build/inner-moon.css": "src/inner-moon/default.scss",
+                    "build/inner-moon-reversed.css": "src/inner-moon/reversed.scss",
+                    "build/classic.css": "src/classic/default.scss",
+                    "build/classic-reversed.css": "src/classic/reversed.scss",
+                    "build/lightbulb.css": "src/lightbulb/default.scss",
+                    "build/lightbulb-reversed.css": "src/lightbulb/reversed.scss",
+                    "build/dark-side.css": "src/dark-side/default.scss",
+                    "build/dark-side-reversed.css": "src/dark-side/reversed.scss",
                 }]
             }
           },
@@ -47,19 +48,18 @@ module.exports = function (grunt) {
 
         },
 
-        // -- CSSMin Config --------------------------------------------------------
-
-        cssmin: {
-            options: {
-                noAdvanced: true
-            },
-
-            files: {
-                expand: true,
-                src   : 'build/*.css',
-                ext   : '-min.css'
-            }
-        },
+        css_purge: {
+			dist: {
+				options: {},
+                files: [{
+                    expand: true,
+                    cwd: "build",
+                    src: '*.css',
+                    dest:"build/",
+                    ext: '.min.css',
+                }]
+			},
+		},
 
         // -- Watch/Observe Config -------------------------------------------------
 
@@ -83,6 +83,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-css-purge');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-postcss');
@@ -90,12 +91,12 @@ module.exports = function (grunt) {
     // Local tasks.
     // grunt.loadTasks('tasks/');
 
-    grunt.registerTask('default', ['build']);
+    grunt.registerTask('default', ['clean', 'build']);
     // grunt.registerTask('test');
     grunt.registerTask('build', [
         'sass',
         'postcss',
-        "cssmin"
+        'css_purge',
     ]);
 
     // Makes the `watch` task run a build first.

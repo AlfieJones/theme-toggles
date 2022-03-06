@@ -1,0 +1,19 @@
+@import "../variables.scss";
+@import "../base/index.scss";
+@import "shared.scss";
+
+.theme-toggle__inner-moon--reversed {
+    @extend %shared__theme-toggle__inner-moon;
+}
+
+#{$darkSelector}:not(label).theme-toggle,
+.theme-toggle input[type="checkbox"]:checked ~ {
+    .theme-toggle__inner-moon--reversed {
+        .theme-toggle__inner-moon__toggle-outer {
+            transform: rotate(-180deg);
+        }
+        .theme-toggle__inner-moon__toggle-inner {
+            transform: translateX(-15%);
+        }
+    }
+}

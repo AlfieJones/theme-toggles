@@ -1,0 +1,11 @@
+%shared__theme-toggle__lightbulb {
+    --theme-toggle__lightbulb--duration: #{$duration};
+    .theme-toggle__lightbulb__rays *, 
+    .theme-toggle__lightbulb__coil {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 0;
+        opacity: 1;  
+        transition-property: stroke-dashoffset, opacity;
+        transition-duration: var(--theme-toggle__lightbulb--duration); 
+    }
+}

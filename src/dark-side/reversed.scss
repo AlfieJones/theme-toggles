@@ -1,0 +1,17 @@
+@import "../variables.scss";
+@import "../base/index.scss";
+@import "shared.scss";
+
+.theme-toggle__dark-side--reversed {
+    @extend %shared__theme-toggle__dark-side;
+}
+
+
+#{$darkSelector}.theme-toggle:not(label),
+.theme-toggle input[type="checkbox"]:checked ~ {
+    .theme-toggle__dark-side--reversed {
+        path {
+            transform: rotate(-180deg);
+        }
+    } 
+}

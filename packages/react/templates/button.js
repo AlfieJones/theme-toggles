@@ -1,5 +1,4 @@
 const template = (variables, { tpl }) => {
-    console.log(variables)
   return tpl`
   ${`import "../../../../build/${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}-min.css"`};
   import React, { DetailedHTMLProps, Dispatch, SetStateAction, useState, forwardRef } from "react"
@@ -18,7 +17,8 @@ const template = (variables, { tpl }) => {
             onToggle,
             toggled,
             toggle,
-            duration,
+            duration = 750,
+            style,
             reversed = false,
             "aria-label": ariaLabel = "Toggle Theme",
             className,
@@ -29,8 +29,8 @@ const template = (variables, { tpl }) => {
       const toggleFunction = toggle || toggleInternal;
       const isToggled = toggled !== undefined ? toggled : toggledInternal;
 
-      const btnClass = \`\${reversed?"theme-toggle--reversed":"theme-toggle"} \${isToggled && "dark"}  \${className}\`;
-  
+      const btnClass = \`\${reversed?"theme-toggle--reversed":"theme-toggle"} \${isToggled? "dark" : ""} \${className? className : ""}\`;
+      const btnStyle = {...style, "${`--theme-toggle__${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}--duration`}": \`\${duration}ms !important;\`};
       const handleClick = () => {
           const mToggled = !isToggled;
   
@@ -39,7 +39,7 @@ const template = (variables, { tpl }) => {
       }
   
       return (
-          <button ref={ref} className={btnClass} aria-label={ariaLabel} onClick={handleClick} {...rest}>
+          <button ref={ref} className={btnClass} style={btnStyle} aria-label={ariaLabel} onClick={handleClick} {...rest}>
             {${variables.jsx}}
           </button>
       );

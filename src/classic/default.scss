@@ -1,0 +1,26 @@
+@import "../variables.scss";
+@import "../base/index.scss";
+@import "shared.scss";
+
+.theme-toggle__classic {
+    @extend %shared__theme-toggle;
+    #theme-toggle__classic__cutout {
+        circle {
+            transition-delay: 0ms;
+            transform: none;
+        }
+    }
+}
+
+#{$darkSelector}.theme-toggle:not(label),
+.theme-toggle input[type="checkbox"]:checked ~ {
+    .theme-toggle__classic {
+        @extend %shared__theme-toggle__classic__sun-rays;
+        #theme-toggle__classic__cutout {
+            circle {
+                transform: translate(-7px, 10px);
+                transition-delay: calc(var(--theme-toggle__classic--duration)/5);
+            }
+        }
+    }
+}
