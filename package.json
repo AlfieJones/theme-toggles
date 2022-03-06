@@ -1,6 +1,6 @@
 {
   "name": "theme-toggles",
-  "version": "1.4.8",
+  "version": "2.0.0",
   "description": "A collection of theme toggles",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
@@ -8,6 +8,7 @@
     "build/",
     "assets/svgs/"
   ],
+  "scripts": {},
   "author": {
     "name": "Alfie Jones",
     "url": "https://alfie-jones.com"
@@ -27,5 +28,7 @@
     "grunt-postcss": "^0.9.0",
     "postcss": "^8.3.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "grunt-css-purge": "^1.1.0"
+  }
 }
