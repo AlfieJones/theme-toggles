@@ -1,12 +1,11 @@
 button,
 label {
 	&.theme-toggle {
-		all: unset;
+		border:none;
+		background: none;
 		cursor: pointer;
-		line-height: 0;
 		input[type="checkbox"] {
-			all: unset;
-			position: absolute;
+			display: none;
 		}
 	}
 }
