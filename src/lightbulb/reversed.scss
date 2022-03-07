@@ -2,13 +2,19 @@
 @import "../base/index.scss";
 @import "shared.scss";
 
-.theme-toggle__lightbulb--reversed {
-    @extend %shared__theme-toggle__lightbulb;
+$variable: --theme-toggle__lightbulb-reversed--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
+}
+
+.theme-toggle__lightbulb-reversed {
+    @include mixin__theme-toggle__lightbulb($variable);
 }
 
 #{$darkSelector}:not(label).theme-toggle,
 .theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__lightbulb--reversed {
+    .theme-toggle__lightbulb-reversed {
         .theme-toggle__lightbulb__rays * {
             stroke-dashoffset: 1;
             opacity: 0;

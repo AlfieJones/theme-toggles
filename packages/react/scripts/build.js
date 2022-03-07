@@ -1,4 +1,5 @@
 const esbuild = require('esbuild');
+const { readdirSync } = require('fs');
 
 esbuild.build({
     entryPoints: ['src/index.ts'],
@@ -10,9 +11,12 @@ esbuild.build({
   plugins: [],
 }).catch(() => process.exit(1));
 
+const cssDir = "src/toggles/";
+
+const files = readdirSync(cssDir).filter(file => file !== "index.ts").map(file => cssDir.concat(file));
 
 esbuild.build({
-  entryPoints: ['src/toggles/DarkSide.tsx', 'src/toggles/Classic.tsx', 'src/toggles/InnerMoon.tsx', 'src/toggles/Lightbulb.tsx'],
+  entryPoints: files,
   bundle: true,
   minify: true,
   format: "esm",
@@ -22,7 +26,7 @@ plugins: [],
 }).catch(() => process.exit(1));
 
 esbuild.build({
-  entryPoints: ['./../../build/bundle-min.css'],
+  entryPoints: ['./../../build/bundle.min.css'],
   bundle: true,
   minify: true,
   format: "esm",

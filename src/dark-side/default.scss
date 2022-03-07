@@ -2,10 +2,15 @@
 @import "../base/index.scss";
 @import "shared.scss";
 
-.theme-toggle__dark-side {
-    @extend %shared__theme-toggle__dark-side;
+$variable: --theme-toggle__dark-side--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
 }
 
+.theme-toggle__dark-side {
+    @include mixin__theme-toggle__dark-side($variable);
+}
 
 #{$darkSelector}.theme-toggle:not(label),
 .theme-toggle input[type="checkbox"]:checked ~ {

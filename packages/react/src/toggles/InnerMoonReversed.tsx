@@ -1,7 +1,7 @@
-import "../../../../build/dark-side.min.css";
+import "../../../../build/inner-moon-reversed.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
-const SvgDarkSide = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps, ref) => {
+const SvgInnerMoonReversed = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps, ref) => {
   const {
     onToggle,
     toggled,
@@ -17,7 +17,7 @@ const SvgDarkSide = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePro
   const isToggled = toggled !== undefined ? toggled : toggledInternal;
   const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${className ? className : ""}`.trim();
   const btnStyle = { ...style,
-    "--theme-toggle__dark-side--duration": `${duration}ms`
+    "--theme-toggle__inner-moon-reversed--duration": `${duration}ms`
   };
 
   const handleClick = () => {
@@ -27,7 +27,7 @@ const SvgDarkSide = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePro
   };
 
   return <button ref={ref} className={btnClass} style={btnStyle} aria-label={ariaLabel} onClick={handleClick} {...rest}>
-            {<svg xmlns="http://www.w3.org/2000/svg" className="theme-toggle__dark-side" fill="currentColor" viewBox="0 0 512 512" width="1em" height="1em"><path d="M256 0a256 256 0 1 0 0 512 256 256 0 0 0 0-512Zm0 464V48a208 208 0 0 1 0 416Z" /></svg>}
+            {<svg xmlns="http://www.w3.org/2000/svg" strokeLinecap="round" fill="currentColor" className="theme-toggle__inner-moon-reversed" viewBox="0 0 472.39 472.39" width="1em" height="1em"><g className="theme-toggle__inner-moon__toggle-outer"><path d="M403.21,167V69.18H305.38L236.2,0,167,69.18H69.18V167L0,236.2l69.18,69.18v97.83H167l69.18,69.18,69.18-69.18h97.83V305.38l69.18-69.18Zm-167,198.17a129,129,0,1,1,129-129A129,129,0,0,1,236.2,365.19Z" /></g><g className="theme-toggle__inner-moon__toggle-inner"><circle cx={236.2} cy={236.2} r={103.78} /></g></svg>}
           </button>;
 });
-export default SvgDarkSide;
+export default SvgInnerMoonReversed;

@@ -2,8 +2,14 @@
 @import "../base/index.scss";
 @import "shared.scss";
 
+$variable: --theme-toggle__inner-moon--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
+}
+
 .theme-toggle__inner-moon {
-    @extend %shared__theme-toggle__inner-moon;
+    @include mixin__theme-toggle__inner-moon($variable);
 }
 
 #{$darkSelector}:not(label).theme-toggle,

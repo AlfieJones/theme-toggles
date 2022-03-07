@@ -3,15 +3,15 @@
       "allowSyntheticDefaultImports": true,
       "noImplicitAny": true,
       "declaration": true,
-      "module": "amd",
+      "module": "esnext",
       "target": "ESNext",
       "jsx": "react",
       "allowJs": false,
       "moduleResolution": "node",
       "esModuleInterop": true,
+      "isolatedModules": true,
       "rootDirs": ["../src"],
-      "outDir": "../dist",
-      "outFile": "../dist/index.js"
+      "outDir": "../dist"
     },
     "include": ["../src/**/*", "../../../build/**/*", "../typings"]
   }

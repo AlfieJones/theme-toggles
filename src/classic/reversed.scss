@@ -2,8 +2,14 @@
 @import "../base/index.scss";
 @import "./shared.scss";
 
-.theme-toggle__classic--reversed {
-    @extend %shared__theme-toggle;
+$variable: --theme-toggle__classic-reversed--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
+}
+
+.theme-toggle__classic-reversed {
+    @include mixin__theme-toggle($variable);
 
     #theme-toggle__classic__cutout {
         circle {
@@ -15,12 +21,12 @@
 
 #{$darkSelector}.theme-toggle:not(label),
 .theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__classic--reversed {
+    .theme-toggle__classic-reversed {
         @extend %shared__theme-toggle__classic__sun-rays;
         #theme-toggle__classic__cutout {
             circle {
                 transform: translate(-21px, 10px);
-                transition-delay: calc(var(--theme-toggle__classic--duration)/5);
+                transition-delay: calc(var($variable)/5);
             }
         }
     }

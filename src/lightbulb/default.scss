@@ -2,8 +2,14 @@
 @import "../base/index.scss";
 @import "shared.scss";
 
+$variable: --theme-toggle__lightbulb--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
+}
+
 .theme-toggle__lightbulb {
-    @extend %shared__theme-toggle__lightbulb;
+    @include mixin__theme-toggle__lightbulb($variable);
 }
 
 #{$darkSelector}:not(label).theme-toggle,

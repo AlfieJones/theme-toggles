@@ -1,13 +1,6 @@
-import "../../../../build/inner-moon-min.css";
-import React, { DetailedHTMLProps, Dispatch, SetStateAction, useState, forwardRef } from "react";
-export interface ToggleProps extends Omit<DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "onClick"> {
-  toggled?: boolean;
-  toggle?: Dispatch<SetStateAction<boolean>>;
-  reversed?: boolean;
-  duration?: number;
-  onToggle?: (toggled: boolean) => void;
-}
-;
+import "../../../../build/inner-moon.min.css";
+import React, { useState, forwardRef } from "react";
+import { ToggleProps } from "../";
 const SvgInnerMoon = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps, ref) => {
   const {
     onToggle,
@@ -15,7 +8,6 @@ const SvgInnerMoon = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePr
     toggle,
     duration = 750,
     style,
-    reversed = false,
     "aria-label": ariaLabel = "Toggle Theme",
     className,
     ...rest
@@ -23,9 +15,9 @@ const SvgInnerMoon = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePr
   const [toggledInternal, toggleInternal] = useState(false);
   const toggleFunction = toggle || toggleInternal;
   const isToggled = toggled !== undefined ? toggled : toggledInternal;
-  const btnClass = `${reversed ? "theme-toggle--reversed" : "theme-toggle"} ${isToggled ? "dark" : ""} ${className ? className : ""}`;
+  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${className ? className : ""}`.trim();
   const btnStyle = { ...style,
-    "--theme-toggle__inner-moon--duration": `${duration}ms !important;`
+    "--theme-toggle__inner-moon--duration": `${duration}ms`
   };
 
   const handleClick = () => {

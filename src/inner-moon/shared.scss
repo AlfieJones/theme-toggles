@@ -1,10 +1,9 @@
-%shared__theme-toggle__inner-moon {
-    --theme-toggle__inner-moon--duration: #{$duration};
+@mixin mixin__theme-toggle__inner-moon($variable) {
     .theme-toggle__inner-moon__toggle-outer {
         transform-origin: center;
-        transition: transform var(--theme-toggle__inner-moon--duration) cubic-bezier(0, 0, .15, 1.25);
+        transition: transform var(#{$variable}) cubic-bezier(0, 0, .15, 1.25);
     }
     .theme-toggle__inner-moon__toggle-inner {
-        transition: transform calc(var(--theme-toggle__inner-moon--duration) / 1.5) cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform calc(var(#{$variable}) / 1.5) cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
