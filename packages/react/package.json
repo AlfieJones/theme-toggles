@@ -1,0 +1,44 @@
+{
+  "name": "@theme-toggles/react",
+  "version": "1.4.8",
+  "license": "MIT",
+  "repository": "https://github.com/AlfieJones/theme-toggles",
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "react-dom": "^16 || ^17 || ^18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean-react": "rimraf src/toggles",
+    "build-react": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ./svgs/default",
+    "build-react-reversed": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button-reversed.js --index-template templates/index-template.js --out-dir src/toggles -- ./svgs/reversed",
+    "types": "tsc --emitDeclarationOnly --outDir dist",
+    "build": "node scripts/copy.js && yarn clean-react && yarn build-react && yarn build-react-reversed && node ./scripts/build.js && yarn types",
+    "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/index.js",
+    "dist/**/*.d.ts",
+    "dist/css/*.css",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "devDependencies": {
+    "@svgr/babel-plugin-transform-svg-component": "^6.2.0",
+    "@svgr/cli": "^6.2.1",
+    "@types/react": "^17.0.39",
+    "css-tree": "^2.0.4",
+    "esbuild": "^0.14.21",
+    "esbuild-css-modules-plugin": "^2.1.2",
+    "fs-extra": "^10.0.1",
+    "plugin": "^0.3.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.5"
+  }
+}

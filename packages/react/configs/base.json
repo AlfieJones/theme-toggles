@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
+      "noImplicitAny": true,
+      "declaration": true,
+      "module": "esnext",
+      "target": "ESNext",
+      "jsx": "react",
+      "allowJs": false,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "isolatedModules": true,
+      "rootDirs": ["../src"],
+      "outDir": "../dist"
+    },
+    "include": ["../src/**/*", "../../../build/**/*", "../typings"]
+  }

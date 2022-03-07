@@ -1,0 +1,17 @@
+%shared__theme-toggle__lightbulb {
+    .theme-toggle__lightbulb__rays *, 
+    .theme-toggle__lightbulb__coil {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 0;
+        opacity: 1;  
+        transition-property: stroke-dashoffset, opacity;
+    }
+}
+
+@mixin mixin__theme-toggle__lightbulb($variable) {
+    @extend %shared__theme-toggle__lightbulb;
+    .theme-toggle__lightbulb__rays *, 
+    .theme-toggle__lightbulb__coil {
+        transition-duration: var(#{$variable}); 
+    }
+}

@@ -1,0 +1,22 @@
+@import "../variables.scss";
+@import "../base/index.scss";
+@import "shared.scss";
+
+$variable: --theme-toggle__dark-side--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
+}
+
+.theme-toggle__dark-side {
+    @include mixin__theme-toggle__dark-side($variable);
+}
+
+#{$darkSelector}.theme-toggle:not(label),
+.theme-toggle input[type="checkbox"]:checked ~ {
+    .theme-toggle__dark-side {
+        path {
+            transform: rotate(180deg);
+        }
+    }
+}

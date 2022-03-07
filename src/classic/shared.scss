@@ -1,0 +1,24 @@
+%shared__theme-toggle {
+        * {
+            transition-property: opacity, transform;
+            transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
+            transform-origin: center;
+        }
+}
+
+@mixin mixin__theme-toggle($variable) {
+    @extend %shared__theme-toggle;
+    * {
+        transition-duration: var($variable);
+        transition-delay: calc(var($variable)/5);
+    }
+}
+
+
+%shared__theme-toggle__classic__sun-rays  {
+    .theme-toggle__classic__sun-rays  * {
+        transform: scale(0.5) rotate(45deg);
+        opacity: 0;
+        transition-delay: 0ms;
+    }
+}
