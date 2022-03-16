@@ -13,9 +13,9 @@
   
 
 </p>
-<h3 align="center">
+<h2 align="center">
   <a align="center" href="https://toggles.dev">Documentation<a/>
-
+</h2>
 
 
 <!-- CONTRIBUTING -->
