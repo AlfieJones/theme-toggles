@@ -17,13 +17,9 @@ function copy(destDir) {
 }
 
 
-
-
-
 copy("./svgs/default");
 
 copy("./svgs/reversed");
-
 
 
 

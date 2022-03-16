@@ -1,3 +1,6 @@
+<img width=100% src="https://raw.githubusercontent.com/AlfieJones/theme-toggles/main/banner.png" />
+
+
 <div align="center">
     <img alt="NPM version" src="https://img.shields.io/npm/v/theme-toggles?style=for-the-badge">
     <img alt="NPM downloads" src="https://img.shields.io/npm/dm/theme-toggles?style=for-the-badge">
@@ -6,9 +9,6 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
-  <h1 align="center">Theme Toggles</h1>
-
   <p align="center">
     Theme toggles is a collection of awesome easy to use, animated toggles; designed for switching between light and dark modes. It's a highly customisable and modular library which aims to provide an unopinionated design. Even works great with Tailwind CSS.
   </p>
@@ -17,7 +17,6 @@
 </p>
 <h3 align="center">
   <a align="center" href="https://toggles.dev">Documentation<a/>
-</h3>
 
 
 
