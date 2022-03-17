@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -9,6 +9,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "author": {
+    "name": "Alfie Jones",
+    "url": "https://ajones.uk"
   },
   "scripts": {
     "clean-react": "rimraf src/toggles",
@@ -22,7 +26,7 @@
   "files": [
     "dist/index.js",
     "dist/**/*.d.ts",
-    "dist/css/*.css",
+    "css/*.css",
     "README.md"
   ],
   "sideEffects": false,
