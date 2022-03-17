@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="theme-toggle__expand" viewBox="0 0 416 416">
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="theme-toggle__expand" viewBox="0 0 416 416">
   <mask id="theme-toggle__expand__cutout" color="#000">
     <rect width="416" height="416" fill="#fff"/>
     <circle cx="535" cy="150" r="125"/>
