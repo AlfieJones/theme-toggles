@@ -16,34 +16,7 @@ function copy(destDir) {
   });
 }
 
-
 copy("./svgs/default");
-
-copy("./svgs/reversed");
-
-
-
-// Get path to image directory
-const imageDirPath = resolve(__dirname, '../svgs/reversed');
-
-// Get an array of the files inside the folder
-const files = readdirSync(imageDirPath);
-
-files.forEach(file => readFile(imageDirPath + `/${file}`, 'utf8' , (err, data) => {
-  if (err) {
-    console.error(err)
-    return
-  }
-  data = data.replace(/(.)(?<=class=".+?")/, "-reversed\"")
-  writeFile(imageDirPath + `/${file}`, data, function(err) {
-    err;
-  });
-  rename(
-    imageDirPath + `/${file}`,
-    imageDirPath + `/${file.slice(0, -4)}-reversed.svg`,
-    err => err && console.log(err)
-  )
-}))
 
 
 

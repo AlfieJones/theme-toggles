@@ -6,5 +6,6 @@ export interface ToggleProps extends Omit<DetailedHTMLProps<React.ButtonHTMLAttr
     toggled?: boolean;
     toggle?: Dispatch<SetStateAction<boolean>>;
     duration?: number;
+    reversed?: boolean;
     onToggle?: (toggled: boolean) => void;
   };

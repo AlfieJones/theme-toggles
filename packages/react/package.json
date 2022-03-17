@@ -13,9 +13,8 @@
   "scripts": {
     "clean-react": "rimraf src/toggles",
     "build-react": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ./svgs/default",
-    "build-react-reversed": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button-reversed.js --index-template templates/index-template.js --out-dir src/toggles -- ./svgs/reversed",
     "types": "tsc --emitDeclarationOnly --outDir dist",
-    "build": "node scripts/copy.js && yarn clean-react && yarn build-react && yarn build-react-reversed && node ./scripts/build.js && yarn types",
+    "build": "node scripts/copy.js && yarn clean-react && yarn build-react && node ./scripts/build.js && yarn types",
     "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
   },
   "module": "dist/index.js",

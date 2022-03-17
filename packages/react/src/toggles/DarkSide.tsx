@@ -7,6 +7,7 @@ const SvgDarkSide = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePro
     toggled,
     toggle,
     duration = 750,
+    reversed = false,
     style,
     "aria-label": ariaLabel = "Toggle Theme",
     className,
@@ -15,7 +16,7 @@ const SvgDarkSide = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePro
   const [toggledInternal, toggleInternal] = useState(false);
   const toggleFunction = toggle || toggleInternal;
   const isToggled = toggled !== undefined ? toggled : toggledInternal;
-  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${className ? className : ""}`.trim();
+  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${reversed ? "theme--toggle--reversed" : ""} ${className ? className : ""}`.trim();
   const btnStyle = { ...style,
     "--theme-toggle__dark-side--duration": `${duration}ms`
   };
