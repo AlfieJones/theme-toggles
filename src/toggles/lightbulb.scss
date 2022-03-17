@@ -1,15 +1,26 @@
 @import "../variables.scss";
-@import "../base/index.scss";
-@import "shared.scss";
+@import "../normalise.scss";
 
 $variable: --theme-toggle__lightbulb--duration;
 
 .theme-toggle {
     #{$variable}: $duration;
+    &#{$reverseSelector} {
+        .theme-toggle__lightbulb {
+            transform: scale(-1,1);
+        }
+    }
 }
 
 .theme-toggle__lightbulb {
-    @include mixin__theme-toggle__lightbulb($variable);
+    .theme-toggle__lightbulb__rays *, 
+    .theme-toggle__lightbulb__coil {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 0;
+        opacity: 1;  
+        transition-property: stroke-dashoffset, opacity;
+        transition-duration: var(#{$variable}); 
+    }
 }
 
 #{$darkSelector}:not(label).theme-toggle,

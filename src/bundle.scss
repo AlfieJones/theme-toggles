@@ -1,11 +1,8 @@
-@import "./base/index.scss";
+@import "./normalise.scss";
 
 // Our toggles
-@import "./inner-moon/default.scss";
-@import "./inner-moon/reversed.scss";
-@import "./classic/default.scss";
-@import "./classic/reversed.scss";
-@import "./lightbulb/default.scss";
-@import "./lightbulb/reversed.scss";
-@import "./dark-side/default.scss";
-@import "./dark-side/reversed.scss";
+@import "./toggles/inner-moon.scss";
+@import "./toggles/classic.scss";
+@import "./toggles/lightbulb.scss";
+@import "./toggles/dark-side.scss";
+@import "./toggles/expand.scss";

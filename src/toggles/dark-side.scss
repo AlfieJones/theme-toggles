@@ -1,15 +1,22 @@
 @import "../variables.scss";
-@import "../base/index.scss";
-@import "shared.scss";
+@import "../normalise.scss";
 
 $variable: --theme-toggle__dark-side--duration;
 
 .theme-toggle {
     #{$variable}: $duration;
+    &#{$reverseSelector} {
+        .theme-toggle__dark-side {
+            transform: scale(1,-1);
+        }
+    }
 }
 
 .theme-toggle__dark-side {
-    @include mixin__theme-toggle__dark-side($variable);
+    path {
+        transform-origin: center;
+        transition: transform var($variable) cubic-bezier(0, 0, .15, 1);
+    }
 }
 
 #{$darkSelector}.theme-toggle:not(label),
@@ -20,3 +27,6 @@ $variable: --theme-toggle__dark-side--duration;
         }
     }
 }
+
+
+

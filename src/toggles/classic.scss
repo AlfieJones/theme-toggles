@@ -1,15 +1,25 @@
 @import "../variables.scss";
-@import "../base/index.scss";
-@import "shared.scss";
+@import "../normalise.scss";
 
 $variable: --theme-toggle__classic--duration;
 
 .theme-toggle {
     #{$variable}: $duration;
+    &#{$reverseSelector} {
+        .theme-toggle__expand {
+            transform: scale(-1,1);
+        }
+    }
 }
 
 .theme-toggle__classic {
-    @include mixin__theme-toggle($variable);
+    * {
+        transition-property: opacity, transform;
+        transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
+        transform-origin: center;
+        transition-duration: var($variable);
+        transition-delay: calc(var($variable)/5);
+    }
 
     #theme-toggle__classic__cutout {
         circle {
@@ -22,7 +32,11 @@ $variable: --theme-toggle__classic--duration;
 #{$darkSelector}.theme-toggle:not(label),
 .theme-toggle input[type="checkbox"]:checked ~ {
     .theme-toggle__classic {
-        @extend %shared__theme-toggle__classic__sun-rays;
+        .theme-toggle__classic__sun-rays  * {
+            transform: scale(0.5) rotate(45deg);
+            opacity: 0;
+            transition-delay: 0ms;
+        }
         #theme-toggle__classic__cutout {
             circle {
                 transform: translate(-7px, 10px);

@@ -22,14 +22,11 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     "build/bundle.css": "src/bundle.scss",
-                    "build/inner-moon.css": "src/inner-moon/default.scss",
-                    "build/inner-moon-reversed.css": "src/inner-moon/reversed.scss",
-                    "build/classic.css": "src/classic/default.scss",
-                    "build/classic-reversed.css": "src/classic/reversed.scss",
-                    "build/lightbulb.css": "src/lightbulb/default.scss",
-                    "build/lightbulb-reversed.css": "src/lightbulb/reversed.scss",
-                    "build/dark-side.css": "src/dark-side/default.scss",
-                    "build/dark-side-reversed.css": "src/dark-side/reversed.scss",
+                    "build/inner-moon.css": "src/toggles/inner-moon.scss",
+                    "build/classic.css": "src/toggles/classic.scss",
+                    "build/lightbulb.css": "src/toggles/lightbulb.scss",
+                    "build/dark-side.css": "src/toggles/dark-side.scss",
+                    "build/expand.css": "src/toggles/expand.scss",
                 }]
             }
           },

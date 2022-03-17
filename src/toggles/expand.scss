@@ -1,0 +1,51 @@
+@import "../variables.scss";
+@import "../normalise.scss";
+
+$variable: --theme-toggle__expand--duration;
+
+.theme-toggle {
+    #{$variable}: $duration;
+    &#{$reverseSelector} {
+        .theme-toggle__expand {
+            transform: scale(-1,1);
+        }
+    }
+}
+
+.theme-toggle__expand {
+    g {
+        circle, path {
+            transform-origin: center;
+            transition: transform calc(var($variable)*0.65) cubic-bezier(0, 0, 0, 1.25) calc(var($variable)*0.35);
+        }
+    }
+    mask {
+        circle {
+            transition: transform calc(var($variable)*0.6) cubic-bezier(0, 0, 0.5, 1);
+        }
+    } 
+}
+
+#{$darkSelector}.theme-toggle:not(label),
+.theme-toggle input[type="checkbox"]:checked ~ {
+    .theme-toggle__expand {
+        g {
+            circle, path {
+                transition-delay: calc(var($variable)*0.4);
+            }
+            circle {
+                transform: scale(1.4);
+            }
+            path {
+                transform: scale(0.75);
+            }
+        }
+        mask {
+            circle {
+                transform: translateX(-235px);
+                transition-delay: calc(var($variable)*0.4);
+                transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
+            }
+        }
+    }
+}
