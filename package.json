@@ -1,12 +1,11 @@
 {
   "name": "theme-toggles",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "A collection of theme toggles",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "files": [
     "css/*.css",
-    "css/*.css.map",
     "assets/svgs/"
   ],
   "scripts": {},
