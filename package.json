@@ -17,6 +17,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "grunt": "^1.4.1",
+    "grunt-css-purge": "^1.1.0",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-concat": "^1.0.1",
@@ -28,7 +29,5 @@
     "grunt-postcss": "^0.9.0",
     "postcss": "^8.3.5"
   },
-  "dependencies": {
-    "grunt-css-purge": "^1.1.0"
-  }
+  "dependencies": {}
 }
