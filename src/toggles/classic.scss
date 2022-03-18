@@ -1,16 +1,9 @@
 @import "../variables.scss";
-@import "../normalise.scss";
+@import "../utils.scss";
 
-$variable: --theme-toggle__classic--duration;
+$variable: #{getVar(classic)};
 
-.theme-toggle {
-    #{$variable}: $duration;
-    &#{$reverseSelector} {
-        .theme-toggle__expand {
-            transform: scale(-1,1);
-        }
-    }
-}
+@include generic(classic, flip-y);
 
 .theme-toggle__classic {
     * {
@@ -29,19 +22,16 @@ $variable: --theme-toggle__classic--duration;
     }
 }
 
-#{$darkSelector}.theme-toggle:not(label),
-.theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__classic {
-        .theme-toggle__classic__sun-rays  * {
-            transform: scale(0.5) rotate(45deg);
-            opacity: 0;
-            transition-delay: 0ms;
-        }
-        #theme-toggle__classic__cutout {
-            circle {
-                transform: translate(-7px, 10px);
-                transition-delay: calc(var($variable)/5);
-            }
+@include toggledSelector(classic) {
+    .theme-toggle__classic__sun-rays  * {
+        transform: scale(0.5) rotate(45deg);
+        opacity: 0;
+        transition-delay: 0ms;
+    }
+    #theme-toggle__classic__cutout {
+        circle {
+            transform: translate3d(-11px, 10px, 0);
+            transition-delay: calc(var($variable)/5);
         }
     }
 }

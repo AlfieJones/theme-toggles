@@ -1,6 +1,5 @@
 const fse = require('fs-extra');
-const { readdirSync, rename, rmSync, readFile, writeFile } = require('fs');
-const { resolve } = require('path');
+const { rmSync } = require('fs');
 
 const srcDir = `./../../assets/svgs`;
 

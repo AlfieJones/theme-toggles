@@ -1,8 +1,10 @@
+const files = ["inner-moon", "classic", "lightbulb", "dark-side", "expand"]
+
 module.exports = function (grunt) {
 
     // -- Config -------------------------------------------------------------------
 
-    grunt.initConfig({
+    const config = {
 
         nick : 'pure',
         pkg  : grunt.file.readJSON('package.json'),
@@ -10,26 +12,31 @@ module.exports = function (grunt) {
         // -- Clean Config ---------------------------------------------------------
 
         clean: {
-            build: ['build/*'],
+            build: ['css'],
         },
 
         // -- Sass Config --------------------------------------------------------
 
         sass: {
             dist: {      
-                options: {
-                    sourcemap: false,
-                },
                 files: [{
-                    "build/bundle.css": "src/bundle.scss",
-                    "build/inner-moon.css": "src/toggles/inner-moon.scss",
-                    "build/classic.css": "src/toggles/classic.scss",
-                    "build/lightbulb.css": "src/toggles/lightbulb.scss",
-                    "build/dark-side.css": "src/toggles/dark-side.scss",
-                    "build/expand.css": "src/toggles/expand.scss",
-                }]
+                    expand: true,
+                    flatten: true,
+                    src: ['css/temp/toggles/*.scss'],
+                    dest: './css/',
+                    ext: '.css'
+                  }],
             }
           },
+
+        // -- Concat Config --------------------------------------------------------
+
+        concat: {
+            bundle: {
+                src: ['src/toggles/*.scss', 'src/base.scss'],
+                dest: 'css/temp/toggles/bundle.scss',
+            },
+        },
 
         // -- PostCSS Config --------------------------------------------------------
 
@@ -40,7 +47,7 @@ module.exports = function (grunt) {
                         require('autoprefixer')()
                     ]
                 },
-                src: './build/*.css'
+                src: './css/*.css'
             }
 
         },
@@ -48,52 +55,85 @@ module.exports = function (grunt) {
         css_purge: {
 			dist: {
 				options: {},
+
                 files: [{
                     expand: true,
-                    cwd: "build",
+                    cwd: "css/",
                     src: '*.css',
-                    dest:"build/",
+                    dest:"css/",
                     ext: '.min.css',
                 }]
 			},
 		},
 
+        cssmin: {
+            options: {
+                sourceMap: false,
+            },
+            target: {
+              files: [{
+                expand: true,
+                cwd: "css/",
+                src: '*.css',
+                dest:"css/",
+                ext: '.min.css',
+              }]
+            }
+          },
+
+        copy: {
+            main: {
+              files: [
+                {expand: true, flatten: true,  src: ['src/variables.scss', 'src/utils.scss'], dest: 'css/temp'},
+              ],
+            },
+          },
+
         // -- Watch/Observe Config -------------------------------------------------
 
         observe: {
             src: {
-                files: 'src/**/css/*.css',
-                tasks: ['test', 'suppress', 'build'],
+                files: 'src/**/*.scss',
+                tasks: ['build'],
 
                 options: {
                     interrupt: true
                 }
             }
         }
-    });
+    };
+
+    files.forEach((name) => {
+        config.concat[name] = {
+            src: [`src/toggles/${name}.scss`, `src/base.scss`],
+            dest: `css/temp/toggles/${name}.scss`,
+        };
+    })
+
+
+    grunt.initConfig(config);
 
     // -- Main Tasks ---------------------------------------------------------------
 
     // npm tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-css-purge');
-    grunt.loadNpmTasks('grunt-contrib-compress');
+    //grunt.loadNpmTasks('grunt-css-purge');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    //grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-postcss');
 
-    // Local tasks.
-    // grunt.loadTasks('tasks/');
-
     grunt.registerTask('default', ['clean', 'build']);
-    // grunt.registerTask('test');
+    
     grunt.registerTask('build', [
+        'copy',
+        'concat',
         'sass',
         'postcss',
-        'css_purge',
+        'cssmin',
     ]);
 
     // Makes the `watch` task run a build first.

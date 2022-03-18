@@ -21,16 +21,16 @@ esbuild.build({
   minify: true,
   format: "esm",
   external: ['react', 'react-dom'],
-  outdir: 'dist/css',
+  outdir: 'css',
 plugins: [],
 }).catch(() => process.exit(1));
 
 esbuild.build({
-  entryPoints: ['./../../build/bundle.min.css'],
+  entryPoints: ['./../../css/bundle.min.css'],
   bundle: true,
   minify: true,
   format: "esm",
   external: ['react', 'react-dom'],
-  outfile: 'dist/css/bundle.css',
+  outfile: 'css/Bundle.css',
 plugins: [],
 }).catch(() => process.exit(1));

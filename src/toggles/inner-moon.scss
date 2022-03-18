@@ -1,35 +1,25 @@
 @import "../variables.scss";
-@import "../normalise.scss";
+@import "../utils.scss";
 
-$variable: --theme-toggle__inner-moon--duration;
+$variable: #{getVar(inner-moon)};
 
-.theme-toggle {
-    #{$variable}: $duration;
-    &#{$reverseSelector} {
-        .theme-toggle__inner-moon {
-            transform: scale(-1,1);
-        }
-    }
-}
+@include generic(inner-moon, flip-y);
 
 .theme-toggle__inner-moon {
-    .theme-toggle__inner-moon__toggle-outer {
+    path {
         transform-origin: center;
         transition: transform var(#{$variable}) cubic-bezier(0, 0, .15, 1.25);
     }
-    .theme-toggle__inner-moon__toggle-inner {
+    circle {
         transition: transform calc(var(#{$variable}) / 1.5) cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-#{$darkSelector}:not(label).theme-toggle,
-.theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__inner-moon {
-        .theme-toggle__inner-moon__toggle-outer {
-            transform: rotate(180deg);
-        }
-        .theme-toggle__inner-moon__toggle-inner {
-            transform: translateX(15%);
-        }
+@include toggledSelector(inner-moon) {
+    path {
+        transform: rotate(180deg);
+    }
+    circle {
+        transform: translateX(15%);
     }
 }

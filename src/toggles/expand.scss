@@ -1,16 +1,9 @@
 @import "../variables.scss";
-@import "../normalise.scss";
+@import "../utils.scss";
 
-$variable: --theme-toggle__expand--duration;
+$variable: #{getVar(expand)};
 
-.theme-toggle {
-    #{$variable}: $duration;
-    &#{$reverseSelector} {
-        .theme-toggle__expand {
-            transform: scale(-1,1);
-        }
-    }
-}
+@include generic(expand, flip-y);
 
 .theme-toggle__expand {
     g {
@@ -26,26 +19,23 @@ $variable: --theme-toggle__expand--duration;
     } 
 }
 
-#{$darkSelector}.theme-toggle:not(label),
-.theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__expand {
-        g {
-            circle, path {
-                transition-delay: calc(var($variable)*0.4);
-            }
-            circle {
-                transform: scale(1.4);
-            }
-            path {
-                transform: scale(0.75);
-            }
+@include toggledSelector(expand) {
+    g {
+        circle, path {
+            transition-delay: 0s;
         }
-        mask {
-            circle {
-                transform: translateX(-235px);
-                transition-delay: calc(var($variable)*0.4);
-                transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
-            }
+        circle {
+            transform: scale(1.4);
+        }
+        path {
+            transform: scale(0.75);
+        }
+    }
+    mask {
+        circle {
+            transform: translateX(-235px);
+            transition-delay: calc(var($variable)*0.4);
+            transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
         }
     }
 }

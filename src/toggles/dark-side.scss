@@ -1,16 +1,9 @@
 @import "../variables.scss";
-@import "../normalise.scss";
+@import "../utils.scss";
 
-$variable: --theme-toggle__dark-side--duration;
+$variable: #{getVar(dark-side)};
 
-.theme-toggle {
-    #{$variable}: $duration;
-    &#{$reverseSelector} {
-        .theme-toggle__dark-side {
-            transform: scale(1,-1);
-        }
-    }
-}
+@include generic(dark-side, flip-x);
 
 .theme-toggle__dark-side {
     path {
@@ -19,12 +12,9 @@ $variable: --theme-toggle__dark-side--duration;
     }
 }
 
-#{$darkSelector}.theme-toggle:not(label),
-.theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__dark-side {
-        path {
-            transform: rotate(180deg);
-        }
+@include toggledSelector(dark-side) {
+    path {
+        transform: rotate(180deg);
     }
 }
 

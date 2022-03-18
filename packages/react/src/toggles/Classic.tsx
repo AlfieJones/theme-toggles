@@ -1,4 +1,4 @@
-import "../../../../build/classic.min.css";
+import "../../../../css/classic.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgClassic = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps, ref) => {
@@ -16,7 +16,7 @@ const SvgClassic = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProp
   const [toggledInternal, toggleInternal] = useState(false);
   const toggleFunction = toggle || toggleInternal;
   const isToggled = toggled !== undefined ? toggled : toggledInternal;
-  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${reversed ? "theme--toggle--reversed" : ""} ${className ? className : ""}`.trim();
+  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${reversed ? "theme-toggle--reversed" : ""} ${className ? className : ""}`.trim();
   const btnStyle = { ...style,
     "--theme-toggle__classic--duration": `${duration}ms`
   };
@@ -28,7 +28,7 @@ const SvgClassic = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProp
   };
 
   return <button ref={ref} className={btnClass} style={btnStyle} aria-label={ariaLabel} onClick={handleClick} {...rest}>
-            {<svg xmlns="http://www.w3.org/2000/svg" strokeLinecap="round" fill="currentColor" className="theme-toggle__classic" viewBox="0 0 32 32" width="1em" height="1em"><mask id="theme-toggle__classic__cutout" color="#000"><rect width={32} height={32} fill="#fff" /><circle cx={30} cy={2} r={8} /></mask><mask id="theme-toggle__classic__inner" color="#000"><rect width={32} height={32} fill="#fff" /><circle cx={16} cy={16} r={9.34} /></mask><circle mask="url(#theme-toggle__classic__cutout)" fill="currentColor" cx={16} cy={16} r={9.34} /><g className="theme-toggle__classic__sun-rays" mask="url(#theme-toggle__classic__inner)"><line stroke="currentColor" x1={16} y1={5.5} x2={16} y2={1.5} /><line stroke="currentColor" x1={16} y1={30.5} x2={16} y2={26.5} /><line stroke="currentColor" x1={1.5} y1={16} x2={5.5} y2={16} /><line stroke="currentColor" x1={26.5} y1={16} x2={30.5} y2={16} /><line stroke="currentColor" x1={23.4} y1={8.6} x2={26.2} y2={5.8} /><line stroke="currentColor" x1={5.7} y1={26.3} x2={8.6} y2={23.4} /><line stroke="currentColor" x1={5.8} y1={5.8} x2={8.6} y2={8.6} /><line stroke="currentColor" x1={23.4} y1={23.4} x2={26.3} y2={26.3} /></g></svg>}
+            {<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" strokeLinecap="round" className="theme-toggle__classic" viewBox="0 0 32 32"><mask id="theme-toggle__classic__cutout" color="#000"><path fill="#fff" d="M0 0h32v32H0z" /><circle cx={34} cy={2} r={8} /></mask><circle cx={16} cy={16} r={9.34} mask="url(#theme-toggle__classic__cutout)" /><g stroke="currentColor" className="theme-toggle__classic__sun-rays" mask="url(#a)"><path d="M16 5.5v-4" /><path d="M16 30.5v-4" /><path d="M1.5 16h4" /><path d="M26.5 16h4" /><path d="m23.4 8.6 2.8-2.8" /><path d="m5.7 26.3 2.9-2.9" /><path d="m5.8 5.8 2.8 2.8" /><path d="m23.4 23.4 2.9 2.9" /></g></svg>}
           </button>;
 });
 export default SvgClassic;

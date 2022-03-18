@@ -1,16 +1,9 @@
 @import "../variables.scss";
-@import "../normalise.scss";
+@import "../utils.scss";
 
-$variable: --theme-toggle__lightbulb--duration;
+$variable: #{getVar(lightbulb)};
 
-.theme-toggle {
-    #{$variable}: $duration;
-    &#{$reverseSelector} {
-        .theme-toggle__lightbulb {
-            transform: scale(-1,1);
-        }
-    }
-}
+@include generic(lightbulb, flip-y);
 
 .theme-toggle__lightbulb {
     .theme-toggle__lightbulb__rays *, 
@@ -23,13 +16,10 @@ $variable: --theme-toggle__lightbulb--duration;
     }
 }
 
-#{$darkSelector}:not(label).theme-toggle,
-.theme-toggle input[type="checkbox"]:checked ~ {
-    .theme-toggle__lightbulb {
-        .theme-toggle__lightbulb__rays *, 
-        .theme-toggle__lightbulb__coil {
-            stroke-dashoffset: 1;
-            opacity: 0;
-        }
+@include toggledSelector(lightbulb) {
+    .theme-toggle__lightbulb__rays *, 
+    .theme-toggle__lightbulb__coil {
+        stroke-dashoffset: 1;
+        opacity: 0;
     }
 }

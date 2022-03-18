@@ -1,8 +1,8 @@
 // Variables to configure the toggles
 
 // The selector used to change the toggle styles
-$darkSelector: ".theme-toggle--toggled";
+$toggledClass: ".theme-toggle--toggled";
 // The selector used to change the toggle styles
-$reverseSelector: ".theme-toggle--reversed";
+$reverseClass: ".theme-toggle--reversed";
 // Total duration of each animation
 $duration: 750ms;
