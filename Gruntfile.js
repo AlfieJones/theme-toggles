@@ -1,4 +1,4 @@
-const files = ["inner-moon", "classic", "lightbulb", "dark-side", "expand", "within"]
+const files = ["inner-moon", "classic", "lightbulb", "dark-side", "expand", "within", "horizon"]
 
 module.exports = function (grunt) {
 
@@ -120,9 +120,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    //grunt.loadNpmTasks('grunt-css-purge');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    //grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-postcss');
 
