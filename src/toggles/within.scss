@@ -12,7 +12,7 @@ $variable: #{getVar(within)};
 
 @include toggledSelector(within) {
     .theme-toggle__within__circle {
-        transform: scale(1.45);
+        transform: scale(1.5);
     }
     .theme-toggle__within__outer {
         transform: scale(0.65);
