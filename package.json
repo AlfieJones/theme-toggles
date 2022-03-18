@@ -1,17 +1,17 @@
 {
   "name": "theme-toggles",
-  "version": "2.4.1",
+  "version": "3.3.2",
   "description": "A collection of theme toggles",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "files": [
-    "build/",
+    "css/*.css",
     "assets/svgs/"
   ],
   "scripts": {},
   "author": {
     "name": "Alfie Jones",
-    "url": "https://alfie-jones.com"
+    "url": "https://ajones.uk"
   },
   "peerDependencies": {},
   "devDependencies": {

@@ -1,0 +1,37 @@
+@import "../variables.scss";
+@import "../utils.scss";
+
+$variable: #{getVar(classic)};
+
+@include generic(classic, flip-y);
+
+.theme-toggle__classic {
+    * {
+        transition-property: opacity, transform;
+        transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
+        transform-origin: center;
+        transition-duration: var($variable);
+        transition-delay: calc(var($variable)/5);
+    }
+
+    #theme-toggle__classic__cutout {
+        circle {
+            transition-delay: 0ms;
+            transform: none;
+        }
+    }
+}
+
+@include toggledSelector(classic) {
+    .theme-toggle__classic__sun-rays  * {
+        transform: scale(0.5) rotate(45deg);
+        opacity: 0;
+        transition-delay: 0ms;
+    }
+    #theme-toggle__classic__cutout {
+        circle {
+            transform: translate3d(-11px, 10px, 0);
+            transition-delay: calc(var($variable)/5);
+        }
+    }
+}

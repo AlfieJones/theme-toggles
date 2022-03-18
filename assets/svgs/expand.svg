@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="theme-toggle__expand" viewBox="0 0 416 416">
+  <mask id="theme-toggle__expand__cutout" color="#000">
+    <rect width="416" height="416" fill="#fff"/>
+    <circle cx="535" cy="150" r="125"/>
+  </mask>
+  <g mask="url(#theme-toggle__expand__cutout)">
+    <circle cx="208" cy="208" r="115"/>
+    <path d="M240 32a32 32 0 1 1-32-32 32 32 0 0 1 32 32Zm-64 352a32 32 0 1 1 32 32 32 32 0 0 1-32-32Zm208-144a32 32 0 1 1 32-32 32 32 0 0 1-32 32ZM32 176a32 32 0 1 1-32 32 32 32 0 0 1 32-32Zm80-96a32 32 0 1 1-32-32 32 32 0 0 1 32 32Zm224 288a32 32 0 1 1 32-32 32 32 0 0 1-32 32Zm32-288a32 32 0 1 1-32-32 32 32 0 0 1 32 32ZM80 304a32 32 0 1 1-32 32 32 32 0 0 1 32-32Z"/>
+  </g>
+</svg>

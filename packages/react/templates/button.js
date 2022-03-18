@@ -1,6 +1,6 @@
 const template = (variables, { tpl }) => {
   return tpl`
-  ${`import "../../../../build/${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}.min.css"`};
+  ${`import "../../../../css/${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}.min.css"`};
   import React, { useState, forwardRef } from "react";
   import { ToggleProps } from "../";
   
@@ -11,6 +11,7 @@ const template = (variables, { tpl }) => {
             toggled,
             toggle,
             duration = 750,
+            reversed = false,
             style,
             "aria-label": ariaLabel = "Toggle Theme",
             className,
@@ -21,7 +22,7 @@ const template = (variables, { tpl }) => {
       const toggleFunction = toggle || toggleInternal;
       const isToggled = toggled !== undefined ? toggled : toggledInternal;
 
-      const btnClass = \`theme-toggle \${isToggled? "theme-toggle--toggled" : ""} \${className? className : ""}\`.trim();
+      const btnClass = \`theme-toggle \${isToggled? "theme-toggle--toggled" : ""} \${reversed? "theme-toggle--reversed" : ""} \${className? className : ""}\`.trim();
       const btnStyle = {...style, "${`--theme-toggle__${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}--duration`}": \`\${duration}ms\`};
       const handleClick = () => {
           const mToggled = !isToggled;

@@ -1,12 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="theme-toggle__lightbulb" viewBox="0 0 381.3 369.5" stroke="currentColor" fill="currentColor" strokeLinecap="round" strokeWidth="9px">
-  <path strokeWidth="0" d="M271 116a112 112 0 0 0-79-33c-62 0-112 51-112 113a113 113 0 0 0 27 74c9 10 25 33 31 54a5 5 0 1 0 10-1v-2c-7-22-24-47-33-58a103 103 0 0 1-25-67c0-58 45-103 102-103a99 99 0 0 1 72 30 103 103 0 0 1 4 140c-9 11-26 36-33 59v1a5 5 0 0 0 5 6 5 5 0 0 0 5-5c7-21 23-44 31-54a111 111 0 0 0 29-74 113 113 0 0 0-34-80Z"></path>
-  <path d="M146 337h91m-91 15h91m-91 14h91"></path>
-  <path class="theme-toggle__lightbulb__coil" fill="none" pathLength="1" d="m207 322 1-124c3-11 13-20 24-20 15-1 27 12 26 27 0 12-11 23-25 24h-86c-14-1-25-12-25-24-1-15 11-28 26-27 11 0 21 9 24 20l1 124"></path>>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381.3 364.2"  width="1em" height="1em" class="theme-toggle__lightbulb" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-width="9">
+  <path stroke-width="0" d="M111.2 108.84a111.64 111.64 0 0 1 79.42-32.92h.38c61.79.18 112.08 50.82 112.08 112.89a112.71 112.71 0 0 1-27.86 74.25c-8.63 9.87-24.62 33.28-30.67 53.7a5.09 5.09 0 1 1-10.11-1.2l.24-1.33c6.63-22.35 23.69-47.4 32.91-57.92a102.64 102.64 0 0 0 25.3-67.54c0-57.38-44.78-102.49-102-102.68h-.27A99.17 99.17 0 0 0 119 116.03a102.88 102.88 0 0 0-4.78 140.26c9.21 10.52 26.28 35.56 33.11 58.88v.37a5.24 5.24 0 0 1-4.4 5.87h-.65a4.86 4.86 0 0 1-4.94-4.32c-6.17-20.8-22.16-44.21-30.8-54.08a110.85 110.85 0 0 1-28.37-74.23 112.58 112.58 0 0 1 33.03-79.94Z"/>
+  <path d="m236 330.8-90.7-.2"/>
+  <path d="m236 345.3-90.7-.3"/>
+  <path d="m236 359.7-90.7-.3"/>
+  <path pathLength="1" class="theme-toggle__lightbulb__coil" fill="none" d="m173.2 316.4-.9-123.5a26.5 26.5 0 0 0-23.8-20.8 26.2 26.2 0 0 0-26.3 27.2c.8 12.4 11.4 23 25 24.1l43.4.6 43.4-.5a26.8 26.8 0 0 0 25-24.2 26 26 0 0 0-26.3-27.2c-11 .5-21 8.9-23.8 20.8l-.9 123.5"/>
   <g class="theme-toggle__lightbulb__rays">
-	<path d="M190 66V5" pathLength="1"></path>
-	<path d="m66 204-61 1" pathLength="1"></path>
-	<path d="M93 110 49 66" pathLength="1"></path>
-	<path d="m281 110 44-44" pathLength="1"></path>
-	<path d="M316 206h60" pathLength="1"></path>
+    <path pathLength="1" d="m190.8 66.4-.3-61.9"/>
+    <path pathLength="1" d="m314.9 179.8 61.9.3"/>
+    <path pathLength="1" d="m271 97.7 43.9-43.6"/>
+    <path pathLength="1" d="M110.3 97.7 66.4 54.1"/>
+    <path pathLength="1" d="m66.4 179.9-61.9.3"/>
   </g>
 </svg>

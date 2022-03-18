@@ -1,0 +1,41 @@
+@import "../variables.scss";
+@import "../utils.scss";
+
+$variable: #{getVar(expand)};
+
+@include generic(expand, flip-y);
+
+.theme-toggle__expand {
+    g {
+        circle, path {
+            transform-origin: center;
+            transition: transform calc(var($variable)*0.65) cubic-bezier(0, 0, 0, 1.25) calc(var($variable)*0.35);
+        }
+    }
+    mask {
+        circle {
+            transition: transform calc(var($variable)*0.6) cubic-bezier(0, 0, 0.5, 1);
+        }
+    } 
+}
+
+@include toggledSelector(expand) {
+    g {
+        circle, path {
+            transition-delay: 0s;
+        }
+        circle {
+            transform: scale(1.4);
+        }
+        path {
+            transform: scale(0.75);
+        }
+    }
+    mask {
+        circle {
+            transform: translate3d(-235px, 0, 0);
+            transition-delay: calc(var($variable)*0.4);
+            transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
+        }
+    }
+}
