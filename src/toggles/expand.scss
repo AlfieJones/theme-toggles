@@ -33,7 +33,7 @@ $variable: #{getVar(expand)};
     }
     mask {
         circle {
-            transform: translateX(-235px);
+            transform: translate3d(-235px, 0, 0);
             transition-delay: calc(var($variable)*0.4);
             transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
         }

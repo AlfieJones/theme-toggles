@@ -20,6 +20,6 @@ $variable: #{getVar(inner-moon)};
         transform: rotate(180deg);
     }
     circle {
-        transform: translateX(15%);
+        transform: translate3d(15%, 0, 0);
     }
 }
