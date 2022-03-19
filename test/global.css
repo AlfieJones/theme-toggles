@@ -1,0 +1,23 @@
+.tools {
+    width: 100%;
+    display: flex;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .grid > div {
+    background-color: white;
+    border-radius: .25rem;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .grid > div > :first-child {
+    font-size: 10rem;
+  }
