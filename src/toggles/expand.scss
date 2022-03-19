@@ -33,7 +33,7 @@ $variable: #{getVar(expand)};
     }
     clipPath {
         path {
-            d: path("M-10 3h25a1 1 0 0017 13v29H0Z");
+            d: path("M-9 3h25a1 1 0 0017 13v30H0Z");
             transition-delay: calc(var($variable)*0.4);
             transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
         }
