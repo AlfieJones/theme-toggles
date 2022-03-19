@@ -14,10 +14,12 @@ $variable: #{getVar(within)};
     .theme-toggle__within__circle {
         transform: scale(1.5);
     }
-    .theme-toggle__within__outer {
-        transform: scale(0.65);
-    }
     .theme-toggle__within__inner {
-        transform: translate3d(45px, -45px, 0) scale(1.2);
+        transform: translate3d(3px, -3px, 0) scale(1.2);
+    }
+    g {
+        path {
+            transform: scale(0.65);
+        }
     }
 }

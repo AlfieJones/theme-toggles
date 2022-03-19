@@ -6,32 +6,36 @@ $variable: #{getVar(classic)};
 @include generic(classic, flip-y);
 
 .theme-toggle__classic {
-    * {
-        transition-property: opacity, transform;
+    path {
         transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
         transform-origin: center;
-        transition-duration: var($variable);
-        transition-delay: calc(var($variable)/5);
+        transition-duration: calc(var($variable)*0.8);
     }
-
     #theme-toggle__classic__cutout {
-        circle {
-            transition-delay: 0ms;
-            transform: none;
+        path {
+            transition-property: d;
+        }
+    }
+    g {
+        path {
+            transition-property: opacity, transform;
+            transition-delay: calc(var($variable)*0.2);
         }
     }
 }
 
 @include toggledSelector(classic) {
-    .theme-toggle__classic__sun-rays  * {
-        transform: scale(0.5) rotate(45deg);
-        opacity: 0;
-        transition-delay: 0ms;
+    g {
+        path {
+            transform: scale(0.5) rotate(45deg);
+            opacity: 0;
+            transition-delay: 0s;
+        }
     }
     #theme-toggle__classic__cutout {
-        circle {
-            transform: translate3d(-11px, 10px, 0);
-            transition-delay: calc(var($variable)/5);
+        path {
+            d: path("M-12 5h30a1 1 0 0 0 9 13v24h-39Z");
+            transition-delay: calc(var($variable)*0.2);
         }
     }
 }
