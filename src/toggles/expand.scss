@@ -12,9 +12,9 @@ $variable: #{getVar(expand)};
             transition: transform calc(var($variable)*0.65) cubic-bezier(0, 0, 0, 1.25) calc(var($variable)*0.35);
         }
     }
-    mask {
-        circle {
-            transition: transform calc(var($variable)*0.6) cubic-bezier(0, 0, 0.5, 1);
+    clipPath {
+        path {
+            transition: d calc(var($variable)*0.6) cubic-bezier(0, 0, 0.5, 1);
         }
     } 
 }
@@ -31,9 +31,9 @@ $variable: #{getVar(expand)};
             transform: scale(0.75);
         }
     }
-    mask {
-        circle {
-            transform: translate3d(-235px, 0, 0);
+    clipPath {
+        path {
+            d: path("M-10 3h25a1 1 0 0017 13v29H0Z");
             transition-delay: calc(var($variable)*0.4);
             transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
         }
