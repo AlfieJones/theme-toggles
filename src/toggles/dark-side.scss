@@ -8,7 +8,7 @@ $variable: #{getVar(dark-side)};
 .theme-toggle__dark-side {
     path {
         transform-origin: center;
-        transition: transform var($variable) cubic-bezier(0, 0, .15, 1);
+        transition: transform var($variable) ease;
     }
 }
 
@@ -17,6 +17,3 @@ $variable: #{getVar(dark-side)};
         transform: rotate(180deg);
     }
 }
-
-
-

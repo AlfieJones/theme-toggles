@@ -1,4 +1,4 @@
-const files = ["inner-moon", "classic", "lightbulb", "dark-side", "expand", "within", "horizon", "eclipse"]
+const files = ["inner-moon", "classic", "lightbulb", "dark-side", "expand", "within", "horizon", "eclipse", "simple", "dark-inner"]
 
 module.exports = function (grunt) {
 

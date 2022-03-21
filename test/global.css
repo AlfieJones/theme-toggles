@@ -21,3 +21,7 @@
   .grid > div > :first-child {
     font-size: 10rem;
   }
+
+  svg {
+    padding: 1rem;
+  }
