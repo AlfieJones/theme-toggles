@@ -8,4 +8,4 @@ export interface ToggleProps extends Omit<DetailedHTMLProps<React.ButtonHTMLAttr
     duration?: number;
     reversed?: boolean;
     onToggle?: (toggled: boolean) => void;
-  };
+};
