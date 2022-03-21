@@ -17,7 +17,7 @@ $variable: #{getVar(classic)};
             transition-delay: calc(var($variable)*0.2);
         }
     }
-    clipPath {
+    :first-child {
         path {
             transition-property: transform, d;
         }
@@ -34,7 +34,7 @@ $variable: #{getVar(classic)};
             transition-delay: 0s;
         }
     }
-    clipPath {
+    :first-child {
         path {
             d: path("M-12 5h30a1 1 0 0 0 9 13v24h-39Z");
             transition-delay: calc(var($variable)*0.2);
@@ -46,7 +46,7 @@ $variable: #{getVar(classic)};
 // the path data. When this isn't supported, we fallback to translation
 @supports not (d: path("")) {
     @include toggledSelector(classic) {
-        clipPath {
+        :first-child {
             path {
                 transform: translate3d(-12px, 10px, 0);
             }

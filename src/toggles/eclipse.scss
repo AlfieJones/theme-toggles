@@ -6,7 +6,7 @@ $variable: #{getVar(eclipse)};
 @include generic(eclipse, flip-y);
 
 .theme-toggle__eclipse {
-    clipPath {
+    :first-child {
         path {
             transition-property: transform, d;
             transition-duration: calc(var($variable));
@@ -16,7 +16,7 @@ $variable: #{getVar(eclipse)};
 }
 
 @include toggledSelector(eclipse) {
-    clipPath {
+    :first-child {
         path {
             d: path("M-32 0h64v32h-64zm36 16a1 1 0 0024 1 1 1 0 00-24-1");
         }
@@ -27,7 +27,7 @@ $variable: #{getVar(eclipse)};
 // the path data. When this isn't supported, we fallback to translation
 @supports not (d: path("")) {
     @include toggledSelector(eclipse) {
-        clipPath {
+        :first-child {
             path {
                 transform: translate3d(-32px, 0, 0);
             }
