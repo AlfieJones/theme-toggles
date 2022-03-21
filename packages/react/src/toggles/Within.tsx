@@ -6,7 +6,7 @@ const SvgWithin = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps
     onToggle,
     toggled,
     toggle,
-    duration = 750,
+    duration = 500,
     reversed = false,
     style,
     "aria-label": ariaLabel = "Toggle Theme",
