@@ -12,15 +12,14 @@ $variable: #{getVar(expand)};
             transition: transform calc(var($variable)*0.65) cubic-bezier(0, 0, 0, 1.25) calc(var($variable)*0.35);
         }
     }
+    clipPath {
+        path {
+            transition-property: transform, d;
+            transition-duration: calc(var($variable)*0.6);
+            transition-timing-function: cubic-bezier(0, 0, 0.5, 1);
+        }
+    } 
 }
-
-#theme-toggle__expand__cutout {
-    path {
-        transition-property: transform, d;
-        transition-duration: calc(var($variable)*0.6);
-        transition-timing-function: cubic-bezier(0, 0, 0.5, 1);
-    }
-} 
 
 @include toggledSelector(expand) {
     g {
@@ -33,7 +32,7 @@ $variable: #{getVar(expand)};
             transition-delay: 0s;
         }
     }
-    #theme-toggle__expand__cutout {
+    clipPath {
         path {
             d: path("M-9 3h25a1 1 0 0017 13v30H0Z");
             transition-delay: calc(var($variable)*0.4);
@@ -45,7 +44,7 @@ $variable: #{getVar(expand)};
 // the path data. When this isn't supported, we fallback to translation
 @supports not (d: path("")) {
     @include toggledSelector(expand) {
-        #theme-toggle__expand__cutout {
+        clipPath {
             path {
                 transform: translate3d(-9px, 14px, 0);
             }

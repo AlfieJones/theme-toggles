@@ -146,6 +146,24 @@
                 <input type="checkbox" onclick="toggleReverse('within')">
             </label>
         </div>
+        <div>  
+            <label class="theme-toggle" id="eclipse">
+                <input type="checkbox" />
+                <span class="theme-toggle-sr">Toggle theme</span>
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" class="theme-toggle__eclipse" fill="currentColor" viewBox="0 0 32 32">
+                    <clipPath id="theme-toggle__eclipse__cutout">
+                      <path d="M0 0h64v32h-64zM36 16a1 1 0 0024 1 1 1 0 00-24-1"/>
+                    </clipPath>
+                    <g clip-path="url(#theme-toggle__eclipse__cutout)">
+                      <circle cx="16" cy="16" r="16"/>
+                    </g>
+                  </svg>
+            </label>
+            <label>
+                Reversed
+                <input type="checkbox" onclick="toggleReverse('eclipse')">
+            </label>
+        </div>
     </div>
     <script src="./base.js"></script>
 </body>

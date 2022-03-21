@@ -17,13 +17,14 @@ $variable: #{getVar(classic)};
             transition-delay: calc(var($variable)*0.2);
         }
     }
-}
-
-#theme-toggle__classic__cutout {
-    path {
-        transition-property: transform, d;
+    clipPath {
+        path {
+            transition-property: transform, d;
+        }
     }
 }
+
+
 
 @include toggledSelector(classic) {
     g {
@@ -33,7 +34,7 @@ $variable: #{getVar(classic)};
             transition-delay: 0s;
         }
     }
-    #theme-toggle__classic__cutout {
+    clipPath {
         path {
             d: path("M-12 5h30a1 1 0 0 0 9 13v24h-39Z");
             transition-delay: calc(var($variable)*0.2);
@@ -45,7 +46,7 @@ $variable: #{getVar(classic)};
 // the path data. When this isn't supported, we fallback to translation
 @supports not (d: path("")) {
     @include toggledSelector(classic) {
-        #theme-toggle__classic__cutout {
+        clipPath {
             path {
                 transform: translate3d(-12px, 10px, 0);
             }

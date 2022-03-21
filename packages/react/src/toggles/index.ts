@@ -1,5 +1,6 @@
 export { default as Classic } from './Classic'
 export { default as DarkSide } from './DarkSide'
+export { default as Eclipse } from './Eclipse'
 export { default as Expand } from './Expand'
 export { default as Horizon } from './Horizon'
 export { default as InnerMoon } from './InnerMoon'
