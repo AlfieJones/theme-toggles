@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "3.6.5",
+  "version": "3.6.6",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -21,6 +21,10 @@
     "types": "tsc --emitDeclarationOnly --outDir dist",
     "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && node ./scripts/build.js && yarn types",
     "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/alfiejones"
   },
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
