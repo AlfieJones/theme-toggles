@@ -12,8 +12,9 @@ const template = (variables, { tpl }) => {
             toggle,
             duration = 500,
             reversed = false,
+            title = "Toggle theme",
             style,
-            "aria-label": ariaLabel = "Toggle Theme",
+            "aria-label": ariaLabel = "Toggle theme",
             className,
             ...rest
         } = props;
@@ -32,7 +33,7 @@ const template = (variables, { tpl }) => {
       }
   
       return (
-          <button ref={ref} className={btnClass} style={btnStyle} aria-label={ariaLabel} onClick={handleClick} {...rest}>
+          <button ref={ref} className={btnClass} style={btnStyle} aria-label={ariaLabel} title={title} onClick={handleClick} {...rest}>
             {${variables.jsx}}
           </button>
       );
