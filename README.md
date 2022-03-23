@@ -1,4 +1,9 @@
+<img width=100% src="./banner-dark.gif#gh-dark-mode-only" />
+<img width=100% src="./banner-light.gif#gh-light-mode-only" />
+
+
 <div align="center">
+<br />
     <img alt="NPM version" src="https://img.shields.io/npm/v/theme-toggles?style=for-the-badge">
 
 

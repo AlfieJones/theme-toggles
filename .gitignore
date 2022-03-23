@@ -1,6 +1,6 @@
 node_modules
 build
 .sass-cache
-index.html
+./index.html
 .vscode
 css
