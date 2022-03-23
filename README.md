@@ -1,5 +1,5 @@
-<img width=100% src="./banner-dark.gif#gh-dark-mode-only" />
-<img width=100% src="./banner-light.gif#gh-light-mode-only" />
+<img width=100% style="border-radius: .5rem" src="./banner-dark.gif#gh-dark-mode-only" />
+<img width=100% style="border-radius: .5rem" src="./banner-light.gif#gh-light-mode-only" />
 
 
 <div align="center">
