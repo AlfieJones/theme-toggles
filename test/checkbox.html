@@ -60,7 +60,7 @@
                     </clipPath>
                     <g clip-path="url(#theme-toggle__expand__cutout)">
                       <circle cx="16" cy="16" r="8.5"/>
-                      <path d="M18.34 3.15a2.34 2.34 0 1 1-4.67 0 2.34 2.34 0 0 1 4.67 0zm-4.68 25.7a2.34 2.34 0 1 1 4.68 0 2.34 2.34 0 1 1-4.68 0zm15.19-10.51a2.34 2.34 0 1 1 0-4.68 2.34 2.34 0 1 1 0 4.68zm-25.7-4.68a2.34 2.34 0 1 1 0 4.67 2.34 2.34 0 0 1 0-4.67zm5.84-7a2.34 2.34 0 1 1-4.67 0 2.34 2.34 0 0 1 4.67 0zm16.35 21.02a2.34 2.34 0 1 1 0-4.68c1.3 0 2.34 1.04 2.34 2.34s-1.04 2.34-2.34 2.34zm2.34-21.02a2.34 2.34 0 1 1-4.68 0c0-1.3 1.04-2.34 2.34-2.34s2.34 1.04 2.34 2.34zM6.66 23.01a2.34 2.34 0 1 1 0 4.68c-1.3 0-2.34-1.04-2.34-2.34s1.04-2.34 2.34-2.34z"/>
+                      <path d="M18.3 3.2c0 1.3-1 2.3-2.3 2.3s-2.3-1-2.3-2.3S14.7.9 16 .9s2.3 1 2.3 2.3zm-4.6 25.6c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm15.1-10.5c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zM3.2 13.7c1.3 0 2.3 1 2.3 2.3s-1 2.3-2.3 2.3S.9 17.3.9 16s1-2.3 2.3-2.3zm5.8-7C9 7.9 7.9 9 6.7 9S4.4 8 4.4 6.7s1-2.3 2.3-2.3S9 5.4 9 6.7zm16.3 21c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm2.4-21c0 1.3-1 2.3-2.3 2.3S23 7.9 23 6.7s1-2.3 2.3-2.3 2.4 1 2.4 2.3zM6.7 23C8 23 9 24 9 25.3s-1 2.3-2.3 2.3-2.3-1-2.3-2.3 1-2.3 2.3-2.3z"/>
                     </g>
                   </svg>
             </label>
@@ -208,6 +208,32 @@
             <label>
                 Reversed
                 <input type="checkbox" onclick="toggleReverse('half-sun')">
+            </label>
+        </div>
+        <div>  
+            <label class="theme-toggle" id="around">
+                <input type="checkbox" />
+                <span class="theme-toggle-sr">Toggle theme</span>
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" fill="currentColor" class="theme-toggle__around" viewBox="0 0 32 32">
+                    <clipPath id="theme-toggle__around__cutout">
+                      <path d="M0 0h42v30a1 1 0 00-16 13H0Z"/>
+                    </clipPath>
+                    <g clip-path="url(#theme-toggle__around__cutout)">
+                      <circle cx="16" cy="16" r="8.4"/>
+                      <g>
+                        <circle cx="16" cy="3.3" r="2.3"/>
+                        <circle cx="27" cy="9.7" r="2.3"/>
+                        <circle cx="27" cy="22.3" r="2.3"/>
+                        <circle cx="16" cy="28.7" r="2.3"/>
+                        <circle cx="5" cy="22.3" r="2.3"/>
+                        <circle cx="5" cy="9.7" r="2.3"/>
+                      </g>
+                    </g>
+                  </svg>
+            </label>
+            <label>
+                Reversed
+                <input type="checkbox" onclick="toggleReverse('around')">
             </label>
         </div>
     </div>

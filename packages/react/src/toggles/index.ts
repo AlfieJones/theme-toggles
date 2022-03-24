@@ -1,3 +1,4 @@
+export { default as Around } from './Around'
 export { default as Classic } from './Classic'
 export { default as DarkInner } from './DarkInner'
 export { default as DarkSide } from './DarkSide'
