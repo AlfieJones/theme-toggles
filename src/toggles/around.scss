@@ -10,11 +10,11 @@ $variable: #{getVar(around)};
     circle {
         transform-origin: center;
         transition-property: transform;
-        transition-timing-function: ease;
+        transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
     }
     > g {
         > circle {
-            transition-duration: calc(var($variable)*0.3);
+            transition-duration: calc(var($variable)*0.4);
         }
         g {
             circle {
@@ -23,18 +23,18 @@ $variable: #{getVar(around)};
             }
             @for $i from 1 through 6 {
                 :nth-child(#{$i}) {
-                    transition-delay: calc(var(#{$variable})*#{$i*0.16 + 0.09});
+                    transition-delay: calc(var(#{$variable})*#{$i*0.14 + 0.11});
                 }
             }
         }
     }
     > *:first-child {
-        transition: transform calc(var($variable)*0.3) ease;
+        transition: transform calc(var($variable)*0.4) cubic-bezier(0, 0, .15, 1.25);
         transform-origin: center;
         path {
             transition-property: transform, d;
-            transition-duration: calc(var($variable)*0.3);
-            transition-timing-function: ease;
+            transition-duration: calc(var($variable)*0.4);
+            transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
         }
     } 
 }
@@ -43,7 +43,7 @@ $variable: #{getVar(around)};
     > g {
         > circle {
             transform: scale(1.4);
-            transition-delay: calc(var($variable)*0.7);
+            transition-delay: calc(var($variable)*0.6);
         }
         g {
             circle {
@@ -51,7 +51,7 @@ $variable: #{getVar(around)};
             }
             @for $i from 1 through 6 {
                 :nth-child(#{$i}) {
-                    transition-delay: calc(var(#{$variable})*#{($i - 1)*0.16});
+                    transition-delay: calc(var(#{$variable})*#{($i - 1)*0.14});
                 }
             }
         }
