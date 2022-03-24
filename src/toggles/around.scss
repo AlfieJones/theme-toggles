@@ -17,7 +17,7 @@ $variable: #{getVar(around)};
             }
             @for $i from 1 through 6 {
                 :nth-child(#{$i}) {
-                    transition-delay: calc(var(#{$variable})*#{$i*0.14 + 0.11});
+                    transition-delay: calc(var(#{$variable})*#{$i*0.095 + 0.158});
                 }
             }
         }
