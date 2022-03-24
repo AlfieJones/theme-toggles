@@ -1,6 +1,6 @@
 <div align="center">
 <br />
-    <img alt="NPM version" src="https://img.shields.io/npm/v/theme-toggles?style=for-the-badge">
+    <img alt="NPM version" src="https://img.shields.io/npm/v/@theme-toggles/react?style=for-the-badge">
 
 
 <!-- PROJECT LOGO -->
