@@ -6,19 +6,13 @@ $variable: #{getVar(around)};
 @include generic(around, flip-y);
 
 .theme-toggle__around {
-    
-    circle {
+    * {
         transform-origin: center;
-        transition-property: transform;
-        transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
+        transition: transform calc(var($variable)*0.6) ease;
     }
     > g {
-        > circle {
-            transition-duration: calc(var($variable)*0.4);
-        }
         g {
             circle {
-                transform-box: fill-box;
                 transition-duration: calc(var($variable)*0.2);
             }
             @for $i from 1 through 6 {
@@ -29,39 +23,32 @@ $variable: #{getVar(around)};
         }
     }
     > *:first-child {
-        transition: transform calc(var($variable)*0.4) cubic-bezier(0, 0, .15, 1.25);
-        transform-origin: center;
         path {
             transition-property: transform, d;
-            transition-duration: calc(var($variable)*0.4);
-            transition-timing-function: cubic-bezier(0, 0, .15, 1.25);
         }
     } 
 }
 
 @include toggledSelector(around) {
+    * {
+        transition-delay: 0s;
+        transition-duration: var($variable);
+    }
     > g {
         > circle {
             transform: scale(1.4);
-            transition-delay: calc(var($variable)*0.6);
         }
         g {
             circle {
                 transform: scale(0);
-            }
-            @for $i from 1 through 6 {
-                :nth-child(#{$i}) {
-                    transition-delay: calc(var(#{$variable})*#{($i - 1)*0.14});
-                }
+                transition-duration: calc(var($variable)*0.4)
             }
         }
     }
     > *:first-child {
         transform: rotate(-90deg);
-        transition-delay: calc(var($variable)*0.7);
         path {
             d: path("M-12-14h42v30a1 1 0 00-16 13H0Z");
-            transition-delay: calc(var($variable)*0.7);
         }
     }
 }
