@@ -17,3 +17,11 @@
 		border-width: 0;
 	}
 }
+
+@media (prefers-reduced-motion: reduce) {
+	.theme-toggle {
+		* {
+			transition: none !important;
+		}
+	}
+}
