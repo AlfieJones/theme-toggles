@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .theme-toggle {
 	border:none;
 	background: none;
@@ -19,7 +21,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.theme-toggle {
+	.theme-toggle:not(#{$forceMotionClass}) {
 		* {
 			transition: none !important;
 		}

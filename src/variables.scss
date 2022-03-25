@@ -4,5 +4,7 @@
 $toggledClass: ".theme-toggle--toggled";
 // The selector used to change the toggle styles
 $reverseClass: ".theme-toggle--reversed";
+// The selector used to disabled prefers motion
+$forceMotionClass: ".theme-toggle--force-motion";
 // Total duration of each animation
 $duration: 500ms;
