@@ -19,7 +19,7 @@
     "clean-build": "rimraf css && rimraf dist",
     "build-react": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ./svgs/default",
     "types": "tsc --emitDeclarationOnly --outDir dist",
-    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && node ./scripts/build.js && yarn types",
+    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && prettier --write ./src && node ./scripts/build.js && yarn types",
     "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
   },
   "funding": {
@@ -49,6 +49,7 @@
     "esbuild-css-modules-plugin": "^2.1.2",
     "fs-extra": "^10.0.1",
     "plugin": "^0.3.3",
+    "prettier": "2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",

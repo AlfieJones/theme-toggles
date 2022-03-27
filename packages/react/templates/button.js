@@ -1,6 +1,9 @@
 const template = (variables, { tpl }) => {
   return tpl`
-  ${`import "../../../../css/${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}.min.css"`};
+  ${`import "../../../../css/${variables.componentName
+    .replace("Svg", "")
+    .replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())
+    .replace("-", "")}.min.css"`};
   import React, { useState, forwardRef } from "react";
   import { ToggleProps } from "../";
   
@@ -27,7 +30,10 @@ const template = (variables, { tpl }) => {
       const isToggled = toggled !== undefined ? toggled : toggledInternal;
 
       const btnClass = \`theme-toggle \${isToggled? "theme-toggle--toggled" : ""} \${forceMotion? "theme-toggle--force-motion" : ""} \${reversed? "theme-toggle--reversed" : ""} \${className? className : ""}\`.trim();
-      const btnStyle = {...style, "${`--theme-toggle__${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}--duration`}": \`\${duration}ms\`};
+      const btnStyle = {...style, "${`--theme-toggle__${variables.componentName
+        .replace("Svg", "")
+        .replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())
+        .replace("-", "")}--duration`}": \`\${duration}ms\`};
       const handleClick = () => {
           const mToggled = !isToggled;
   
@@ -44,6 +50,6 @@ const template = (variables, { tpl }) => {
 );
    
   ${variables.exports};
-  `
-  }
-  module.exports = template
+  `;
+};
+module.exports = template;
