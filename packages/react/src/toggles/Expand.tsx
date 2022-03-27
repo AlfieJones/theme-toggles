@@ -9,6 +9,7 @@ const SvgExpand = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps
     duration = 500,
     reversed = false,
     title = "Toggle theme",
+    forceMotion = false,
     style,
     "aria-label": ariaLabel = "Toggle theme",
     className,
@@ -17,7 +18,7 @@ const SvgExpand = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps
   const [toggledInternal, toggleInternal] = useState(false);
   const toggleFunction = toggle || toggleInternal;
   const isToggled = toggled !== undefined ? toggled : toggledInternal;
-  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${reversed ? "theme-toggle--reversed" : ""} ${className ? className : ""}`.trim();
+  const btnClass = `theme-toggle ${isToggled ? "theme-toggle--toggled" : ""} ${forceMotion ? "theme-toggle--force-motion" : ""} ${reversed ? "theme-toggle--reversed" : ""} ${className ? className : ""}`.trim();
   const btnStyle = { ...style,
     "--theme-toggle__expand--duration": `${duration}ms`
   };

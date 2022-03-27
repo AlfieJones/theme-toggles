@@ -13,6 +13,7 @@ const template = (variables, { tpl }) => {
             duration = 500,
             reversed = false,
             title = "Toggle theme",
+            forceMotion = false,
             style,
             "aria-label": ariaLabel = "Toggle theme",
             className,
@@ -23,7 +24,7 @@ const template = (variables, { tpl }) => {
       const toggleFunction = toggle || toggleInternal;
       const isToggled = toggled !== undefined ? toggled : toggledInternal;
 
-      const btnClass = \`theme-toggle \${isToggled? "theme-toggle--toggled" : ""} \${reversed? "theme-toggle--reversed" : ""} \${className? className : ""}\`.trim();
+      const btnClass = \`theme-toggle \${isToggled? "theme-toggle--toggled" : ""} \${forceMotion? "theme-toggle--force-motion" : ""} \${reversed? "theme-toggle--reversed" : ""} \${className? className : ""}\`.trim();
       const btnStyle = {...style, "${`--theme-toggle__${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}--duration`}": \`\${duration}ms\`};
       const handleClick = () => {
           const mToggled = !isToggled;
