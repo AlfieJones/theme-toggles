@@ -17,6 +17,9 @@ module.exports = {
                     ]
                 }
               ],
+              [
+                "./plugins/babel-plugin-update-id-attribute.js"
+              ]
         ],
       },
     },

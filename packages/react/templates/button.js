@@ -14,6 +14,7 @@ const template = (variables, { tpl }) => {
             reversed = false,
             title = "Toggle theme",
             forceMotion = false,
+            idPrefix = "",
             style,
             "aria-label": ariaLabel = "Toggle theme",
             className,

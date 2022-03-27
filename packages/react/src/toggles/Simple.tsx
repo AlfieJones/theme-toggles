@@ -10,6 +10,7 @@ const SvgSimple = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    idPrefix = "",
     style,
     "aria-label": ariaLabel = "Toggle theme",
     className,
@@ -30,7 +31,7 @@ const SvgSimple = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProps
   };
 
   return <button ref={ref} className={btnClass} style={btnStyle} aria-label={ariaLabel} title={title} onClick={handleClick} {...rest}>
-            {<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" className="theme-toggle__simple" fill="currentColor" viewBox="0 0 32 32"><clipPath id="theme-toggle__simple__cutout"><path d="M0-5h55v37h-55zm32 12a1 1 0 0025 0 1 1 0 00-25 0" /></clipPath><g clipPath="url(#theme-toggle__simple__cutout)"><circle cx={16} cy={16} r={15} /></g></svg>}
+            {<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" className="theme-toggle__simple" fill="currentColor" viewBox="0 0 32 32"><clipPath id={`${idPrefix}theme-toggle__simple__cutout`}><path d="M0-5h55v37h-55zm32 12a1 1 0 0025 0 1 1 0 00-25 0" /></clipPath><g clipPath="url(#theme-toggle__simple__cutout)"><circle cx={16} cy={16} r={15} /></g></svg>}
           </button>;
 });
 export default SvgSimple;

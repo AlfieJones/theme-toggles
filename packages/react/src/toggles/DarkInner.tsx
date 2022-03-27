@@ -10,6 +10,7 @@ const SvgDarkInner = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePr
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    idPrefix = "",
     style,
     "aria-label": ariaLabel = "Toggle theme",
     className,

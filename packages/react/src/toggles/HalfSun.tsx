@@ -10,6 +10,7 @@ const SvgHalfSun = forwardRef<HTMLButtonElement, ToggleProps>((props: ToggleProp
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    idPrefix = "",
     style,
     "aria-label": ariaLabel = "Toggle theme",
     className,

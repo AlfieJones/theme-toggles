@@ -10,6 +10,7 @@ const SvgDarkSide = forwardRef<HTMLButtonElement, ToggleProps>((props: TogglePro
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    idPrefix = "",
     style,
     "aria-label": ariaLabel = "Toggle theme",
     className,
