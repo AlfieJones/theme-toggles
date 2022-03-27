@@ -31,7 +31,18 @@ You can install the latest version by using:
 | [`theme-toggles`](https://github.com/alfiejones/theme-toggles/tree/main/) | [![npm version](https://img.shields.io/npm/v/theme-toggles.svg)](https://www.npmjs.com/package/theme-toggles) |
 | [`@theme-toggles/react`](https://github.com/alfiejones/theme-toggles/tree/main/packages/react)     |   [![npm version](https://img.shields.io/npm/v/@theme-toggles/react.svg)](https://www.npmjs.com/package/@theme-toggles/react)   |
 
+## About
+Our project provides you with a quick and effortless way to implement well designed toggles. With more websites supporting both light and dark themes, it's important to ensure sites also have a clean and accessible toggle.
 
+We use SVG’s for each of our toggles, animating them with CSS. Using SVG’s instead of html elements like div’s enables us to have minimal markup whilst maintaining a high quality and scalable icon.
+
+### Features
+* Tiny ~1.5kb (min and gzip)
+* Accessible
+* Customizable
+
+## Roadmap
+You can find all our planned improvements on our [roadmap](https://toggles.dev/docs/roadmap)
 
 ## Contributing
 
