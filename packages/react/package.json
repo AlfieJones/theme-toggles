@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "3.9.0",
+  "version": "4.0.0",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -19,7 +19,7 @@
     "clean-build": "rimraf css && rimraf dist",
     "build-react": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ./svgs/default",
     "types": "tsc --emitDeclarationOnly --outDir dist",
-    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && node ./scripts/build.js && yarn types",
+    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && node ./scripts/esbuild.js && yarn types",
     "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
   },
   "funding": {
