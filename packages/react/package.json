@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "4.0.0",
+  "version": "4.0.2",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -19,7 +19,7 @@
     "clean-build": "rimraf css && rimraf dist",
     "build-react": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ./svgs/default",
     "types": "tsc --emitDeclarationOnly --outDir dist",
-    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && node ./scripts/esbuild.js && yarn types",
+    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && prettier --write ./src && node ./scripts/esbuild.js && yarn types",
     "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
   },
   "funding": {
@@ -36,16 +36,15 @@
   ],
   "sideEffects": false,
   "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/types": "^7.17.0",
     "@svgr/babel-plugin-add-jsx-attribute": "^6.0.0",
-    "@svgr/babel-plugin-remove-jsx-attribute": "^6.0.0",
-    "@svgr/babel-plugin-transform-svg-component": "^6.2.0",
     "@svgr/cli": "^6.2.1",
     "@types/react": "^17.0.39",
-    "css-tree": "^2.0.4",
     "esbuild": "^0.14.21",
-    "esbuild-css-modules-plugin": "^2.1.2",
     "fs-extra": "^10.0.1",
     "plugin": "^0.3.3",
+    "prettier": "2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",

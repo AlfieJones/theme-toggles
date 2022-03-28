@@ -13,7 +13,8 @@ module.exports = function (grunt) {
 
         clean: {
             build: ['css'],
-            react: ['css/react', 'css/temp/react']
+            react: ['css/react', 'css/temp/react'],
+            temp: ['css/temp']
         },
 
         // -- Sass Config --------------------------------------------------------
@@ -182,6 +183,7 @@ module.exports = function (grunt) {
         'sass:build',
         'postcss:build',
         'cssmin',
+        'clean:temp'
     ]);
 
     grunt.registerTask('react', [
@@ -191,6 +193,7 @@ module.exports = function (grunt) {
         'sass:react',
         'postcss:react',
         'cssmin',
+        'clean:temp'
     ]);
 
 };
