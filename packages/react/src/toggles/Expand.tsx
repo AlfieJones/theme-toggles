@@ -1,4 +1,4 @@
-import "../../../../css/expand.min.css";
+import "../../../../css/react/expand.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgExpand = forwardRef<HTMLButtonElement, ToggleProps>(

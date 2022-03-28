@@ -1,4 +1,4 @@
-import "../../../../css/simple.min.css";
+import "../../../../css/react/simple.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgSimple = forwardRef<HTMLButtonElement, ToggleProps>(

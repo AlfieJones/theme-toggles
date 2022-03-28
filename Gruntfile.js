@@ -13,6 +13,11 @@ module.exports = function (grunt) {
 
         clean: {
             build: ['css'],
+<<<<<<< Updated upstream
+=======
+            react: ['css/react', 'css/temp/react'],
+            temp: ['css/temp']
+>>>>>>> Stashed changes
         },
 
         // -- Sass Config --------------------------------------------------------
@@ -132,14 +137,26 @@ module.exports = function (grunt) {
         'sass',
         'postcss',
         'cssmin',
+        'clean:temp'
     ]);
 
+<<<<<<< Updated upstream
     // Makes the `watch` task run a build first.
     grunt.renameTask('watch', 'observe');
     grunt.registerTask('watch', ['default', 'observe']);
 
     grunt.registerTask('release', [
         'default',
+=======
+    grunt.registerTask('react', [
+        'clean:react',
+        'copy:react',
+        'concat:react',
+        'sass:react',
+        'postcss:react',
+        'cssmin',
+        'clean:temp'
+>>>>>>> Stashed changes
     ]);
 
 };

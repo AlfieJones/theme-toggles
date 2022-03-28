@@ -1,4 +1,4 @@
-import "../../../../css/dark-inner.min.css";
+import "../../../../css/react/dark-inner.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgDarkInner = forwardRef<HTMLButtonElement, ToggleProps>(

@@ -31,6 +31,7 @@ esbuild
   })
   .catch(() => process.exit(1));
 
+<<<<<<< Updated upstream:packages/react/scripts/build.js
 esbuild
   .build({
     entryPoints: ["./../../css/bundle.min.css"],
@@ -42,3 +43,14 @@ esbuild
     plugins: [],
   })
   .catch(() => process.exit(1));
+=======
+esbuild.build({
+  entryPoints: ['./../../css/react/bundle.min.css'],
+  bundle: true,
+  minify: true,
+  format: "esm",
+  external: ['react', 'react-dom'],
+  outfile: 'css/Bundle.css',
+plugins: [],
+}).catch(() => process.exit(1));
+>>>>>>> Stashed changes:packages/react/scripts/esbuild.js

@@ -1,4 +1,4 @@
-import "../../../../css/classic.min.css";
+import "../../../../css/react/classic.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgClassic = forwardRef<HTMLButtonElement, ToggleProps>(

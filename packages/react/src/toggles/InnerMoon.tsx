@@ -1,4 +1,4 @@
-import "../../../../css/inner-moon.min.css";
+import "../../../../css/react/inner-moon.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgInnerMoon = forwardRef<HTMLButtonElement, ToggleProps>(

@@ -1,4 +1,4 @@
-import "../../../../css/horizon.min.css";
+import "../../../../css/react/horizon.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgHorizon = forwardRef<HTMLButtonElement, ToggleProps>(

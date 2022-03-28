@@ -1,4 +1,4 @@
-import "../../../../css/eclipse.min.css";
+import "../../../../css/react/eclipse.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgEclipse = forwardRef<HTMLButtonElement, ToggleProps>(

@@ -1,4 +1,4 @@
-import "../../../../css/lightbulb.min.css";
+import "../../../../css/react/lightbulb.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgLightbulb = forwardRef<HTMLButtonElement, ToggleProps>(

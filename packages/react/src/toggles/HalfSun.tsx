@@ -1,4 +1,4 @@
-import "../../../../css/half-sun.min.css";
+import "../../../../css/react/half-sun.min.css";
 import React, { useState, forwardRef } from "react";
 import { ToggleProps } from "../";
 const SvgHalfSun = forwardRef<HTMLButtonElement, ToggleProps>(
