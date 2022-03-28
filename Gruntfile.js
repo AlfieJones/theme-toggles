@@ -13,17 +13,14 @@ module.exports = function (grunt) {
 
         clean: {
             build: ['css'],
-<<<<<<< Updated upstream
-=======
             react: ['css/react', 'css/temp/react'],
             temp: ['css/temp']
->>>>>>> Stashed changes
         },
 
         // -- Sass Config --------------------------------------------------------
 
         sass: {
-            dist: {      
+            build: {      
                 files: [{
                     expand: true,
                     flatten: true,
@@ -31,34 +28,55 @@ module.exports = function (grunt) {
                     dest: './css/',
                     ext: '.css'
                   }],
+            },
+            react: {      
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['css/temp/react/toggles/*.scss'],
+                    dest: './css/react',
+                    ext: '.css'
+                  }],
             }
           },
-
         // -- Concat Config --------------------------------------------------------
 
         concat: {
-            bundle: {
-                src: ['src/toggles/*.scss', 'src/base.scss'],
-                dest: 'css/temp/toggles/bundle.scss',
+            react: {
+                files: [{
+                    'css/temp/react/toggles/bundle.scss': ['src/variants/react.scss', 'src/toggles/*.scss', 'src/base.scss'],
+                }],
             },
+            build: {
+                files: [{
+                    'css/temp/toggles/bundle.scss': ['src/toggles/*.scss', 'src/base.scss'],
+                }],
+            }
         },
 
         // -- PostCSS Config --------------------------------------------------------
 
         postcss: {
-            dist: {
+            build: {
                 options: {
                     processors: [
                         require('autoprefixer')()
                     ]
                 },
                 src: './css/*.css'
+            },
+            react: {
+                options: {
+                    processors: [
+                        require('autoprefixer')()
+                    ]
+                },
+                src: './css/react/*.css'
             }
-
         },
 
         css_purge: {
-			dist: {
+			build: {
 				options: {},
 
                 files: [{
@@ -69,6 +87,17 @@ module.exports = function (grunt) {
                     ext: '.min.css',
                 }]
 			},
+            react: {
+				options: {},
+
+                files: [{
+                    expand: true,
+                    cwd: "css/react/",
+                    src: '*.css',
+                    dest:"css/react/",
+                    ext: '.min.css',
+                }]
+			},
 		},
 
         cssmin: {
@@ -76,22 +105,34 @@ module.exports = function (grunt) {
                 sourceMap: false,
             },
             target: {
-              files: [{
-                expand: true,
-                cwd: "css/",
-                src: '*.css',
-                dest:"css/",
-                ext: '.min.css',
-              }]
+                files: [{
+                    expand: true,
+                    cwd: "css/react/",
+                    src: '*.css',
+                    dest:"css/react/",
+                    ext: '.min.css',
+                },
+                {
+                    expand: true,
+                    cwd: "css/",
+                    src: '*.css',
+                    dest:"css/",
+                    ext: '.min.css',
+                }]
             }
           },
 
         copy: {
-            main: {
+            build: {
               files: [
-                {expand: true, flatten: true,  src: ['src/variables.scss', 'src/utils.scss'], dest: 'css/temp'},
+                {expand: true, flatten: true,  src: ['src/variables.scss', 'src/utils.scss', 'src/variants/react.scss'], dest: 'css/temp'},
               ],
             },
+            react: {
+                files: [
+                  {expand: true, flatten: true,  src: ['src/variables.scss', 'src/utils.scss', 'src/variants/react.scss'], dest: 'css/temp/react'},
+                ],
+              },
           },
 
         // -- Watch/Observe Config -------------------------------------------------
@@ -109,11 +150,15 @@ module.exports = function (grunt) {
     };
 
     files.forEach((name) => {
-        config.concat[name] = {
-            src: [`src/toggles/${name}.scss`, `src/base.scss`],
+        config.concat.react.files.push({
+            src: [ 'src/variants/react.scss', `src/toggles/${name}.scss`, `src/base.scss`],
+            dest: `css/temp/react/toggles/${name}.scss`,
+        });
+        config.concat.build.files.push({
+            src: [`src/toggles/${name}.scss`, 'src/base.scss'],
             dest: `css/temp/toggles/${name}.scss`,
-        };
-    })
+        });
+    });
 
 
     grunt.initConfig(config);
@@ -129,25 +174,18 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-postcss');
 
-    grunt.registerTask('default', ['clean', 'build']);
+    grunt.registerTask('default', ['build', 'react']);
     
     grunt.registerTask('build', [
-        'copy',
-        'concat',
-        'sass',
-        'postcss',
+        'clean:build',
+        'copy:build',
+        'concat:build',
+        'sass:build',
+        'postcss:build',
         'cssmin',
         'clean:temp'
     ]);
 
-<<<<<<< Updated upstream
-    // Makes the `watch` task run a build first.
-    grunt.renameTask('watch', 'observe');
-    grunt.registerTask('watch', ['default', 'observe']);
-
-    grunt.registerTask('release', [
-        'default',
-=======
     grunt.registerTask('react', [
         'clean:react',
         'copy:react',
@@ -156,7 +194,6 @@ module.exports = function (grunt) {
         'postcss:react',
         'cssmin',
         'clean:temp'
->>>>>>> Stashed changes
     ]);
 
 };
