@@ -28,10 +28,24 @@
 }
 
 @mixin toggledSelector($name) {
-    #{$toggledClass}:not(label).theme-toggle,
-    .theme-toggle input[type="checkbox"]:checked ~ {
-        .theme-toggle__#{$name} {
-            @content;
+    @if $htmlElements == 0 or $htmlElements == 1 {
+        #{$toggledClass}.theme-toggle {
+            .theme-toggle__#{$name} {
+                @content;
+            }
         }
-    }    
+    } @else if $htmlElements == 2 {
+        .theme-toggle input[type="checkbox"]:checked ~ {
+            .theme-toggle__#{$name} {
+                @content;
+            }
+        }
+    } @else {
+        #{$toggledClass}:not(label).theme-toggle,
+        .theme-toggle input[type="checkbox"]:checked ~ {
+            .theme-toggle__#{$name} {
+                @content;
+            }
+        } 
+    }
 }

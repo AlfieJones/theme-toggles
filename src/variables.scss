@@ -8,3 +8,12 @@ $reverseClass: ".theme-toggle--reversed";
 $forceMotionClass: ".theme-toggle--force-motion";
 // Total duration of each animation
 $duration: 500ms;
+
+
+
+// Which HTML elements to support
+// 0 -> button
+// 1 -> div
+// 2 -> checkbox input
+// 3 -> all of the above
+$htmlElements: 0 !default;
