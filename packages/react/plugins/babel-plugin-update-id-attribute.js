@@ -10,13 +10,19 @@ const removeJSXAttribute = () => ({
       path.get("attributes").forEach((attribute) => {
         if (
           t.isJSXAttribute(attribute.node) &&
-          t.isJSXIdentifier(attribute.node.name) &&
-          attribute.node.name.name === "id"
+          t.isJSXIdentifier(attribute.node.name)
         ) {
-          attribute.node.value = t.jsxExpressionContainer(
-            template.ast(`\`\${idPrefix}${attribute.node.value.value}\``)
-              .expression
-          );
+          if(attribute.node.name.name === "id"){
+            attribute.node.value = t.jsxExpressionContainer(
+              template.ast(`\`\${idPrefix}${attribute.node.value.value}\``)
+                .expression
+            );
+          } else if (attribute.node.name.name === "clipPath"){
+            attribute.node.value = t.jsxExpressionContainer(
+              template.ast(`\`url(#\${idPrefix}${attribute.node.value.value.replace("url(#", "")}\``)
+                .expression
+            );
+          }
         }
       });
     },

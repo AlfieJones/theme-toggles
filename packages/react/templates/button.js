@@ -1,13 +1,6 @@
 const template = (variables, { tpl }) => {
   return tpl`
-<<<<<<< Updated upstream
-  ${`import "../../../../css/${variables.componentName
-    .replace("Svg", "")
-    .replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())
-    .replace("-", "")}.min.css"`};
-=======
   ${`import "../../../../css/react/${variables.componentName.replace("Svg", "").replace(/[A-Z]/g, m => "-" + m.toLowerCase()).replace("-", "")}.min.css"`};
->>>>>>> Stashed changes
   import React, { useState, forwardRef } from "react";
   import { ToggleProps } from "../";
   

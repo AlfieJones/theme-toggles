@@ -61,7 +61,7 @@ const SvgEclipse = forwardRef<HTMLButtonElement, ToggleProps>(
             <clipPath id={`${idPrefix}theme-toggle__eclipse__cutout`}>
               <path d="M0 0h64v32h-64zm36 16a1 1 0 0024 1 1 1 0 00-24-1" />
             </clipPath>
-            <g clipPath="url(#theme-toggle__eclipse__cutout)">
+            <g clipPath={`url(#${idPrefix}theme-toggle__eclipse__cutout)`}>
               <circle cx={16} cy={16} r={16} />
             </g>
           </svg>

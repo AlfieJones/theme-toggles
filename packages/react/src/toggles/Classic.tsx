@@ -62,7 +62,7 @@ const SvgClassic = forwardRef<HTMLButtonElement, ToggleProps>(
             <clipPath id={`${idPrefix}theme-toggle__classic__cutout`}>
               <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
             </clipPath>
-            <g clipPath="url(#theme-toggle__classic__cutout)">
+            <g clipPath={`url(#${idPrefix}theme-toggle__classic__cutout)`}>
               <circle cx={16} cy={16} r={9.34} />
               <g stroke="currentColor" strokeWidth={1.5}>
                 <path d="M16 5.5v-4" />

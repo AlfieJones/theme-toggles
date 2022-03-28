@@ -61,7 +61,7 @@ const SvgSimple = forwardRef<HTMLButtonElement, ToggleProps>(
             <clipPath id={`${idPrefix}theme-toggle__simple__cutout`}>
               <path d="M0-5h55v37h-55zm32 12a1 1 0 0025 0 1 1 0 00-25 0" />
             </clipPath>
-            <g clipPath="url(#theme-toggle__simple__cutout)">
+            <g clipPath={`url(#${idPrefix}theme-toggle__simple__cutout)`}>
               <circle cx={16} cy={16} r={15} />
             </g>
           </svg>
