@@ -16,6 +16,7 @@ const SvgAround = forwardRef<HTMLButtonElement, ToggleProps>(
       style,
       "aria-label": ariaLabel = "Toggle theme",
       className,
+      children,
       ...rest
     } = props;
     const [toggledInternal, toggleInternal] = useState(false);
@@ -48,6 +49,7 @@ const SvgAround = forwardRef<HTMLButtonElement, ToggleProps>(
         onClick={handleClick}
         {...rest}
       >
+        {children}
         {
           <svg
             xmlns="http://www.w3.org/2000/svg"

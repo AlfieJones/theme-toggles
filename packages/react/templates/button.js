@@ -19,6 +19,7 @@ const template = (variables, { tpl }) => {
             style,
             "aria-label": ariaLabel = "Toggle theme",
             className,
+            children,
             ...rest
         } = props;
       const [toggledInternal, toggleInternal] = useState(false);
@@ -40,6 +41,7 @@ const template = (variables, { tpl }) => {
   
       return (
           <button ref={ref} type={type} className={btnClass} style={btnStyle} aria-label={ariaLabel} title={title} onClick={handleClick} {...rest}>
+            {children}
             {${variables.jsx}}
           </button>
       );
