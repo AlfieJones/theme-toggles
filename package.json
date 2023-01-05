@@ -8,6 +8,10 @@
     "css/*.css",
     "assets/svgs/"
   ],
+  "private": true,
+  "workspaces": [
+    "packages/core"
+  ],
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/alfiejones"

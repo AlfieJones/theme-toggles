@@ -1,0 +1,19 @@
+@import "../variables.scss";
+
+.theme-toggle {
+  all: unset;
+  cursor: pointer;
+  @if $checkbox {
+    input[type="checkbox"] {
+      display: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle:not(#{$forceMotionClass}) {
+    * {
+      transition: none !important;
+    }
+  }
+}
