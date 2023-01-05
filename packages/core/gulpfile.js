@@ -20,7 +20,7 @@ const build = (variant, toggle) => () =>
   gulp
     .src([
       `./src/variants/${variant}.scss`,
-      "./src/global/base.scss",
+      "./src/global/shared.scss",
       `./src/toggles/${toggle}.scss`,
     ])
     .pipe(concat(`${toggle}.scss`))

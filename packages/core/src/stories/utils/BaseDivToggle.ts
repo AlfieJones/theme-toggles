@@ -20,6 +20,7 @@ const _createDiv = ({
   div.className = clsx("theme-toggle", reversed && "theme-toggle--reversed");
   div.style.setProperty("font-size", fontSize);
   div.style.setProperty("margin", "1rem");
+  div.ariaLabel = "Toggle theme";
 
   div.addEventListener("click", onClick);
 

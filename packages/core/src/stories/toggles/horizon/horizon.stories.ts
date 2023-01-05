@@ -1,11 +1,11 @@
 import { Story, Meta } from "@storybook/html";
 import { BaseTogglePropsType } from "../../utils";
-import ButtonComponent from "./Simple.Button";
-import DivComponent from "./Simple.Div";
-import CheckboxComponent from "./simple.Checkbox";
+import ButtonComponent from "./horizon.button";
+import DivComponent from "./horizon.div";
+import CheckboxComponent from "./horizon.checkbox";
 
 export default {
-  title: "Simple",
+  title: "Horizon",
   argTypes: {},
 } as Meta<BaseTogglePropsType>;
 
