@@ -1,0 +1,47 @@
+import { Meta } from "@storybook/addon-docs";
+import StoryPreview from "./assets/dark-side-story.png";
+
+<Meta title="Intro" />
+
+# Welcome to Theme toggles
+
+This storybook is used to document and develop the theme toggles component library.
+
+## Getting started
+
+### Creating a new story
+
+```bash
+yarn plop {toggleName}
+```
+
+eg `yarn plop Dark-Inner`
+
+This will generate a new story file in the `src/stories/toggles` directory.
+For the story to work, you will need to have already created the scss file in the `src/toggles` directory along with the corresponding svg in the `src/assets` directory.
+
+## Guidelines
+
+### Sizing
+
+The toggles should be have a height and width of 1em, and should be scaled using the `font-size` property.
+
+When designing the toggles, we display multiple variants of the toggle in a single row. The toggle should be visible and usable in all of these heights.
+
+#### Example story
+
+<img src={StoryPreview} alt="story example with multiple sizes" />
+
+### Accessibility
+
+The toggles should be accessible to all users, including those with visual impairments.
+
+Whilst the button variant is the most accessible, we offer two more variants for those who prefer a div or a checkbox.
+
+When designing a new toggle, all these will be taken care of for you, however, you should ensure the svg is usable in all the sizes
+
+### Performance
+
+The toggles should be performant, and should not cause any lag when toggling.
+
+When dealing with clip-paths we animate the paths rather than transforming the element. Animating the transform causes issues with chromium browsers. Where not supported, we fallback to transforms. These fallback transforms don't need to be identical to the animated clip-path, but should be visually similar.
