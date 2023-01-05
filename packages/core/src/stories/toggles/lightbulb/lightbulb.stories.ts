@@ -6,7 +6,13 @@ import CheckboxComponent from "./lightbulb.checkbox";
 
 export default {
   title: "Lightbulb",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

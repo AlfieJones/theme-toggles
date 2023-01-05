@@ -6,7 +6,11 @@ import CheckboxComponent from "./dark-side.checkbox";
 
 export default {
   title: "Dark-Side",
-  argTypes: {},
+  argTypes: {    reversed: {
+    control: {
+      type: "boolean",
+    },
+  },},
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

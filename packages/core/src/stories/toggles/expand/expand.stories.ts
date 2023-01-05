@@ -6,7 +6,13 @@ import CheckboxComponent from "./expand.checkbox";
 
 export default {
   title: "Expand",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

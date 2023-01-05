@@ -6,7 +6,13 @@ import CheckboxComponent from "./horizon.checkbox";
 
 export default {
   title: "Horizon",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

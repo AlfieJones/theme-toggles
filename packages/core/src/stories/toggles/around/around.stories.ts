@@ -6,7 +6,13 @@ import CheckboxComponent from "./around.checkbox";
 
 export default {
   title: "Around",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

@@ -6,7 +6,13 @@ import CheckboxComponent from "./inner-moon.checkbox";
 
 export default {
   title: "Inner-Moon",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

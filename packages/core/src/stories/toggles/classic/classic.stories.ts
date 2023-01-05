@@ -6,7 +6,13 @@ import CheckboxComponent from "./classic.checkbox";
 
 export default {
   title: "Classic",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

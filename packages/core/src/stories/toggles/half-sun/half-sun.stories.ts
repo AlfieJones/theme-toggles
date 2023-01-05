@@ -6,7 +6,13 @@ import CheckboxComponent from "./half-sun.checkbox";
 
 export default {
   title: "Half-Sun",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

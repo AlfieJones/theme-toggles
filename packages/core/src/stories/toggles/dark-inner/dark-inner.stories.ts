@@ -6,7 +6,11 @@ import CheckboxComponent from "./dark-inner.checkbox";
 
 export default {
   title: "Dark-Inner",
-  argTypes: {},
+  argTypes: {    reversed: {
+    control: {
+      type: "boolean",
+    },
+  },},
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

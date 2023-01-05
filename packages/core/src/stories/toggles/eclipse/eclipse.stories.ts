@@ -6,7 +6,13 @@ import CheckboxComponent from "./eclipse.checkbox";
 
 export default {
   title: "Eclipse",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {
