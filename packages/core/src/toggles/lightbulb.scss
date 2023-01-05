@@ -6,20 +6,20 @@ $variable: #{getVar(lightbulb)};
 @include generic(lightbulb, flip-y);
 
 .theme-toggle__lightbulb {
-    .theme-toggle__lightbulb__rays *, 
-    .theme-toggle__lightbulb__coil {
-        stroke-dasharray: 1.1;
-        stroke-dashoffset: 0;
-        opacity: 1;  
-        transition-property: stroke-dashoffset, opacity;
-        transition-duration: var(#{$variable}); 
-    }
+  .theme-toggle__lightbulb__rays *,
+  .theme-toggle__lightbulb__coil {
+    stroke-dasharray: 1.1;
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transition-property: stroke-dashoffset, opacity;
+    transition-duration: var(#{$variable});
+  }
 }
 
 @include toggledSelector(lightbulb) {
-    .theme-toggle__lightbulb__rays *, 
-    .theme-toggle__lightbulb__coil {
-        stroke-dashoffset: 1;
-        opacity: 0;
-    }
+  .theme-toggle__lightbulb__rays *,
+  .theme-toggle__lightbulb__coil {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
 }

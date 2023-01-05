@@ -25,4 +25,7 @@ export interface BaseToggleProps {
   duration?: number;
 }
 
-export type BaseTogglePropsType = Omit<BaseToggleProps, "name" | "fontSize" | "prefix">;
+export type BaseTogglePropsType = Omit<
+  BaseToggleProps,
+  "name" | "fontSize" | "prefix"
+>;

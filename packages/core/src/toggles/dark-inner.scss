@@ -6,17 +6,17 @@ $variable: #{getVar(dark-inner)};
 @include generic(dark-inner, flip-x);
 
 .theme-toggle__dark-inner {
-    path {
-        transform-origin: center;
-        transition: transform var($variable) ease;
-    }
+  path {
+    transform-origin: center;
+    transition: transform var($variable) ease;
+  }
 }
 
 @include toggledSelector(dark-inner) {
-    :first-child {
-        transform: rotate(180deg);
-    }
-    :last-child {
-        transform: rotate(-180deg);
-    }
+  :first-child {
+    transform: rotate(180deg);
+  }
+  :last-child {
+    transform: rotate(-180deg);
+  }
 }

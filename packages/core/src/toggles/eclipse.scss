@@ -6,31 +6,31 @@ $variable: #{getVar(eclipse)};
 @include generic(eclipse, flip-y);
 
 .theme-toggle__eclipse {
-    :first-child {
-        path {
-            transition-property: transform, d;
-            transition-duration: calc(var($variable));
-            transition-timing-function: ease;
-        }
+  :first-child {
+    path {
+      transition-property: transform, d;
+      transition-duration: calc(var($variable));
+      transition-timing-function: ease;
     }
+  }
 }
 
 @include toggledSelector(eclipse) {
-    :first-child {
-        path {
-            d: path("M-32 0h64v32h-64zm36 16a1 1 0 0024 1 1 1 0 00-24-1");
-        }
+  :first-child {
+    path {
+      d: path("M-32 0h64v32h-64zm36 16a1 1 0 0024 1 1 1 0 00-24-1");
     }
+  }
 }
 
 // Translating the clip path causes issues in chromium browsers so we prefer to animate
 // the path data. When this isn't supported, we fallback to translation
 @supports not (d: path("")) {
-    @include toggledSelector(eclipse) {
-        :first-child {
-            path {
-                transform: translate3d(-32px, 0, 0);
-            }
-        }
+  @include toggledSelector(eclipse) {
+    :first-child {
+      path {
+        transform: translate3d(-32px, 0, 0);
+      }
     }
+  }
 }
