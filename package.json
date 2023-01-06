@@ -10,7 +10,8 @@
   ],
   "private": true,
   "workspaces": [
-    "packages/core"
+    "packages/core",
+    "packages/website"
   ],
   "funding": {
     "type": "github",
@@ -22,20 +23,6 @@
     "url": "https://ajones.uk"
   },
   "peerDependencies": {},
-  "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "grunt": "^1.4.1",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-compress": "^2.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-csslint": "^2.0.0",
-    "grunt-contrib-cssmin": "^4.0.0",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-css-purge": "^1.1.0",
-    "grunt-postcss": "^0.9.0",
-    "postcss": "^8.3.5"
-  },
+  "devDependencies": {},
   "dependencies": {}
 }

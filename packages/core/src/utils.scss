@@ -29,6 +29,7 @@
 
 @mixin toggledSelector($name) {
   @if ($button or $div) and (not $checkbox) {
+    #{$globalToggleClass} .theme-toggle:not(#{$untoggledClass}),
     #{$toggledClass}.theme-toggle {
       .theme-toggle__#{$name} {
         @content;

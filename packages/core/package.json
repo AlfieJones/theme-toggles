@@ -1,7 +1,7 @@
 {
-  "name": "core",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@theme-toggles/core",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "storybook": "start-storybook -p 6006",
