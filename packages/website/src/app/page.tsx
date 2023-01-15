@@ -1,18 +1,22 @@
-import { compile, run } from "@mdx-js/mdx";
-import * as runtime from "react/jsx-runtime";
+'use client'
 
-const components = {
-  em: (props: any) => <i {...props} />,
-};
+import toggles from './toggles'
 
-export default async function Home() {
-  const code = String(
-    await compile("# hi", { outputFormat: "function-body", development: false })
-  );
+const toggleNames = ['Classic', 'InnerMoon', 'Expand', 'Within', 'Around', 'DarkSide', 'Horizon']
 
-  const { default: Content } = await run(code, runtime);
-
-  return "hi";
-
-  // return <div className={inter.className}></div>;
+export default function Index() {
+  const Toggle = toggles[toggleNames[0]]
+  return (
+    <div>
+      {toggleNames.map((name) => {
+        const Toggle = toggles[name]
+        return (
+          <div className='text-4xl' key={name}>
+            <h3>{name}</h3>
+            <Toggle />
+          </div>
+        )
+      })}
+    </div>
+  )
 }

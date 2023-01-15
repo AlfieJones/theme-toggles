@@ -1,13 +1,12 @@
-import { useRef } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { ReactNode, useRef } from 'react'
+import Link, { LinkProps } from 'next/link'
+import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
 
 import { Button } from '@/components/Button'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { useSectionStore } from '@/components/SectionProvider'
-import { Tag } from '@/components/Tag'
 import { remToPx } from '@/lib/remToPx'
 
 function useInitialValue(value, condition = true) {
@@ -15,38 +14,26 @@ function useInitialValue(value, condition = true) {
   return condition ? initialValue : value
 }
 
-function TopLevelNavItem({ href, children }) {
-  return (
-    <li className="md:hidden">
-      <Link
-        href={href}
-        className="block py-1 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-      >
-        {children}
-      </Link>
-    </li>
-  )
+interface NavLink extends LinkProps {
+  isAnchorLink?: boolean
+  active?: boolean
+  children: ReactNode
 }
 
-function NavLink({ href, tag, active, isAnchorLink = false, children }) {
+function NavLink({ href, active, isAnchorLink = false, children }: NavLink) {
   return (
     <Link
       href={href}
       aria-current={active ? 'page' : undefined}
       className={clsx(
-        'flex justify-between gap-2 py-1 pr-3 text-sm transition',
+        'flex justify-between gap-2 truncate py-1 pr-3 text-sm transition',
         isAnchorLink ? 'pl-7' : 'pl-4',
         active
           ? 'text-zinc-900 dark:text-white'
           : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
       )}
     >
-      <span className="truncate">{children}</span>
-      {tag && (
-        <Tag variant="small" color="zinc">
-          {tag}
-        </Tag>
-      )}
+      {children}
     </Link>
   )
 }
@@ -96,7 +83,7 @@ function ActivePageMarker({ group, pathname }) {
   return (
     <motion.div
       layout
-      className="absolute left-2 h-6 w-px bg-emerald-500"
+      className="absolute left-2 h-6 w-px bg-indigo-500"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.2 } }}
       exit={{ opacity: 0 }}
@@ -165,7 +152,6 @@ function NavigationGroup({ group, className }) {
                       <li key={section.id}>
                         <NavLink
                           href={`${link.href}#${section.id}`}
-                          tag={section.tag}
                           isAnchorLink
                         >
                           {section.title}
@@ -201,23 +187,21 @@ export const navigation = [
       { title: 'Vue', href: '/authentication' },
     ],
   },
-  {
-    title: 'Resources',
-    links: [
-      { title: 'Contacts', href: '/contacts' },
-      { title: 'Conversations', href: '/conversations' },
-      { title: 'Messages', href: '/messages' },
-      { title: 'Groups', href: '/groups' },
-      { title: 'Attachments', href: '/attachments' },
-    ],
-  },
 ]
 
 export function Navigation(props) {
   return (
     <nav {...props}>
       <ul role="list">
-        <TopLevelNavItem href="/">Github</TopLevelNavItem>
+        <li>
+          <Link
+            href={'/'}
+            className="block py-1 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+          >
+            Toggles
+          </Link>
+        </li>
+
         {navigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
@@ -226,8 +210,12 @@ export function Navigation(props) {
           />
         ))}
         <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-          <Button href="#" variant="filled" className="w-full">
-            Sign in
+          <Button
+            href="https://github.com/alfiejones"
+            variant="filled"
+            className="w-full"
+          >
+            Sponsor us
           </Button>
         </li>
       </ul>

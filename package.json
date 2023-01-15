@@ -10,8 +10,7 @@
   ],
   "private": true,
   "workspaces": [
-    "packages/core",
-    "packages/website"
+    "packages/*"
   ],
   "funding": {
     "type": "github",

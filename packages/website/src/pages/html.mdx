@@ -16,7 +16,7 @@ It's recommend that you use a package manager to install Theme Toggles. This wil
 
 ### npm registry
 
-<CodeGroup title="Request"  >
+<CodeGroup title="Install"  >
 
     ```bash {{ title: 'npm' }}
     npm install @theme-toggles/core
@@ -35,20 +35,19 @@ It's recommend that you use a package manager to install Theme Toggles. This wil
 To keep your bundle size small, we export each Theme Toggle as a separate package. You can use a CDN to include the Theme Toggle you want to use.
 Replace `{{toggle name}}` with the name of the Theme Toggle you want to use and `{{variant}}` with the variant you want to use. The available variants are found in the [Variants](#variants) section.
 
-
-<CodeGroup title="Request"  >
+<CodeGroup title="CDN"  >
 
     ```html {{ title: 'jsDelivr' }}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
     ```
     ```html {{ title: 'unpkg' }}
-    <script src="https://unpkg.com/@theme-toggles/core"></script>
+    <link rel="stylesheet" href="https://unpkg.com/npm/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
+    
     ```
     ```html {{ title: 'cdnjs' }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/@theme-toggles/core/1.0.0/theme-toggles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
     ```
 
 </CodeGroup>
-
 
 ## Variants
