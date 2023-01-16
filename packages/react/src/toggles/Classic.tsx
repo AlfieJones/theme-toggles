@@ -1,86 +1,74 @@
-import "../../../../css/react/classic.min.css";
-import React, { useState, forwardRef } from "react";
-import { ToggleProps } from "../";
-const SvgClassic = forwardRef<HTMLButtonElement, ToggleProps>(
-  (props: ToggleProps, ref) => {
-    const {
-      onToggle,
-      toggled,
-      toggle,
-      duration = 500,
-      reversed = false,
-      title = "Toggle theme",
-      forceMotion = false,
-      idPrefix = "",
-      type = "button",
-      style,
-      "aria-label": ariaLabel = "Toggle theme",
-      className,
-      children,
-      ...rest
-    } = props;
-    const [toggledInternal, toggleInternal] = useState(false);
-    const toggleFunction = toggle || toggleInternal;
-    const isToggled = toggled !== undefined ? toggled : toggledInternal;
-    const btnClass = `theme-toggle ${
-      isToggled ? "theme-toggle--toggled" : ""
-    } ${forceMotion ? "theme-toggle--force-motion" : ""} ${
-      reversed ? "theme-toggle--reversed" : ""
-    } ${className ? className : ""}`.trim();
-    const btnStyle = {
-      ...style,
-      "--theme-toggle__classic--duration": `${duration}ms`,
-    };
-
-    const handleClick = () => {
-      const mToggled = !isToggled;
-      toggleFunction(mToggled);
-      onToggle && onToggle(mToggled);
-    };
-
-    return (
-      <button
-        ref={ref}
-        type={type}
-        className={btnClass}
-        style={btnStyle}
-        aria-label={ariaLabel}
-        title={title}
-        onClick={handleClick}
-        {...rest}
-      >
-        {children}
-        {
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            width="1em"
-            height="1em"
-            fill="currentColor"
-            strokeLinecap="round"
-            className="theme-toggle__classic"
-            viewBox="0 0 32 32"
-          >
-            <clipPath id={`${idPrefix}theme-toggle__classic__cutout`}>
-              <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
-            </clipPath>
-            <g clipPath={`url(#${idPrefix}theme-toggle__classic__cutout)`}>
-              <circle cx={16} cy={16} r={9.34} />
-              <g stroke="currentColor" strokeWidth={1.5}>
-                <path d="M16 5.5v-4" />
-                <path d="M16 30.5v-4" />
-                <path d="M1.5 16h4" />
-                <path d="M26.5 16h4" />
-                <path d="m23.4 8.6 2.8-2.8" />
-                <path d="m5.7 26.3 2.9-2.9" />
-                <path d="m5.8 5.8 2.8 2.8" />
-                <path d="m23.4 23.4 2.9 2.9" />
-              </g>
-            </g>
-          </svg>
-        }
-      </button>
-    );
-  }
-);
-export default SvgClassic;
+import React, { useState, Ref } from "react";
+import { forwardRefWithAs } from "../utils";
+import { ToggleProps, ReactTag } from "../types";
+const classic = forwardRefWithAs(function classic<
+  TTag extends ReactTag = "button"
+>(props: ToggleProps<TTag>, ref: Ref<Element>) {
+  const {
+    onToggle,
+    toggled,
+    toggle,
+    duration = 500,
+    reversed = false,
+    title = "Toggle theme",
+    forceMotion = false,
+    idPrefix = "",
+    as: Component,
+    "aria-label": ariaLabel = "Toggle theme",
+    className,
+    children,
+    ...rest
+  } = props;
+  const classes = [
+    "theme-toggle",
+    toggled !== undefined && toggled ? "theme-toggle--toggled" : undefined,
+    toggled !== undefined && !toggled ? "theme-toggle--untoggled" : undefined,
+    forceMotion ? "theme-toggle--force-motion" : undefined,
+    reversed ? "theme-toggle--reversed" : undefined,
+    className,
+  ].join(" ");
+  rest.style["--theme-toggle__around--duration"] = `${duration}ms`;
+  if (Component === "button" && !rest.type) (rest as any).type = "button";
+  const handleClick = () => {
+    toggle(!toggled);
+    onToggle && onToggle(!toggled);
+  };
+  return (
+    <Component
+      ref={ref}
+      className={classes}
+      aria-label={ariaLabel}
+      title={title}
+      onClick={handleClick}
+      {...rest}
+    >
+      {children}
+      {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          fill="currentColor"
+          strokeLinecap="round"
+          aria-hidden="true"
+          className="theme-toggle__classic"
+          viewBox="0 0 32 32"
+          {...props}
+        >
+          <clipPath id="a">
+            <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
+          </clipPath>
+          <g clipPath="url(#a)">
+            <circle cx={16} cy={16} r={9.34} />
+            <path
+              stroke="currentColor"
+              strokeWidth={1.5}
+              d="M16 5.5v-4m0 29v-4M1.5 16h4m21 0h4m-7.1-7.4 2.8-2.8M5.7 26.3l2.9-2.9M5.8 5.8l2.8 2.8m14.8 14.8 2.9 2"
+            />
+          </g>
+        </svg>
+      }
+    </Component>
+  );
+});
+export default classic;

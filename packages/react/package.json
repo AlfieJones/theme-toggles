@@ -1,6 +1,7 @@
 {
   "name": "@theme-toggles/react",
   "version": "4.1.0",
+  "type": "module",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "peerDependencies": {
@@ -15,12 +16,11 @@
     "url": "https://ajones.uk"
   },
   "scripts": {
-    "clean-react": "rimraf src/toggles",
-    "clean-build": "rimraf css && rimraf dist",
-    "build-react": "svgr --typescript --no-svgo --no-prettier --icon --expand-props none --template templates/button.js --out-dir src/toggles -- ./svgs/default",
     "types": "tsc --emitDeclarationOnly --outDir dist",
     "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && prettier --write ./src && node ./scripts/esbuild.js && yarn types",
-    "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json"
+    "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "funding": {
     "type": "github",
@@ -38,16 +38,32 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/types": "^7.17.0",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack4": "^6.5.15",
+    "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
     "@svgr/babel-plugin-add-jsx-attribute": "^6.0.0",
     "@svgr/cli": "^6.2.1",
+    "@svgr/core": "^6.5.1",
+    "@svgr/plugin-jsx": "^6.5.1",
+    "@svgr/plugin-prettier": "^6.5.1",
     "@types/react": "^17.0.39",
-    "esbuild": "^0.14.21",
+    "babel-loader": "^8.3.0",
+    "esbuild": "^0.17.0",
     "fs-extra": "^10.0.1",
+    "gulp": "^4.0.2",
+    "lodash-es": "^4.17.21",
     "plugin": "^0.3.3",
-    "prettier": "2.6.1",
+    "prettier": "^2.8.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.0.7",
+    "svgo": "^3.0.2",
     "typescript": "^4.5.5"
-  }
+  },
+  "dependencies": {}
 }

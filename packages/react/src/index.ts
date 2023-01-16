@@ -1,20 +1,12 @@
-import { DetailedHTMLProps, Dispatch, SetStateAction } from "react";
-
-export * from "./toggles";
-
-export interface ToggleProps
-  extends Omit<
-    DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >,
-    "onClick"
-  > {
-  toggled?: boolean;
-  toggle?: Dispatch<SetStateAction<boolean>>;
-  duration?: number;
-  reversed?: boolean;
-  forceMotion?: boolean;
-  idPrefix?: string;
-  onToggle?: (toggled: boolean) => void;
-}
+export { default as around } from "./toggles/around";
+export { default as classic } from "./toggles/classic";
+export { default as darkInner } from "./toggles/darkInner";
+export { default as darkSide } from "./toggles/darkSide";
+export { default as eclipse } from "./toggles/eclipse";
+export { default as expand } from "./toggles/expand";
+export { default as halfSun } from "./toggles/halfSun";
+export { default as horizon } from "./toggles/horizon";
+export { default as innerMoon } from "./toggles/innerMoon";
+export { default as lightbulb } from "./toggles/lightbulb";
+export { default as simple } from "./toggles/simple";
+export { default as within } from "./toggles/within";
