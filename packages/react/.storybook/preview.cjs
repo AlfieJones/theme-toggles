@@ -1,4 +1,4 @@
-import "../css/bundle.css";
+import "../css/bundle.min.css";
 import "./styles.css";
 
 export const parameters = {

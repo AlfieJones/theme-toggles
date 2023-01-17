@@ -55,19 +55,19 @@ const classic = forwardRefWithAs(function classic<
           {...props.svgProps}
         >
           <clipPath id={`${props.idPrefix || ""}a`}>
-            <path d="M0 0h26a1 1 0 0 0 9 10v14H0Z" />
+            <path d="M0 0h25a1 1 0 0 0 10 10v14H0Z" />
           </clipPath>
           <g
             stroke="currentColor"
             strokeLinecap="round"
             clipPath={`url(#${props.idPrefix || ""}a)`}
           >
-            <circle cx={12} cy={12} r={5.5} />
+            <circle cx={12} cy={12} r={5} />
             <path
               fill="none"
               strokeLinejoin="round"
               strokeMiterlimit={0}
-              strokeWidth={1.5}
+              strokeWidth={2}
               d="M12 1.4v2.4m8.3-.1-2.5 2.5m4.8 5.8h-2.4M12 22.6v-2.4M1.4 12h2.4m16.5 8.3-2.5-2.5M3.7 20.3l2.5-2.5M3.7 3.7l2.5 2.5"
               paintOrder="stroke markers fill"
             />
