@@ -1,4 +1,4 @@
-import "@theme-toggles/core/dist/base/bundle.css";
+import "../css/bundle.css";
 import "./styles.css";
 
 export const parameters = {
