@@ -21,6 +21,7 @@ jobs:
         # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         run: yarn
       - name: build
+        run: npx lerna run build --scope=@theme-toggles/core
         run: npx lerna run build --scope=@theme-toggles/react
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
