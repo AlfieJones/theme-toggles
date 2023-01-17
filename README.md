@@ -17,6 +17,8 @@
 </h2>
 </div>
 
+> This is the v5 branch. The current release version can be found [here](https://github.com/alfiejones/theme-toggles/tree/v4). Version 5 is a complete refactor of the library 
+
 ### Installing the latest version
 
 You can install the latest version by using:
