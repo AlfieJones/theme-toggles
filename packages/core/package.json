@@ -1,13 +1,18 @@
 {
-  "name": "core",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@theme-toggles/core",
+  "private": false,
+  "version": "5.0.0-rc.1",
   "type": "module",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "plop": "plop"
+    "plop": "plop",
+    "build": "gulp",
+    "dev": "gulp dev"
   },
+  "files": [
+    "./dist/**/*.css"
+  ],
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@storybook/addon-actions": "^6.5.15",

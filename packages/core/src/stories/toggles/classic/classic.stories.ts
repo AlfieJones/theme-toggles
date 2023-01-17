@@ -11,6 +11,11 @@ export default {
       control: {
         type: "boolean",
       },
+      defaultValue: false,
+    },
+    duration: {
+      control: { type: "range", min: 0, max: 5000, step: 100 },
+      defaultValue: 500,
     },
   },
 } as Meta<BaseTogglePropsType>;

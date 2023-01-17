@@ -1,4 +1,4 @@
-import React, { useState, Ref } from "react";
+import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
 const eclipse = forwardRefWithAs(function eclipse<
@@ -7,13 +7,14 @@ const eclipse = forwardRefWithAs(function eclipse<
   const {
     onToggle,
     toggled,
-    toggle,
     duration = 500,
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    onClick,
+    style = {},
     idPrefix = "",
-    as: Component,
+    as: Component = "button",
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
@@ -27,11 +28,11 @@ const eclipse = forwardRefWithAs(function eclipse<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  rest.style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__around--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
-  const handleClick = () => {
-    toggle(!toggled);
+  const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
+    onClick && onClick(e);
   };
   return (
     <Component
@@ -40,24 +41,23 @@ const eclipse = forwardRefWithAs(function eclipse<
       aria-label={ariaLabel}
       title={title}
       onClick={handleClick}
+      style={style}
       {...rest}
     >
       {children}
       {
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
           fill="currentColor"
           aria-hidden="true"
           className="theme-toggle__eclipse"
           viewBox="0 0 32 32"
-          {...props}
+          {...props.svgProps}
         >
-          <clipPath id="a">
+          <clipPath id={`${props.idPrefix || ""}a`}>
             <path d="M0 0h64v32H0zm36 16a1 1 0 0 0 24 1 1 1 0 0 0-24-1" />
           </clipPath>
-          <g clipPath="url(#a)">
+          <g clipPath={`url(#${props.idPrefix || ""}a)`}>
             <circle cx={16} cy={16} r={16} />
           </g>
         </svg>

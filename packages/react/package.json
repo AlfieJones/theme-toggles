@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "4.1.0",
+  "version": "5.0.0-rc.1",
   "type": "module",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
@@ -8,17 +8,12 @@
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": false,
   "author": {
     "name": "Alfie Jones",
     "url": "https://ajones.uk"
   },
   "scripts": {
-    "types": "tsc --emitDeclarationOnly --outDir dist",
-    "build": "yarn clean-build && node scripts/copy.js && yarn clean-react && yarn build-react && prettier --write ./src && node ./scripts/esbuild.js && yarn types",
-    "dev": "microbundle watch --jsxFragment React.Fragment --jsx React.createElement --jsxImportSource react  --tsconfig ./configs/base.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -36,7 +31,7 @@
   ],
   "sideEffects": false,
   "devDependencies": {
-    "@babel/core": "^7.17.8",
+    "@babel/core": "^7.20.12",
     "@babel/types": "^7.17.0",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
@@ -49,18 +44,17 @@
     "@svgr/babel-plugin-add-jsx-attribute": "^6.0.0",
     "@svgr/cli": "^6.2.1",
     "@svgr/core": "^6.5.1",
+    "@theme-toggles/core": "5.0.0",
     "@svgr/plugin-jsx": "^6.5.1",
     "@svgr/plugin-prettier": "^6.5.1",
-    "@types/react": "^17.0.39",
+    "@types/react": "^18.2.0",
     "babel-loader": "^8.3.0",
     "esbuild": "^0.17.0",
-    "fs-extra": "^10.0.1",
     "gulp": "^4.0.2",
     "lodash-es": "^4.17.21",
-    "plugin": "^0.3.3",
     "prettier": "^2.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^4.0.7",
     "svgo": "^3.0.2",
     "typescript": "^4.5.5"

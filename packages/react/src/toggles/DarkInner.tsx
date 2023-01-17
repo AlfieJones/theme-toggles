@@ -1,4 +1,4 @@
-import React, { useState, Ref } from "react";
+import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
 const darkInner = forwardRefWithAs(function darkInner<
@@ -7,13 +7,14 @@ const darkInner = forwardRefWithAs(function darkInner<
   const {
     onToggle,
     toggled,
-    toggle,
     duration = 500,
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    onClick,
+    style = {},
     idPrefix = "",
-    as: Component,
+    as: Component = "button",
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
@@ -27,11 +28,11 @@ const darkInner = forwardRefWithAs(function darkInner<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  rest.style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__around--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
-  const handleClick = () => {
-    toggle(!toggled);
+  const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
+    onClick && onClick(e);
   };
   return (
     <Component
@@ -40,19 +41,18 @@ const darkInner = forwardRefWithAs(function darkInner<
       aria-label={ariaLabel}
       title={title}
       onClick={handleClick}
+      style={style}
       {...rest}
     >
       {children}
       {
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
           fill="currentColor"
           aria-hidden="true"
           className="theme-toggle__dark-inner"
           viewBox="0 0 32 32"
-          {...props}
+          {...props.svgProps}
         >
           <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7" />
           <path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z" />

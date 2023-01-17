@@ -1,4 +1,4 @@
-import React, { useState, Ref } from "react";
+import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
 const classic = forwardRefWithAs(function classic<
@@ -7,13 +7,14 @@ const classic = forwardRefWithAs(function classic<
   const {
     onToggle,
     toggled,
-    toggle,
     duration = 500,
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    onClick,
+    style = {},
     idPrefix = "",
-    as: Component,
+    as: Component = "button",
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
@@ -27,11 +28,11 @@ const classic = forwardRefWithAs(function classic<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  rest.style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__around--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
-  const handleClick = () => {
-    toggle(!toggled);
+  const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
+    onClick && onClick(e);
   };
   return (
     <Component
@@ -40,30 +41,42 @@ const classic = forwardRefWithAs(function classic<
       aria-label={ariaLabel}
       title={title}
       onClick={handleClick}
+      style={style}
       {...rest}
     >
       {children}
       {
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
           fill="currentColor"
-          strokeLinecap="round"
           aria-hidden="true"
           className="theme-toggle__classic"
-          viewBox="0 0 32 32"
-          {...props}
+          viewBox="0 0 24 24"
+          {...props.svgProps}
         >
-          <clipPath id="a">
-            <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
+          <clipPath id={`${props.idPrefix || ""}a`}>
+            <path d="M0-5h28a1 1 0 0 0 9 13v16H0Z" />
           </clipPath>
-          <g clipPath="url(#a)">
-            <circle cx={16} cy={16} r={9.34} />
+          <g
+            stroke="currentColor"
+            strokeLinecap="round"
+            clipPath={`url(#${props.idPrefix || ""}a)`}
+          >
+            <ellipse
+              cx={12}
+              cy={12}
+              fillRule="evenodd"
+              strokeWidth={0.6}
+              rx={5.5}
+              ry={5.6}
+            />
             <path
-              stroke="currentColor"
+              fill="none"
+              strokeLinejoin="round"
+              strokeMiterlimit={0}
               strokeWidth={1.5}
-              d="M16 5.5v-4m0 29v-4M1.5 16h4m21 0h4m-7.1-7.4 2.8-2.8M5.7 26.3l2.9-2.9M5.8 5.8l2.8 2.8m14.8 14.8 2.9 2"
+              d="M12 1.4v2.4m8.3-.1-2.5 2.5m4.8 5.8h-2.4M12 22.6v-2.4M1.4 12h2.4m16.5 8.3-2.5-2.5M3.7 20.3l2.5-2.5M3.7 3.7l2.5 2.5"
+              paintOrder="stroke markers fill"
             />
           </g>
         </svg>

@@ -4,12 +4,15 @@ import { optimize } from "svgo";
 import { transform as svgr } from "@svgr/core";
 import { format } from "prettier";
 import fs from "fs";
-import { camelCase } from "lodash-es";
+import { camelCase, upperFirst } from "lodash-es";
 import template from "./templates/toggle.js";
+import Handlebars from "handlebars";
 
 async function cleanDir() {
-  await rimraf(["./dist", "./src/toggles"]);
-  return fs.mkdirSync("./src/toggles");
+  await rimraf(["./dist", "./src/toggles", "./src/stories/toggles"]);
+  return ["./src/toggles", "./src/stories/toggles"].forEach((dir) =>
+    fs.mkdirSync(dir)
+  );
 }
 
 async function Transform(svg, componentName, path) {
@@ -17,7 +20,10 @@ async function Transform(svg, componentName, path) {
     path,
     multipass: true,
     plugins: [
-      "preset-default",
+      {
+        name: "preset-default",
+        params: { overrides: { collapseGroups: false } },
+      },
       {
         name: "addAttributesToSVGElement",
         params: {
@@ -32,6 +38,28 @@ async function Transform(svg, componentName, path) {
     {
       typescript: true,
       template,
+      expandProps: false,
+
+      jsx: {
+        babelConfig: {
+          plugins: [
+            ["./plugins/dynamic-id.cjs", { prefix: true }],
+            [
+              "@svgr/babel-plugin-add-jsx-attribute",
+              {
+                elements: ["svg"],
+                attributes: [
+                  {
+                    name: "props.svgProps",
+                    spread: true,
+                    position: "end",
+                  },
+                ],
+              },
+            ],
+          ],
+        },
+      },
     },
     { componentName }
   );
@@ -53,6 +81,7 @@ async function compileToggles() {
       return Transform(svg, componentName, path);
     }),
     generateExports(toggles),
+    generateStories(toggles),
   ]);
 }
 
@@ -65,5 +94,27 @@ async function generateExports(toggles) {
   fs.writeFileSync(`./src/index.ts`, exportString);
 }
 
-const buildToggles = gulp.series(cleanDir, compileToggles);
+async function generateStories(toggles) {
+  const templateFile = fs.readFileSync("./templates/story.hbs", "utf8");
+  const template = Handlebars.compile(templateFile);
+
+  Handlebars.registerHelper("camelCase", (name) => camelCase(name));
+  Handlebars.registerHelper("titleCase", (name) => upperFirst(camelCase(name)));
+
+  toggles.map((toggle) => {
+    const name = camelCase(toggle.replace(".svg", ""));
+    const story = format(template({ name }), { parser: "babel-ts" });
+
+    fs.writeFileSync(`./src/stories/toggles/${name}.stories.tsx`, story);
+  });
+}
+
+async function copyCSS() {
+  return gulp.src("../core/dist/base/*").pipe(gulp.dest("./css"));
+}
+
+const buildToggles = gulp.series(
+  cleanDir,
+  gulp.parallel(compileToggles, copyCSS)
+);
 export default buildToggles;

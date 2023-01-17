@@ -4,10 +4,10 @@ export interface BaseToggleProps {
    */
   name: `${string}.svg`;
   /**
-   * fontSize of the svg
+   * size of the svg, 1rem equates to a height and width of 1rem
    * @defaultValue "1rem"
    */
-  fontSize?: string;
+  size?: string;
   /**
    * Id prefix
    * @defaultValue ""

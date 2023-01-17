@@ -1,6 +1,6 @@
 const template = (variables, { tpl }) => {
   return tpl`
-    import React, { useState, Ref } from "react";
+    import React, { Ref, MouseEventHandler } from "react";
     import { forwardRefWithAs } from "../utils";
     import { ToggleProps, ReactTag } from "../types";
     
@@ -8,13 +8,14 @@ const template = (variables, { tpl }) => {
           const {
               onToggle,
               toggled,
-              toggle,
               duration = 500,
               reversed = false,
               title = "Toggle theme",
               forceMotion = false,
+              onClick,
+              style ={},
               idPrefix = "",
-              as: Component,
+              as: Component = "button",
               "aria-label": ariaLabel = "Toggle theme",
               className,
               children,
@@ -30,17 +31,17 @@ const template = (variables, { tpl }) => {
             className,
           ].join(" ");
 
-        rest.style["--theme-toggle__around--duration"] = \`\${duration}ms\`;
+        style["--theme-toggle__around--duration"] = \`\${duration}ms\`;
 
         if (Component === "button" && !rest.type) (rest as any).type = "button";
 
-        const handleClick = () => {
-          toggle(!toggled);
+        const handleClick: MouseEventHandler<TTag> = (e) => {
           onToggle && onToggle(!toggled);
+          onClick && onClick(e);
         };
     
         return (
-            <Component ref={ref} className={classes} aria-label={ariaLabel} title={title} onClick={handleClick} {...rest}>
+            <Component ref={ref} className={classes} aria-label={ariaLabel} title={title} onClick={handleClick} style={style} {...rest}>
               {children}
               {${variables.jsx}}
             </Component>

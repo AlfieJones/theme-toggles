@@ -1,4 +1,4 @@
-import React, { useState, Ref } from "react";
+import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
 const lightbulb = forwardRefWithAs(function lightbulb<
@@ -7,13 +7,14 @@ const lightbulb = forwardRefWithAs(function lightbulb<
   const {
     onToggle,
     toggled,
-    toggle,
     duration = 500,
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    onClick,
+    style = {},
     idPrefix = "",
-    as: Component,
+    as: Component = "button",
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
@@ -27,11 +28,11 @@ const lightbulb = forwardRefWithAs(function lightbulb<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  rest.style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__around--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
-  const handleClick = () => {
-    toggle(!toggled);
+  const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
+    onClick && onClick(e);
   };
   return (
     <Component
@@ -40,14 +41,13 @@ const lightbulb = forwardRefWithAs(function lightbulb<
       aria-label={ariaLabel}
       title={title}
       onClick={handleClick}
+      style={style}
       {...rest}
     >
       {children}
       {
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
           fill="currentColor"
           stroke="currentColor"
           strokeLinecap="round"
@@ -55,7 +55,7 @@ const lightbulb = forwardRefWithAs(function lightbulb<
           aria-hidden="true"
           className="theme-toggle__lightbulb"
           viewBox="0 0 32 32"
-          {...props}
+          {...props.svgProps}
         >
           <path
             stroke="none"
@@ -68,11 +68,12 @@ const lightbulb = forwardRefWithAs(function lightbulb<
             className="theme-toggle__lightbulb__coil"
             pathLength={1}
           />
-          <path
-            d="M16 6.4V1.3m10.3 14.5h5.1M22.6 9l3.7-3.6M9.4 9 5.7 5.4m0 10.4H.6"
-            className="theme-toggle__lightbulb__rays"
-            pathLength={1}
-          />
+          <g className="theme-toggle__lightbulb__rays">
+            <path
+              d="M16 6.4V1.3m10.3 14.5h5.1M22.6 9l3.7-3.6M9.4 9 5.7 5.4m0 10.4H.6"
+              pathLength={1}
+            />
+          </g>
         </svg>
       }
     </Component>

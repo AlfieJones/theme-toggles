@@ -1,4 +1,4 @@
-import React, { useState, Ref } from "react";
+import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
 const within = forwardRefWithAs(function within<
@@ -7,13 +7,14 @@ const within = forwardRefWithAs(function within<
   const {
     onToggle,
     toggled,
-    toggle,
     duration = 500,
     reversed = false,
     title = "Toggle theme",
     forceMotion = false,
+    onClick,
+    style = {},
     idPrefix = "",
-    as: Component,
+    as: Component = "button",
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
@@ -27,11 +28,11 @@ const within = forwardRefWithAs(function within<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  rest.style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__around--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
-  const handleClick = () => {
-    toggle(!toggled);
+  const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
+    onClick && onClick(e);
   };
   return (
     <Component
@@ -40,24 +41,23 @@ const within = forwardRefWithAs(function within<
       aria-label={ariaLabel}
       title={title}
       onClick={handleClick}
+      style={style}
       {...rest}
     >
       {children}
       {
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
           fill="currentColor"
           aria-hidden="true"
           className="theme-toggle__within"
           viewBox="0 0 32 32"
-          {...props}
+          {...props.svgProps}
         >
-          <clipPath id="a">
+          <clipPath id={`${props.idPrefix || ""}a`}>
             <path d="M0 0h32v32H0Zm6 16a1 1 0 0 0 20 0 1 1 0 0 0-20 0" />
           </clipPath>
-          <g clipPath="url(#a)">
+          <g clipPath={`url(#${props.idPrefix || ""}a)`}>
             <path d="M30.7 21.3 27.1 16l3.7-5.3c.4-.5.1-1.3-.6-1.4l-6.3-1.1-1.1-6.3c-.1-.6-.8-.9-1.4-.6L16 5l-5.4-3.7c-.5-.4-1.3-.1-1.4.6l-1 6.3-6.4 1.1c-.6.1-.9.9-.6 1.3L4.9 16l-3.7 5.3c-.4.5-.1 1.3.6 1.4l6.3 1.1 1.1 6.3c.1.6.8.9 1.4.6l5.3-3.7 5.3 3.7c.5.4 1.3.1 1.4-.6l1.1-6.3 6.3-1.1c.8-.1 1.1-.8.7-1.4zM16 25.1c-5.1 0-9.1-4.1-9.1-9.1 0-5.1 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1c0 5.1-4 9.1-9.1 9.1z" />
           </g>
           <path
