@@ -11,9 +11,14 @@
     "type": "github",
     "url": "https://github.com/sponsors/alfiejones"
   },
-  "scripts": {},
+  "scripts": {
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+  },
   "author": {
     "name": "Alfie Jones",
     "url": "https://ajones.uk"
+  },
+  "devDependencies": {
+    "lerna": "^6.4.1"
   }
 }
