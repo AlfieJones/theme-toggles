@@ -1,0 +1,46 @@
+{
+  "name": "@theme-toggles/core",
+  "private": false,
+  "version": "5.0.0-rc.1",
+  "type": "module",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "plop": "plop",
+    "build": "gulp",
+    "dev": "gulp dev"
+  },
+  "files": [
+    "./dist/**/*.css"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-vite": "^0.2.6",
+    "@storybook/html": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/node": "^18.11.18",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^8.3.0",
+    "clsx": "^1.2.1",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "handlebars": "^4.7.7",
+    "handlebars-helpers": "^0.10.0",
+    "plop": "^3.1.1",
+    "prettier": "2.8.1",
+    "sass": "^1.57.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {},
+  "overrides": {
+    "clean-css": "5.3.1"
+  }
+}

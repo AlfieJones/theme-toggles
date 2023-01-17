@@ -1,0 +1,23 @@
+.theme-toggle {
+    margin: 1rem;
+}
+
+.xs {
+    height: 1rem;
+    width:  1rem;
+}
+
+.sm {
+    height: 2rem;
+    width:  2rem;
+}
+
+.md {
+    height: 3.5rem;
+    width:  3.5rem;
+}
+
+.lg {
+    height: 6rem;
+    width:  6rem;
+}
