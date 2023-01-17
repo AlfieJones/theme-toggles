@@ -1,13 +1,8 @@
 {
   "name": "theme-toggles",
-  "version": "4.10.1",
   "description": "A collection of theme toggles",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
-  "files": [
-    "css/*.css",
-    "assets/svgs/"
-  ],
   "private": true,
   "workspaces": [
     "packages/*"
@@ -16,12 +11,14 @@
     "type": "github",
     "url": "https://github.com/sponsors/alfiejones"
   },
-  "scripts": {},
+  "scripts": {
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+  },
   "author": {
     "name": "Alfie Jones",
     "url": "https://ajones.uk"
   },
-  "peerDependencies": {},
-  "devDependencies": {},
-  "dependencies": {}
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
 }
