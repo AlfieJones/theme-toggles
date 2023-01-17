@@ -4,3 +4,4 @@ build
 ./index.html
 .vscode
 css
+dist
