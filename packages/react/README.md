@@ -12,7 +12,6 @@
 </h2>
 </div>
 
-
 ### Installing the latest version
 
 You can install the latest version by using:
