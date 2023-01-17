@@ -21,6 +21,8 @@ const buildBase = (src, variant, toggle) =>
     .pipe(concat(`${toggle}.scss`))
     .pipe(sass().on("error", sass.logError))
     .pipe(gulp.dest(`./dist/${variant}/`))
+    .pipe(autoprefixer())
+
     .pipe(cleanCss())
     .pipe(rename({ extname: ".min.css" }))
     .pipe(gulp.dest(`./dist/${variant}/`));

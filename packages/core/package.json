@@ -23,7 +23,6 @@
     "@storybook/html": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@types/node": "^18.11.18",
-    "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
     "clsx": "^1.2.1",
     "gulp": "^4.0.2",
