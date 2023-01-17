@@ -43,7 +43,6 @@ export function createButton(args: BaseToggleProps) {
   wrapper.style.setProperty("display", "flex");
   wrapper.style.setProperty("align-items", "center");
 
-  console.log(args);
 
   const xsBtn = _createButton({ ...args, size: "1rem", prefix: "xs" });
   const smBtn = _createButton({ ...args, size: "2rem", prefix: "sm" });

@@ -6,7 +6,6 @@ export const getSVG = (name: string, prefix: string) => {
       ids?.forEach((fullId) => {
         const id = fullId.replace("id=", "").replaceAll('"', "");
         data = data.replaceAll(id, `${prefix}-${id}`);
-        console.log(ids, id);
       });
       return data;
     });
