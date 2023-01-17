@@ -29,11 +29,11 @@ $variable: #{getVar(classic)};
     }
   }
   circle {
-    transform: scale(1.4);
+    transform: scale(1.7);
   }
   clipPath {
     path {
-      d: path("M0 3h13a1 1 0 009 10v11H0Z");
+      d: path("M0 2h13a1 1 0 009 10v11H0Z");
       transition-delay: calc(var($variable) * 0.2);
     }
   }
@@ -45,7 +45,7 @@ $variable: #{getVar(classic)};
   @include toggledSelector(classic) {
     clipPath {
       path {
-        transform: translate3d(-13px, 3px, 0);
+        transform: translate3d(-13px, 2px, 0);
       }
     }
   }

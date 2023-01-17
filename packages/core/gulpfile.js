@@ -3,6 +3,7 @@ import gulpSass from "gulp-sass";
 import gulp from "gulp";
 import concat from "gulp-concat";
 import cleanCss from "gulp-clean-css";
+import autoprefixer from "gulp-autoprefixer";
 import rename from "gulp-rename";
 import fs from "fs";
 
