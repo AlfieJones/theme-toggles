@@ -55,21 +55,14 @@ const classic = forwardRefWithAs(function classic<
           {...props.svgProps}
         >
           <clipPath id={`${props.idPrefix || ""}a`}>
-            <path d="M0-5h28a1 1 0 0 0 9 13v16H0Z" />
+            <path d="M0 0h26a1 1 0 0 0 9 10v14H0Z" />
           </clipPath>
           <g
             stroke="currentColor"
             strokeLinecap="round"
             clipPath={`url(#${props.idPrefix || ""}a)`}
           >
-            <ellipse
-              cx={12}
-              cy={12}
-              fillRule="evenodd"
-              strokeWidth={0.6}
-              rx={5.5}
-              ry={5.6}
-            />
+            <circle cx={12} cy={12} r={5.5} />
             <path
               fill="none"
               strokeLinejoin="round"
