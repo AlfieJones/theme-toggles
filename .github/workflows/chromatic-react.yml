@@ -1,10 +1,10 @@
 # .github/workflows/chromatic.yml
 
 # Workflow name
-name: 'Chromatic React'
+name: "Chromatic React"
 
 # Event for the workflow
-on: 
+on:
   push:
     paths:
       - packages/react/**
@@ -20,8 +20,9 @@ jobs:
       - name: Install dependencies
         # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         run: yarn
-      - name: build
+      - name: build core
         run: npx lerna run build --scope=@theme-toggles/core
+      - name: build react
         run: npx lerna run build --scope=@theme-toggles/react
         # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
