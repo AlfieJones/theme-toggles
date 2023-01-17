@@ -1,13 +1,8 @@
 {
   "name": "theme-toggles",
-  "version": "4.10.1",
   "description": "A collection of theme toggles",
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
-  "files": [
-    "css/*.css",
-    "assets/svgs/"
-  ],
   "private": true,
   "workspaces": [
     "packages/*"
@@ -20,22 +15,5 @@
   "author": {
     "name": "Alfie Jones",
     "url": "https://ajones.uk"
-  },
-  "peerDependencies": {},
-  "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "grunt": "^1.4.1",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-compress": "^2.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-csslint": "^2.0.0",
-    "grunt-contrib-cssmin": "^4.0.0",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-css-purge": "^1.1.0",
-    "grunt-postcss": "^0.9.0",
-    "postcss": "^8.3.5"
-  },
-  "dependencies": {}
+  }
 }
