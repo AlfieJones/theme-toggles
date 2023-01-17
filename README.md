@@ -42,7 +42,7 @@ We use SVG’s for each of our toggles, animating them with CSS. Using SVG’s i
 * Customizable
 
 ## Roadmap
-You can find all our planned improvements on our [roadmap](https://toggles.dev/docs/roadmap)
+New development is currently happening on the v5 branch
 
 ## Contributing
 
