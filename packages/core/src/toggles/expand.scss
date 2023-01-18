@@ -26,7 +26,7 @@ $variable: #{getVar(expand)};
 @include toggledSelector(expand) {
   g {
     circle {
-      transform: scale(1.4);
+      transform: scale(1.6);
       transition-delay: 0s;
     }
     path {
@@ -36,7 +36,7 @@ $variable: #{getVar(expand)};
   }
   :first-child {
     path {
-      d: path("M-9 3h25a1 1 0 0017 13v30H0Z");
+      d: path("M0 0h14A1 1 0 0027 12v12H0Z");
       transition-delay: calc(var($variable) * 0.4);
       transition-timing-function: cubic-bezier(0, 0, 0, 1.25);
     }
@@ -48,7 +48,7 @@ $variable: #{getVar(expand)};
   @include toggledSelector(expand) {
     :first-child {
       path {
-        transform: translate3d(-9px, 14px, 0);
+        transform: translate3d(-5px, 11px, 0);
       }
     }
   }
