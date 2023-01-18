@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
    class="theme-toggle__dark-side">
    <path fill="currentColor"
-      d="M12 0 12 24A1 1 0 0012 0 1 1 0 0012 24L12 21A1 1 0 0112 3Z" />
+      d="M12 1 12 23A1 1 0 0012 1 1 1 0 0012 23L12 20A1 1 0 0112 4Z" />
 </svg>

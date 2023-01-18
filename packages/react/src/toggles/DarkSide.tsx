@@ -54,7 +54,7 @@ const darkSide = forwardRefWithAs(function darkSide<
           viewBox="0 0 24 24"
           {...props.svgProps}
         >
-          <path d="M12 0v24a1 1 0 0 0 0-24 1 1 0 0 0 0 24v-3a1 1 0 0 1 0-18Z" />
+          <path d="M12 1v22a1 1 0 0 0 0-22 1 1 0 0 0 0 22v-3a1 1 0 0 1 0-16Z" />
         </svg>
       }
     </Component>

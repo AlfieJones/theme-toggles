@@ -51,11 +51,13 @@ const darkInner = forwardRefWithAs(function darkInner<
           fill="currentColor"
           aria-hidden="true"
           className="theme-toggle__dark-inner"
-          viewBox="0 0 32 32"
+          viewBox="0 0 24 24"
           {...props.svgProps}
         >
-          <path d="M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7" />
-          <path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z" />
+          <g>
+            <path d="M12 1a1 1 0 0 0 0 22 1 1 0 0 0 0-22v3a1 1 0 0 1 0 16v-3a1 1 0 0 1 0-10Z" />
+            <path d="M12 7v10a1 1 0 0 0 0-10Z" />
+          </g>
         </svg>
       }
     </Component>

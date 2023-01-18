@@ -13,10 +13,12 @@ $variable: #{getVar(dark-inner)};
 }
 
 @include toggledSelector(dark-inner) {
-  :first-child {
-    transform: rotate(180deg);
-  }
-  :last-child {
-    transform: rotate(-180deg);
+  g {
+    :first-child {
+      transform: rotate(180deg);
+    }
+    :last-child {
+      transform: rotate(-180deg);
+    }
   }
 }
