@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="1em" height="1em" class="theme-toggle__dark-side" fill="currentColor" viewBox="0 0 32 32">
-  <path d="M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+   class="theme-toggle__dark-side">
+   <path fill="currentColor"
+      d="M12 1 12 23A1 1 0 0012 1 1 1 0 0012 23L12 20A1 1 0 0112 4Z" />
 </svg>

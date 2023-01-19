@@ -6,7 +6,7 @@ const _createDiv = ({
   name,
   reversed,
   duration = 500,
-  fontSize = "1rem",
+  size = "1rem",
   prefix = "",
 }: BaseToggleProps) => {
   const div = document.createElement("div");
@@ -18,7 +18,8 @@ const _createDiv = ({
   div.ariaLabel = "Toggle theme";
   div.style.setProperty(`--theme-toggle__${name}-duration`, `${duration}ms`);
   div.className = clsx("theme-toggle", reversed && "theme-toggle--reversed");
-  div.style.setProperty("font-size", fontSize);
+  div.style.setProperty("width", size);
+  div.style.setProperty("height", size);
   div.style.setProperty("margin", "1rem");
   div.ariaLabel = "Toggle theme";
 
@@ -40,10 +41,10 @@ export const createDiv = (args: BaseToggleProps) => {
   wrapper.style.setProperty("display", "flex");
   wrapper.style.setProperty("align-items", "center");
 
-  const lgBtn = _createDiv({ ...args, fontSize: "10rem", prefix: "lg" });
-  const mdBtn = _createDiv({ ...args, fontSize: "5rem", prefix: "md" });
-  const smBtn = _createDiv({ ...args, fontSize: "2rem", prefix: "sm" });
-  const xsBtn = _createDiv({ ...args, fontSize: "1rem", prefix: "xs" });
+  const xsBtn = _createDiv({ ...args, size: "1rem", prefix: "xs" });
+  const smBtn = _createDiv({ ...args, size: "2rem", prefix: "sm" });
+  const mdBtn = _createDiv({ ...args, size: "5rem", prefix: "md" });
+  const lgBtn = _createDiv({ ...args, size: "10rem", prefix: "lg" });
 
   wrapper.appendChild(lgBtn);
   wrapper.appendChild(mdBtn);

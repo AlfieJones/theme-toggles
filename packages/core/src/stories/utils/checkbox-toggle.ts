@@ -6,7 +6,7 @@ const _createCheckbox = ({
   name,
   reversed,
   duration = 500,
-  fontSize = "1rem",
+  size = "1rem",
   prefix = "",
 }: BaseToggleProps) => {
   const label = document.createElement("label");
@@ -18,7 +18,8 @@ const _createCheckbox = ({
   label.ariaLabel = "Toggle theme";
   label.style.setProperty(`--theme-toggle__${name}-duration`, `${duration}ms`);
   label.className = clsx("theme-toggle", reversed && "theme-toggle--reversed");
-  label.style.setProperty("font-size", fontSize);
+  label.style.setProperty("height", size);
+  label.style.setProperty("width", size);
   label.style.setProperty("margin", "1rem");
   label.ariaLabel = "Toggle theme";
 
@@ -50,10 +51,10 @@ export const createCheckbox = (args: BaseToggleProps) => {
   wrapper.style.setProperty("display", "flex");
   wrapper.style.setProperty("align-items", "center");
 
-  const lgBtn = _createCheckbox({ ...args, fontSize: "10rem", prefix: "lg" });
-  const mdBtn = _createCheckbox({ ...args, fontSize: "5rem", prefix: "md" });
-  const smBtn = _createCheckbox({ ...args, fontSize: "2rem", prefix: "sm" });
-  const xsBtn = _createCheckbox({ ...args, fontSize: "1rem", prefix: "xs" });
+  const xsBtn = _createCheckbox({ ...args, size: "1rem", prefix: "xs" });
+  const smBtn = _createCheckbox({ ...args, size: "2rem", prefix: "sm" });
+  const mdBtn = _createCheckbox({ ...args, size: "5rem", prefix: "md" });
+  const lgBtn = _createCheckbox({ ...args, size: "10rem", prefix: "lg" });
 
   wrapper.appendChild(lgBtn);
   wrapper.appendChild(mdBtn);

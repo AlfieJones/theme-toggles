@@ -2,6 +2,8 @@
 
 .theme-toggle {
   all: unset;
+  height: 1em;
+  width: 1rem;
   cursor: pointer;
   @if $checkbox {
     input[type="checkbox"],

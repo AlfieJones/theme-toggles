@@ -6,20 +6,16 @@ $variable: #{getVar(classic)};
 @include generic(classic, flip-y);
 
 .theme-toggle__classic {
-  path {
-    transition-timing-function: cubic-bezier(0, 0, 0.15, 1.25);
+  * {
     transform-origin: center;
-    transition-duration: calc(var($variable) * 0.8);
+    transition-timing-function: cubic-bezier(0, 0, 0.05, 1.15);
+    transition-property: opacity, transform, d;
+    transition-duration: calc(var($variable));
   }
   g {
     path {
-      transition-property: opacity, transform;
+      transition-duration: calc(var($variable) * 0.8);
       transition-delay: calc(var($variable) * 0.2);
-    }
-  }
-  :first-child {
-    path {
-      transition-property: transform, d;
     }
   }
 }
@@ -32,9 +28,12 @@ $variable: #{getVar(classic)};
       transition-delay: 0s;
     }
   }
-  :first-child {
+  circle {
+    transform: scale(1.7);
+  }
+  clipPath {
     path {
-      d: path("M-12 5h30a1 1 0 0 0 9 13v24h-39Z");
+      d: path("M0 2h13a1 1 0 0010 10v14H0Z");
       transition-delay: calc(var($variable) * 0.2);
     }
   }
@@ -44,9 +43,9 @@ $variable: #{getVar(classic)};
 // the path data. When this isn't supported, we fallback to translation
 @supports not (d: path("")) {
   @include toggledSelector(classic) {
-    :first-child {
+    clipPath {
       path {
-        transform: translate3d(-12px, 10px, 0);
+        transform: translate3d(-13px, 2px, 0);
       }
     }
   }

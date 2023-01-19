@@ -6,7 +6,18 @@ import CheckboxComponent from "./{{dashCase name}}.checkbox";
 
 export default {
   title: "{{titleCase name}}",
-  argTypes: {},
+  argTypes: {
+    reversed: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+    },
+    duration: {
+      control: { type: "range", min: 0, max: 5000, step: 100 },
+      defaultValue: 500,
+    },
+  },
 } as Meta<BaseTogglePropsType>;
 
 const ButtonTemplate: Story<BaseTogglePropsType> = (args) => {

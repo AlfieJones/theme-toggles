@@ -1,8 +1,8 @@
 import { Story, Meta } from "@storybook/html";
 import { BaseTogglePropsType } from "../../utils";
-import ButtonComponent from "./Simple.Button";
-import DivComponent from "./Simple.Div";
-import CheckboxComponent from "./simple.Checkbox";
+import ButtonComponent from "./simple.button";
+import DivComponent from "./simple.div";
+import CheckboxComponent from "./simple.checkbox";
 
 export default {
   title: "Simple",
