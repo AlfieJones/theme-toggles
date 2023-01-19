@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const halfSun = forwardRefWithAs(function halfSun<
+const HalfSun = forwardRefWithAs(function HalfSun<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -60,4 +60,4 @@ const halfSun = forwardRefWithAs(function halfSun<
     </Component>
   );
 });
-export default halfSun;
+export default HalfSun;

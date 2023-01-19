@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const lightbulb = forwardRefWithAs(function lightbulb<
+const Lightbulb = forwardRefWithAs(function Lightbulb<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -79,4 +79,4 @@ const lightbulb = forwardRefWithAs(function lightbulb<
     </Component>
   );
 });
-export default lightbulb;
+export default Lightbulb;

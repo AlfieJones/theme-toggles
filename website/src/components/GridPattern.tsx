@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-export function GridPattern({ width, height, x, y, squares, ...props }) {
+export function GridPattern({ width, height, x, y, squares, ...props }: any) {
   let patternId = useId()
 
   return (

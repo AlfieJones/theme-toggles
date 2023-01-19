@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const darkInner = forwardRefWithAs(function darkInner<
+const DarkInner = forwardRefWithAs(function DarkInner<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -63,4 +63,4 @@ const darkInner = forwardRefWithAs(function darkInner<
     </Component>
   );
 });
-export default darkInner;
+export default DarkInner;

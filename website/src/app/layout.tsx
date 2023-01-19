@@ -1,14 +1,14 @@
 'use client'
 
 import { MDXProvider } from '@mdx-js/react'
-import "theme-toggles/css/bundle.min.css"
+import "@theme-toggles/react/css/bundle.min.css"
 import * as mdxComponents from '@/components/mdx'
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
 import { Header } from '@/components/Header'
-import { Logo } from '@/components/Logo'
+import { Logo } from '@/components/logo'
 import { Navigation } from '@/components/Navigation'
 import { Prose } from '@/components/Prose'
 import { SectionProvider } from '@/components/SectionProvider'

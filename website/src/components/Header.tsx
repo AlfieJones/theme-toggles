@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 import { Button } from '@/components/Button'
-import { Logo } from '@/components/Logo'
+import { Logo } from '@/components/logo'
 import {
   MobileNavigation,
   useIsInsideMobileNavigation,
@@ -26,7 +26,7 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-export const Header = forwardRef(function Header({ className }, ref) {
+export const Header = forwardRef<any, any>(function Header({ className }, ref) {
   let { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
 
@@ -49,7 +49,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
       style={{
         '--bg-opacity-light': bgOpacityLight,
         '--bg-opacity-dark': bgOpacityDark,
-      }}
+      } as any}
     >
       <div
         className={clsx(

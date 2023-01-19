@@ -30,7 +30,7 @@ interface ButtonProps<
 > {
   variant?: keyof typeof variantStyles
   arrow?: 'left' | 'right'
-  href: THref
+  href?: THref
   external?: TExternal
 }
 
@@ -65,8 +65,8 @@ export function Button<
         'mt-0.5 h-5 w-5',
         variant === 'text' &&
           'relative top-px transition group-hover:translate-x-1',
-        arrow === 'left' && '-ml-1 rotate-180',
-        arrow === 'right' && '-mr-1'
+        arrow === 'left' && '-mr-1.5 rotate-180',
+        arrow === 'right' && '-ml-1.5'
       )}
     />
   )

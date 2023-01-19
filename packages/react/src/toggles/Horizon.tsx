@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const horizon = forwardRefWithAs(function horizon<
+const Horizon = forwardRefWithAs(function Horizon<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -66,4 +66,4 @@ const horizon = forwardRefWithAs(function horizon<
     </Component>
   );
 });
-export default horizon;
+export default Horizon;

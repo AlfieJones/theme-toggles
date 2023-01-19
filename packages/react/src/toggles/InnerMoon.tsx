@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const innerMoon = forwardRefWithAs(function innerMoon<
+const InnerMoon = forwardRefWithAs(function InnerMoon<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -61,4 +61,4 @@ const innerMoon = forwardRefWithAs(function innerMoon<
     </Component>
   );
 });
-export default innerMoon;
+export default InnerMoon;

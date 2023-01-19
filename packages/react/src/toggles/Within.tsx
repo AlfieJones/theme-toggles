@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const within = forwardRefWithAs(function within<
+const Within = forwardRefWithAs(function Within<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -73,4 +73,4 @@ const within = forwardRefWithAs(function within<
     </Component>
   );
 });
-export default within;
+export default Within;

@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const around = forwardRefWithAs(function around<
+const Around = forwardRefWithAs(function Around<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -73,4 +73,4 @@ const around = forwardRefWithAs(function around<
     </Component>
   );
 });
-export default around;
+export default Around;

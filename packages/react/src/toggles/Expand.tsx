@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const expand = forwardRefWithAs(function expand<
+const Expand = forwardRefWithAs(function Expand<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -66,4 +66,4 @@ const expand = forwardRefWithAs(function expand<
     </Component>
   );
 });
-export default expand;
+export default Expand;

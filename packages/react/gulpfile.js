@@ -5,6 +5,7 @@ import { transform as svgr } from "@svgr/core";
 import { format } from "prettier";
 import fs from "fs";
 import { camelCase, upperFirst } from "lodash-es";
+import esbuild from "esbuild";
 import template from "./templates/toggle.js";
 import Handlebars from "handlebars";
 
@@ -77,7 +78,7 @@ async function compileToggles() {
     ...toggles.map((toggle) => {
       const path = `../core/assets/svgs/${toggle}`;
       const svg = fs.readFileSync(path, "utf8");
-      const componentName = camelCase(toggle.replace(".svg", ""));
+      const componentName = upperFirst(camelCase(toggle.replace(".svg", "")));
       return Transform(svg, componentName, path);
     }),
     generateExports(toggles),
@@ -88,7 +89,7 @@ async function compileToggles() {
 async function generateExports(toggles) {
   let exportString = "";
   toggles.map((toggle) => {
-    const componentName = camelCase(toggle.replace(".svg", ""));
+    const componentName = upperFirst(camelCase(toggle.replace(".svg", "")));
     exportString += `export { default as ${componentName} } from "./toggles/${componentName}";\n`;
   });
   fs.writeFileSync(`./src/index.ts`, exportString);
@@ -102,7 +103,7 @@ async function generateStories(toggles) {
   Handlebars.registerHelper("titleCase", (name) => upperFirst(camelCase(name)));
 
   toggles.map((toggle) => {
-    const name = camelCase(toggle.replace(".svg", ""));
+    const name = upperFirst(camelCase(toggle.replace(".svg", "")));
     const story = format(template({ name }), { parser: "babel-ts" });
 
     fs.writeFileSync(`./src/stories/toggles/${name}.stories.tsx`, story);
@@ -113,8 +114,27 @@ async function copyCSS() {
   return gulp.src("../core/dist/base/*").pipe(gulp.dest("./css"));
 }
 
+async function esBuild() {
+  const toggles = await fs.readdirSync("./src/toggles");
+
+  return esbuild.build({
+    entryPoints: [
+      "./src/index.ts",
+      ...toggles.map((toggle) => `./src/toggles/${toggle}`),
+      "./src/utils.ts",
+    ],
+    bundle: false,
+    minify: true,
+    format: "esm",
+    outdir: "./dist",
+    platform: "browser",
+    plugins: [],
+  });
+}
+
 const buildToggles = gulp.series(
   cleanDir,
-  gulp.parallel(compileToggles, copyCSS)
+  gulp.parallel(compileToggles, copyCSS),
+  esBuild
 );
 export default buildToggles;

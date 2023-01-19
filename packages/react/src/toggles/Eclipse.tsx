@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const eclipse = forwardRefWithAs(function eclipse<
+const Eclipse = forwardRefWithAs(function Eclipse<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -66,4 +66,4 @@ const eclipse = forwardRefWithAs(function eclipse<
     </Component>
   );
 });
-export default eclipse;
+export default Eclipse;

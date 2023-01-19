@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const classic = forwardRefWithAs(function classic<
+const Classic = forwardRefWithAs(function Classic<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -77,4 +77,4 @@ const classic = forwardRefWithAs(function classic<
     </Component>
   );
 });
-export default classic;
+export default Classic;
