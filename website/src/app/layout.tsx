@@ -70,7 +70,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </head>
-      <body className="bg-white antialiased dark:bg-zinc-900">
+      <body className="antialiased bg-white dark:bg-zinc-900">
         <MDXProvider components={mdxComponents as any}>
           <SectionProvider sections={sections}>
             <div className="lg:ml-72 xl:ml-80">
@@ -88,7 +88,7 @@ export default function RootLayout({
                   <Navigation className="hidden lg:mt-10 lg:block" />
                 </div>
               </motion.header>
-              <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
+              <div className="relative px-4 sm:px-6 lg:px-8">
                 <main className="py-16">
                   <Prose as="article" className={undefined}>
                     {children}

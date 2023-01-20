@@ -62,11 +62,11 @@ export function Button<
   let arrowIcon = (
     <ArrowRightIcon
       className={clsx(
-        'mt-0.5 h-5 w-5',
+        'h-6 w-6 p-1',
         variant === 'text' &&
           'relative top-px transition group-hover:translate-x-1',
-        arrow === 'left' && '-mr-1.5 rotate-180',
-        arrow === 'right' && '-ml-1.5'
+        arrow === 'left' && '-mr-.5 rotate-180',
+        arrow === 'right' && '-ml-.5'
       )}
     />
   )

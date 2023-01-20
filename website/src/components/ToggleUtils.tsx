@@ -1,15 +1,10 @@
 'use client'
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-} from 'framer-motion'
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import { GridPattern } from '@/components/GridPattern'
 import * as toggles from '@theme-toggles/react'
 import Link from 'next/link'
-import { Heading } from './Heading'
 import { useState, useId } from 'react'
-import { Button } from './Button'
+import { Button } from './button'
 
 function TogglePattern({ mouseX, mouseY, ...gridProps }) {
   let maskImage = useMotionTemplate`radial-gradient(180px at ${mouseX}px ${mouseY}px, white, transparent)`
@@ -27,11 +22,11 @@ function TogglePattern({ mouseX, mouseY, ...gridProps }) {
         />
       </div>
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#D7EDEA] to-[#F4FBDF] opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
+        className="absolute inset-0 transition duration-300 opacity-0 rounded-2xl bg-gradient-to-r from-zinc-400/25 to-zinc-300/25 group-hover:opacity-100 dark:from-black/25 dark:to-zinc-700/50"
         style={style}
       />
       <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition duration-300 group-hover:opacity-100"
+        className="absolute inset-0 transition duration-300 opacity-0 rounded-2xl mix-blend-overlay group-hover:opacity-100"
         style={style}
       >
         <GridPattern
@@ -46,7 +41,7 @@ function TogglePattern({ mouseX, mouseY, ...gridProps }) {
   )
 }
 
-function Toggle({ toggle }) {
+export function Toggle({ toggle, colorDark, colorLight }: any) {
   let mouseX = useMotionValue(0)
   let mouseY = useMotionValue(0)
 
@@ -64,24 +59,27 @@ function Toggle({ toggle }) {
     <div
       key={toggle}
       onMouseMove={onMouseMove}
-      className="group relative flex rounded-2xl bg-zinc-50 transition-shadow hover:shadow-md hover:shadow-zinc-900/5 dark:bg-white/2.5 dark:hover:shadow-black/5"
+      style={{ '--bg-dark': colorDark, '--bg-light': colorLight } as any}
+      className="relative flex transition-shadow group rounded-2xl hover:shadow-md hover:shadow-zinc-900/5 dark:hover:shadow-black/5"
     >
+      <span className="absolute inset-0 rounded-2xl bg-custom-light/5 dark:bg-custom-dark/5" />
+
       <TogglePattern mouseX={mouseX} mouseY={mouseY} />
       <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/7.5 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
-      <div className="relative z-0 w-full rounded-2xl px-6 pt-6 pb-2">
+      <div className="relative z-0 w-full px-6 pt-6 pb-2 rounded-2xl">
         <Toggle
-          className="z-10 mx-auto block h-24 w-24"
+          className="z-10 block w-24 h-24 mx-auto text-custom-dark dark:text-custom-dark"
           idPrefix={id}
           toggled={toggled}
           onToggle={setToggle}
         />
-        <h3 className="-z-10 mt-4 text-xl text-sm font-semibold leading-7 text-zinc-900 dark:text-white">
+        <h3 className="mt-4 text-sm text-xl font-semibold leading-7 -z-10 text-zinc-900 dark:text-zinc-100">
           <Link href={'/about'}>
-            <span className="absolute inset-0 rounded-2xl -z-10" />
+            <span className="absolute inset-0 -z-10 rounded-2xl" />
             {toggle}
           </Link>
         </h3>
-        <Button className='pointer-events-none text-base' variant='text' arrow="right">
+        <Button className="pointer-events-none text-custom-light dark:text-custom-dark" variant="text" arrow="right">
           See the code
         </Button>
       </div>
@@ -89,17 +87,26 @@ function Toggle({ toggle }) {
   )
 }
 
-export function Toggles() {
+function getColorDark() {
   return (
-    <div className="my-16 mx-auto">
-      <Heading level={2} id="resources">
-        Resources
-      </Heading>
-      <div className="not-prose mt-4 grid grid-cols-1 min-[400px]:grid-cols-2 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-3 xl:grid-cols-4">
-        {Object.keys(toggles).map((name) => (
-          <Toggle key={name} toggle={name} />
-        ))}
-      </div>
-    </div>
+    'hsl(' +
+    360 * Math.random() +
+    ',' +
+    (25 + 30 * Math.random()) +
+    '%,' +
+    (85 + 2 * Math.random()) +
+    '%)'
+  )
+}
+
+function getColor() {
+  return (
+    'hsl(' +
+    360 * Math.random() +
+    ',' +
+    (25 + 30 * Math.random()) +
+    '%,' +
+    (85 + 2 * Math.random()) +
+    '%)'
   )
 }

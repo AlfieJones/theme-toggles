@@ -1,3 +1,5 @@
+import * as toggles from '@theme-toggles/react'
+
 function SunIcon(props) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
@@ -20,9 +22,13 @@ function MoonIcon(props) {
 
 export function ModeToggle() {
   function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none')
+    document.documentElement.classList.add(
+      'disable-transition'
+    )
     window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none')
+      document.documentElement.classList.remove(
+        'disable-transition'
+      )
     }, 0)
   }
 
@@ -40,15 +46,14 @@ export function ModeToggle() {
     }
   }
 
+  const keys = Object.keys(toggles)
+
+  const Toggle = toggles[keys[Math.round(Math.random() * keys.length)]]
+
   return (
-    <button
-      type="button"
-      className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
-      aria-label="Toggle dark mode"
-      onClick={toggleMode}
-    >
-      <SunIcon className="h-5 w-5 stroke-zinc-900 dark:hidden" />
-      <MoonIcon className="hidden h-5 w-5 stroke-white dark:block" />
-    </button>
+    <Toggle
+      onToggle={toggleMode}
+      className="w-6 h-6 text-zinc-900 hover:text-zinc-900/90 dark:text-white dark:hover:text-white/90"
+    />
   )
 }

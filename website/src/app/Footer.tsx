@@ -1,9 +1,6 @@
-'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/Button'
-import { navigation } from '@/components/Navigation'
+import { Button } from '@/components/button'
 import PageNavigation from './PageNav'
 
 function EditThisPage() {
@@ -53,14 +50,14 @@ function SocialLink({ href, icon: Icon, children }) {
   return (
     <Link href={href} className="group">
       <span className="sr-only">{children}</span>
-      <Icon className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
+      <Icon className="w-5 h-5 transition fill-zinc-700 group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
     </Link>
   )
 }
 
 function SmallPrint() {
   return (
-    <div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 dark:border-white/5 sm:flex-row">
+    <div className="flex flex-col items-center justify-between gap-5 pt-8 border-t border-zinc-900/5 dark:border-white/5 sm:flex-row">
       <p className="text-xs text-zinc-600 dark:text-zinc-400">
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
@@ -81,7 +78,7 @@ function SmallPrint() {
 
 export function Footer() {
   return (
-    <footer className="mx-auto max-w-2xl space-y-10 pb-16 lg:max-w-5xl">
+    <footer className="max-w-2xl pb-16 mx-auto space-y-10 lg:max-w-5xl">
       <PageNavigation />
       <EditThisPage />
       <SmallPrint />

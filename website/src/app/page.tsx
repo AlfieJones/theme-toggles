@@ -1,8 +1,8 @@
-import { Toggles } from '@/components/Toggles'
+import { Toggles } from './Toggles'
 
 export default function Index() {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="mx-auto max-w-7xl">
       <Toggles />
     </div>
   )

@@ -1,3 +1,12 @@
+function withOpacityValue(variable) {
+  return ({ opacityValue }) => {
+    if (opacityValue === undefined) {
+      return `rgb(var(${variable}))`
+    }
+    return `rgb(var(${variable}) / ${opacityValue})`
+  }
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./{src,mdx}/**/*.{js,mjs,jsx,mdx,ts,tsx}'],
@@ -21,6 +30,10 @@ module.exports = {
     },
     typography: require('./typography'),
     extend: {
+      colors: {
+        'custom-dark': withOpacityValue('--bg-dark'),
+        'custom-light': withOpacityValue('--bg-light'),
+      },
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',
       },
