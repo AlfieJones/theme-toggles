@@ -17,3 +17,32 @@
 .disable-transition *:not(.theme-toggle *) {
   transition: none !important;
 }
+
+.scrollbar {
+  scrollbar-color: #6969dd #e0e0e0 !important;
+  scrollbar-width: thin !important;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: darkgrey;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4rem;
+}
+
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

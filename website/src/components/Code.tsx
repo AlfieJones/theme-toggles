@@ -1,15 +1,17 @@
+'use client'
 import {
   Children,
   createContext,
   useContext,
   useEffect,
+  useId,
   useRef,
   useState,
 } from 'react'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
-import {create} from 'zustand'
-
+import { create } from 'zustand'
+import { motion } from 'framer-motion'
 import { Tag } from '@/components/Tag'
 
 const languageNames = {
@@ -78,7 +80,7 @@ function CopyButton({ code }) {
           copied && '-translate-y-1.5 opacity-0'
         )}
       >
-        <ClipboardIcon className="h-5 w-5 fill-zinc-500/20 stroke-zinc-500 transition-colors group-hover/button:stroke-zinc-400" />
+        <ClipboardIcon className="w-5 h-5 transition-colors fill-zinc-500/20 stroke-zinc-500 group-hover/button:stroke-zinc-400" />
         Copy
       </span>
       <span
@@ -102,7 +104,7 @@ function CodePanelHeader({ tag, label }) {
   return (
     <div className="flex h-9 items-center gap-2 border-y border-t-transparent border-b-white/7.5 bg-zinc-900 bg-white/2.5 px-4 dark:border-b-white/5 dark:bg-white/1">
       {tag && (
-        <div className="dark flex">
+        <div className="flex dark">
           <Tag variant="small">{tag}</Tag>
         </div>
       )}
@@ -116,7 +118,15 @@ function CodePanelHeader({ tag, label }) {
   )
 }
 
-function CodePanel({ tag, label, code, children }) {
+interface CodePanelProps {
+  tag?: string
+  label?: string
+  code?: string
+  className?: string
+  children: JSX.Element
+}
+
+function CodePanel({ tag, label, code, children, className }: CodePanelProps) {
   let child = Children.only(children)
 
   return (
@@ -126,15 +136,26 @@ function CodePanel({ tag, label, code, children }) {
         label={child.props.label ?? label}
       />
       <div className="relative">
-        <pre className="overflow-x-auto p-4 text-xs text-white">{children}</pre>
+        <pre
+          className={clsx('overflow-x-auto p-4 text-xs text-white', className)}
+        >
+          {children}
+        </pre>
         <CopyButton code={child.props.code ?? code} />
       </div>
     </div>
   )
 }
 
-function CodeGroupHeader({ title, children, selectedIndex }) {
+interface CodeGroupProps {
+  title?: string
+  children: JSX.Element | JSX.Element[]
+}
+
+function CodeGroupHeader({ title, children }: CodeGroupProps) {
   let hasTabs = Children.count(children) > 1
+
+  const id = useId()
 
   if (!title && !hasTabs) {
     return null
@@ -143,22 +164,34 @@ function CodeGroupHeader({ title, children, selectedIndex }) {
   return (
     <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b border-zinc-700 bg-zinc-800 px-4 dark:border-zinc-800 dark:bg-transparent">
       {title && (
-        <h3 className="mr-auto pt-3 text-xs font-semibold text-white">
+        <h3 className="pt-3 mr-auto text-xs font-semibold text-white">
           {title}
         </h3>
       )}
       {hasTabs && (
-        <Tab.List className="-mb-px flex gap-4 text-xs font-medium">
-          {Children.map(children, (child, childIndex) => (
+        <Tab.List className="flex gap-4 -mb-px text-xs font-medium">
+          {Children.map(children, (child) => (
             <Tab
-              className={clsx(
-                'border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
-                childIndex === selectedIndex
-                  ? 'border-indigo-500 text-indigo-400'
-                  : 'border-transparent text-zinc-400 hover:text-zinc-300'
-              )}
+              className={({ selected }) =>
+                clsx(
+                  'relative py-3 transition focus:[&:not(:focus-visible)]:outline-none',
+                  selected
+                    ? 'border-indigo-500 text-indigo-400'
+                    : 'border-transparent text-zinc-400 hover:text-zinc-300'
+                )
+              }
             >
-              {getPanelTitle(child.props)}
+              {({ selected }) => (
+                <>
+                  {getPanelTitle(child.props)}
+                  {selected && (
+                    <motion.span
+                      layoutId={id}
+                      className="absolute inset-x-0 bottom-0 w-full h-px bg-indigo-500"
+                    />
+                  )}
+                </>
+              )}
             </Tab>
           ))}
         </Tab.List>
@@ -175,7 +208,14 @@ function CodeGroupPanels({ children, ...props }) {
       <Tab.Panels>
         {Children.map(children, (child) => (
           <Tab.Panel>
-            <CodePanel {...props}>{child}</CodePanel>
+            <CodePanel
+              tag={child.props.tag || props.tag}
+              label={child.props.label || props.label}
+              className={child.props.className || props.label}
+              {...props}
+            >
+              {child}
+            </CodePanel>
           </Tab.Panel>
         ))}
       </Tab.Panels>
@@ -186,8 +226,8 @@ function CodeGroupPanels({ children, ...props }) {
 }
 
 function usePreventLayoutShift() {
-  let positionRef = useRef()
-  let rafRef = useRef()
+  let positionRef = useRef<HTMLElement>()
+  let rafRef = useRef<number>()
 
   useEffect(() => {
     return () => {
@@ -202,7 +242,7 @@ function usePreventLayoutShift() {
 
       callback()
 
-      rafRef.current = window.AnimationFrame(() => {
+      rafRef.current = window.requestAnimationFrame(() => {
         let newTop = positionRef.current.getBoundingClientRect().top
         window.scrollBy(0, newTop - initialTop)
       })
@@ -210,7 +250,12 @@ function usePreventLayoutShift() {
   }
 }
 
-const usePreferredLanguageStore = create((set) => ({
+interface LanguageStore {
+  preferredLanguages: string[]
+  addPreferredLanguage: (language: string) => void
+}
+
+const usePreferredLanguageStore = create<LanguageStore>((set) => ({
   preferredLanguages: [],
   addPreferredLanguage: (language) =>
     set((state) => ({
@@ -251,25 +296,33 @@ function useTabGroupProps(availableLanguages) {
 
 const CodeGroupContext = createContext(false)
 
-export function CodeGroup({ children, title, ...props }) {
+interface CodeGroupProps {
+  title?: string
+  children: JSX.Element | JSX.Element[]
+  onChange?: (index: number) => void
+  [x: string]: any
+}
+
+export function CodeGroup({
+  children,
+  title,
+  onChange,
+  ...props
+}: CodeGroupProps) {
   let languages = Children.map(children, (child) => getPanelTitle(child.props))
   let tabGroupProps = useTabGroupProps(languages)
   let hasTabs = Children.count(children) > 1
-  let Container = hasTabs ? Tab.Group : 'div'
+  let Container: any = hasTabs ? Tab.Group : 'div'
   let containerProps = hasTabs ? tabGroupProps : {}
-  let headerProps = hasTabs
-    ? { selectedIndex: tabGroupProps.selectedIndex }
-    : {}
 
   return (
     <CodeGroupContext.Provider value={true}>
       <Container
+        onChange={onChange}
         {...containerProps}
-        className="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-900 shadow-md dark:ring-1 dark:ring-white/10"
+        className="my-6 overflow-hidden shadow-md not-prose rounded-2xl bg-zinc-900 dark:ring-1 dark:ring-white/10"
       >
-        <CodeGroupHeader title={title} {...headerProps}>
-          {children}
-        </CodeGroupHeader>
+        <CodeGroupHeader title={title}>{children}</CodeGroupHeader>
         <CodeGroupPanels {...props}>{children}</CodeGroupPanels>
       </Container>
     </CodeGroupContext.Provider>

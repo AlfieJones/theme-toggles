@@ -34,7 +34,7 @@ const colorStyles = {
 
 const valueColorMap = {
   get: 'indigo',
-  post: 'sky',
+  css: 'sky',
   put: 'amber',
   delete: 'rose',
 }

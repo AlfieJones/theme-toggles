@@ -19,7 +19,7 @@ export function Toggles() {
       <Heading level={2} id="toggles">
         Toggles
       </Heading>
-      <div className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 min-[400px]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 min-[400px]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
         {Object.keys(toggles).map((name) => {
           const theme = themeFromSourceColor(
             argbFromHex(
@@ -28,7 +28,6 @@ export function Toggles() {
               })
             )
           )
-          console.log(getRGB(theme.schemes.dark.background))
           return (
             <Toggle
               key={name}

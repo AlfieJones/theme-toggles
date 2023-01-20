@@ -28,7 +28,7 @@ const InnerMoon = forwardRefWithAs(function InnerMoon<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__inner-moon--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
   const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);

@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import { Button } from '@/components/button'
+import { Button } from '@/components'
 import PageNavigation from './PageNav'
 
 function EditThisPage() {

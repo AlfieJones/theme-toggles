@@ -33,6 +33,7 @@ async function Transform(svg, componentName, path) {
       },
     ],
   });
+  
 
   const component = await svgr(
     data,

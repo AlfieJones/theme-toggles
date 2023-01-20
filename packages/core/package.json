@@ -11,7 +11,8 @@
     "dev": "gulp dev"
   },
   "files": [
-    "./dist/**/*.css"
+    "./dist/**/*.css",
+    "./assets/svgs/*.svg"
   ],
   "devDependencies": {
     "@babel/core": "^7.20.12",

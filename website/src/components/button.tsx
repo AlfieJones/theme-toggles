@@ -32,9 +32,10 @@ interface ButtonProps<
   arrow?: 'left' | 'right'
   href?: THref
   external?: TExternal
+  div?: boolean
 }
 
-export function Button<
+function Button<
   THref extends string | undefined,
   TExternal extends boolean | undefined
 >({
@@ -42,12 +43,15 @@ export function Button<
   className,
   external,
   children,
+  div,
   arrow,
   ...props
 }: ButtonProps<THref, TExternal> & Props<THref, TExternal>) {
   let Component: ElementType
 
-  if (props.href) {
+  if (div) {
+    Component = 'div'
+  } else if (props.href) {
     Component = external ? 'a' : Link
   } else {
     Component = 'button'
@@ -63,8 +67,7 @@ export function Button<
     <ArrowRightIcon
       className={clsx(
         'h-6 w-6 p-1',
-        variant === 'text' &&
-          'relative top-px transition group-hover:translate-x-1',
+        variant === 'text' && 'top-px transition group-hover:translate-x-1',
         arrow === 'left' && '-mr-.5 rotate-180',
         arrow === 'right' && '-ml-.5'
       )}
@@ -79,3 +82,5 @@ export function Button<
     </Component>
   )
 }
+
+export default Button

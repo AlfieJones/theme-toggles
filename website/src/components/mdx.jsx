@@ -1,10 +1,8 @@
 import Link from 'next/link'
 import clsx from 'clsx'
-
 import { Heading } from '@/components/Heading'
-
 export const a = Link
-export { Button } from '@/components/button'
+export { Button } from '@/components'
 export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
 
 export const h2 = function H2(props) {

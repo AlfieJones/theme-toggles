@@ -1,10 +1,10 @@
-const template = (variables, { tpl }) => {
+const template = ({ componentName, jsx, exports }, { tpl }) => {
   return tpl`
     import React, { Ref, MouseEventHandler } from "react";
     import { forwardRefWithAs } from "../utils";
     import { ToggleProps, ReactTag } from "../types";
     
-    const ${variables.componentName} = forwardRefWithAs(function ${variables.componentName}<TTag extends ReactTag = "button">(props: ToggleProps<TTag>, ref: Ref<Element>) {
+    const ${componentName} = forwardRefWithAs(function ${componentName}<TTag extends ReactTag = "button">(props: ToggleProps<TTag>, ref: Ref<Element>) {
           const {
               onToggle,
               toggled,
@@ -13,7 +13,7 @@ const template = (variables, { tpl }) => {
               title = "Toggle theme",
               forceMotion = false,
               onClick,
-              style ={},
+              style = {},
               idPrefix = "",
               as: Component = "button",
               "aria-label": ariaLabel = "Toggle theme",
@@ -31,7 +31,9 @@ const template = (variables, { tpl }) => {
             className,
           ].join(" ");
 
-        style["--theme-toggle__around--duration"] = \`\${duration}ms\`;
+        style["${`--theme-toggle__${componentName
+          .replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())
+          .replace("-", "")}--duration`}"] = \`\${duration}ms\`;
 
         if (Component === "button" && !rest.type) (rest as any).type = "button";
 
@@ -43,13 +45,13 @@ const template = (variables, { tpl }) => {
         return (
             <Component ref={ref} className={classes} aria-label={ariaLabel} title={title} onClick={handleClick} style={style} {...rest}>
               {children}
-              {${variables.jsx}}
+              {${jsx}}
             </Component>
         );
     }
   );
      
-    ${variables.exports};
+    ${exports};
     `;
 };
 export default template;

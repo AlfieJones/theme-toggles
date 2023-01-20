@@ -3,7 +3,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-import { Button } from '@/components/button'
+import { Button } from '@/components'
 import { Logo } from '@/components/logo'
 import {
   MobileNavigation,
@@ -12,6 +12,7 @@ import {
 import { useMobileNavigationStore } from '@/components/MobileNavigation'
 import { ModeToggle } from '@/components/ModeToggle'
 import { MobileSearch, Search } from '@/components/Search'
+import NoSsr from './NoSsr'
 
 function TopLevelNavItem({ href, children }) {
   return (
@@ -46,10 +47,12 @@ export const Header = forwardRef<any, any>(function Header({ className }, ref) {
           ? 'bg-white dark:bg-zinc-900'
           : 'bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]'
       )}
-      style={{
-        '--bg-opacity-light': bgOpacityLight,
-        '--bg-opacity-dark': bgOpacityDark,
-      } as any}
+      style={
+        {
+          '--bg-opacity-light': bgOpacityLight,
+          '--bg-opacity-dark': bgOpacityDark,
+        } as any
+      }
     >
       <div
         className={clsx(
@@ -74,7 +77,9 @@ export const Header = forwardRef<any, any>(function Header({ className }, ref) {
         <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
         <div className="flex gap-4">
           <MobileSearch />
-          <ModeToggle />
+          <NoSsr>
+            <ModeToggle />
+          </NoSsr>
         </div>
         <div className="hidden min-[416px]:contents">
           <Button href="#">Sponsor</Button>

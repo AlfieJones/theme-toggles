@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Logo } from '@/components/Logo'

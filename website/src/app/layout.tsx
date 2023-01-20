@@ -1,24 +1,17 @@
 'use client'
 
 import { MDXProvider } from '@mdx-js/react'
-import "@theme-toggles/react/css/bundle.min.css"
+import '@theme-toggles/core/dist/all/bundle.min.css'
 import * as mdxComponents from '@/components/mdx'
-import { useMobileNavigationStore } from '@/components/MobileNavigation'
-
+import 'highlight.js/styles/github-dark.css'
 import '@/styles/tailwind.css'
-import 'focus-visible'
 import { Header } from '@/components/Header'
 import { Logo } from '@/components/logo'
 import { Navigation } from '@/components/Navigation'
-import { Prose } from '@/components/Prose'
 import { SectionProvider } from '@/components/SectionProvider'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Footer } from './Footer'
-
-function onRouteChange() {
-  useMobileNavigationStore.getState().close()
-}
 
 const modeScript = `
   let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -55,10 +48,6 @@ const modeScript = `
   }
 `
 
-// Router.events.on('hashChangeStart', onRouteChange)
-// Router.events.on('routeChangeComplete', onRouteChange)
-// Router.events.on('routeChangeError', onRouteChange)
-
 export default function RootLayout({
   children,
 }: {
@@ -89,11 +78,7 @@ export default function RootLayout({
                 </div>
               </motion.header>
               <div className="relative px-4 sm:px-6 lg:px-8">
-                <main className="py-16">
-                  <Prose as="article" className={undefined}>
-                    {children}
-                  </Prose>
-                </main>
+                <main className="py-16 mx-auto max-w-7xl">{children}</main>
                 <Footer />
               </div>
             </div>

@@ -4,7 +4,8 @@ import { GridPattern } from '@/components/GridPattern'
 import * as toggles from '@theme-toggles/react'
 import Link from 'next/link'
 import { useState, useId } from 'react'
-import { Button } from './button'
+import { kebabCase } from 'lodash-es'
+import { Button } from '@/components'
 
 function TogglePattern({ mouseX, mouseY, ...gridProps }) {
   let maskImage = useMotionTemplate`radial-gradient(180px at ${mouseX}px ${mouseY}px, white, transparent)`
@@ -66,20 +67,25 @@ export function Toggle({ toggle, colorDark, colorLight }: any) {
 
       <TogglePattern mouseX={mouseX} mouseY={mouseY} />
       <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/7.5 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
-      <div className="relative z-0 w-full px-6 pt-6 pb-2 rounded-2xl">
+      <div className="relative w-full px-6 pt-6 pb-2 rounded-2xl">
         <Toggle
-          className="z-10 block w-24 h-24 mx-auto text-custom-dark dark:text-custom-dark"
+          className="relative z-10 block w-24 h-24 mx-auto text-custom-dark dark:text-custom-dark"
           idPrefix={id}
           toggled={toggled}
           onToggle={setToggle}
         />
-        <h3 className="mt-4 text-sm text-xl font-semibold leading-7 -z-10 text-zinc-900 dark:text-zinc-100">
-          <Link href={'/about'}>
-            <span className="absolute inset-0 -z-10 rounded-2xl" />
+        <h3 className="z-0 mt-4 text-sm text-xl font-semibold leading-7 text-zinc-900 dark:text-zinc-100">
+          <Link href={`/toggle/${kebabCase(toggle)}`}>
+            <span className="absolute inset-0 rounded-2xl" />
             {toggle}
           </Link>
         </h3>
-        <Button className="pointer-events-none text-custom-light dark:text-custom-dark" variant="text" arrow="right">
+        <Button
+          div
+          className="pointer-events-none text-custom-light dark:text-custom-dark"
+          variant="text"
+          arrow="right"
+        >
           See the code
         </Button>
       </div>
