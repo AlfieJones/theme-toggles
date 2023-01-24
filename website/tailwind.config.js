@@ -33,6 +33,9 @@ module.exports = {
       colors: {
         'custom-dark': withOpacityValue('--bg-dark'),
         'custom-light': withOpacityValue('--bg-light'),
+        zinc: {
+          950: '#151518',
+        },
       },
       boxShadow: {
         glow: '0 0 4px rgb(0 0 0 / 0.1)',

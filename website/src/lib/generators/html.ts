@@ -1,8 +1,8 @@
 import { readSVG } from './utils'
 import { format } from 'prettier'
 
-export function HTMLButton(name: string) {
-  const svg = readSVG(name)
+export async function HTMLButton(name: string) {
+  const svg = await readSVG(name)
   return format(
     `<button
     class="theme-toggle"
@@ -15,8 +15,8 @@ export function HTMLButton(name: string) {
   )
 }
 
-export function HTMLDiv(name: string) {
-  const svg = readSVG(name)
+export async function HTMLDiv(name: string) {
+  const svg = await readSVG(name)
   return format(
     `<div
       class="theme-toggle"
@@ -29,8 +29,8 @@ export function HTMLDiv(name: string) {
   )
 }
 
-export function HTMLCheckbox(name: string) {
-  const svg = readSVG(name)
+export async function HTMLCheckbox(name: string) {
+  const svg = await readSVG(name)
   return format(
     `<label class="theme-toggle" title="Toggle theme">
       <input type="checkbox" />

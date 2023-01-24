@@ -1,12 +1,5 @@
 import { HTMLButton, HTMLCheckbox } from '@/lib/generators/html'
-import {
-  Pre,
-  CodeGroup,
-  Code,
-  ToggleContextWrapper,
-  PreviewToggle,
-  ToggleConfiguration,
-} from './utils'
+import { ToggleContextWrapper, ToggleConfiguration } from './utils'
 import hljs from 'highlight.js'
 import { kebabCase } from 'lodash-es'
 import * as toggles from '@theme-toggles/react'
@@ -21,16 +14,20 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function Toggle({ params }: { params: { toggle: string } }) {
-  const btn = HTMLButton(params.toggle)
+export default async function Toggle({
+  params,
+}: {
+  params: { toggle: string }
+}) {
+  const btn = await HTMLButton(params.toggle)
   const btnCode = hljs.highlight(btn, {
     language: 'html',
   })
-  const div = HTMLButton(params.toggle)
+  const div = await HTMLButton(params.toggle)
   const divCode = hljs.highlight(div, {
     language: 'html',
   })
-  const checkbox = HTMLCheckbox(params.toggle)
+  const checkbox = await HTMLCheckbox(params.toggle)
   const checkboxCode = hljs.highlight(checkbox, {
     language: 'html',
   })

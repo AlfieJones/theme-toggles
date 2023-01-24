@@ -102,7 +102,7 @@ function CodePanelHeader({ tag, label }) {
   }
 
   return (
-    <div className="flex h-9 items-center gap-2 border-y border-t-transparent border-b-white/7.5 bg-zinc-900 bg-white/2.5 px-4 dark:border-b-white/5 dark:bg-white/1">
+    <div className="flex h-9 items-center gap-2 border-y border-t-transparent border-b-white/7.5 bg-zinc-200 px-4 dark:border-b-white/5 dark:bg-white/5">
       {tag && (
         <div className="flex dark">
           <Tag variant="small">{tag}</Tag>
@@ -112,7 +112,7 @@ function CodePanelHeader({ tag, label }) {
         <span className="h-0.5 w-0.5 rounded-full bg-zinc-500" />
       )}
       {label && (
-        <span className="font-mono text-xs text-zinc-400">{label}</span>
+        <span className="font-mono text-xs text-zinc-700 dark:text-zinc-400">{label}</span>
       )}
     </div>
   )
@@ -162,7 +162,7 @@ function CodeGroupHeader({ title, children }: CodeGroupProps) {
   }
 
   return (
-    <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b border-zinc-700 bg-zinc-800 px-4 dark:border-zinc-800 dark:bg-transparent">
+    <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b border-zinc-700 bg-zinc-700 px-4 dark:border-zinc-800 dark:bg-transparent">
       {title && (
         <h3 className="pt-3 mr-auto text-xs font-semibold text-white">
           {title}
@@ -177,7 +177,7 @@ function CodeGroupHeader({ title, children }: CodeGroupProps) {
                   'relative py-3 transition focus:[&:not(:focus-visible)]:outline-none',
                   selected
                     ? 'border-indigo-500 text-indigo-400'
-                    : 'border-transparent text-zinc-400 hover:text-zinc-300'
+                    : 'border-transparent text-white hover:text-zinc-200 dark:text-zinc-400 dark:hover:text-zinc-300'
                 )
               }
             >
@@ -320,7 +320,7 @@ export function CodeGroup({
       <Container
         onChange={onChange}
         {...containerProps}
-        className="my-6 overflow-hidden shadow-md not-prose rounded-2xl bg-zinc-900 dark:ring-1 dark:ring-white/10"
+        className="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-100 shadow-md dark:bg-white/[0.01] dark:ring-1 dark:ring-white/10"
       >
         <CodeGroupHeader title={title}>{children}</CodeGroupHeader>
         <CodeGroupPanels {...props}>{children}</CodeGroupPanels>

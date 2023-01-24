@@ -2,7 +2,6 @@ import { Button } from '@/components'
 import { navigation } from '@/components/Navigation'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-   
 
 function PageLink({ label, page, previous = false }) {
   return (
@@ -19,7 +18,7 @@ function PageLink({ label, page, previous = false }) {
         href={page.href}
         tabIndex={-1}
         aria-hidden="true"
-        className="text-base font-semibold text-zinc-900 transition hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300"
+        className="text-base font-semibold transition text-zinc-900 hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300"
       >
         {page.title}
       </Link>
@@ -29,7 +28,7 @@ function PageLink({ label, page, previous = false }) {
 
 export default function PageNavigation() {
   const pathname = usePathname()
-  let allPages = navigation.flatMap((group) => group.links)
+  let allPages = navigation.flatMap((group) => group?.links)
   let currentPageIndex = allPages.findIndex((page) => page.href === pathname)
 
   if (currentPageIndex === -1) {
@@ -39,9 +38,7 @@ export default function PageNavigation() {
   let previousPage = allPages[currentPageIndex - 1]
   let nextPage = allPages[currentPageIndex + 1]
 
-  if (!previousPage && !nextPage) {
-    return null
-  }
+  if (!previousPage && !nextPage) return null
 
   return (
     <div className="flex">
@@ -51,7 +48,7 @@ export default function PageNavigation() {
         </div>
       )}
       {nextPage && (
-        <div className="ml-auto flex flex-col items-end gap-3">
+        <div className="flex flex-col items-end gap-3 ml-auto">
           <PageLink label="Next" page={nextPage} />
         </div>
       )}

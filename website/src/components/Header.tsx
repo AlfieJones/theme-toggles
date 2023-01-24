@@ -14,19 +14,6 @@ import { ModeToggle } from '@/components/ModeToggle'
 import { MobileSearch, Search } from '@/components/Search'
 import NoSsr from './NoSsr'
 
-function TopLevelNavItem({ href, children }) {
-  return (
-    <li>
-      <Link
-        href={href}
-        className="text-sm leading-5 transition text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-      >
-        {children}
-      </Link>
-    </li>
-  )
-}
-
 export const Header = forwardRef<any, any>(function Header({ className }, ref) {
   let { isOpen: mobileNavIsOpen } = useMobileNavigationStore()
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
@@ -69,9 +56,16 @@ export const Header = forwardRef<any, any>(function Header({ className }, ref) {
         </Link>
       </div>
       <div className="flex items-center gap-5">
-        <nav className="hidden md:block">
+        <nav className="hidden sm:block">
           <ul role="list" className="flex items-center gap-8">
-            <TopLevelNavItem href="#">Github</TopLevelNavItem>
+            <li>
+              <Link
+                href='/'
+                className="text-sm leading-5 transition text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              >
+                Sponsor us
+              </Link>
+            </li>
           </ul>
         </nav>
         <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
@@ -82,7 +76,7 @@ export const Header = forwardRef<any, any>(function Header({ className }, ref) {
           </NoSsr>
         </div>
         <div className="hidden min-[416px]:contents">
-          <Button href="#">Sponsor</Button>
+          <Button href="#">Github</Button>
         </div>
       </div>
     </motion.div>

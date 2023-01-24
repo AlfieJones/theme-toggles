@@ -8,7 +8,6 @@ import {
   redFromArgb,
   themeFromSourceColor,
 } from '@material/material-color-utilities'
-import stc from 'string-to-color'
 
 const getRGB = (argb: number) =>
   `${redFromArgb(argb)} ${greenFromArgb(argb)} ${blueFromArgb(argb)}`
@@ -16,7 +15,7 @@ const getRGB = (argb: number) =>
 export function Toggles() {
   return (
     <div className="mx-auto">
-      <Heading level={2} id="toggles">
+      <Heading id="toggles">
         Toggles
       </Heading>
       <div className="mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 min-[400px]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">

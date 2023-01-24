@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from 'react'
 import Link, { LinkProps } from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
 
@@ -59,7 +59,7 @@ function VisibleSectionHighlight({ group, pathname }) {
     ? Math.max(1, visibleSections.length) * itemHeight
     : itemHeight
   let top =
-    group.links.findIndex((link) => link.href === pathname) * itemHeight +
+    group.links?.findIndex((link) => link.href === pathname) * itemHeight +
     firstVisibleSectionIndex * itemHeight
 
   return (
@@ -77,7 +77,7 @@ function VisibleSectionHighlight({ group, pathname }) {
 function ActivePageMarker({ group, pathname }) {
   let itemHeight = remToPx(2)
   let offset = remToPx(0.25)
-  let activePageIndex = group.links.findIndex((link) => link.href === pathname)
+  let activePageIndex = group.links?.findIndex((link) => link.href === pathname)
   let top = offset + activePageIndex * itemHeight
 
   return (
@@ -92,7 +92,11 @@ function ActivePageMarker({ group, pathname }) {
   )
 }
 
-function NavigationGroup({ group, className }) {
+interface NavigationGroup {
+  group: any
+  className?: string
+}
+function NavigationGroup({ group, className }: NavigationGroup) {
   // If this is the mobile navigation then we always render the initial
   // state, so that the state does not change during the close animation.
   // The state will still update when we re-open (re-render) the navigation.
@@ -102,8 +106,10 @@ function NavigationGroup({ group, className }) {
     isInsideMobileNavigation
   )
 
+  const pathname = usePathname()
+
   let isActiveGroup =
-    group.links.findIndex((link) => link.href === router.pathname) !== -1
+    group.links?.findIndex((link) => link.href === pathname) !== -1
 
   return (
     <li className={clsx('relative mt-6', className)}>
@@ -116,7 +122,7 @@ function NavigationGroup({ group, className }) {
       <div className="relative pl-2 mt-3">
         <AnimatePresence initial={!isInsideMobileNavigation}>
           {isActiveGroup && (
-            <VisibleSectionHighlight group={group} pathname={router.pathname} />
+            <VisibleSectionHighlight group={group} pathname={pathname} />
           )}
         </AnimatePresence>
         <motion.div
@@ -125,17 +131,17 @@ function NavigationGroup({ group, className }) {
         />
         <AnimatePresence initial={false}>
           {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={router.pathname} />
+            <ActivePageMarker group={group} pathname={pathname} />
           )}
         </AnimatePresence>
         <ul role="list" className="border-l border-transparent">
-          {group.links.map((link) => (
+          {group.links?.map((link) => (
             <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={link.href === router.pathname}>
+              <NavLink href={link.href} active={link.href === pathname}>
                 {link.title}
               </NavLink>
               <AnimatePresence mode="popLayout" initial={false}>
-                {link.href === router.pathname && sections.length > 0 && (
+                {link.href === pathname && sections.length > 0 && (
                   <motion.ul
                     role="list"
                     initial={{ opacity: 0 }}
@@ -173,6 +179,7 @@ export const navigation = [
   {
     title: 'Overview',
     links: [
+      { title: 'Toggles', href: '/' },
       { title: 'About', href: '/about' },
       { title: 'Supporting Us', href: '/supporting-us' },
       { title: 'Changelog', href: '/changelog' },
@@ -181,10 +188,10 @@ export const navigation = [
   {
     title: 'Framework Guides',
     links: [
-      { title: 'HTML', href: '/html' },
-      { title: 'React', href: '/quickstart' },
-      { title: 'Svelte', href: '/sdks' },
-      { title: 'Vue', href: '/authentication' },
+      { title: 'HTML', href: '/docs/html' },
+      { title: 'React', href: '/docs/react' },
+      { title: 'Svelte', href: '/docs/svelte' },
+      { title: 'Vue', href: '/docs/vue' },
     ],
   },
 ]
@@ -193,21 +200,17 @@ export function Navigation(props) {
   return (
     <nav {...props}>
       <ul role="list">
-        <li>
+        <li className="md:hidden">
           <Link
-            href={'/'}
+            href="/"
             className="block py-1 text-sm transition text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
           >
-            Toggles
+            Sponsor us
           </Link>
         </li>
 
-        {navigation.map((group, groupIndex) => (
-          <NavigationGroup
-            key={group.title}
-            group={group}
-            className={groupIndex === 0 && 'md:mt-0'}
-          />
+        {navigation.map((group) => (
+          <NavigationGroup key={group.title} group={group} />
         ))}
         <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
           <Button
@@ -215,7 +218,7 @@ export function Navigation(props) {
             variant="filled"
             className="w-full"
           >
-            Sponsor us
+            Github
           </Button>
         </li>
       </ul>

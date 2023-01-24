@@ -50,7 +50,7 @@ const plugin = (_, opts) => ({
         'attributes',
           t.jsxAttribute(
             t.jsxIdentifier(attr),
-            values[attr as 'width' | 'height'],
+            values[attr],
           ),
       )
     },

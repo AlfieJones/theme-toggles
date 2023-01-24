@@ -1,5 +1,5 @@
 export const description =
-  'On this page, we will dive into the different contact endpoints you can use to manage contacts programmatically. We will look at how to query, create, update, and delete contacts.'
+  "Framework agnostic guide to adding Theme Toggles to your site";
 
 # HTML
 
@@ -18,13 +18,15 @@ It's recommend that you use a package manager to install Theme Toggles. This wil
 
 <CodeGroup title="Install"  >
 
-    ```bash {{ title: 'npm' }}
+    ```bash {{ language: 'console', title: 'npm' }}
     npm install @theme-toggles/core
     ```
-    ```bash {{ title: 'yarn' }}
+
+    ```bash {{ language: 'console', title: 'yarn' }}
     yarn add @theme-toggles/core
     ```
-    ```bash {{ title: 'pnpm' }}
+
+    ```bash {{ language: 'console', title: 'pnpm' }}
     pnpm install @theme-toggles/core
     ```
 
@@ -42,7 +44,7 @@ Replace `{{toggle name}}` with the name of the Theme Toggle you want to use and 
     ```
     ```html {{ title: 'unpkg' }}
     <link rel="stylesheet" href="https://unpkg.com/npm/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
-    
+
     ```
     ```html {{ title: 'cdnjs' }}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">

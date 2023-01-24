@@ -6,6 +6,7 @@ import { useInView } from 'framer-motion'
 import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
 import { remToPx } from '@/lib/remToPx'
+import clsx from 'clsx'
 
 function AnchorIcon(props) {
   return (
@@ -87,7 +88,7 @@ export function Heading({
       <Component
         ref={ref}
         id={anchor ? id : undefined}
-        className={tag || label ? 'mt-2 scroll-mt-32' : 'scroll-mt-24'}
+        className={clsx("text-zinc-800 dark:text-zinc-100", tag || label ? 'mt-2 scroll-mt-32' : 'scroll-mt-24')}
         {...props}
       >
         {anchor ? (

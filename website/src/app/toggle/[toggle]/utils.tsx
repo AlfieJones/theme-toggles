@@ -31,10 +31,6 @@ export function ToggleContextWrapper({
   )
 }
 
-export function PreviewToggle({ code }: { code: string }) {
-  return
-}
-
 interface Code {
   code: string
   highlighted: string
@@ -51,7 +47,6 @@ export function ToggleConfiguration({
   div: Code
   checkbox: Code
 }) {
-  const [code, setCode] = useState(btn.code)
   const [toggled, onToggle] = useState(false)
 
   const Toggle = toggles[upperFirst(camelCase(toggle))]
@@ -61,9 +56,9 @@ export function ToggleConfiguration({
   const [color, setColor] = useState('#6366f1')
 
   return (
-    <div className="flex flex-col">
-      <div className="relative flex items-center justify-center w-full gap-16 pt-8">
-        <div className='pr-16'>
+    <div className="z-0 flex flex-col">
+      <div className="relative flex gap-16 px-8 pt-8 pb-10 mt-4 -mb-10 bg-white border-t grow rounded-t-2xl border-x border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800">
+        <div className="flex items-center justify-center w-full pr-16">
           <Toggle
             idPrefix="preview"
             style={{ color }}
@@ -75,7 +70,7 @@ export function ToggleConfiguration({
           />
         </div>
 
-        <div className="flex flex-col max-w-sm py-4 space-y-4 grow">
+        <div className="flex flex-col w-full max-w-sm py-4 space-y-4 align-end grow">
           <Switch.Group className="flex justify-between w-full" as="div">
             <Switch.Label className="block text-sm text-zinc-800 dark:text-zinc-200">
               Reverse
@@ -92,8 +87,8 @@ export function ToggleConfiguration({
               <span className="sr-only">Reverse toggle</span>
               <span
                 className={clsx(
-                  'inline-block h-4 w-4 transform rounded-full bg-white transition',
-                  reversed ? 'translate-x-6' : 'translate-x-1'
+                  'inline-block  transform rounded-full bg-white transition-all',
+                  reversed ? 'h-4 w-4 translate-x-6' : 'h-3 w-3 translate-x-1'
                 )}
               />
             </Switch>
@@ -131,58 +126,43 @@ export function ToggleConfiguration({
               step={50}
               id="duration-slider"
             >
-              <Slider.Track className="relative h-1 rounded-full grow bg-zinc-300 dark:bg-zinc-600">
+              <Slider.Track className="relative h-1 rounded-full cursor-pointer grow bg-zinc-300 dark:bg-zinc-600">
                 <Slider.Range className="absolute h-full bg-indigo-500 rounded-full" />
               </Slider.Track>
-              <Slider.Thumb className="block w-5 h-5 bg-indigo-500 rounded-full shadow-md focus:outline-none focus:ring focus:ring-indigo-400" />
+              <Slider.Thumb className="block w-5 h-5 bg-indigo-500 rounded-full shadow-md cursor-grab focus:outline-none focus:ring focus:ring-indigo-400" />
             </Slider.Root>
           </div>
         </div>
       </div>
 
-      <CodeGroup
-        title="HTML"
-        tag="css"
-        className="scrollbar max-h-[40rem]"
-        onChange={(i) => {
-          switch (i) {
-            case 0:
-              setCode(btn.code)
-              break
-            case 1:
-              setCode(div.code)
-              break
-            case 2:
-              setCode(checkbox.code)
-              break
-          }
-        }}
-      >
-        <Pre
-          code={btn.code}
-          label={`import @theme-toggles/core/dist/base/${toggle}.css`}
-          title="button"
-          language="html"
-        >
-          <Code>{btn.highlighted}</Code>
-        </Pre>
-        <Pre
-          code={div.code}
-          label={`import @theme-toggles/core/dist/base/${toggle}.css`}
-          title="div"
-          language="html"
-        >
-          <Code>{div.highlighted}</Code>
-        </Pre>
-        <Pre
-          code={checkbox.code}
-          label={`import @theme-toggles/core/dist/checkbox/${toggle}.css`}
-          title="checkbox"
-          language="html"
-        >
-          <Code>{checkbox.highlighted}</Code>
-        </Pre>
-      </CodeGroup>
+      <div className='z-10'>
+        <CodeGroup title="HTML" tag="css" className="scrollbar max-h-[40rem] !text-zinc-900 dark:!text-zinc-100">
+          <Pre
+            code={btn.code}
+            label={`import @theme-toggles/core/dist/base/${toggle}.css`}
+            title="button"
+            language="html"
+          >
+            <Code>{btn.highlighted}</Code>
+          </Pre>
+          <Pre
+            code={div.code}
+            label={`import @theme-toggles/core/dist/base/${toggle}.css`}
+            title="div"
+            language="html"
+          >
+            <Code>{div.highlighted}</Code>
+          </Pre>
+          <Pre
+            code={checkbox.code}
+            label={`import @theme-toggles/core/dist/checkbox/${toggle}.css`}
+            title="checkbox"
+            language="html"
+          >
+            <Code>{checkbox.highlighted}</Code>
+          </Pre>
+        </CodeGroup>
+      </div>
     </div>
   )
 }

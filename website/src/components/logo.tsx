@@ -8,7 +8,7 @@ export function Logo({
   return (
     <h1
       className={clsx(
-        'bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text font-bold text-xl text-transparent',
+        'bg-gradient-to-r from-purple-500 to-blue-400 dark:from-purple-600 dark:to-blue-500 bg-clip-text font-bold text-md sm:text-xl text-transparent',
         className
       )}
       {...props}

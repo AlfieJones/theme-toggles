@@ -92,27 +92,3 @@ export function Toggle({ toggle, colorDark, colorLight }: any) {
     </div>
   )
 }
-
-function getColorDark() {
-  return (
-    'hsl(' +
-    360 * Math.random() +
-    ',' +
-    (25 + 30 * Math.random()) +
-    '%,' +
-    (85 + 2 * Math.random()) +
-    '%)'
-  )
-}
-
-function getColor() {
-  return (
-    'hsl(' +
-    360 * Math.random() +
-    ',' +
-    (25 + 30 * Math.random()) +
-    '%,' +
-    (85 + 2 * Math.random()) +
-    '%)'
-  )
-}
