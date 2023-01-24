@@ -4,9 +4,6 @@
   "license": "MIT",
   "repository": "https://github.com/AlfieJones/theme-toggles",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/alfiejones"
