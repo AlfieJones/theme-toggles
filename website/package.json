@@ -29,6 +29,7 @@
     "focus-visible": "^5.2.0",
     "framer-motion": "7.8.1",
     "highlight.js": "^11.7.0",
+    "lodash-es": "^4.17.21",
     "mdast-util-to-string": "^3.1.0",
     "mdx-annotations": "^0.1.1",
     "next": "^13.1.2",
