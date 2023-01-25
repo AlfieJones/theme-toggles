@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const darkSide = forwardRefWithAs(function darkSide<
+const DarkSide = forwardRefWithAs(function DarkSide<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -28,7 +28,7 @@ const darkSide = forwardRefWithAs(function darkSide<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__dark-side--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
   const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
@@ -60,4 +60,4 @@ const darkSide = forwardRefWithAs(function darkSide<
     </Component>
   );
 });
-export default darkSide;
+export default DarkSide;

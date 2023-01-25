@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const innerMoon = forwardRefWithAs(function innerMoon<
+const InnerMoon = forwardRefWithAs(function InnerMoon<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -28,7 +28,7 @@ const innerMoon = forwardRefWithAs(function innerMoon<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__inner-moon--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
   const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
@@ -61,4 +61,4 @@ const innerMoon = forwardRefWithAs(function innerMoon<
     </Component>
   );
 });
-export default innerMoon;
+export default InnerMoon;

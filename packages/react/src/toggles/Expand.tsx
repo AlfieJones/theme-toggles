@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const expand = forwardRefWithAs(function expand<
+const Expand = forwardRefWithAs(function Expand<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -28,7 +28,7 @@ const expand = forwardRefWithAs(function expand<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__expand--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
   const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
@@ -66,4 +66,4 @@ const expand = forwardRefWithAs(function expand<
     </Component>
   );
 });
-export default expand;
+export default Expand;

@@ -1,7 +1,7 @@
 import React, { Ref, MouseEventHandler } from "react";
 import { forwardRefWithAs } from "../utils";
 import { ToggleProps, ReactTag } from "../types";
-const lightbulb = forwardRefWithAs(function lightbulb<
+const Lightbulb = forwardRefWithAs(function Lightbulb<
   TTag extends ReactTag = "button"
 >(props: ToggleProps<TTag>, ref: Ref<Element>) {
   const {
@@ -28,7 +28,7 @@ const lightbulb = forwardRefWithAs(function lightbulb<
     reversed ? "theme-toggle--reversed" : undefined,
     className,
   ].join(" ");
-  style["--theme-toggle__around--duration"] = `${duration}ms`;
+  style["--theme-toggle__lightbulb--duration"] = `${duration}ms`;
   if (Component === "button" && !rest.type) (rest as any).type = "button";
   const handleClick: MouseEventHandler<TTag> = (e) => {
     onToggle && onToggle(!toggled);
@@ -79,4 +79,4 @@ const lightbulb = forwardRefWithAs(function lightbulb<
     </Component>
   );
 });
-export default lightbulb;
+export default Lightbulb;

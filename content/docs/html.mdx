@@ -1,0 +1,55 @@
+export const description =
+  "Framework agnostic guide to adding Theme Toggles to your site";
+
+# HTML
+
+The most basic and flexible way to add Theme Toggles to your site. This guide will walk you through the process of adding a Theme Toggle to your site regardless of your framework. All our framework integrations are built on top of this method.
+
+<Note>
+  If you're using a framework that has built-in support for Theme Toggles, it's
+  recommended that you use that instead.
+</Note>
+
+## Installation
+
+It's recommend that you use a package manager to install Theme Toggles. This will make it easier to update to the latest version.
+
+### npm registry
+
+<CodeGroup title="Install"  >
+
+    ```bash {{ language: 'bash', title: 'npm' }}
+    npm install @theme-toggles/core
+    ```
+
+    ```bash {{ language: 'bash', title: 'yarn' }}
+    yarn add @theme-toggles/core
+    ```
+
+    ```bash {{ language: 'bash', title: 'pnpm' }}
+    pnpm install @theme-toggles/core
+    ```
+
+</CodeGroup>
+
+### CDN
+
+To keep your bundle size small, we export each Theme Toggle as a separate package. You can use a CDN to include the Theme Toggle you want to use.
+Replace `{{toggle name}}` with the name of the Theme Toggle you want to use and `{{variant}}` with the variant you want to use. The available variants are found in the [Variants](#variants) section.
+
+<CodeGroup title="CDN"  >
+
+    ```html {{ title: 'jsDelivr', language: 'html' }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
+    ```
+    ```html {{ title: 'unpkg', language: 'html' }}
+    <link rel="stylesheet" href="https://unpkg.com/npm/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
+
+    ```
+    ```html {{ title: 'cdnjs', language: 'html' }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/theme-toggles@4.10.1/css/{{variant}}/{{toggle name}}.min.css">
+    ```
+
+</CodeGroup>
+
+## Variants

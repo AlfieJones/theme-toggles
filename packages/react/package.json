@@ -16,7 +16,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "gulp"
+    "build": "gulp && tsc --emitDeclarationOnly --outDir ./dist"
   },
   "funding": {
     "type": "github",
@@ -45,11 +45,12 @@
     "@svgr/babel-plugin-add-jsx-attribute": "^6.0.0",
     "@svgr/cli": "^6.2.1",
     "@svgr/core": "^6.5.1-rc.1",
-    "@theme-toggles/core": "5.0.0-rc.1",
     "@svgr/plugin-jsx": "^6.5.1",
     "@svgr/plugin-prettier": "^6.5.1",
+    "@theme-toggles/core": "5.0.0-rc.1",
     "@types/react": "^18.0.26",
     "babel-loader": "^8.3.0",
+    "babel-plugin-transform-svg-component": "^8.0.11",
     "esbuild": "^0.17.0",
     "gulp": "^4.0.2",
     "lodash-es": "^4.17.21",
