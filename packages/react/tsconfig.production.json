@@ -1,6 +1,6 @@
 {
     "extends": "./configs/base",
     "exclude": [
-        "../src/**/*.stories.tsx"
+        "./src/**/*.stories.tsx"
     ]
 }
