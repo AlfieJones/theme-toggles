@@ -135,6 +135,7 @@ importers:
       '@tailwindcss/typography': ^0.5.8
       '@theme-toggles/core': 5.0.0-rc.1
       '@theme-toggles/react': 5.0.0-rc.1
+      '@types/lodash-es': ^4.17.6
       acorn: ^8.8.1
       algoliasearch: ^4.14.2
       autoprefixer: ^10.4.7
@@ -202,6 +203,7 @@ importers:
       unist-util-visit: 4.1.2
       zustand: 4.3.2_react@18.2.0
     devDependencies:
+      '@types/lodash-es': 4.17.6
       eslint: 8.26.0
       eslint-config-next: 13.0.2_eslint@8.26.0
       prettier: 2.8.3
@@ -7143,6 +7145,12 @@ packages:
     dependencies:
       '@types/fined': 1.1.3
       '@types/node': 18.11.18
+    dev: true
+
+  /@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+    dependencies:
+      '@types/lodash': 4.14.191
     dev: true
 
   /@types/lodash/4.14.191:
