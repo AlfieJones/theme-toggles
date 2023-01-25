@@ -7,46 +7,55 @@ import { visit } from 'unist-util-visit'
 import { mdxAnnotations } from 'mdx-annotations'
 import hljs from 'highlight.js'
 
-let highlighter
+export const dynamicParams = false
 
 function rehypeShiki() {
-  return async (tree) => {
-    highlighter = highlighter ?? (await hljs)
-
+  return (tree) => {
     visit(tree, 'element', (node) => {
       if (node.tagName === 'pre' && node.children[0]?.tagName === 'code') {
         let codeNode = node.children[0]
         let textNode = codeNode.children[0]
 
         node.properties.code = textNode.value
+        const language = node.properties.annotation
+          .replaceAll(' ', '')
+          .match(/(language:'\w*')/g)
 
-        if (node.properties.annotation.language) {
+        if (language) {
           textNode.value = hljs.highlight(node.properties.code, {
-            language: node.properties.annotation.language,
+            language: language[0]
+              .replaceAll("'", '')
+              .replaceAll('language:', ''),
           }).value
         } else {
           textNode.value = hljs.highlightAuto(node.properties.code).value
         }
-
-        console.log(node)
-
-        // if (node.properties.language) {
-        //   let tokens = highlighter.codeToThemedTokens(
-        //     textNode.value,
-        //     node.properties.language
-        //   )
-
-        //   textNode.value = shiki.renderToHtml(tokens, {
-        //     elements: {
-        //       pre: ({ children }) => children,
-        //       code: ({ children }) => children,
-        //       line: ({ children }) => `<span>${children}</span>`,
-        //     },
-        //   })
-        // }
       }
     })
   }
+}
+
+// recursively read all files in a directory
+async function readDir(dir: string) {
+  const dirents = await fs.readdir(dir, { withFileTypes: true })
+  const files = await Promise.all(
+    dirents.map((dirent) => {
+      const res = path.resolve(dir, dirent.name)
+      return dirent.isDirectory() ? readDir(res) : res
+    })
+  )
+  return Array.prototype.concat(...files)
+}
+
+export async function generateStaticParams() {
+  const files = await readDir(path.join(process.cwd(), '..', 'content'))
+  return files.map((file) => ({
+    page: file
+      .replace(path.join(process.cwd(), '..', 'content'), '')
+      .replace('.mdx', '')
+      .split(path.sep)
+      .slice(1),
+  }))
 }
 
 async function getPageContent(route: string[]) {
@@ -60,7 +69,7 @@ async function getPageContent(route: string[]) {
 export default async function Page({ params }: { params: { page: string[] } }) {
   const data = await getPageContent(params.page)
   return (
-    <article className="prose dark:prose-invert">
+    <article className="pt-6 prose dark:prose-invert">
       {/** @ts-ignore */}
       <MDXRemote
         options={{
