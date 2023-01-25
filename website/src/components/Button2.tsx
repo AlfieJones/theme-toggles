@@ -1,4 +1,4 @@
-import Link, { LinkProps } from 'next/link'
+import Link from 'next/link'
 import clsx from 'clsx'
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
