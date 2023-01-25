@@ -17,6 +17,7 @@
     "url": "https://ajones.uk"
   },
   "devDependencies": {
-    "lerna": "^6.4.1"
+    "lerna": "^6.4.1",
+    "next": "^13.1.2"
   }
 }
