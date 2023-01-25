@@ -16,8 +16,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "gulp && tsc --emitDeclarationOnly --outDir ./dist",
-    "build-frameworks": "gulp && tsc --emitDeclarationOnly --outDir ./dist"
+    "build": "gulp && tsc --emitDeclarationOnly --project tsconfig.production.json --outDir ./dist",
+    "build-frameworks": "gulp && tsc --emitDeclarationOnly --project tsconfig.production.json --outDir ./dist"
   },
   "funding": {
     "type": "github",

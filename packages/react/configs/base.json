@@ -13,5 +13,5 @@
     "rootDirs": ["../src"],
     "outDir": "../dist"
   },
-  "include": ["../src/**/*", "../../../build/**/*", "../typings"]
+  "include": ["../src/**/*"]
 }
