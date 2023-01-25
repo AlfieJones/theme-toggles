@@ -9,7 +9,8 @@
     "url": "https://github.com/sponsors/alfiejones"
   },
   "scripts": {
-    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
+    "build": "lerna run build-core & pnpm lerna run build-frameworks"
   },
   "author": {
     "name": "Alfie Jones",

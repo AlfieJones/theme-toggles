@@ -16,7 +16,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "gulp && tsc --emitDeclarationOnly --outDir ./dist"
+    "build": "gulp && tsc --emitDeclarationOnly --outDir ./dist",
+    "build-frameworks": "gulp && tsc --emitDeclarationOnly --outDir ./dist"
   },
   "funding": {
     "type": "github",
@@ -61,5 +62,7 @@
     "svgo": "^3.0.2",
     "typescript": "^4.5.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
 }

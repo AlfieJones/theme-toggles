@@ -8,6 +8,7 @@
     "build-storybook": "build-storybook",
     "plop": "plop",
     "build": "gulp",
+    "build-core": "gulp",
     "dev": "gulp dev"
   },
   "files": [
