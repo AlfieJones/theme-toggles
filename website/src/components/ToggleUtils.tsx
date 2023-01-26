@@ -69,7 +69,7 @@ export function Toggle({ toggle, colorDark, colorLight }: any) {
       <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-zinc-900/7.5 group-hover:ring-zinc-900/10 dark:ring-white/10 dark:group-hover:ring-white/20" />
       <div className="relative w-full px-6 pt-6 pb-2 rounded-2xl">
         <Toggle
-          className="relative z-10 block w-24 h-24 mx-auto text-custom-dark dark:text-custom-dark"
+          className="relative z-10 block mx-auto text-[8rem] text-custom-dark dark:text-custom-dark"
           idPrefix={id}
           toggled={toggled}
           onToggle={setToggle}

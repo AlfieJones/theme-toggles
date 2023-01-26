@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="1em"
+   width="1em"
    class="theme-toggle__expand">
    <clipPath id="theme-toggle__expand__cutout">
       <path d="M0-11h19A1 1 0 0036 2v22H0Z" />

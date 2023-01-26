@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="theme-toggle__lightbulb"
+  height="1em" width="1em"
   stroke-width=".7" stroke="currentColor" fill="currentColor" stroke-linecap="round"
   viewBox="0 0 32 32">
   <path stroke-width="0"

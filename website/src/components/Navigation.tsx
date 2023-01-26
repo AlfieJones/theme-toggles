@@ -189,9 +189,7 @@ export const navigation = [
     title: 'Framework Guides',
     links: [
       { title: 'HTML', href: '/docs/html' },
-      { title: 'React', href: '/docs/react' },
-      { title: 'Svelte', href: '/docs/svelte' },
-      { title: 'Vue', href: '/docs/vue' },
+      { title: 'React', href: '/docs/react' }
     ],
   },
 ]

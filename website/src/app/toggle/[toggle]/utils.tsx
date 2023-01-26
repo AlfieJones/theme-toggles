@@ -64,7 +64,7 @@ export function ToggleConfiguration({
             style={{ color }}
             reversed={reversed}
             duration={duration}
-            className="w-32 h-32"
+            className="text-[10rem]"
             toggled={toggled}
             onToggle={onToggle}
           />
