@@ -21,8 +21,7 @@ const _createButton = ({
     `${duration}ms`
   );
   btn.className = clsx("theme-toggle", reversed && "theme-toggle--reversed");
-  btn.style.setProperty("height", size);
-  btn.style.setProperty("width", size);
+  btn.style.setProperty("font-size", size);
   btn.style.setProperty("margin", "1rem");
 
   btn.addEventListener("click", onClick);

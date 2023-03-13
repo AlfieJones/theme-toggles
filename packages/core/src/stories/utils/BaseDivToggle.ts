@@ -18,8 +18,7 @@ const _createDiv = ({
   div.ariaLabel = "Toggle theme";
   div.style.setProperty(`--theme-toggle__${name}-duration`, `${duration}ms`);
   div.className = clsx("theme-toggle", reversed && "theme-toggle--reversed");
-  div.style.setProperty("width", size);
-  div.style.setProperty("height", size);
+  div.style.setProperty("font-size", size);
   div.style.setProperty("margin", "1rem");
   div.ariaLabel = "Toggle theme";
 

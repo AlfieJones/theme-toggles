@@ -1,0 +1,14 @@
+{
+  "index": {
+    "type": "page",
+    "title": "Theme Toggles",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "type": "page"
+  }
+}

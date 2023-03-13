@@ -15,18 +15,17 @@ const getRGB = (argb: number) =>
 export function Toggles() {
   return (
     <div className="mx-auto">
-      <Heading id="toggles">
-        Toggles
-      </Heading>
+      <Heading id="toggles">Toggles</Heading>
       <div className="mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 dark:border-white/5 min-[400px]:grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
         {Object.keys(toggles).map((name) => {
           const theme = themeFromSourceColor(
             argbFromHex(
               '#000000'.replace(/0/g, function () {
-                return (~~(Math.random() * 16)).toString(16)
+                return ((Math.random() * 16)).toString(16)
               })
             )
           )
+
           return (
             <Toggle
               key={name}

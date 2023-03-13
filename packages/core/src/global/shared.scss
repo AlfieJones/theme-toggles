@@ -1,9 +1,22 @@
 @import "../variables.scss";
 
+@if $button {
+  button.theme-toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    &:focus-visible {
+      outline: currentColor solid;
+    }
+  }
+}
+
 .theme-toggle {
-  all: unset;
-  cursor: pointer;
+  line-height: 0;
+
   @if $checkbox {
+    cursor: pointer;
+    
     input[type="checkbox"],
     .theme-toggle-sr {
       position: absolute;
@@ -15,6 +28,12 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border-width: 0;
+    }
+
+    input[type="checkbox"] {
+      &:focus-visible + svg {
+        outline: currentColor solid;
+      }
     }
   }
 }

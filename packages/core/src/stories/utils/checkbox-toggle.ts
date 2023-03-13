@@ -18,8 +18,7 @@ const _createCheckbox = ({
   label.ariaLabel = "Toggle theme";
   label.style.setProperty(`--theme-toggle__${name}-duration`, `${duration}ms`);
   label.className = clsx("theme-toggle", reversed && "theme-toggle--reversed");
-  label.style.setProperty("height", size);
-  label.style.setProperty("width", size);
+  label.style.setProperty("font-size", size);
   label.style.setProperty("margin", "1rem");
   label.ariaLabel = "Toggle theme";
 

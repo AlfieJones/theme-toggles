@@ -1,0 +1,26 @@
+{
+  "introduction": "Introduction",
+  "-- Guides": {
+    "type": "separator",
+    "title": "Guides"
+  },
+  "framework": "Frameworks",
+  "toggle": "Toggles",
+  "-- Overview": {
+    "type": "separator",
+    "title": "Overview"
+  },
+  "about": "About",
+  "contributing": "Contributing",
+  "support": "Support",
+  "-- More": {
+    "type": "separator",
+    "title": "More"
+  },
+  "licenses": "Open Source Licenses",
+  "change-log": {
+    "title": "Change Log  ↗",
+    "href": "https://github.com/AlfieJones/theme-toggles/releases",
+    "newWindow": true
+  }
+}

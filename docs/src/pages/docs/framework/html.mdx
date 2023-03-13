@@ -1,0 +1,61 @@
+import pkg from "@theme-toggles/core/package.json";
+import { Tab, Tabs } from "nextra-theme-docs";
+import DynamicCode from "../../../components/dynamicCode";
+
+# HTML framework guide
+
+The most basic and flexible way to add Theme Toggles to your site. This guide will walk you through the process of adding a Theme Toggle to your site regardless of your framework. All our framework integrations are built on top of this package.
+
+## Getting started
+
+### CDN
+
+> Ensure to replace "\{toggle type}" and "\{toggle name}" with the type and name of the toggle you want to use.
+> It's recommended to use the button type of toggle as it's the most accessible.
+
+<br />
+
+<DynamicCode replacements={{
+    "{pkg.version}": pkg.version
+}}>
+
+```html /{toggle type}/ /{toggle name}/
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/theme-toggles@{pkg.version}/dist/{toggle type}/{toggle name}.min.css"
+/>
+```
+
+</DynamicCode>
+
+See the full list of css from the [CDN](https://www.jsdelivr.com/package/npm/theme-toggles?path=css) page.
+
+### Node modules
+
+<Tabs items={["pnpm", "npm", "yarn"]}>
+  <Tab>
+```bash 
+pnpm add @theme-toggles/core
+```
+  </Tab>
+  <Tab>
+  ```bash
+  npm install @theme-toggles/core
+  ```
+  </Tab>
+  <Tab>
+  ```bash
+  yarn add @theme-toggles/core
+  ```
+  </Tab>
+</Tabs>
+
+### Toggle types
+
+We have 3 types of toggles available:
+
+- Button
+- Checkbox
+- Div
+
+> The div type is not accessible and should only be used if you're implementing your own toggle.
