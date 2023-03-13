@@ -35,3 +35,4 @@ const CheckboxTemplate: Story<BaseTogglePropsType> = (args) => {
 
 export const Checkbox = CheckboxTemplate.bind({});
 Checkbox.args = {};
+
