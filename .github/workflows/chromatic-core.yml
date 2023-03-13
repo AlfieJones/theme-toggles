@@ -8,7 +8,7 @@ on:
   push:
     paths:
       - packages/core/**
-
+jobs:
   chromatic-core-deployment:
     # Operating System
     runs-on: ubuntu-latest
