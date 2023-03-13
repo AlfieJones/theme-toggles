@@ -9,7 +9,7 @@ interface DynamicCodeProps {
 function replaceText(el: ReactNode, key: string, value: string) {
   if (typeof el === "string") return el.replace(key, value);
 
-  if (isValidElement(el)) 
+  if (isValidElement(el))
     return {
       ...el,
       props: {
@@ -19,7 +19,6 @@ function replaceText(el: ReactNode, key: string, value: string) {
         ),
       },
     };
-  
 
   return el;
 }

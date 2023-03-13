@@ -9,11 +9,10 @@ on:
     paths:
       - packages/core/**
 
-# List of jobs
-jobs:
-  cache-and-install:
+  chromatic-core-deployment:
+    # Operating System
     runs-on: ubuntu-latest
-
+    # Job steps
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,11 +45,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-  chromatic-core-deployment:
-    # Operating System
-    runs-on: ubuntu-latest
-    # Job steps
-    steps:
+
       - name: build
         run: npx lerna run build --scope=@theme-toggles/core
         # 👇 Adds Chromatic as a step in the workflow
