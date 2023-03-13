@@ -1,10 +1,10 @@
 # .github/workflows/chromatic.yml
 
 # Workflow name
-name: 'Chromatic Core'
+name: "Chromatic Core"
 
 # Event for the workflow
-on: 
+on:
   push:
     paths:
       - packages/core/**

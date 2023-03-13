@@ -11,8 +11,8 @@
   "scripts": {
     "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
     "build": "lerna run build-core && pnpm lerna run build-frameworks",
-    "build-site": "pnpm build && pnpm -F @theme-toggles/website build",
-    "dev-site": "pnpm build && pnpm -F @theme-toggles/website dev"
+    "build-site": "pnpm build && pnpm -F @theme-toggles/docs build",
+    "dev-site": "pnpm build && pnpm -F @theme-toggles/docs dev"
   },
   "author": {
     "name": "Alfie Jones",
