@@ -18,6 +18,7 @@ const Eclipse = forwardRefWithAs(function Eclipse<
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
+    svgProps,
     ...rest
   } = props;
   const classes = [

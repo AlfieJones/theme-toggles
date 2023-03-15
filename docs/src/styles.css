@@ -1,1 +1,24 @@
 @tailwind utilities;
+
+.config pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.config div[role="tablist"] {
+  margin-top: 0 !important;
+  background-color: hsl(var(--nextra-primary-hue) 100% 77%/0.1) !important;
+  border-color: rgba(55, 65, 81, 0.25) !important;
+}
+
+.dark .config div[role="tablist"] {
+  border-color: rgba(229, 231, 235, 0.25) !important;
+}
+
+.dark .config div[role="tablist"] button:hover {
+    border-color: rgba(229, 231, 235, 0.25) !important;
+  }
+
+.config div[role="tabpanel"] {
+  padding-top: 0;
+}

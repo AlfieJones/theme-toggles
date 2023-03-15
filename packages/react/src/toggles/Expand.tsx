@@ -18,6 +18,7 @@ const Expand = forwardRefWithAs(function Expand<
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
+    svgProps,
     ...rest
   } = props;
   const classes = [

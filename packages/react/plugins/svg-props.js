@@ -26,7 +26,7 @@ const plugin = (_, opts) => ({
       )
         return
 
-        const identifier = t.identifier('props.svgProps')
+        const identifier = t.identifier('svgProps')
         if (t.isObjectPattern(props[0])) {
           props[0].properties.push(t.restElement(identifier))
           if (opts.typescript) {

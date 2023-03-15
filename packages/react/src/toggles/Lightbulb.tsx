@@ -18,6 +18,7 @@ const Lightbulb = forwardRefWithAs(function Lightbulb<
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
+    svgProps,
     ...rest
   } = props;
   const classes = [

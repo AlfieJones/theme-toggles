@@ -19,6 +19,7 @@ const template = ({ componentName, jsx, exports }, { tpl }) => {
               "aria-label": ariaLabel = "Toggle theme",
               className,
               children,
+              svgProps,
               ...rest
           } = props;  
               

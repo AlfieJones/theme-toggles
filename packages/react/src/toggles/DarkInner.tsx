@@ -18,6 +18,7 @@ const DarkInner = forwardRefWithAs(function DarkInner<
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
+    svgProps,
     ...rest
   } = props;
   const classes = [

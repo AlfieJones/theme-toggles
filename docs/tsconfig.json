@@ -23,7 +23,7 @@
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx"
-, "src/pages/docs/framework/page.mdx"    ],
+    ],
     "exclude": [
         "node_modules"
     ]

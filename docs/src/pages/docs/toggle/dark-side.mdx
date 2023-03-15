@@ -1,0 +1,47 @@
+import { ToggleConfiguration } from "../../../components/toggleConfigurator";
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# dark-side 
+
+<ToggleConfiguration name="dark-side">
+
+
+<Tabs items={["button", "checkbox"]}>
+  <Tab>
+``` html
+<button
+  class="theme-toggle"
+  type="button"
+  title="Toggle between light and dark themes"
+  aria-live="polite"
+  <!-- Set aria-label to the current theme state to inform screen readers -->
+  aria-label={theme === 'system' ? 'auto' : theme === 'light' ? 'dark' : 'light'}
+>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="1em"
+   width="1em"
+   class="theme-toggle__dark-side">
+   <path fill="currentColor"
+      d="M12 1 12 23A1 1 0 0012 1 1 1 0 0012 23L12 20A1 1 0 0112 4Z" />
+</svg>
+</button>
+```
+  </Tab>
+<Tab>
+```html 
+<label class="theme-toggle" title="Toggle theme">
+  <input type="checkbox" />
+  <span class="theme-toggle-sr">Toggle theme</span>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="1em"
+   width="1em"
+   class="theme-toggle__dark-side">
+   <path fill="currentColor"
+      d="M12 1 12 23A1 1 0 0012 1 1 1 0 0012 23L12 20A1 1 0 0112 4Z" />
+</svg>
+</label>  
+```
+  </Tab>
+</Tabs>
+
+
+
+</ToggleConfiguration>

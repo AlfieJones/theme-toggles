@@ -3,7 +3,7 @@ import { DocsThemeConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
   logo: <span className="text-lg font-semibold">Theme Toggles</span>,
-
+  primaryHue: 204,
   project: {
     link: "https://github.com/AlfieJones/theme-toggles",
   },

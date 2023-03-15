@@ -1,5 +1,5 @@
 import pkg from "@theme-toggles/core/package.json";
-import { Tab, Tabs } from "nextra-theme-docs";
+import { Tab, Tabs, Callout } from "nextra-theme-docs";
 import DynamicCode from "../../../components/dynamicCode";
 
 # HTML framework guide
@@ -8,7 +8,9 @@ The most basic and flexible way to add Theme Toggles to your site. This guide wi
 
 ## Getting started
 
-### CDN
+### Installing
+
+#### CDN
 
 > Ensure to replace "\{toggle type}" and "\{toggle name}" with the type and name of the toggle you want to use.
 > It's recommended to use the button type of toggle as it's the most accessible.
@@ -30,32 +32,99 @@ The most basic and flexible way to add Theme Toggles to your site. This guide wi
 
 See the full list of css from the [CDN](https://www.jsdelivr.com/package/npm/theme-toggles?path=css) page.
 
-### Node modules
+#### Node modules
 
 <Tabs items={["pnpm", "npm", "yarn"]}>
   <Tab>
-```bash 
-pnpm add @theme-toggles/core
-```
+  ```bash 
+  pnpm add @theme-toggles/core 
+  ```
   </Tab>
   <Tab>
-  ```bash
-  npm install @theme-toggles/core
+  ```bash 
+  npm install @theme-toggles/core 
   ```
   </Tab>
   <Tab>
   ```bash
-  yarn add @theme-toggles/core
-  ```
+   yarn add @theme-toggles/core
+   ```
   </Tab>
 </Tabs>
+
+### Adding the toggle
+
+The easiest way to add the toggle to a page is to copy the code from the [toggles page](/toggles) page and paste it into your page.
+
+```html
+/* Example for the dark-side toggle */
+<button class="theme-toggle" type="button" aria-label="Toggle theme">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    class="theme-toggle__dark-side"
+    fill="currentColor"
+    viewBox="0 0 512 512"
+  >
+    <path
+      d="M256 0a256 256 0 1 0 0 512 256 256 0 0 0 0-512Zm0 464V48a208 208 0 0 1 0 416Z"
+    />
+  </svg>
+</button>
+```
+
+### Toggeling
+
+If you're using the button or div toggle types, simply add .dark to any parent element.
+
+
+- `theme-toggle--light` - Light theme
+- `theme-toggle--dark` - Dark theme
+
+If you're using the checkbox toggle type, you don't need to add any classes to the body.
+
+## Config
+
+### Animation duration
+
+The animation duration is set to `500ms` by default. You can change this by setting the `--theme-toggle__{toggle name}--duration` variable.
+
+```css
+/* Example for the around toggle */
+:root {
+  --theme-toggle__around--duration: 500ms;
+}
+```
 
 ### Toggle types
 
 We have 3 types of toggles available:
 
-- Button
-- Checkbox
-- Div
+#### Button (recommended)
 
-> The div type is not accessible and should only be used if you're implementing your own toggle.
+This is the most accessible toggle type. It's recommended to use this type of toggle.
+
+To improve accessibility, we recommend adding the following attributes to the button:
+
+- `aria-label="Toggle theme"`
+- `aria-pressed="\{false/true}"`
+- `title="Switch to \{dark/light} theme"`
+
+#### Checkbox
+
+Unlike the button type, the checkbox manages it's own state. This means you don't need to add any toggled classes to the body or toggle (You still need to handle the theme change yourself).
+
+To improve accessibility, we recommend adding the following attributes to the checkbox:
+
+- `title`="Switch to \{dark/light} theme"
+- `<span class="theme-toggle-sr">Toggle theme</span>` (This is a hidden element inside the label that will be read by screen readers)
+
+#### Div
+
+<Callout type="warning" emoji="ℹ️">
+  The div type is not accessible and should only be used if you're implementing
+  your own toggle.
+</Callout>
+
+An example use case would be the dropdown for changing the theme of these docs

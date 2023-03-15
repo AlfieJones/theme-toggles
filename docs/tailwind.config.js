@@ -5,6 +5,6 @@ module.exports = {
     "./src/components/**/*.tsx",
     "./pages/**/*.{md,mdx}",
     "./theme.config.tsx",
-    "./toggles.config.ts"
+    "./toggles.config.mjs"
   ],
 };

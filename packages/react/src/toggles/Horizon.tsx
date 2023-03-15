@@ -18,6 +18,7 @@ const Horizon = forwardRefWithAs(function Horizon<
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
+    svgProps,
     ...rest
   } = props;
   const classes = [

@@ -18,6 +18,7 @@ const HalfSun = forwardRefWithAs(function HalfSun<
     "aria-label": ariaLabel = "Toggle theme",
     className,
     children,
+    svgProps,
     ...rest
   } = props;
   const classes = [

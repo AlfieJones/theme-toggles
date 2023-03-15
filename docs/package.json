@@ -3,23 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build-toggles": "gulp",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
     "@material/material-color-utilities": "^0.2.0",
+    "@radix-ui/react-slider": "^1.1.0",
+    "@radix-ui/react-switch": "^1.0.2",
     "@theme-toggles/core": "*",
     "@theme-toggles/react": "*",
     "autoprefixer": "^10.4.7",
     "clsx": "^1.2.1",
+    "gulp": "^4.0.2",
+    "handlebars": "^4.7.7",
+    "lodash-es": "^4.17.21",
     "next": "^13.2.4",
     "nextra": "^2.2.19",
     "nextra-theme-docs": "^2.2.19",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^4.0.7",
     "tailwindcss": "^3.2.4"
   },
   "devDependencies": {

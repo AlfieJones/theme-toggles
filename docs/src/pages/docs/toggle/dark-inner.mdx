@@ -1,0 +1,55 @@
+import { ToggleConfiguration } from "../../../components/toggleConfigurator";
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# dark-inner 
+
+<ToggleConfiguration name="dark-inner">
+
+
+<Tabs items={["button", "checkbox"]}>
+  <Tab>
+``` html
+<button
+  class="theme-toggle"
+  type="button"
+  title="Toggle between light and dark themes"
+  aria-live="polite"
+  <!-- Set aria-label to the current theme state to inform screen readers -->
+  aria-label={theme === 'system' ? 'auto' : theme === 'light' ? 'dark' : 'light'}
+>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="theme-toggle__dark-inner"
+  height="1em" width="1em"
+  viewBox="0 0 24 24">
+  <g fill="currentColor">
+    <path
+      d="M12 1A1 1 0 0012 23 1 1 0 0012 1L12 4A1 1 0 0112 20L12 17A1 1 0 0112 7Z" />
+    <path
+      d="M12 7 12 17A1 1 0 0012 7Z" />
+  </g>
+</svg>
+</button>
+```
+  </Tab>
+<Tab>
+```html 
+<label class="theme-toggle" title="Toggle theme">
+  <input type="checkbox" />
+  <span class="theme-toggle-sr">Toggle theme</span>
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="theme-toggle__dark-inner"
+  height="1em" width="1em"
+  viewBox="0 0 24 24">
+  <g fill="currentColor">
+    <path
+      d="M12 1A1 1 0 0012 23 1 1 0 0012 1L12 4A1 1 0 0112 20L12 17A1 1 0 0112 7Z" />
+    <path
+      d="M12 7 12 17A1 1 0 0012 7Z" />
+  </g>
+</svg>
+</label>  
+```
+  </Tab>
+</Tabs>
+
+
+
+</ToggleConfiguration>

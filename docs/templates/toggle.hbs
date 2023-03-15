@@ -1,0 +1,37 @@
+import { ToggleConfiguration } from "../../../components/toggleConfigurator";
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# {{name}} 
+
+<ToggleConfiguration name="{{name}}">
+
+
+<Tabs items={["button", "checkbox"]}>
+  <Tab>
+``` html
+<button
+  class="theme-toggle"
+  type="button"
+  title="Toggle between light and dark themes"
+  aria-live="polite"
+  <!-- Set aria-label to the current theme state to inform screen readers -->
+  aria-label={theme === 'system' ? 'auto' : theme === 'light' ? 'dark' : 'light'}
+>
+{{{svg}}}
+</button>
+```
+  </Tab>
+<Tab>
+```html 
+<label class="theme-toggle" title="Toggle theme">
+  <input type="checkbox" />
+  <span class="theme-toggle-sr">Toggle theme</span>
+  {{{svg}}}
+</label>  
+```
+  </Tab>
+</Tabs>
+
+
+
+</ToggleConfiguration>
