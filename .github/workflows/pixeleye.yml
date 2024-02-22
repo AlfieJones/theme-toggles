@@ -8,6 +8,8 @@ on:
 jobs:
   pixeleye-core-deployment:
     runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: true
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
