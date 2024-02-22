@@ -21,9 +21,7 @@
   "devDependencies": {
     "lerna": "^6.4.1",
     "next": "^13.1.2",
-    "pixeleye": "^0.1.23"
+    "pixeleye": "^0.1.24"
   },
-  "dependencies": {
-    "playwright": "^1.41.2"
-  }
+  "dependencies": {}
 }
