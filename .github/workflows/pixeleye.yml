@@ -22,8 +22,8 @@ jobs:
           node-version: 20
           cache: "pnpm"
       - name: Build toggles
-        run: pnpm build
+        run: pnpm build -F @theme-toggles/core
       - name: Install dependencies
         run: pnpm install
       - name: Capture stories with Pixeleye
-        run: npx lerna run storybook --scope=@theme-toggles/core & pnpm -F @theme-toggles/core pixeleye storybook 
+        run: npx lerna run storybook --scope=@theme-toggles/core & pnpm -F @theme-toggles/core pixeleye storybook
