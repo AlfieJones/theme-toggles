@@ -21,6 +21,8 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
+      - name: Build toggles
+        run: pnpm build
       - name: Install dependencies
         run: pnpm install
       - name: Capture stories with Pixeleye
