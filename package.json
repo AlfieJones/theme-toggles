@@ -20,7 +20,7 @@
   "devDependencies": {
     "lerna": "^6.4.1",
     "next": "^13.1.2",
-    "pixeleye": "0.2.3"
+    "pixeleye": "0.2.4"
   },
   "dependencies": {}
 }
