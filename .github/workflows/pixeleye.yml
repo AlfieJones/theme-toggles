@@ -6,10 +6,18 @@ on:
       - packages/core/**
 
 jobs:
-  chromatic-core-deployment:
+  pixeleye-core-deployment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
       - name: capture
