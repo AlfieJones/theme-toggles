@@ -15,8 +15,8 @@ importers:
         specifier: ^13.1.2
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
       pixeleye:
-        specifier: ^0.1.24
-        version: 0.1.24(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.1.25
+        version: 0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
 
   packages/core:
     devDependencies:
@@ -78,8 +78,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: ^0.1.24
-        version: 0.1.24(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
+        specifier: ^0.1.25
+        version: 0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -18586,8 +18586,8 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.1.24(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2):
-    resolution: {integrity: sha512-/0TDnzXbBPunJgZ5rLd8CyNZhG4DIsZjOxP3HC6TaclOZLsbChd9P72rOwi8ehjTl4mWGoIOQB2inoZ57JJ2yQ==}
+  /pixeleye@0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2):
+    resolution: {integrity: sha512-ljaJ3IPRcoK5nMLU/SMcBS8EbbR8s/fnRaTQmjrA03Yb28oQ23x+SIHZzoQKFFORce/UOf6JzujSxNAyQCSo3g==}
     hasBin: true
     peerDependencies:
       playwright: ^1
@@ -18621,8 +18621,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /pixeleye@0.1.24(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-/0TDnzXbBPunJgZ5rLd8CyNZhG4DIsZjOxP3HC6TaclOZLsbChd9P72rOwi8ehjTl4mWGoIOQB2inoZ57JJ2yQ==}
+  /pixeleye@0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ljaJ3IPRcoK5nMLU/SMcBS8EbbR8s/fnRaTQmjrA03Yb28oQ23x+SIHZzoQKFFORce/UOf6JzujSxNAyQCSo3g==}
     hasBin: true
     peerDependencies:
       playwright: ^1
