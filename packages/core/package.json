@@ -7,7 +7,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "plop": "plop",
-    "pixeleye": "pixeleye storybook",
+    "pixeleye": "pixeleye storybook --url http://localhost:6006",
     "build": "gulp",
     "build-core": "gulp",
     "dev": "gulp dev"
