@@ -1,0 +1,18 @@
+name: "Pixeleye core"
+
+on:
+  push:
+    paths:
+      - packages/core/**
+
+jobs:
+  chromatic-core-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pnpm install
+      - name: capture
+        run: npx lerna run storybook --scope=@theme-toggles/core
+      - name: Capture stories with Pixeleye
+        run: pnpm pixeleye storybook

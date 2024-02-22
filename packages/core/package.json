@@ -7,6 +7,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "plop": "plop",
+    "pixeleye": "pixeleye storybook",
     "build": "gulp",
     "build-core": "gulp",
     "dev": "gulp dev"
@@ -35,13 +36,13 @@
     "gulp-sass": "^5.1.0",
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.10.0",
+    "pixeleye": "^0.0.20",
     "plop": "^3.1.1",
     "prettier": "2.8.1",
     "sass": "^1.57.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
   },
-  "dependencies": {},
   "overrides": {
     "clean-css": "5.3.1"
   }
