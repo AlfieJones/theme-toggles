@@ -2,8 +2,8 @@ name: "Pixeleye core"
 
 on:
   push:
-    paths:
-      - packages/core/**
+    # paths:
+    #   - packages/core/**
 
 jobs:
   pixeleye-core-deployment:
