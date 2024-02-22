@@ -19,10 +19,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: capture
-        run: npx lerna run storybook --scope=@theme-toggles/core
       - name: Capture stories with Pixeleye
-        run: pnpm pixeleye storybook
+        run: npx lerna run storybook --scope=@theme-toggles/core & pnpm pixeleye storybook
