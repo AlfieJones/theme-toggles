@@ -14,6 +14,9 @@ importers:
       next:
         specifier: ^13.1.2
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
+      pixeleye:
+        specifier: ^0.0.20
+        version: 0.0.20(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
 
   packages/core:
     devDependencies:
@@ -2218,6 +2221,14 @@ packages:
       react: 17.0.2
     dev: true
 
+  /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
+    resolution: {integrity: sha512-jT/qyKZ9rzLErtrjGgdkMBn2OP8wl0G3sQlBb3YPryvKHsjvINUhVaPFfP+fpBcOkmrVOVEEHQFJ7nbj2TH2gw==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: true
+
   /@esbuild/android-arm64@0.17.19:
     resolution: {integrity: sha512-KBMWvEZooR7+kzY0BtbTQn0OAYY7CsiydT63pVEaPtVYF0hXbUaOyZog37DKxK7NF3XacBJOpYT4adIJh+avxA==}
     engines: {node: '>=12'}
@@ -4138,6 +4149,23 @@ packages:
       - react-dom
     dev: true
 
+  /@pixeleye/storybook@0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8/TeyDYzM9U6RFIyYx5bL0sJAUPayQMKwLe7r67gokIjMMqLICpS86euZf9ttBivyHPtjXUaKLusnXxRVapMGg==}
+    peerDependencies:
+      puppeteer: ^20 || ^21
+      puppeteer-core: ^20 || ^21
+    dependencies:
+      '@pixeleye/cli-devices': 0.0.2
+      '@pixeleye/puppeteer': 0.0.4(puppeteer-core@21.11.0)(puppeteer@21.11.0)
+      '@storybook/addons': 7.6.17(react-dom@18.2.0)(react@18.2.0)
+      puppeteer: 21.11.0(typescript@4.9.5)
+      puppeteer-core: 21.11.0
+      rrweb-snapshot: 2.0.0-alpha.11
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: true
+
   /@pkgjs/parseargs@0.11.0:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
@@ -5334,6 +5362,17 @@ packages:
     resolution: {integrity: sha512-Ok18Y698Ccyg++MoUNJNHY0cXUvo8ETFIRLJk1g9ElJ70j6kPgNnzW2pAtZkBNmswHtofZ7pT156cj96k/LgfA==}
     dependencies:
       '@storybook/manager-api': 7.6.17(react-dom@18.2.0)(react@17.0.2)
+      '@storybook/preview-api': 7.6.17
+      '@storybook/types': 7.6.17
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: true
+
+  /@storybook/addons@7.6.17(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Ok18Y698Ccyg++MoUNJNHY0cXUvo8ETFIRLJk1g9ElJ70j6kPgNnzW2pAtZkBNmswHtofZ7pT156cj96k/LgfA==}
+    dependencies:
+      '@storybook/manager-api': 7.6.17(react-dom@18.2.0)(react@18.2.0)
       '@storybook/preview-api': 7.6.17
       '@storybook/types': 7.6.17
     transitivePeerDependencies:
@@ -6556,6 +6595,28 @@ packages:
       - react-dom
     dev: true
 
+  /@storybook/manager-api@7.6.17(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-IJIV1Yc6yw1dhCY4tReHCfBnUKDqEBnMyHp3mbXpsaHxnxJZrXO45WjRAZIKlQKhl/Ge1CrnznmHRCmYgqmrWg==}
+    dependencies:
+      '@storybook/channels': 7.6.17
+      '@storybook/client-logger': 7.6.17
+      '@storybook/core-events': 7.6.17
+      '@storybook/csf': 0.1.2
+      '@storybook/global': 5.0.0
+      '@storybook/router': 7.6.17
+      '@storybook/theming': 7.6.17(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/types': 7.6.17
+      dequal: 2.0.3
+      lodash: 4.17.21
+      memoizerific: 1.11.3
+      store2: 2.14.3
+      telejson: 7.2.0
+      ts-dedent: 2.2.0
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: true
+
   /@storybook/manager-webpack4@6.5.16(eslint@8.4.1)(react-dom@16.14.0)(react@16.14.0)(typescript@4.9.5):
     resolution: {integrity: sha512-5VJZwmQU6AgdsBPsYdu886UKBHQ9SJEnFMaeUxKEclXk+iRsmbzlL4GHKyVd6oGX/ZaecZtcHPR6xrzmA4Ziew==}
     peerDependencies:
@@ -7247,6 +7308,20 @@ packages:
       memoizerific: 1.11.3
       react: 17.0.2
       react-dom: 18.2.0(react@17.0.2)
+    dev: true
+
+  /@storybook/theming@7.6.17(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZbaBt3KAbmBtfjNqgMY7wPMBshhSJlhodyMNQypv+95xLD/R+Az6aBYbpVAOygLaUQaQk4ar7H/Ww6lFIoiFbA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
+      '@storybook/client-logger': 7.6.17
+      '@storybook/global': 5.0.0
+      memoizerific: 1.11.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /@storybook/types@7.6.17:
@@ -18514,6 +18589,39 @@ packages:
       '@pixeleye/cli-config': 0.0.2
       '@pixeleye/cli-env': 0.0.2
       '@pixeleye/storybook': 0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
+      chalk: 5.3.0
+      commander: 12.0.0
+      dedent: 1.5.1
+      eventsource: 2.0.2
+      graceful-fs: 4.2.11
+      jimp: 0.22.10
+      ora: 8.0.1
+      playwright: 1.41.2
+      rrweb-snapshot: 2.0.0-alpha.11
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - bufferutil
+      - canvas
+      - encoding
+      - puppeteer
+      - puppeteer-core
+      - react
+      - react-dom
+      - supports-color
+      - utf-8-validate
+    dev: true
+
+  /pixeleye@0.0.20(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-W641yMKuWbByw4fcYahblFCQQR9RHY6ctMIvgPkSugE3Su2+YW7BiY441ZhDNUS/V/ufpN1ZHstvVwx1gGMRvw==}
+    hasBin: true
+    peerDependencies:
+      playwright: ^1
+    dependencies:
+      '@pixeleye/cli-api': 0.0.2
+      '@pixeleye/cli-booth': 0.0.2
+      '@pixeleye/cli-config': 0.0.2
+      '@pixeleye/cli-env': 0.0.2
+      '@pixeleye/storybook': 0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
       chalk: 5.3.0
       commander: 12.0.0
       dedent: 1.5.1
