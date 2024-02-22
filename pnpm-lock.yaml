@@ -19,8 +19,8 @@ importers:
         specifier: ^13.1.2
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
       pixeleye:
-        specifier: ^0.1.1
-        version: 0.1.1(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^0.1.21
+        version: 0.1.21(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
 
   packages/core:
     devDependencies:
@@ -82,8 +82,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: ^0.1.1
-        version: 0.1.1(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
+        specifier: ^0.1.21
+        version: 0.1.21(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -9344,7 +9344,7 @@ packages:
       loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.90.3(esbuild@0.17.19)
+      webpack: 5.90.3
     dev: true
 
   /babel-plugin-add-react-displayname@0.0.5:
@@ -18581,8 +18581,8 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.1.1(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2):
-    resolution: {integrity: sha512-m7OnydXdcXLoLY96pZselyXMQkP79LViA3noTOC8ImHyVwTbZOWczzWaONuIGeCvy2Vd7qTDBDqNW6NOtF4smw==}
+  /pixeleye@0.1.21(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2):
+    resolution: {integrity: sha512-FM276+zVVyyoDrOOGt0FtDFejDVAB787x7EHNQ8am51Sr8el9DRM90H3ae/i5k1QjjUUPGkw+CIa0OFon0vIEA==}
     hasBin: true
     peerDependencies:
       playwright: ^1
@@ -18600,6 +18600,7 @@ packages:
       jimp: 0.22.10
       ora: 8.0.1
       playwright: 1.41.2
+      playwright-core: 1.41.2
       rrweb-snapshot: 2.0.0-alpha.11
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -18614,8 +18615,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /pixeleye@0.1.1(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-m7OnydXdcXLoLY96pZselyXMQkP79LViA3noTOC8ImHyVwTbZOWczzWaONuIGeCvy2Vd7qTDBDqNW6NOtF4smw==}
+  /pixeleye@0.1.21(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-FM276+zVVyyoDrOOGt0FtDFejDVAB787x7EHNQ8am51Sr8el9DRM90H3ae/i5k1QjjUUPGkw+CIa0OFon0vIEA==}
     hasBin: true
     peerDependencies:
       playwright: ^1
@@ -18633,6 +18634,7 @@ packages:
       jimp: 0.22.10
       ora: 8.0.1
       playwright: 1.41.2
+      playwright-core: 1.41.2
       rrweb-snapshot: 2.0.0-alpha.11
     transitivePeerDependencies:
       - babel-plugin-macros
