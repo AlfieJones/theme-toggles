@@ -23,4 +23,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Capture stories with Pixeleye
-        run: npx lerna run storybook --scope=@theme-toggles/core & pnpm pixeleye storybook -F @theme-toggles/core
+        run: npx lerna run storybook --scope=@theme-toggles/core & pnpm -F @theme-toggles/core pixeleye storybook 
