@@ -78,8 +78,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: ^0.1.25
-        version: 0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
+        specifier: ^0.1.26
+        version: 0.1.26(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -9348,7 +9348,7 @@ packages:
       loader-utils: 2.0.4
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.90.3
+      webpack: 5.90.3(esbuild@0.17.19)
     dev: true
 
   /babel-plugin-add-react-displayname@0.0.5:
@@ -18586,7 +18586,7 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2):
+  /pixeleye@0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ljaJ3IPRcoK5nMLU/SMcBS8EbbR8s/fnRaTQmjrA03Yb28oQ23x+SIHZzoQKFFORce/UOf6JzujSxNAyQCSo3g==}
     hasBin: true
     peerDependencies:
@@ -18596,7 +18596,7 @@ packages:
       '@pixeleye/cli-booth': 0.0.2
       '@pixeleye/cli-config': 0.0.2
       '@pixeleye/cli-env': 0.0.2
-      '@pixeleye/storybook': 0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
+      '@pixeleye/storybook': 0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
       '@playwright/browser-chromium': 1.41.2
       chalk: 5.3.0
       commander: 12.0.0
@@ -18621,8 +18621,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /pixeleye@0.1.25(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ljaJ3IPRcoK5nMLU/SMcBS8EbbR8s/fnRaTQmjrA03Yb28oQ23x+SIHZzoQKFFORce/UOf6JzujSxNAyQCSo3g==}
+  /pixeleye@0.1.26(playwright@1.41.2)(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2):
+    resolution: {integrity: sha512-7LQY/IVsn4lD7k0fQuFWVvv3kc40jkfJnWeVVDyEVSU55LYJwRX1L0clFpchSOfKjj2ISrFNgVo3v/07uOJq+Q==}
     hasBin: true
     peerDependencies:
       playwright: ^1
@@ -18631,8 +18631,7 @@ packages:
       '@pixeleye/cli-booth': 0.0.2
       '@pixeleye/cli-config': 0.0.2
       '@pixeleye/cli-env': 0.0.2
-      '@pixeleye/storybook': 0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@18.2.0)
-      '@playwright/browser-chromium': 1.41.2
+      '@pixeleye/storybook': 0.0.2(puppeteer-core@21.11.0)(puppeteer@21.11.0)(react-dom@18.2.0)(react@17.0.2)
       chalk: 5.3.0
       commander: 12.0.0
       dedent: 1.5.1
