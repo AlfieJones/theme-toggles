@@ -81,8 +81,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: 0.3.10
-        version: 0.3.10(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.3.11
+        version: 0.3.11(react-dom@18.2.0)(react@18.2.0)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -17709,8 +17709,8 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.3.10(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-kObLqSTYDDeNmFQ9jwEWmvGtWkbHiy8KrDqfoMAgPnA8Vn9gFa/9NNLUMgPShFV/pbaNfR8niIEYJ5hBebsdyg==}
+  /pixeleye@0.3.11(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-bDy8AyiHBXzOsW0LrB03e3VFT6qPH1hWsyODx9kWuIC58DGGbk5OTL72SyzPXQHKobE3hTu0D036hlmBgg83yA==}
     hasBin: true
     dependencies:
       '@pixeleye/cli-api': 0.2.4
