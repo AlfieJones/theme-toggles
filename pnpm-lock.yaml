@@ -81,8 +81,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: 0.3.4
-        version: 0.3.4(playwright@1.41.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.3.5
+        version: 0.3.5(playwright@1.41.2)(react-dom@18.2.0)(react@18.2.0)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -18177,8 +18177,8 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.3.4(playwright@1.41.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-yOfaueFBd2mdXESR6UpCw/vX+5XVomospLHaZvr0JwYELIpcACTLtbySQbK9YYzCv7AYWE1jwARBh40U5pdxLA==}
+  /pixeleye@0.3.5(playwright@1.41.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-x8e9EoS049PSeEwNOZy9sx55a9l95nZ5krsCB5ruefQQDG3TJfhwHMyA1MkBLRz0/ZCoJJzVfOTmG35UIr6E/A==}
     hasBin: true
     peerDependencies:
       playwright: ^1
