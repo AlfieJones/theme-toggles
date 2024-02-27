@@ -81,8 +81,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: 0.3.5
-        version: 0.3.5(playwright@1.41.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.3.6
+        version: 0.3.6(react-dom@18.2.0)(react@18.2.0)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -4005,25 +4005,25 @@ packages:
       zod: 3.22.4
     dev: true
 
-  /@pixeleye/cli-api@0.2.1:
-    resolution: {integrity: sha512-GrhghuA/bGkR0VeJLCv+W+Tlh0S6l0E+u+IYhgK4J+yfGr+hwcT42X05l1JScmqHzKA7HWIRoEYIR2xWqm5kFw==}
+  /@pixeleye/cli-api@0.2.2:
+    resolution: {integrity: sha512-hvOHaDzJSfdbCJxu1rd5JoEXH0vIu+ZrJ3toFIJjgLoNrNL0TuIkyyLPgt43zBMIa3zcfxPb+F48GmCxB2cPGg==}
     dependencies:
       '@pixeleye/api': 0.1.0
-      '@pixeleye/cli-env': 0.2.1
-      '@pixeleye/cli-image': 0.2.1
+      '@pixeleye/cli-env': 0.2.2
+      '@pixeleye/cli-image': 0.2.2
       api-typify: 0.3.2
       undici: 6.6.2
     transitivePeerDependencies:
       - encoding
     dev: true
 
-  /@pixeleye/cli-booth@0.3.1:
-    resolution: {integrity: sha512-MMqfSoGLHbZPpCaMrvnVe2RQ7Y7MLX8oV9o78quUTg5VcJW/VyF+d/Iderhi7p2mqHcGCWB3UJeRZPu6pRen4Q==}
+  /@pixeleye/cli-booth@0.3.2:
+    resolution: {integrity: sha512-wmPOePqTqJkPDi+6xZ+jz4+HlAuniDxdFWXsWwIRZjQDUV5VautCcaDI8LZ8NCymTsBksbtl6qnuCqT2Xu601g==}
     dependencies:
       '@pixeleye/api': 0.1.0
-      '@pixeleye/cli-api': 0.2.1
-      '@pixeleye/cli-capture': 0.3.1
-      '@pixeleye/cli-config': 0.3.1
+      '@pixeleye/cli-api': 0.2.2
+      '@pixeleye/cli-capture': 0.3.2
+      '@pixeleye/cli-config': 0.3.2
       '@types/polka': 0.5.7
       body-parser: 1.20.2
       p-queue: 8.0.1
@@ -4037,10 +4037,10 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@pixeleye/cli-capture@0.3.1:
-    resolution: {integrity: sha512-hT5mHrAdW+HgXafVDLdyH08ixVDen6dfwyNXt9sNffFMzFb+AWvn4cQ6+1yPWr7MzHVB04z2K/QGBG/FN+rEiA==}
+  /@pixeleye/cli-capture@0.3.2:
+    resolution: {integrity: sha512-yipbB1O6qgXzBid7ZBTmQ01JGvfkuoirAxsiiMepuezPoHtcdRtF+pU2oqjYfCjyPT2S1WY/eQFk2PzX6iE8JQ==}
     dependencies:
-      '@pixeleye/cli-devices': 0.3.1
+      '@pixeleye/cli-devices': 0.3.2
       '@types/jsdom': 21.1.6
       happy-dom: 13.4.1
       jsdom: 24.0.0
@@ -4054,60 +4054,60 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@pixeleye/cli-config@0.3.1:
-    resolution: {integrity: sha512-V6il3ubchSb608dNocpAqgfinBqOb7OmxnLgV9wpm94TFkF7JEwkzZ8hrgh3oi+ZTZv9J4Ur3lGUqeN5bLYAmg==}
+  /@pixeleye/cli-config@0.3.2:
+    resolution: {integrity: sha512-/7ge1q3kgokjHNdugTYleVd+q6K39QCETaP7AQqDUWyM6cqc3h7JnvCCKcWfLgvsO8OOR7CjCJTZcnzbuWoFYg==}
     dependencies:
-      '@pixeleye/cli-devices': 0.3.1
-      '@pixeleye/cli-env': 0.2.1
+      '@pixeleye/cli-devices': 0.3.2
+      '@pixeleye/cli-env': 0.2.2
       jiti: 1.21.0
       sucrase: 3.35.0
     dev: true
 
-  /@pixeleye/cli-devices@0.3.1:
-    resolution: {integrity: sha512-198cbrh3CLb8QNSx4r4+iVDUBfPVnnuevYZySWaCGdkHcOZKPyrnpYQ8wsxJUuR/K37IcFU3N/XRvaZVgIKWpw==}
+  /@pixeleye/cli-devices@0.3.2:
+    resolution: {integrity: sha512-sJ7l97goEiz5u+6/Z57GBK7i1ulqW9UE0MGeSGKRQUtNw/t4ocql4QEKqmr2QOK0nm3SDefDwIkPVcm3/1bAsg==}
     dependencies:
       playwright-core: 1.41.2
     dev: true
 
-  /@pixeleye/cli-env@0.2.1:
-    resolution: {integrity: sha512-nbR7zf25d4eAy4qLDlU1mvB/MuFpcTvH2lnFAmUHHdGERodyP9bpDoDynC31v76/36eLYGKAz35I8/jdNfNyNg==}
+  /@pixeleye/cli-env@0.2.2:
+    resolution: {integrity: sha512-oxFDF/OPah378czYFnTz5BYl8Ov+XCyUzkXd1mqyiVJtcI9uszkA40f+i9dFngaZfPz4iWX2/C9rY9zPgKVwhA==}
     dependencies:
       env-ci: 11.0.0
       execa: 8.0.1
     dev: true
 
-  /@pixeleye/cli-image@0.2.1:
-    resolution: {integrity: sha512-UkiQkfV3AW2fzfaACWy+CW9I1T6uIhInnfaPL5wvzfnM7PdO1IbYlwAtTjrN6Q7xNhQ9COuhpvDmcB6LM307Sg==}
+  /@pixeleye/cli-image@0.2.2:
+    resolution: {integrity: sha512-BnkhcGHxqz0fY7GTwmZKuGLo1zR0eftILclpN5XGyTzlp7FxnqxFQte7z6OggZp8DO+6WzIFuHW1l0C45jSqcg==}
     dependencies:
       jimp: 0.22.10
     transitivePeerDependencies:
       - encoding
     dev: true
 
-  /@pixeleye/cli-install@0.3.1:
-    resolution: {integrity: sha512-EBoqSeggFd1gEuHlwfem05MnswG9oqNqzJ6Bo+Wb0I4k8auWeZM5i8I2sWCxAr8Bt3saMK+HPBKBQCNVDFhr5w==}
+  /@pixeleye/cli-install@0.3.2:
+    resolution: {integrity: sha512-1xqvbR3aBxSlEJZrav9ld3+DN5ycIab5sOKtrpXJ8j/Pfqil07M4WsUH1UyYGbxvFRq2pJ0ACqK/5ZqLyDeRxQ==}
     dependencies:
       playwright-core: 1.41.2
     dev: true
 
-  /@pixeleye/cli-logger@0.1.1:
-    resolution: {integrity: sha512-k/6TFtQdMXAla3RBrJ5Pll60m02bpz+JJgz1DVtfyhePEzt6f2nr2fGluX/bnNlG/uvBD4gq7aLITjesiVED3g==}
+  /@pixeleye/cli-logger@0.1.2:
+    resolution: {integrity: sha512-6sNt44WYQjXtyXcra08gEK3rBf/TsXqYdvux/dR2nO/laDC+/hm7GIoG/Ws8sGdcuG8IdVjvColmQz4k4kh18A==}
     dev: true
 
-  /@pixeleye/playwright@0.3.1:
-    resolution: {integrity: sha512-p7AzBoF2sBvyfO/nFqRx6n0yxcMbbCAW+N/UQz3Ln2S35wc8JVkUcDen+lhvsLaV8L0wBbgWUU2du7ShDSVLjQ==}
+  /@pixeleye/playwright@0.3.2:
+    resolution: {integrity: sha512-8yOzbCJer21ntsm5B22kRF0CCUt7HgLXOi8a3bHQ1tc9qb2hoReN8LZ6bk/2Qlbh1J/LPZKMEoMLamXNrYmnRw==}
     dependencies:
-      '@pixeleye/cli-devices': 0.3.1
+      '@pixeleye/cli-devices': 0.3.2
       playwright-core: 1.41.2
       rrweb-snapshot: 2.0.0-alpha.11
       undici: 6.6.2
     dev: true
 
-  /@pixeleye/storybook@0.3.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-/pIxPxa3uG7ksn1OvdMrIYkV0UHQGKYPT8jFVutX82L1q2b/tVOZVpENzUPhQk3/Syc+N32BUqWjfGzsOxOtjQ==}
+  /@pixeleye/storybook@0.3.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nT0TXDGTpi4wIvLvXy5qV3XfeQG/ot90buE9YeSc1uE4c+mOaBr8fYybaHpMClvgJYmZIFoFWgkHkT+zb583sg==}
     dependencies:
-      '@pixeleye/cli-devices': 0.3.1
-      '@pixeleye/playwright': 0.3.1
+      '@pixeleye/cli-devices': 0.3.2
+      '@pixeleye/playwright': 0.3.2
       '@storybook/addons': 7.6.17(react-dom@18.2.0)(react@18.2.0)
       playwright-core: 1.41.2
       rrweb-snapshot: 2.0.0-alpha.11
@@ -12597,14 +12597,6 @@ packages:
     dev: true
     optional: true
 
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -18177,19 +18169,17 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.3.5(playwright@1.41.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-x8e9EoS049PSeEwNOZy9sx55a9l95nZ5krsCB5ruefQQDG3TJfhwHMyA1MkBLRz0/ZCoJJzVfOTmG35UIr6E/A==}
+  /pixeleye@0.3.6(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-nAR9XpKiWswl5m1Bznb7f0oabroJ6cG8qdbP1JwLwPDeYgAkoYLEiMZ+Ej9XmCzS7VN9pyjFX6Hl7PxOW3s1Aw==}
     hasBin: true
-    peerDependencies:
-      playwright: ^1
     dependencies:
-      '@pixeleye/cli-api': 0.2.1
-      '@pixeleye/cli-booth': 0.3.1
-      '@pixeleye/cli-config': 0.3.1
-      '@pixeleye/cli-env': 0.2.1
-      '@pixeleye/cli-install': 0.3.1
-      '@pixeleye/cli-logger': 0.1.1
-      '@pixeleye/storybook': 0.3.1(react-dom@18.2.0)(react@18.2.0)
+      '@pixeleye/cli-api': 0.2.2
+      '@pixeleye/cli-booth': 0.3.2
+      '@pixeleye/cli-config': 0.3.2
+      '@pixeleye/cli-env': 0.2.2
+      '@pixeleye/cli-install': 0.3.2
+      '@pixeleye/cli-logger': 0.1.2
+      '@pixeleye/storybook': 0.3.2(react-dom@18.2.0)(react@18.2.0)
       chalk: 4.1.2
       commander: 12.0.0
       dedent: 1.5.1
@@ -18197,7 +18187,6 @@ packages:
       graceful-fs: 4.2.11
       jimp: 0.22.10
       ora: 8.0.1
-      playwright: 1.41.2
       playwright-core: 1.41.2
       rrweb-snapshot: 2.0.0-alpha.11
     transitivePeerDependencies:
@@ -18243,16 +18232,6 @@ packages:
     resolution: {integrity: sha512-VaTvwCA4Y8kxEe+kfm2+uUUw5Lubf38RxF7FpBxLPmGe5sdNkSg5e3ChEigaGrX7qdqT3pt2m/98LiyvU2x6CA==}
     engines: {node: '>=16'}
     hasBin: true
-    dev: true
-
-  /playwright@1.41.2:
-    resolution: {integrity: sha512-v0bOa6H2GJChDL8pAeLa/LZC4feoAMbSQm1/jF/ySsWWoaNItvrMP7GEkvEEFyCTUYKMxjQKaTSg5up7nR6/8A==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      playwright-core: 1.41.2
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /plop@3.1.2:
