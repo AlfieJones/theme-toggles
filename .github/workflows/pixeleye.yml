@@ -1,7 +1,7 @@
 name: "Pixeleye core"
 
 on:
-  push:
+  push
 
 jobs:
   pixeleye-core-deployment:
