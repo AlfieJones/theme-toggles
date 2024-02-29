@@ -29,3 +29,4 @@ jobs:
       - name: Capture stories with Pixeleye CLI
         run: npx lerna run storybook --scope=@theme-toggles/core & pnpm -F @theme-toggles/core pixeleye storybook
 
+
