@@ -1,8 +1,10 @@
 name: "Pixeleye core"
 
 on:
-  push
-
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
 jobs:
   pixeleye-core-deployment:
     runs-on: ubuntu-latest
