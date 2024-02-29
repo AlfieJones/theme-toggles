@@ -11,6 +11,9 @@ jobs:
       PIXELEYE_LOG_LEVEL: debug
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
       - uses: pnpm/action-setup@v3
         with:
           version: 8
