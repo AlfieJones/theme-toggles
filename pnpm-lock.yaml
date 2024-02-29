@@ -81,8 +81,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       pixeleye:
-        specifier: 0.4.8
-        version: 0.4.8(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.4.9
+        version: 0.4.9(react-dom@18.2.0)(react@18.2.0)
       plop:
         specifier: ^3.1.1
         version: 3.1.2
@@ -4005,8 +4005,8 @@ packages:
       zod: 3.22.4
     dev: true
 
-  /@pixeleye/cli-api@0.3.8:
-    resolution: {integrity: sha512-PxhuR9/0/uUwrzWgoV8kTa3rqV3zAWJ7WqjVwVcmG2Zk8q5l9DBTF0OqPzGWYYIwsBgG9BjKU1H4LburxC2hXg==}
+  /@pixeleye/cli-api@0.3.9:
+    resolution: {integrity: sha512-ZQm9g0ZebFxfXloaACQi529rQalQt02DftIdkMUEsJ+BLHx9NooOmmGzlfWxpt2OL70Q6tmuUPV+1w695uX9Ag==}
     dependencies:
       '@pixeleye/api': 0.2.0
       '@pixeleye/cli-env': 0.3.8
@@ -4018,11 +4018,11 @@ packages:
       - encoding
     dev: true
 
-  /@pixeleye/cli-booth@0.4.8:
-    resolution: {integrity: sha512-ZLdowtwUCw8XdP4pOle0BVRLyZtoNJYWefdvnVlnw/C4U2ekTm31GeFAvqo08hy9CAscmX+1CfakfomeFWBdgA==}
+  /@pixeleye/cli-booth@0.4.9:
+    resolution: {integrity: sha512-Qg5yidqyRqSnCFUTO7x6ZCy7MqY+6XyMhUVmh2ZAne2ns9XvJZ+hEbkrjNjdBKXG/ijX9X+QU7r+9Wwr0StwgQ==}
     dependencies:
       '@pixeleye/api': 0.2.0
-      '@pixeleye/cli-api': 0.3.8
+      '@pixeleye/cli-api': 0.3.9
       '@pixeleye/cli-capture': 0.4.6
       '@pixeleye/cli-config': 0.4.8
       '@types/polka': 0.5.7
@@ -18179,12 +18179,12 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  /pixeleye@0.4.8(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-pTa4+vVSKQO1pyKj3nk7oVFTKWKZP6YovB/CHubOzY0194OPZyEwoXMVGwJ6X2ZuuXFxQ1YinhaHJIkqVEx7iw==}
+  /pixeleye@0.4.9(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iNEDSIdsDZiLXbfCDmxNe4qYuMAXGCs8I4JN/+Vj222ma/tVe2YuDyKN+nWkvzyi1GnXa7GERgZNazPMm9T0eA==}
     hasBin: true
     dependencies:
-      '@pixeleye/cli-api': 0.3.8
-      '@pixeleye/cli-booth': 0.4.8
+      '@pixeleye/cli-api': 0.3.9
+      '@pixeleye/cli-booth': 0.4.9
       '@pixeleye/cli-config': 0.4.8
       '@pixeleye/cli-env': 0.3.8
       '@pixeleye/cli-install': 0.4.6
