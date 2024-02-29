@@ -9,7 +9,6 @@
     "url": "https://github.com/sponsors/alfiejones"
   },
   "scripts": {
-    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
     "build": "lerna run build-core && pnpm lerna run build-frameworks",
     "build-site": "pnpm build && pnpm -F @theme-toggles/website build",
     "dev-site": "pnpm build && pnpm -F @theme-toggles/website dev"
@@ -21,5 +20,6 @@
   "devDependencies": {
     "lerna": "^6.4.1",
     "next": "^13.1.2"
-  }
+  },
+  "dependencies": {}
 }

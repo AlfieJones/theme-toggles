@@ -51,7 +51,6 @@
     "@theme-toggles/core": "5.0.0-rc.1",
     "@types/react": "^18.0.26",
     "babel-loader": "^8.3.0",
-    "babel-plugin-transform-svg-component": "^8.0.11",
     "esbuild": "^0.17.0",
     "gulp": "^4.0.2",
     "lodash-es": "^4.17.21",

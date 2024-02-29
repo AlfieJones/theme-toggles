@@ -1,0 +1,32 @@
+name: "Pixeleye core"
+
+on:
+  push:
+
+jobs:
+  pixeleye-core-deployment:
+    runs-on: ubuntu-latest
+    env:
+      PIXELEYE_PROJECT_TOKEN: ${{ secrets.PIXELEYE_PROJECT_TOKEN }}
+      PIXELEYE_LOG_LEVEL: debug
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build toggles
+        run: pnpm build
+        working-directory: packages/core
+      - name: Capture stories with Pixeleye CLI
+        run: npx lerna run storybook --scope=@theme-toggles/core & pnpm -F @theme-toggles/core pixeleye storybook
+
