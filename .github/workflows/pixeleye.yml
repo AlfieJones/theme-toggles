@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PIXELEYE_PROJECT_TOKEN: ${{ secrets.PIXELEYE_PROJECT_TOKEN }}
-      PIXELEYE_LOG_LEVEL: "debug"
+      PIXELEYE_LOG_LEVEL: debug
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
