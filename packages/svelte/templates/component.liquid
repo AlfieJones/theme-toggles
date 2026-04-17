@@ -1,8 +1,9 @@
-<script lang="ts">
-  import clsx from "clsx";
+{% if clips.size > 0 %}<script context="module" lang="ts">
+  let nextId = 0;
+</script>
+
+{% endif %}<script lang="ts">
   import type { HTMLButtonAttributes } from "svelte/elements";
-{% if clips.size > 0 %}  import { createToggleId } from "./internal";
-{% endif %}
 
   interface $$Props extends Omit<HTMLButtonAttributes, "children"> {
     duration?: number;
@@ -18,7 +19,7 @@
   export { className as class };
 
 {% if clips.size > 0 %}
-  const toggleId = createToggleId("{{ slug }}");
+  const toggleId = `{{ slug }}-${++nextId}`;
 {% for clip in clips %}
   const {{ clip.varName }} = `toggles.dev-{{ slug }}-{{ clip.id }}-${toggleId}`;
 {% endfor %}

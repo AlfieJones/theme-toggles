@@ -20,18 +20,18 @@ const reactInstall = `npm install @theme-toggles/react`;
 const svelteInstall = `npm install @theme-toggles/svelte`;
 ---
 
-<div data-install class="flex flex-col h-full bg-white">
+<div data-install class="flex flex-col h-full bg-white dark:bg-neutral-900">
   <!-- Framework tabs -->
   <div class="flex border-b border-neutral-300 dark:border-neutral-700">
     <button
       data-fw-btn="react"
       data-active
-      class="tab-btn border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >react</button
     >
     <button
       data-fw-btn="svelte"
-      class="tab-btn border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >svelte</button
     >
   </div>
@@ -44,25 +44,40 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
     <button
       data-method-btn="shadcn"
       data-active
-      class="tab-btn border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >shadcn/ui</button
     >
     <button
       data-method-btn="manual"
-      class="tab-btn border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >Manual</button
     >
   </div>
 
   <!-- react + shadcn -->
   <div data-panel="react-shadcn">
-    <div class="step">
-      <div class="step-header">
-        <span class="step-num">1</span>
-        <span class="step-label">Run the shadcn CLI</span>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Run the shadcn CLI</span
+        >
       </div>
-      <div class="code-wrapper">
-        <button class="copy-btn">Copy</button>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
         <Code
           code={shadcnInstall}
           lang="bash"
@@ -70,13 +85,28 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
         />
       </div>
     </div>
-    <div class="step">
-      <div class="step-header">
-        <span class="step-num">2</span>
-        <span class="step-label">Import and use</span>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
       </div>
-      <div class="code-wrapper">
-        <button class="copy-btn">Copy</button>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
         <Code
           code={shadcnUsage}
           lang="tsx"
@@ -88,13 +118,28 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
 
   <!-- react + manual -->
   <div data-panel="react-manual" hidden>
-    <div class="step">
-      <div class="step-header">
-        <span class="step-num">1</span>
-        <span class="step-label">Install dependencies</span>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Install dependencies</span
+        >
       </div>
-      <div class="code-wrapper">
-        <button class="copy-btn">Copy</button>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
         <Code
           code={reactInstall}
           lang="bash"
@@ -102,13 +147,28 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
         />
       </div>
     </div>
-    <div class="step">
-      <div class="step-header">
-        <span class="step-num">2</span>
-        <span class="step-label">Copy the component</span>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Copy the component</span
+        >
       </div>
-      <div class="code-wrapper">
-        <button class="copy-btn">Copy</button>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
         <Code
           code={reactSource}
           lang="tsx"
@@ -120,13 +180,28 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
 
   <!-- svelte -->
   <div data-panel="svelte" hidden>
-    <div class="step">
-      <div class="step-header">
-        <span class="step-num">1</span>
-        <span class="step-label">Install dependencies</span>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Install dependencies</span
+        >
       </div>
-      <div class="code-wrapper">
-        <button class="copy-btn">Copy</button>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
         <Code
           code={svelteInstall}
           lang="bash"
@@ -134,13 +209,28 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
         />
       </div>
     </div>
-    <div class="step">
-      <div class="step-header">
-        <span class="step-num">2</span>
-        <span class="step-label">Copy the component</span>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Copy the component</span
+        >
       </div>
-      <div class="code-wrapper">
-        <button class="copy-btn">Copy</button>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
         <Code
           code={svelteSource}
           lang="svelte"
@@ -152,130 +242,15 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
 </div>
 
 <style is:global>
-  /* Map .dark body class to shiki dark theme */
+  .astro-code {
+    background-color: var(--color-neutral-100) !important;
+  }
   .dark .astro-code {
-    background-color: var(--shiki-dark-bg) !important;
+    background-color: var(--color-neutral-900) !important;
     color: var(--shiki-dark) !important;
   }
   .dark .astro-code span {
     color: var(--shiki-dark) !important;
-  }
-</style>
-
-<style>
-  .tab-btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition:
-      background-color 0.15s,
-      color 0.15s;
-    color: var(--color-neutral-500);
-  }
-  .tab-btn:hover {
-    background-color: var(--color-neutral-100);
-  }
-  .tab-btn[data-active] {
-    background-color: var(--color-neutral-100);
-    color: var(--color-neutral-900);
-  }
-  :global(.dark) .tab-btn:hover {
-    background-color: var(--color-neutral-800);
-  }
-  :global(.dark) .tab-btn[data-active] {
-    background-color: var(--color-neutral-800);
-    color: var(--color-neutral-50);
-  }
-
-  [data-method-row] {
-    display: flex;
-  }
-  [data-method-row][hidden] {
-    display: none;
-  }
-
-  .step {
-    border-bottom: 1px solid var(--color-neutral-300);
-  }
-  .step:last-child {
-    border-bottom: none;
-  }
-  :global(.dark) .step {
-    border-bottom-color: var(--color-neutral-700);
-  }
-
-  .step-header {
-    padding: 0.75rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    border-bottom: 1px solid var(--color-neutral-300);
-    background-color: var(--color-neutral-100);
-  }
-  :global(.dark) .step-header {
-    border-bottom-color: var(--color-neutral-700);
-    background-color: var(--color-neutral-800);
-  }
-
-  .step-num {
-    border: 1px solid var(--color-neutral-300);
-    width: 1.25rem;
-    height: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    color: var(--color-neutral-500);
-    flex-shrink: 0;
-  }
-  :global(.dark) .step-num {
-    border-color: var(--color-neutral-600);
-    color: var(--color-neutral-400);
-  }
-
-  .step-label {
-    font-size: 0.75rem;
-    color: var(--color-neutral-500);
-  }
-  :global(.dark) .step-label {
-    color: var(--color-neutral-400);
-  }
-
-  .code-wrapper {
-    position: relative;
-  }
-
-  .copy-btn {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    z-index: 10;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid var(--color-neutral-300);
-    color: var(--color-neutral-500);
-    cursor: pointer;
-    transition: background-color 0.15s;
-    background: transparent;
-  }
-  .copy-btn:hover {
-    background-color: var(--color-neutral-200);
-  }
-  :global(.dark) .copy-btn {
-    border-color: var(--color-neutral-600);
-    color: var(--color-neutral-400);
-  }
-  :global(.dark) .copy-btn:hover {
-    background-color: var(--color-neutral-700);
-  }
-
-  /* Code block sizing */
-  .code-wrapper :global(pre.astro-code) {
-    overflow: auto;
-    max-height: 18rem;
-    padding: 1.5rem;
-    font-size: 0.75rem;
-    line-height: 1.625;
   }
 </style>
 
@@ -314,16 +289,18 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
       });
     });
 
-    section.querySelectorAll<HTMLButtonElement>(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const pre = btn.nextElementSibling as HTMLPreElement;
-        if (pre) {
-          navigator.clipboard.writeText(pre.textContent ?? "");
-          btn.textContent = "Copied!";
-          setTimeout(() => (btn.textContent = "Copy"), 2000);
-        }
+    section
+      .querySelectorAll<HTMLButtonElement>("[data-copy-btn]")
+      .forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const pre = btn.nextElementSibling as HTMLPreElement;
+          if (pre) {
+            navigator.clipboard.writeText(pre.textContent ?? "");
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = "Copy"), 2000);
+          }
+        });
       });
-    });
   }
 
   function init() {

@@ -117,10 +117,7 @@ export function escapeCssClassSelector(value: string): string {
   return escaped;
 }
 
-export function prefixCompiledCss(
-  css: string,
-  candidates: string[],
-): string {
+export function prefixCompiledCss(css: string, candidates: string[]): string {
   let prefixedCss = css;
 
   for (const candidate of [...new Set(candidates)].sort(

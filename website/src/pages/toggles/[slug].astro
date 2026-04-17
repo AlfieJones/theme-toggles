@@ -52,16 +52,17 @@ try {
   <div class="flex flex-col grow">
     <div class="border-b border-neutral-300 dark:border-neutral-700">
       <div
-        class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-8 py-4 flex items-center justify-between"
+        class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-4 sm:px-8 py-4 flex items-center justify-between gap-3 min-w-0"
       >
         <a
           href="/"
-          class="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors cursor-pointer"
+          class="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors cursor-pointer shrink-0"
         >
           ← All toggles
         </a>
-        <div class="flex items-center gap-3">
-          <span class="text-sm text-neutral-500 dark:text-neutral-400"
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <span
+            class="hidden sm:inline text-sm text-neutral-500 dark:text-neutral-400 truncate"
             >{displayName}</span
           >
           <a

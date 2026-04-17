@@ -32,7 +32,13 @@ const classic: ToggleDefinition = {
       children: [
         {
           tag: "circle",
-          attrs: { cx: 12, cy: 12, r: 5, fill: "currentColor", clipPath: clip("main") },
+          attrs: {
+            cx: 12,
+            cy: 12,
+            r: 5,
+            fill: "currentColor",
+            clipPath: clip("main"),
+          },
           cls: {
             className:
               "origin-center transition duration-(--toggles-dot-dev--duration)",

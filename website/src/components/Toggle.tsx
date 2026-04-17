@@ -14,7 +14,6 @@ import {
   Simple,
   Within,
 } from "@theme-toggles/react";
-import clsx from "clsx";
 
 export const TOGGLE_SLUGS = [
   "classic",
@@ -65,11 +64,9 @@ export function Toggle({
 
   return (
     <Toggle
-      className={clsx(
-        className,
-        manageState && toggled && "dark",
-        manageState && !toggled && "light",
-      )}
+      className={[className, manageState && (toggled ? "dark" : "light")]
+        .filter(Boolean)
+        .join(" ")}
       onClick={() => setToggled(!toggled)}
     />
   );

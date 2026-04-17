@@ -3,9 +3,15 @@
   "version": "0.0.1",
   "type": "module",
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "exports": {
-    ".": "./src/index.ts",
-    "./shared": "./src/shared.ts",
-    "./types": "./src/types.ts"
+    ".": "./dist/index.ts",
+    "./shared": "./dist/shared.ts",
+    "./types": "./dist/types.ts"
+  },
+  "scripts": {
+    "build": "bun run build.ts"
   }
 }

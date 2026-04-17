@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Classic } from "@theme-toggles/react";
-import clsx from "clsx";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const [isDark, setIsDark] = useState(false);
@@ -16,10 +15,5 @@ export function ThemeToggle({ className }: { className?: string }) {
     localStorage.setItem("theme", next ? "dark" : "light");
   };
 
-  return (
-    <Classic
-      className={clsx(className)}
-      onClick={toggle}
-    />
-  );
+  return <Classic className={className} onClick={toggle} />;
 }

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
-@source "../../../packages/react/src";
+@import "@theme-toggles/react/styles.css";
 
 @custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
 

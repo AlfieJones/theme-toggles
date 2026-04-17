@@ -1,10 +1,9 @@
-import clsx from "clsx";
 import {
   type ButtonHTMLAttributes,
   type CSSProperties,
-} from "react";
-{% if clips.size > 0 %}import { useToggleId } from "./internal";
+{% if clips.size > 0 %}  useId,
 {% endif %}
+} from "react";
 
 export interface {{ name }}Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   duration?: number;
@@ -19,7 +18,7 @@ export function {{ name }}({
   ...props
 }: {{ name }}Props) {
 {% if clips.size > 0 %}
-  const toggleId = useToggleId();
+  const toggleId = useId();
 {% endif %}
 {% for clip in clips %}
   const {{ clip.varName }} = `toggles.dev-{{ slug }}-{{ clip.id }}-${toggleId}`;

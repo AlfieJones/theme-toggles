@@ -15,12 +15,19 @@ import Footer from "../components/Footer.astro";
     <title>Toggles.dev</title>
     <ClientRouter />
   </head>
-  <body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 flex flex-col min-h-screen">
+  <body
+    class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 flex flex-col min-h-screen"
+  >
     <script is:inline>
       function applyTheme() {
         const saved = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.body.classList.toggle("dark", saved === "dark" || (!saved && prefersDark));
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.body.classList.toggle(
+          "dark",
+          saved === "dark" || (!saved && prefersDark),
+        );
       }
       applyTheme();
       document.addEventListener("astro:after-swap", applyTheme);

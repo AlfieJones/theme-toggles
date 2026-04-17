@@ -7,7 +7,6 @@
       "dependencies": {
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
-        "clsx": "^2.1.1",
         "liquidjs": "^10.20.0",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
@@ -19,6 +18,8 @@
         "prettier": "^3.6.0",
         "prettier-plugin-astro": "^0.14.0",
         "prettier-plugin-svelte": "^3.4.0",
+        "svelte": "^5.55.4",
+        "typescript": "^5.9.3",
       },
     },
     "packages/generator": {
@@ -31,10 +32,7 @@
     },
     "packages/react": {
       "name": "@theme-toggles/react",
-      "version": "0.0.1",
-      "dependencies": {
-        "clsx": "^2.1.1",
-      },
+      "version": "5.0.0-rc.0",
       "devDependencies": {
         "@theme-toggles/generator": "workspace:*",
         "@theme-toggles/toggles": "workspace:*",
@@ -45,10 +43,7 @@
     },
     "packages/svelte": {
       "name": "@theme-toggles/svelte",
-      "version": "0.0.1",
-      "dependencies": {
-        "clsx": "^2.1.1",
-      },
+      "version": "5.0.0-rc.0",
       "devDependencies": {
         "@theme-toggles/generator": "workspace:*",
         "@theme-toggles/toggles": "workspace:*",
@@ -74,7 +69,6 @@
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
         "astro": "^6.1.7",
-        "clsx": "^2.1.1",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "tailwindcss": "^4.2.2",
@@ -981,6 +975,8 @@
     "tsconfck": ["tsconfck@3.1.6", "", { "peerDependencies": { "typescript": "^5.0.0" }, "optionalPeers": ["typescript"], "bin": { "tsconfck": "bin/tsconfck.js" } }, "sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w=="],
 
     "tslib": ["tslib@2.8.1", "", {}, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
+
+    "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
     "ufo": ["ufo@1.6.3", "", {}, "sha512-yDJTmhydvl5lJzBmy/hyOAA0d+aqCBuwl818haVdYCRrWV84o7YyeVm4QlVHStqNrrJSTb6jKuFAVqAFsr+K3Q=="],
 

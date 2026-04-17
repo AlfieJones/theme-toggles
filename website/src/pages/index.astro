@@ -9,32 +9,39 @@ import { Toggle, TOGGLE_SLUGS } from "../components/Toggle";
   <div class="flex flex-col grow">
     <Header />
     <main class="flex flex-col flex-1">
-      <div class="border-b border-neutral-300 dark:border-neutral-700">
-        <div class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-950">
-          <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-            {
-              TOGGLE_SLUGS.map((slug) => (
-                <div transition:name={`toggle-card-${slug}`} class="relative border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col items-center">
-                  <span class="bolt top-2 left-2" />
-                  <span class="bolt top-2 right-2" />
-                  <span class="bolt bottom-2 left-2" />
-                  <span class="bolt bottom-2 right-2" />
-                  <div class="flex-1 flex items-center justify-center p-14">
-                    <Toggle
-                      slug={slug}
-                      manageState
-                      client:load
-                      className="text-8xl cursor-pointer [&_*]:cursor-pointer"
-                    />
-                  </div>
-                  <a href={`/toggles/${slug}`} class="text-sm border-t border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400 w-full text-center py-3 cursor-pointer transition-colors capitalize">{slug.replace(/-/g, ' ')} →</a>
+      <div
+        class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900"
+      >
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+          {
+            TOGGLE_SLUGS.map((slug) => (
+              <div
+                transition:name={`toggle-card-${slug}`}
+                class="relative border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 flex flex-col items-center"
+              >
+                <span class="bolt top-2 left-2" />
+                <span class="bolt top-2 right-2" />
+                <span class="bolt bottom-2 left-2" />
+                <span class="bolt bottom-2 right-2" />
+                <div class="flex-1 flex items-center justify-center p-14">
+                  <Toggle
+                    slug={slug}
+                    manageState
+                    client:load
+                    className="text-8xl cursor-pointer [&_*]:cursor-pointer"
+                  />
                 </div>
-              ))
-            }
-          </div>
+                <a
+                  href={`/toggles/${slug}`}
+                  class="text-sm border-t border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400 w-full text-center py-3 cursor-pointer transition-colors capitalize"
+                >
+                  {slug.replace(/-/g, " ")} →
+                </a>
+              </div>
+            ))
+          }
         </div>
       </div>
-      <div class="flex-1 container mx-auto border-x border-neutral-300 dark:border-neutral-700"></div>
     </main>
   </div>
 </Layout>

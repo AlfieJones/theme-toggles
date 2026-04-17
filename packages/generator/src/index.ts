@@ -9,11 +9,7 @@ import type {
   ToggleDefinition,
   ToggleNode,
 } from "../../toggles/src/types";
-import {
-  clipVarName,
-  collectNodeClasses,
-  prefixCompiledCss,
-} from "./utils";
+import { clipVarName, collectNodeClasses, prefixCompiledCss } from "./utils";
 
 export { renderReactSvg, renderSvelteSvg } from "./render";
 
@@ -29,7 +25,11 @@ export interface WriteFrameworkPackageOptions {
   componentTemplate: string;
   componentExtension: string;
   indexTemplate: string;
-  renderSvg: (toggle: ToggleDefinition) => string;
+  renderSvg: (
+    toggle: ToggleDefinition,
+    options?: { prefixClasses?: boolean },
+  ) => string;
+  prefixClasses?: boolean;
 }
 
 async function ensureDir(directory: string) {
@@ -48,9 +48,23 @@ async function loadTailwindStylesheet(id: string, base?: string) {
     : new URL(id, base ?? import.meta.url).href;
 
   return {
+    path: resolved,
     base: resolved,
     content: await readFile(new URL(resolved), "utf8"),
   };
+}
+
+async function buildTailwindCss(
+  candidates: string[],
+  prefixClasses = false,
+): Promise<string> {
+  const tailwind = await compile(TAILWIND_INPUT, {
+    from: import.meta.url,
+    loadStylesheet: loadTailwindStylesheet,
+  });
+
+  const css = tailwind.build(candidates);
+  return prefixClasses ? prefixCompiledCss(css, candidates) : css;
 }
 
 function collectToggleCandidates(toggle: ToggleDefinition): string[] {
@@ -61,7 +75,7 @@ function collectToggleCandidates(toggle: ToggleDefinition): string[] {
       candidates.add(className);
     }
 
-    if ("children" in node) {
+    if ("children" in node && node.children) {
       for (const child of node.children) {
         visitNode(child);
       }
@@ -106,8 +120,8 @@ async function renderTemplate(
   return engine.parseAndRender(template, payload);
 }
 
-export async function writeFrameworkPackage({
-  packageDir,
+export async function writeFrameworkSources({
+  packageDir: _packageDir,
   toggles,
   srcDir,
   templatesDir,
@@ -115,35 +129,19 @@ export async function writeFrameworkPackage({
   componentExtension,
   indexTemplate,
   renderSvg,
+  prefixClasses = false,
 }: WriteFrameworkPackageOptions) {
   await ensureDir(srcDir);
-  await ensureDir(path.join(packageDir, "styles"));
-
-  const tailwind = await compile(TAILWIND_INPUT, {
-    from: import.meta.url,
-    loadStylesheet: loadTailwindStylesheet,
-  });
-  const allCandidates = new Set<string>();
 
   for (const toggle of toggles) {
     const contents = await renderTemplate(templatesDir, componentTemplate, {
       ...toTemplateToggle(toggle),
-      svg: renderSvg(toggle),
+      svg: renderSvg(toggle, { prefixClasses }),
     });
 
     await writeFile(
       path.join(srcDir, `${toggle.name}.${componentExtension}`),
       `${contents.trim()}\n`,
-    );
-
-    const candidates = collectToggleCandidates(toggle);
-    for (const candidate of candidates) {
-      allCandidates.add(candidate);
-    }
-
-    await writeFile(
-      path.join(packageDir, "styles", `${toggle.slug}.css`),
-      `${prefixCompiledCss(tailwind.build(candidates), candidates)}\n`,
     );
   }
 
@@ -151,11 +149,32 @@ export async function writeFrameworkPackage({
     toggles,
   });
   await writeFile(path.join(srcDir, "index.ts"), `${indexContents.trim()}\n`);
+}
+
+export async function writeFrameworkStyles({
+  packageDir,
+  toggles,
+  prefixClasses = false,
+}: Pick<WriteFrameworkPackageOptions, "packageDir" | "toggles"> & {
+  prefixClasses?: boolean;
+}) {
+  await ensureDir(path.join(packageDir, "styles"));
+  const allCandidates = new Set<string>();
+
+  for (const toggle of toggles) {
+    const candidates = collectToggleCandidates(toggle);
+    for (const candidate of candidates) {
+      allCandidates.add(candidate);
+    }
+
+    await writeFile(
+      path.join(packageDir, "styles", `${toggle.slug}.css`),
+      `${await buildTailwindCss(candidates, prefixClasses)}\n`,
+    );
+  }
+
   await writeFile(
     path.join(packageDir, "styles.css"),
-    `${prefixCompiledCss(
-      tailwind.build([...allCandidates].sort()),
-      [...allCandidates],
-    )}\n`,
+    `${await buildTailwindCss([...allCandidates].sort(), prefixClasses)}\n`,
   );
 }

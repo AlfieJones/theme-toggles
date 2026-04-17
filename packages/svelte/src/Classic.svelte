@@ -1,8 +1,9 @@
-<script lang="ts">
-  import clsx from "clsx";
-  import type { HTMLButtonAttributes } from "svelte/elements";
-  import { createToggleId } from "./internal";
+<script context="module" lang="ts">
+  let nextId = 0;
+</script>
 
+<script lang="ts">
+  import type { HTMLButtonAttributes } from "svelte/elements";
 
   interface $$Props extends Omit<HTMLButtonAttributes, "children"> {
     duration?: number;
@@ -17,44 +18,115 @@
   let className = "";
   export { className as class };
 
-
-  const toggleId = createToggleId("classic");
+  const toggleId = `classic-${++nextId}`;
 
   const clipMainId = `toggles.dev-classic-main-${toggleId}`;
-
-
 </script>
 
 <button
-  type={type}
-  title={title}
+  {type}
+  {title}
   aria-label={ariaLabel}
   class={className}
   on:click
   {...$$restProps}
 >
-<svg
-  width="1em"
-  height="1em"
-  viewBox="0 0 24 24"
-  aria-hidden="true"
-  style={`--toggles-dot-dev--duration: ${duration}ms`}
->
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    style={`--toggles-dot-dev--duration: ${duration}ms`}
+  >
     <defs>
       <clipPath id={clipMainId}>
-          <path d={"M0 0h25a1 1 0 0010 10v14H0Z"} class={clsx("transition-[d,translate]", "toggles-dev--transition-[d,translate]", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "dark:delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:[d:path('M0_2h13a1_1_0_0010_10v14H0Z')]", "dark:toggles-dev--[d:path('M0_2h13a1_1_0_0010_10v14H0Z')]", "dark:not-supports-[d:path('M0_0')]:-translate-x-3.25", "dark:toggles-dev--not-supports-[d:path('M0_0')]:-translate-x-3.25", "dark:not-supports-[d:path('M0_0')]:translate-y-0.5", "dark:toggles-dev--not-supports-[d:path('M0_0')]:translate-y-0.5")} />
+        <path
+          d={"M0 0h25a1 1 0 0010 10v14H0Z"}
+          class={"transition-[d,translate] duration-(--toggles-dot-dev--duration) dark:delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:[d:path('M0_2h13a1_1_0_0010_10v14H0Z')] dark:not-supports-[d:path('M0_0')]:-translate-x-3.25 dark:not-supports-[d:path('M0_0')]:translate-y-0.5"}
+        />
       </clipPath>
     </defs>
     <g stroke={"currentColor"} stroke-linecap={"round"}>
-      <circle cx={12} cy={12} r={5} fill={"currentColor"} clip-path={`url(#${clipMainId})`} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "dark:scale-170", "dark:toggles-dev--scale-170")} />
-      <path d={"M12 1.4v2.4"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"m20.3 3.7-2.5 2.5"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"M22.6 12h-2.4"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"M12 22.6v-2.4"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"M1.4 12h2.4"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"m20.3 20.3-2.5-2.5"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"m3.7 20.3 2.5-2.5"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
-      <path d={"m3.7 3.7 2.5 2.5"} fill={"none"} stroke-width={2} stroke-linejoin={"round"} stroke-miterlimit={0} paint-order={"stroke markers fill"} class={clsx("origin-center", "toggles-dev--origin-center", "transition", "toggles-dev--transition", "duration-(--toggles-dot-dev--duration)", "toggles-dev--duration-(--toggles-dot-dev--duration)", "delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "toggles-dev--delay-[calc(var(--toggles-dot-dev--duration)*0.15)]", "dark:delay-0", "dark:toggles-dev--delay-0", "dark:scale-50", "dark:toggles-dev--scale-50", "dark:rotate-45", "dark:toggles-dev--rotate-45", "dark:opacity-0", "dark:toggles-dev--opacity-0")} />
+      <circle
+        cx={12}
+        cy={12}
+        r={5}
+        fill={"currentColor"}
+        clip-path={`url(#${clipMainId})`}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) dark:scale-170"}
+      />
+      <path
+        d={"M12 1.4v2.4"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"m20.3 3.7-2.5 2.5"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"M22.6 12h-2.4"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"M12 22.6v-2.4"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"M1.4 12h2.4"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"m20.3 20.3-2.5-2.5"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"m3.7 20.3 2.5-2.5"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
+      <path
+        d={"m3.7 3.7 2.5 2.5"}
+        fill={"none"}
+        stroke-width={2}
+        stroke-linejoin={"round"}
+        stroke-miterlimit={0}
+        paint-order={"stroke markers fill"}
+        class={"origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0 dark:scale-50 dark:rotate-45 dark:opacity-0"}
+      />
     </g>
-</svg>
+  </svg>
 </button>

@@ -15,7 +15,7 @@ export default defineConfig({
   },
 
   integrations: [react()],
-  output: "hybrid",
+  output: "server",
   adapter: vercel({
     isr: {
       expiration: 60,
