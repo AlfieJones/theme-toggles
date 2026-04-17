@@ -1,0 +1,13 @@
+{
+  "name": "@theme-toggles/generator",
+  "version": "0.0.1",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@theme-toggles/toggles": "workspace:*",
+    "liquidjs": "^10.20.0"
+  }
+}

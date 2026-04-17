@@ -1,0 +1,23 @@
+---
+import { getStars } from "../lib/github";
+
+const stars = await getStars();
+---
+
+<footer class="border-t border-neutral-300 dark:border-neutral-700">
+  <div class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-8 py-6 flex items-center justify-between">
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      Built by <a href="https://alfiejones.dev" target="_blank" rel="noopener noreferrer" class="underline hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors">Alfie Jones</a>
+    </p>
+    <div class="flex items-center gap-4">
+      <a
+        href="https://github.com/alfiejones/theme-toggles"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
+      >
+        {stars !== null ? `★ ${stars.toLocaleString()} on GitHub` : "GitHub"}
+      </a>
+    </div>
+  </div>
+</footer>

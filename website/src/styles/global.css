@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@source "../../../packages/react/src";
+
+@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
+
+@theme {
+  --font-sans: "Geist Mono Variable", ui-monospace, monospace;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+}

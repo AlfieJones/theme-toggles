@@ -1,0 +1,39 @@
+import clsx from "clsx";
+import {
+  type ButtonHTMLAttributes,
+  type CSSProperties,
+} from "react";
+{% if clips.size > 0 %}import { useToggleId } from "./internal";
+{% endif %}
+
+export interface {{ name }}Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+  duration?: number;
+}
+
+export function {{ name }}({
+  duration = {{ defaultDuration }},
+  className,
+  type = "button",
+  title = "Toggle theme",
+  "aria-label": ariaLabel = "Toggle theme",
+  ...props
+}: {{ name }}Props) {
+{% if clips.size > 0 %}
+  const toggleId = useToggleId();
+{% endif %}
+{% for clip in clips %}
+  const {{ clip.varName }} = `toggles.dev-{{ slug }}-{{ clip.id }}-${toggleId}`;
+{% endfor %}
+
+  return (
+    <button
+      type={type}
+      title={title}
+      aria-label={ariaLabel}
+      className={className}
+      {...props}
+    >
+{{ svg }}
+    </button>
+  );
+}

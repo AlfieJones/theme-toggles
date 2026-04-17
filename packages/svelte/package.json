@@ -1,0 +1,26 @@
+{
+  "name": "@theme-toggles/svelte",
+  "version": "0.0.1",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./styles.css",
+    "./styles/*.css": "./styles/*.css"
+  },
+  "scripts": {
+    "generate": "bun run generate.ts"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@theme-toggles/generator": "workspace:*",
+    "@theme-toggles/toggles": "workspace:*"
+  },
+  "peerDependencies": {
+    "svelte": "^4.0.0 || ^5.0.0"
+  }
+}

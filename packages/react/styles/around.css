@@ -1,0 +1,121 @@
+/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme {
+  :root, :host {
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+@layer utilities {
+  .toggles-dev--\[transform-origin\:center\] {
+    transform-origin: center;
+  }
+  .toggles-dev--transition-\[d\,translate\] {
+    transition-property: d,translate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .toggles-dev--\[transition-duration\:calc\(var\(--toggles-around--duration\)_\*_0\.6\)\] {
+    transition-duration: calc(var(--toggles-around--duration) * 0.6);
+  }
+  .toggles-dev--\[transition-timing-function\:ease\] {
+    transition-timing-function: ease;
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.2\)_ease_calc\(var\(--toggles-around--duration\)_\*_0\.253\)\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.2) ease calc(var(--toggles-around--duration) * 0.253);
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.2\)_ease_calc\(var\(--toggles-around--duration\)_\*_0\.348\)\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.2) ease calc(var(--toggles-around--duration) * 0.348);
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.2\)_ease_calc\(var\(--toggles-around--duration\)_\*_0\.443\)\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.2) ease calc(var(--toggles-around--duration) * 0.443);
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.2\)_ease_calc\(var\(--toggles-around--duration\)_\*_0\.538\)\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.2) ease calc(var(--toggles-around--duration) * 0.538);
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.2\)_ease_calc\(var\(--toggles-around--duration\)_\*_0\.633\)\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.2) ease calc(var(--toggles-around--duration) * 0.633);
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.2\)_ease_calc\(var\(--toggles-around--duration\)_\*_0\.728\)\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.2) ease calc(var(--toggles-around--duration) * 0.728);
+  }
+  .toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.6\)_ease\] {
+    transition: transform calc(var(--toggles-around--duration) * 0.6) ease;
+  }
+  .dark\:toggles-dev--\[transform\:rotate\(-90deg\)\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      transform: rotate(-90deg);
+    }
+  }
+  .dark\:toggles-dev--\[transform\:scale\(0\)\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      transform: scale(0);
+    }
+  }
+  .dark\:toggles-dev--\[transform\:scale\(1\.4\)\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      transform: scale(1.4);
+    }
+  }
+  .dark\:toggles-dev--\[transition-duration\:var\(--toggles-around--duration\)\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      transition-duration: var(--toggles-around--duration);
+    }
+  }
+  .dark\:toggles-dev--\[d\:path\(\'M-12_-14h42v30a1_1_0_00-16_13H0Z\'\)\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      d: path('M-12 -14h42v30a1 1 0 00-16 13H0Z');
+    }
+  }
+  .dark\:toggles-dev--\[transition\:transform_calc\(var\(--toggles-around--duration\)_\*_0\.4\)_ease\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      transition: transform calc(var(--toggles-around--duration) * 0.4) ease;
+    }
+  }
+  .dark\:toggles-dev--\[transition\:transform_var\(--toggles-around--duration\)_ease\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      transition: transform var(--toggles-around--duration) ease;
+    }
+  }
+  .dark\:toggles-dev--not-supports-\[d\:path\(\'M0_0\'\)\]\:-translate-x-\[12px\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      @supports not (d:path('M0 0')) {
+        --tw-translate-x: calc(12px * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  .dark\:toggles-dev--not-supports-\[d\:path\(\'M0_0\'\)\]\:-translate-y-\[14px\] {
+    &:where(.dark, .dark *):not(:where(.light, .light *)) {
+      @supports not (d:path('M0 0')) {
+        --tw-translate-y: calc(14px * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+    }
+  }
+}
+
