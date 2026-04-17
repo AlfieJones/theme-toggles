@@ -95,7 +95,7 @@ try {
     <main class="flex flex-col flex-1">
       <div class="border-b border-neutral-300 dark:border-neutral-700">
         <div
-          class="container mx-auto border-x border-neutral-300 dark:border-neutral-700"
+          class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 overflow-hidden"
         >
           <div class="grid lg:grid-cols-2">
             <div
@@ -113,7 +113,7 @@ try {
                 className="text-9xl cursor-pointer [&_*]:cursor-pointer"
               />
             </div>
-            <div class="bg-neutral-50 dark:bg-neutral-900">
+            <div class="bg-neutral-50 dark:bg-neutral-900 min-w-0 overflow-hidden">
               <InstallSection
                 slug={slug}
                 reactSource={reactSource}
