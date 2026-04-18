@@ -84,7 +84,7 @@
     },
     "packages/react": {
       "name": "@theme-toggles/react",
-      "version": "5.0.0",
+      "version": "4.0.0",
       "devDependencies": {
         "@theme-toggles/generator": "workspace:*",
         "@theme-toggles/toggles": "workspace:*",
@@ -120,7 +120,7 @@
       },
     },
     "website": {
-      "name": "@toggles.dev/website",
+      "name": "@theme-toggles/website",
       "version": "0.0.1",
       "dependencies": {
         "@astrojs/react": "^5.0.3",
@@ -578,7 +578,7 @@
 
     "@theme-toggles/vue-example": ["@theme-toggles/vue-example@workspace:examples/vue-example"],
 
-    "@toggles.dev/website": ["@toggles.dev/website@workspace:website"],
+    "@theme-toggles/website": ["@theme-toggles/website@workspace:website"],
 
     "@tsconfig/svelte": ["@tsconfig/svelte@5.0.8", "", {}, "sha512-UkNnw1/oFEfecR8ypyHIQuWYdkPvHiwcQ78sh+ymIiYoF+uc5H1UBetbjyqT+vgGJ3qQN6nhucJviX6HesWtKQ=="],
 

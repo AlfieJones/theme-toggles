@@ -1,5 +1,5 @@
 {
-  "name": "@toggles.dev/website",
+  "name": "@theme-toggles/website",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
