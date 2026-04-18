@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "5.0.0",
+  "version": "4.0.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
