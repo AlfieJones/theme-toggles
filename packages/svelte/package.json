@@ -2,6 +2,7 @@
   "name": "@theme-toggles/svelte",
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
   "sideEffects": [
     "**/*.css"
   ],
