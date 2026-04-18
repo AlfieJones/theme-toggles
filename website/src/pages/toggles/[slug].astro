@@ -1,11 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Toggle, TOGGLE_SLUGS } from "../../components/Toggle";
+import { BackLink } from "../../components/BackLink";
 import InstallSection from "../../components/InstallSection.astro";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { getStars } from "../../lib/github";
 import { readFileSync } from "fs";
 import { resolve } from "path";
+
+export const prerender = true;
 
 export function getStaticPaths() {
   return TOGGLE_SLUGS.map((slug) => ({
@@ -34,6 +37,7 @@ const root = resolve(process.cwd(), "..");
 
 let reactSource = "";
 let svelteSource = "";
+let vueSource = "";
 try {
   reactSource = readFileSync(
     resolve(root, `packages/react/src/${componentName}.tsx`),
@@ -46,20 +50,37 @@ try {
     "utf-8",
   );
 } catch {}
+try {
+  vueSource = readFileSync(
+    resolve(root, `packages/vue/src/${componentName}.vue`),
+    "utf-8",
+  );
+} catch {}
 ---
 
 <Layout>
   <div class="flex flex-col grow">
     <div class="border-b border-neutral-300 dark:border-neutral-700">
       <div
-        class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-4 sm:px-8 py-4 flex items-center justify-between gap-3 min-w-0"
+        class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-4 sm:px-8 py-4 flex items-center justify-between gap-3 min-w-0"
       >
-        <a
-          href="/"
-          class="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors cursor-pointer shrink-0"
-        >
-          ← All toggles
-        </a>
+        <span
+          class="bolt z-10 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+        ></span>
+        <span
+          class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+        ></span>
+        <span
+          class="bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"
+        ></span>
+        <span
+          class="bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"
+        ></span>
+        <BackLink
+          slug={slug}
+          className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors cursor-pointer shrink-0"
+          client:load
+        />
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <span
             class="hidden sm:inline text-sm text-neutral-500 dark:text-neutral-400 truncate"
@@ -95,12 +116,25 @@ try {
     <main class="flex flex-col flex-1">
       <div class="border-b border-neutral-300 dark:border-neutral-700">
         <div
-          class="container mx-auto border-x border-neutral-300 dark:border-neutral-700 overflow-hidden"
+          class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700"
         >
-          <div class="grid lg:grid-cols-2">
+          <span
+            class="bolt z-10 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+          ></span>
+          <span
+            class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+          ></span>
+          <span
+            class="bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"
+          ></span>
+          <span
+            class="bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"
+          ></span>
+          <div class="grid lg:grid-cols-2 overflow-hidden">
+            <div class="lg:sticky lg:top-0 lg:self-start">
             <div
               transition:name={`toggle-card-${slug}`}
-              class="relative border-b lg:border-b-0 lg:border-r border-neutral-300 dark:border-neutral-700 flex items-center justify-center p-16 bg-neutral-50 dark:bg-neutral-900 lg:sticky lg:top-0 lg:self-start h-full"
+              class="relative border-b lg:border-b-0 lg:border-r border-neutral-300 dark:border-neutral-700 flex items-center justify-center p-16 bg-neutral-50 dark:bg-neutral-900 h-116"
             >
               <span class="bolt top-4 left-4"></span>
               <span class="bolt top-4 right-4"></span>
@@ -109,23 +143,34 @@ try {
               <Toggle
                 slug={slug as (typeof TOGGLE_SLUGS)[number]}
                 manageState
-                client:load
+                readUrlParam="toggled"
+                client:only="react"
                 className="text-9xl cursor-pointer [&_*]:cursor-pointer"
               />
             </div>
-            <div class="bg-neutral-50 dark:bg-neutral-900 min-w-0 overflow-hidden">
+            </div>
+            <div
+              class="bg-neutral-100 dark:bg-neutral-900 min-w-0 overflow-hidden"
+            >
               <InstallSection
                 slug={slug}
                 reactSource={reactSource}
                 svelteSource={svelteSource}
+                vueSource={vueSource}
               />
             </div>
           </div>
         </div>
       </div>
       <div
-        class="flex-1 container mx-auto border-x border-neutral-300 dark:border-neutral-700"
+        class="relative flex-1 container mx-auto border-x border-neutral-300 dark:border-neutral-700"
       >
+        <span
+          class="bolt z-10 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+        ></span>
+        <span
+          class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+        ></span>
       </div>
     </main>
   </div>

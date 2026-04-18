@@ -5,9 +5,10 @@ interface Props {
   slug: string;
   reactSource: string;
   svelteSource: string;
+  vueSource: string;
 }
 
-const { slug, reactSource, svelteSource } = Astro.props;
+const { slug, reactSource, svelteSource, vueSource } = Astro.props;
 
 const componentName = slug
   .split("-")
@@ -16,11 +17,19 @@ const componentName = slug
 
 const shadcnInstall = `npx shadcn@latest add https://toggles.dev/r/${slug}`;
 const shadcnUsage = `import { ${componentName} } from "@/components/ui/${slug}";\n\nexport default function App() {\n  return <${componentName} />;\n}`;
-const reactInstall = `npm install @theme-toggles/react`;
-const svelteInstall = `npm install @theme-toggles/svelte`;
+const npmUsage = `import { ${componentName} } from "@theme-toggles/react";\nimport "@theme-toggles/react/styles/${slug}.css";\n\nexport default function App() {\n  return <${componentName} />;\n}`;
+const svelteNpmUsage = `<script>\n  import { ${componentName} } from "@theme-toggles/svelte";\n  import "@theme-toggles/svelte/styles/${slug}.css";\n</script>\n\n<${componentName} />`;
+const vueNpmUsage = `<script setup lang="ts">\nimport { ${componentName} } from "@theme-toggles/vue";\nimport "@theme-toggles/vue/styles/${slug}.css";\n</script>\n\n<template>\n  <${componentName} />\n</template>`;
+
+const pkgManagers = [
+  { id: "npm", install: (pkg: string) => `npm install ${pkg}` },
+  { id: "pnpm", install: (pkg: string) => `pnpm add ${pkg}` },
+  { id: "yarn", install: (pkg: string) => `yarn add ${pkg}` },
+  { id: "bun", install: (pkg: string) => `bun add ${pkg}` },
+];
 ---
 
-<div data-install class="flex flex-col h-full bg-white dark:bg-neutral-900">
+<div data-install class="flex flex-col h-full">
   <!-- Framework tabs -->
   <div class="flex border-b border-neutral-300 dark:border-neutral-700">
     <button
@@ -34,11 +43,16 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
       class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >svelte</button
     >
+    <button
+      data-fw-btn="vue"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >vue</button
+    >
   </div>
 
-  <!-- Method tabs -->
+  <!-- React method tabs -->
   <div
-    data-method-row
+    data-method-row="react"
     class="flex border-b border-neutral-300 dark:border-neutral-700"
   >
     <button
@@ -46,6 +60,49 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
       data-active
       class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >shadcn/ui</button
+    >
+    <button
+      data-method-btn="npm"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >npm</button
+    >
+    <button
+      data-method-btn="manual"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >Manual</button
+    >
+  </div>
+
+  <!-- Svelte method tabs -->
+  <div
+    data-method-row="svelte"
+    hidden
+    class="flex border-b border-neutral-300 dark:border-neutral-700"
+  >
+    <button
+      data-method-btn="npm"
+      data-active
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >npm</button
+    >
+    <button
+      data-method-btn="manual"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >Manual</button
+    >
+  </div>
+
+  <!-- Vue method tabs -->
+  <div
+    data-method-row="vue"
+    hidden
+    class="flex border-b border-neutral-300 dark:border-neutral-700"
+  >
+    <button
+      data-method-btn="npm"
+      data-active
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >npm</button
     >
     <button
       data-method-btn="manual"
@@ -116,21 +173,35 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
     </div>
   </div>
 
-  <!-- react + manual -->
-  <div data-panel="react-manual" hidden>
+  <!-- react + npm -->
+  <div data-panel="react-npm" hidden>
     <div
       class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
     >
       <div
-        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+        class="px-6 py-3 flex items-center justify-between gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
       >
-        <span
-          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
-          >1</span
-        >
-        <span class="text-xs text-neutral-500 dark:text-neutral-400"
-          >Install dependencies</span
-        >
+        <div class="flex items-center gap-3">
+          <span
+            class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+            >1</span
+          >
+          <span class="text-xs text-neutral-500 dark:text-neutral-400"
+            >Install the package</span
+          >
+        </div>
+        <div class="relative">
+          <select
+            data-pkg-select="react"
+            class="text-xs border border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+          >
+            {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
+          </select>
+          <span
+            class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"
+            >▾</span
+          >
+        </div>
       </div>
       <div
         class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
@@ -140,11 +211,20 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
           class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
           >Copy</button
         >
-        <Code
-          code={reactInstall}
-          lang="bash"
-          themes={{ light: "github-light", dark: "github-dark" }}
-        />
+        {
+          pkgManagers.map((pm) => (
+            <div
+              data-pkg-code={`react-${pm.id}`}
+              class={pm.id !== "npm" ? "hidden" : ""}
+            >
+              <Code
+                code={pm.install("@theme-toggles/react")}
+                lang="bash"
+                themes={{ light: "github-light", dark: "github-dark" }}
+              />
+            </div>
+          ))
+        }
       </div>
     </div>
     <div
@@ -156,6 +236,39 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
         <span
           class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
           >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={npmUsage}
+          lang="tsx"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- react + manual -->
+  <div data-panel="react-manual" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
         >
         <span class="text-xs text-neutral-500 dark:text-neutral-400"
           >Copy the component</span
@@ -178,21 +291,35 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
     </div>
   </div>
 
-  <!-- svelte -->
-  <div data-panel="svelte" hidden>
+  <!-- svelte + npm -->
+  <div data-panel="svelte-npm" hidden>
     <div
       class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
     >
       <div
-        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+        class="px-6 py-3 flex items-center justify-between gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
       >
-        <span
-          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
-          >1</span
-        >
-        <span class="text-xs text-neutral-500 dark:text-neutral-400"
-          >Install dependencies</span
-        >
+        <div class="flex items-center gap-3">
+          <span
+            class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+            >1</span
+          >
+          <span class="text-xs text-neutral-500 dark:text-neutral-400"
+            >Install the package</span
+          >
+        </div>
+        <div class="relative">
+          <select
+            data-pkg-select="svelte"
+            class="text-xs border border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+          >
+            {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
+          </select>
+          <span
+            class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"
+            >▾</span
+          >
+        </div>
       </div>
       <div
         class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
@@ -202,11 +329,20 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
           class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
           >Copy</button
         >
-        <Code
-          code={svelteInstall}
-          lang="bash"
-          themes={{ light: "github-light", dark: "github-dark" }}
-        />
+        {
+          pkgManagers.map((pm) => (
+            <div
+              data-pkg-code={`svelte-${pm.id}`}
+              class={pm.id !== "npm" ? "hidden" : ""}
+            >
+              <Code
+                code={pm.install("@theme-toggles/svelte")}
+                lang="bash"
+                themes={{ light: "github-light", dark: "github-dark" }}
+              />
+            </div>
+          ))
+        }
       </div>
     </div>
     <div
@@ -218,6 +354,39 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
         <span
           class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
           >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={svelteNpmUsage}
+          lang="svelte"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- svelte + manual -->
+  <div data-panel="svelte-manual" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
         >
         <span class="text-xs text-neutral-500 dark:text-neutral-400"
           >Copy the component</span
@@ -234,6 +403,124 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
         <Code
           code={svelteSource}
           lang="svelte"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- vue + npm -->
+  <div data-panel="vue-npm" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center justify-between gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+            >1</span
+          >
+          <span class="text-xs text-neutral-500 dark:text-neutral-400"
+            >Install the package</span
+          >
+        </div>
+        <div class="relative">
+          <select
+            data-pkg-select="vue"
+            class="text-xs border border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+          >
+            {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
+          </select>
+          <span
+            class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"
+            >▾</span
+          >
+        </div>
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        {
+          pkgManagers.map((pm) => (
+            <div
+              data-pkg-code={`vue-${pm.id}`}
+              class={pm.id !== "npm" ? "hidden" : ""}
+            >
+              <Code
+                code={pm.install("@theme-toggles/vue")}
+                lang="bash"
+                themes={{ light: "github-light", dark: "github-dark" }}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={vueNpmUsage}
+          lang="vue"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- vue + manual -->
+  <div data-panel="vue-manual" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Copy the component</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={vueSource}
+          lang="vue"
           themes={{ light: "github-light", dark: "github-dark" }}
         />
       </div>
@@ -257,18 +544,30 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
 <script>
   function initInstallSection(section: Element) {
     let fw = "react";
-    let method = "shadcn";
+    const methodByFw: Record<string, string> = {
+      react: "shadcn",
+      svelte: "npm",
+      vue: "npm",
+    };
 
     const fwBtns = section.querySelectorAll<HTMLButtonElement>("[data-fw-btn]");
-    const methodBtns =
-      section.querySelectorAll<HTMLButtonElement>("[data-method-btn]");
-    const methodRow = section.querySelector<HTMLElement>("[data-method-row]");
     const panels = section.querySelectorAll<HTMLElement>("[data-panel]");
+    const reactMethodRow = section.querySelector<HTMLElement>(
+      "[data-method-row='react']",
+    );
+    const svelteMethodRow = section.querySelector<HTMLElement>(
+      "[data-method-row='svelte']",
+    );
+    const vueMethodRow = section.querySelector<HTMLElement>(
+      "[data-method-row='vue']",
+    );
 
     function showPanel() {
-      const active = fw === "svelte" ? "svelte" : `${fw}-${method}`;
+      const active = `${fw}-${methodByFw[fw]}`;
       panels.forEach((p) => (p.hidden = p.dataset.panel !== active));
-      if (methodRow) methodRow.hidden = fw !== "react";
+      if (reactMethodRow) reactMethodRow.hidden = fw !== "react";
+      if (svelteMethodRow) svelteMethodRow.hidden = fw !== "svelte";
+      if (vueMethodRow) vueMethodRow.hidden = fw !== "vue";
     }
 
     fwBtns.forEach((btn) => {
@@ -280,20 +579,50 @@ const svelteInstall = `npm install @theme-toggles/svelte`;
       });
     });
 
-    methodBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        method = btn.dataset.methodBtn!;
-        methodBtns.forEach((b) => delete b.dataset.active);
-        btn.dataset.active = "";
-        showPanel();
-      });
+    [reactMethodRow, svelteMethodRow, vueMethodRow].forEach((row) => {
+      if (!row) return;
+      const rowFw = row.dataset.methodRow!;
+      row
+        .querySelectorAll<HTMLButtonElement>("[data-method-btn]")
+        .forEach((btn) => {
+          btn.addEventListener("click", () => {
+            methodByFw[rowFw] = btn.dataset.methodBtn!;
+            row
+              .querySelectorAll("[data-method-btn]")
+              .forEach((b) => delete (b as HTMLElement).dataset.active);
+            btn.dataset.active = "";
+            showPanel();
+          });
+        });
     });
+
+    section
+      .querySelectorAll<HTMLSelectElement>("[data-pkg-select]")
+      .forEach((select) => {
+        select.addEventListener("change", () => {
+          const fw = select.dataset.pkgSelect!;
+          const pm = select.value;
+          section
+            .querySelectorAll<HTMLElement>(`[data-pkg-code^="${fw}-"]`)
+            .forEach((el) => {
+              el.classList.toggle(
+                "hidden",
+                el.dataset.pkgCode !== `${fw}-${pm}`,
+              );
+            });
+          // update the copy button target for the visible code block
+        });
+      });
 
     section
       .querySelectorAll<HTMLButtonElement>("[data-copy-btn]")
       .forEach((btn) => {
         btn.addEventListener("click", () => {
-          const pre = btn.nextElementSibling as HTMLPreElement;
+          const wrapper = btn.nextElementSibling as HTMLElement;
+          const pre = wrapper?.matches("pre")
+            ? wrapper
+            : (wrapper?.querySelector(":not(.hidden) pre") ??
+              (btn.nextElementSibling as HTMLPreElement));
           if (pre) {
             navigator.clipboard.writeText(pre.textContent ?? "");
             btn.textContent = "Copied!";

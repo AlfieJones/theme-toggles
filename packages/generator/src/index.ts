@@ -11,7 +11,7 @@ import type {
 } from "../../toggles/src/types";
 import { clipVarName, collectNodeClasses, prefixCompiledCss } from "./utils";
 
-export { renderReactSvg, renderSvelteSvg } from "./render";
+export { renderReactSvg, renderSvelteSvg, renderVueSvg } from "./render";
 
 export function packageDirFromMeta(metaUrl: string): string {
   return path.dirname(fileURLToPath(metaUrl));

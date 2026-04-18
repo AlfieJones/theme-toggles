@@ -13,10 +13,14 @@ import type {
   ToggleNode,
 } from "../../toggles/src/types";
 
-type Framework = "react" | "svelte";
+type Framework = "react" | "svelte" | "vue";
 type LiteralValue = string | number | boolean;
 interface RenderClassOptions {
   prefixClasses?: boolean;
+}
+
+function escapeVueBinding(value: string): string {
+  return value.replaceAll('"', "&quot;");
 }
 
 function isLiteralValue(value: AttributeValue): value is LiteralValue {
@@ -61,6 +65,24 @@ function renderSvelteAttr(name: string, value: AttributeValue): string {
   return `${attrName}={${serializeLiteral(value)}}`;
 }
 
+function renderVueAttr(name: string, value: AttributeValue): string {
+  const attrName = toSvgAttr(name);
+
+  if (isClipRef(value)) {
+    return `:${attrName}="\`url(#\${${clipVarName(value._clip)}})\`"`;
+  }
+
+  if (!isLiteralValue(value)) {
+    throw new TypeError(`Unsupported SVG attribute value for ${name}`);
+  }
+
+  if (value === true) {
+    return attrName;
+  }
+
+  return `:${attrName}="${escapeVueBinding(serializeLiteral(value))}"`;
+}
+
 function renderAttrs(
   node: ToggleNode | ClipPathDefinition,
   framework: Framework,
@@ -77,7 +99,9 @@ function renderAttrs(
     attrs.push(
       framework === "react"
         ? renderReactAttr(name, value)
-        : renderSvelteAttr(name, value),
+        : framework === "svelte"
+          ? renderSvelteAttr(name, value)
+          : renderVueAttr(name, value),
     );
   }
 
@@ -89,7 +113,9 @@ function renderAttrs(
     attrs.push(
       framework === "react"
         ? `className=${serializeLiteral(classValue)}`
-        : `class={${serializeLiteral(classValue)}}`,
+        : framework === "svelte"
+          ? `class={${serializeLiteral(classValue)}}`
+          : `:class="${escapeVueBinding(serializeLiteral(classValue))}"`,
     );
   }
 
@@ -138,7 +164,9 @@ function renderDefs(
     const attrs =
       framework === "react"
         ? [`id={${clipVarName(clipPath.id)}}`]
-        : [`id={${clipVarName(clipPath.id)}}`];
+        : framework === "svelte"
+          ? [`id={${clipVarName(clipPath.id)}}`]
+          : [`:id="${clipVarName(clipPath.id)}"`];
     const classTokens = collectNodeClasses(clipPath);
 
     if (classTokens.length > 0) {
@@ -153,7 +181,9 @@ function renderDefs(
       attrs.push(
         framework === "react"
           ? `className=${serializeLiteral(classValue)}`
-          : `class={${serializeLiteral(classValue)}}`,
+          : framework === "svelte"
+            ? `class={${serializeLiteral(classValue)}}`
+            : `:class="${escapeVueBinding(serializeLiteral(classValue))}"`,
       );
     }
 
@@ -218,6 +248,38 @@ export function renderSvelteSvg(
     `  aria-hidden="true"`,
     svgAttrs ? `  ${svgAttrs}` : "",
     `  style={\`--${toggle.cssVar.slice(2)}: \${duration}ms\`}`,
+    ">",
+    inner,
+    "</svg>",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+export function renderVueSvg(
+  toggle: ToggleDefinition,
+  options: RenderClassOptions = {},
+): string {
+  const svgAttrs = Object.entries(toggle.svgAttrs ?? {})
+    .map(
+      ([name, value]) =>
+        `:${toSvgAttr(name)}="${escapeVueBinding(serializeLiteral(value))}"`,
+    )
+    .join(" ");
+  const defs = renderDefs(toggle, "vue", 2, options);
+  const content = toggle.content
+    .map((node) => renderNode(node, "vue", options, 2))
+    .join("\n");
+  const inner = [defs, content].filter(Boolean).join("\n");
+
+  return [
+    "<svg",
+    `  width="1em"`,
+    `  height="1em"`,
+    `  viewBox="${toggle.viewBox}"`,
+    `  aria-hidden="true"`,
+    svgAttrs ? `  ${svgAttrs}` : "",
+    `  :style="{ &quot;${toggle.cssVar}&quot;: \`\${props.duration}ms\` }"`,
     ">",
     inner,
     "</svg>",

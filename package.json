@@ -4,15 +4,17 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "website"
+    "website",
+    "examples/*"
   ],
   "type": "module",
   "scripts": {
-    "generate": "bun run --filter '@theme-toggles/react' generate && bun run --filter '@theme-toggles/svelte' generate",
-    "build": "bun run --filter '@theme-toggles/toggles' build && bun run --filter '@theme-toggles/react' build && bun run --filter '@theme-toggles/svelte' build",
+    "generate": "bun run --filter '@theme-toggles/react' generate && bun run --filter '@theme-toggles/svelte' generate && bun run --filter '@theme-toggles/vue' generate",
+    "build": "bun run --filter '@theme-toggles/toggles' build && bun run --filter '@theme-toggles/react' build && bun run --filter '@theme-toggles/svelte' build && bun run --filter '@theme-toggles/vue' build",
     "test": "bun test",
     "test:react": "bun test packages/react",
     "test:svelte": "bun test packages/svelte",
+    "test:vue": "bun test packages/vue",
     "typecheck": "bun x tsc --noEmit",
     "lint": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix",
@@ -21,12 +23,17 @@
     "fmt:check": "prettier . --check --ignore-unknown"
   },
   "dependencies": {
+    "@paper-design/shaders-react": "^0.0.76",
+    "@react-three/fiber": "^9.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.184.0",
     "liquidjs": "^10.20.0",
+    "motion": "^12.38.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
@@ -35,7 +42,8 @@
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-svelte": "^3.4.0",
     "svelte": "^5.55.4",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vue": "^3.5.0"
   },
   "engines": {
     "node": ">=22.12.0"

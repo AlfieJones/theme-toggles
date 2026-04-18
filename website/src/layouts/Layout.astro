@@ -24,7 +24,7 @@ import Footer from "../components/Footer.astro";
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
-        document.body.classList.toggle(
+        document.documentElement.classList.toggle(
           "dark",
           saved === "dark" || (!saved && prefersDark),
         );
@@ -32,7 +32,7 @@ import Footer from "../components/Footer.astro";
       applyTheme();
       document.addEventListener("astro:after-swap", applyTheme);
     </script>
-    <main class="grow">
+    <main class="grow flex flex-col">
       <slot />
     </main>
     <Footer />

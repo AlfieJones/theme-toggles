@@ -7,6 +7,7 @@ import {
 
 export interface {{ name }}Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   duration?: number;
+  [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function {{ name }}({

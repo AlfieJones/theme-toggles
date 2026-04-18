@@ -41,7 +41,7 @@ const classic: ToggleDefinition = {
           },
           cls: {
             className:
-              "origin-center transition duration-(--toggles-dot-dev--duration)",
+              "origin-center transition-transform duration-(--toggles-dot-dev--duration)",
             darkClassName: "scale-170",
           },
         },
@@ -57,7 +57,7 @@ const classic: ToggleDefinition = {
           },
           cls: {
             className:
-              "origin-center transition duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0",
+              "origin-center transition-[transform,opacity] duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0",
             darkClassName: "scale-50 rotate-45 opacity-0",
           },
         })),

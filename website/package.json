@@ -13,14 +13,19 @@
     "@astrojs/vercel": "^10.0.4",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
+    "@paper-design/shaders-react": "^0.0.76",
+    "@react-three/fiber": "^9.6.0",
     "@tailwindcss/vite": "^4.2.2",
     "@theme-toggles/react": "workspace:*",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.184.0",
     "astro": "^6.1.7",
+    "motion": "^12.38.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "three": "^0.184.0"
   },
   "engines": {
     "node": ">=22.12.0"

@@ -3,6 +3,7 @@ import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { compile } from "svelte/compiler";
+import type { Component } from "svelte";
 import { render } from "svelte/server";
 
 async function loadServerComponent(fileName: string) {
@@ -23,7 +24,7 @@ async function loadServerComponent(fileName: string) {
 
   const moduleUrl = `${pathToFileURL(compiledPath).href}?t=${Date.now()}`;
   const module = (await import(moduleUrl)) as {
-    default: Parameters<typeof render>[0];
+    default: Component<Record<string, any>>;
   };
   return module.default;
 }
@@ -31,7 +32,7 @@ async function loadServerComponent(fileName: string) {
 describe("@theme-toggles/svelte", () => {
   it("renders the default button contract", async () => {
     const Simple = await loadServerComponent("Simple");
-    const { body } = render(Simple);
+    const { body } = render(Simple, {});
 
     expect(body).toContain('type="button"');
     expect(body).toContain('title="Toggle theme"');
@@ -61,8 +62,8 @@ describe("@theme-toggles/svelte", () => {
 
   it("generates distinct SVG ids across renders", async () => {
     const Simple = await loadServerComponent("Simple");
-    const first = render(Simple).body;
-    const second = render(Simple).body;
+    const first = render(Simple, {}).body;
+    const second = render(Simple, {}).body;
 
     const firstId = first.match(/id="(toggles\.dev-simple-main-[^"]+)"/)?.[1];
     const secondId = second.match(/id="(toggles\.dev-simple-main-[^"]+)"/)?.[1];

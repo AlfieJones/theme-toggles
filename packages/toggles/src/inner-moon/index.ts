@@ -22,7 +22,7 @@ const innerMoon: ToggleDefinition = {
     },
     {
       tag: "circle",
-      attrs: { cx: 16, cy: 16, r: 8.1 },
+      attrs: { cx: 16, cy: 16, r: 7.6 },
       cls: {
         className:
           "origin-center transition-transform [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [transition-duration:calc(var(--toggles-inner-moon--duration)/1.5)]",

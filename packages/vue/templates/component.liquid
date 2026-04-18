@@ -1,0 +1,40 @@
+{% if clips.size > 0 %}<script lang="ts">
+  let nextId = 0;
+</script>
+
+{% endif %}<script setup lang="ts">
+  import { useAttrs } from "vue";
+
+  interface Props {
+    duration?: number;
+    type?: "button" | "submit" | "reset";
+    title?: string;
+    ariaLabel?: string;
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    duration: {{ defaultDuration }},
+    type: "button",
+    title: "Toggle theme",
+    ariaLabel: "Toggle theme",
+  });
+
+  const attrs = useAttrs();
+{% if clips.size > 0 %}
+  const toggleId = `{{ slug }}-${++nextId}`;
+{% for clip in clips %}
+  const {{ clip.varName }} = `toggles.dev-{{ slug }}-{{ clip.id }}-${toggleId}`;
+{% endfor %}
+{% endif %}
+</script>
+
+<template>
+  <button
+    v-bind="attrs"
+    :type="props.type"
+    :title="props.title"
+    :aria-label="props.ariaLabel"
+  >
+{{ svg }}
+  </button>
+</template>

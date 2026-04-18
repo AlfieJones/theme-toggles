@@ -20,7 +20,7 @@ const expand: ToggleDefinition = {
             className:
               "transition-[d,translate] [transition-duration:calc(var(--toggles-expand--duration)_*_0.6)] [transition-timing-function:cubic-bezier(0,0,0.5,1)] [transition-delay:0s]",
             darkClassName:
-              "[d:path('M0_0h14A1_1_0_0027_12v12H0Z')] not-supports-[d:path('M0_0')]:-translate-x-[5px] not-supports-[d:path('M0_0')]:translate-y-[11px] [transition-timing-function:cubic-bezier(0,0,0,1.25)] [transition-delay:calc(var(--toggles-expand--duration)_*_0.4)]",
+              "[d:path('M0_0h15A1_1_0_0032_15v17H0Z')] not-supports-[d:path('M0_0')]:-translate-x-[5px] not-supports-[d:path('M0_0')]:translate-y-[11px] [transition-timing-function:cubic-bezier(0,0,0,1.25)] [transition-delay:calc(var(--toggles-expand--duration)_*_0.4)]",
           },
         },
       ],

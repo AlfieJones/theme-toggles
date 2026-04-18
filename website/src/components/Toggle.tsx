@@ -52,22 +52,56 @@ export function Toggle({
   slug,
   className,
   manageState,
+  initialToggled,
+  readUrlParam,
+  onToggle,
+  title
 }: {
   slug: keyof typeof TOGGLES;
   className?: string;
   manageState?: boolean;
+  initialToggled?: boolean;
+  readUrlParam?: string;
+    onToggle?: (toggled: boolean) => void;
+  title?:string
 }) {
-  const [toggled, setToggled] = useState(false);
+  const [toggled, setToggled] = useState(() => {
+    if (typeof window !== "undefined" && readUrlParam) {
+      const val = new URLSearchParams(window.location.search).get(readUrlParam);
+      if (val !== null) return val === "1";
+    }
+    return initialToggled ?? false;
+  });
 
-  const Toggle = TOGGLES[slug];
-  if (!Toggle) throw new Error(`Toggle not found: ${slug}`);
+  const handleClick = () => {
+    const next = !toggled;
+    setToggled(next);
+    onToggle?.(next);
+    if (readUrlParam) {
+      const params = new URLSearchParams(window.location.search);
+      if (next) { params.set(readUrlParam, "1"); } else { params.delete(readUrlParam); }
+      const qs = params.toString();
+      history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${qs ? "?" + qs : ""}`,
+      );
+      window.dispatchEvent(
+        new CustomEvent("tt:toggle", { detail: { toggled: next } }),
+      );
+    }
+  };
+
+  const ToggleComponent = TOGGLES[slug];
+  if (!ToggleComponent) throw new Error(`Toggle not found: ${slug}`);
 
   return (
-    <Toggle
+    <ToggleComponent
+      title={title}
       className={[className, manageState && (toggled ? "dark" : "light")]
         .filter(Boolean)
         .join(" ")}
-      onClick={() => setToggled(!toggled)}
+      onClick={handleClick}
     />
   );
 }

@@ -1,0 +1,60 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 2rem;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  background: #1f2937;
+  color: #f3f4f6;
+}
+
+.dark.card {
+  border-color: #111827;
+  background: #030712;
+}
+
+.card button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: inherit;
+  padding: 0;
+  line-height: 1;
+}
+
+.card span {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
