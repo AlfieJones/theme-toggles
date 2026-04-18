@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "5.0.0-rc.0",
+  "version": "5.0.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -20,6 +20,9 @@
   "devDependencies": {
     "@theme-toggles/generator": "workspace:*",
     "@theme-toggles/toggles": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^19.0.0"
