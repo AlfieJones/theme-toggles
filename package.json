@@ -9,8 +9,8 @@
   ],
   "type": "module",
   "scripts": {
-    "generate": "bun run --filter '@theme-toggles/react' generate && bun run --filter '@theme-toggles/svelte' generate && bun run --filter '@theme-toggles/vue' generate",
-    "build": "bun run --filter '@theme-toggles/toggles' build && bun run --filter '@theme-toggles/react' build && bun run --filter '@theme-toggles/svelte' build && bun run --filter '@theme-toggles/vue' build",
+    "generate": "turbo run generate",
+    "build": "turbo run build",
     "test": "bun test",
     "test:react": "bun test packages/react",
     "test:svelte": "bun test packages/svelte",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
+    "turbo": "latest",
     "oxlint": "^1.60.0",
     "prettier": "^3.6.0",
     "prettier-plugin-astro": "^0.14.0",

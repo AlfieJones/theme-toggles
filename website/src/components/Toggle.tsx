@@ -30,10 +30,7 @@ export const TOGGLE_SLUGS = [
   "within",
 ] as const;
 
-const TOGGLES: Record<
-  (typeof TOGGLE_SLUGS)[number],
-  ComponentType<React.ButtonHTMLAttributes<HTMLButtonElement>>
-> = {
+const TOGGLES: Record<(typeof TOGGLE_SLUGS)[number], ComponentType<any>> = {
   around: Around,
   classic: Classic,
   "dark-inner": DarkInner,

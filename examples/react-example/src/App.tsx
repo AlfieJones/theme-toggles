@@ -31,6 +31,8 @@ const TOGGLES = [
   { name: "Within", Component: Within },
 ] as const;
 
+const SIZES = [16, 24, 32, 48, 64, 96, 128];
+
 function ToggleCard({ name, Component }: (typeof TOGGLES)[number]) {
   const [dark, setDark] = useState(false);
 
@@ -42,6 +44,28 @@ function ToggleCard({ name, Component }: (typeof TOGGLES)[number]) {
   );
 }
 
+function SizeRow({ name, Component }: (typeof TOGGLES)[number]) {
+  const [dark, setDark] = useState(false);
+
+  return (
+    <div className="size-row">
+      <span className="size-row-name">{name}</span>
+      <div className="size-row-toggles">
+        {SIZES.map((size) => (
+          <div key={size} className="size-cell">
+            <Component
+              style={{ fontSize: size }}
+              className={dark ? "dark" : "light"}
+              onClick={() => setDark((d) => !d)}
+            />
+            <span className="size-label">{size}px</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <main>
@@ -49,6 +73,12 @@ function App() {
       <div className="grid">
         {TOGGLES.map((toggle) => (
           <ToggleCard key={toggle.name} {...toggle} />
+        ))}
+      </div>
+      <h2>Sizes</h2>
+      <div className="sizes-section">
+        {TOGGLES.map((toggle) => (
+          <SizeRow key={toggle.name} {...toggle} />
         ))}
       </div>
     </main>

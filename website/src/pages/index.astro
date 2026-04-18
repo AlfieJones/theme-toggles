@@ -3,7 +3,7 @@ export const prerender = true;
 import Header from "../components/hero/header.astro";
 import Layout from "../layouts/Layout.astro";
 import { TOGGLE_SLUGS } from "../components/Toggle";
-import { ToggleCard } from "../components/ToggleCard";
+import { ToggleGrid } from "../components/ToggleGrid";
 ---
 
 <Layout>
@@ -65,46 +65,13 @@ import { ToggleCard } from "../components/ToggleCard";
         <span
           class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
         ></span>
-        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-          {
-            TOGGLE_SLUGS.map((slug) => {
-              const initialToggled = Astro.url.searchParams.get(slug) === "1";
-              return (
-                <div
-                  transition:name={`toggle-card-${slug}`}
-                  class="relative border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 flex flex-col items-center"
-                >
-                  <span class="bolt top-2 left-2" />
-                  <span class="bolt top-2 right-2" />
-                  <span class="bolt bottom-2 left-2" />
-                  <span class="bolt bottom-2 right-2" />
-                  <ToggleCard
-                    slug={slug}
-                    initialToggled={initialToggled}
-                    client:load
-                  />
-                </div>
-              );
-            })
-          }
-        </div>
+        <ToggleGrid
+          slugs={TOGGLE_SLUGS}
+          initialParams={Object.fromEntries(Astro.url.searchParams)}
+          client:load
+        />
       </div>
     </main>
   </div>
 </Layout>
 
-<style>
-  .bolt {
-    position: absolute;
-    width: 0.5rem;
-    height: 0.5rem;
-    border: 1px solid var(--color-neutral-300);
-    background: var(--color-neutral-200);
-    z-index: 50;
-  }
-
-  :global(.dark) .bolt {
-    border-color: var(--color-neutral-700);
-    background: var(--color-neutral-800);
-  }
-</style>

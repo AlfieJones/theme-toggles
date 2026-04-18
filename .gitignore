@@ -17,6 +17,8 @@ old
 website-old
 
 
+.turbo
+
 # environment variables
 .env
 .env.production

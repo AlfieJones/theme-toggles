@@ -1,13 +1,11 @@
 import { useMotionValue, motion, useMotionTemplate } from "motion/react";
-import React, { useState } from "react";
+import React from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
-import { CanvasRevealEffect } from "./canvas-reveal-effect";
 import clsx from "clsx";
 
 export const CardSpotlight = ({
   children,
   radius = 350,
-  color = "transparent",
   colors = [
     [59, 130, 246],
     [139, 92, 246],
@@ -16,7 +14,6 @@ export const CardSpotlight = ({
   ...props
 }: {
   radius?: number;
-  color?: string;
   colors?: number[][];
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>) => {
@@ -28,26 +25,24 @@ export const CardSpotlight = ({
     clientY,
   }: ReactMouseEvent<HTMLDivElement>) {
     let { left, top } = currentTarget.getBoundingClientRect();
-
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
 
-  const [isHovering, setIsHovering] = useState(false);
-  const handleMouseEnter = () => setIsHovering(true);
-  const handleMouseLeave = () => setIsHovering(false);
+  const [r1, g1, b1] = colors[0];
+  const [r2, g2, b2] = colors[1] ?? colors[0];
+  const hoverBg = `linear-gradient(135deg, rgb(${r1},${g1},${b1}), rgb(${r2},${g2},${b2}))`;
+
   return (
     <div
       className={clsx("group/spotlight relative", className)}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       {...props}
     >
       <motion.div
-        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="pointer-events-none absolute z-0 inset-0 opacity-0 transition duration-300 group-hover/spotlight:opacity-40"
         style={{
-          backgroundColor: color,
+          background: hoverBg,
           maskImage: useMotionTemplate`
             radial-gradient(
               ${radius}px circle at ${mouseX}px ${mouseY}px,
@@ -56,16 +51,7 @@ export const CardSpotlight = ({
             )
           `,
         }}
-      >
-        <CanvasRevealEffect
-          animationSpeed={5}
-          flickerFrequency={500.0}
-          containerClassName={`bg-transparent absolute inset-0 pointer-events-none transition-opacity duration-300 ${isHovering ? "opacity-70" : "opacity-0"}`}
-          colors={colors}
-          dotSize={3}
-          showGradient={false}
-        />
-      </motion.div>
+      />
       {children}
     </div>
   );

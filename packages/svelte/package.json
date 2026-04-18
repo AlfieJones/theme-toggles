@@ -15,7 +15,7 @@
   },
   "scripts": {
     "generate": "bun run generate.ts",
-    "build": "bun run generate && bun run build.ts"
+    "build": "bun run build.ts"
   },
   "devDependencies": {
     "@theme-toggles/generator": "workspace:*",
