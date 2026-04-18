@@ -1,25 +1,35 @@
 <script lang="ts">
   import {
-    Around, Classic, DarkInner, DarkSide, Eclipse, Expand,
-    HalfSun, Horizon, InnerMoon, Lightbulb, Simple, Within
-  } from '@theme-toggles/svelte'
-  import '@theme-toggles/svelte/styles.css'
-  import ToggleCard from './ToggleCard.svelte'
+    Around,
+    Classic,
+    DarkInner,
+    DarkSide,
+    Eclipse,
+    Expand,
+    HalfSun,
+    Horizon,
+    InnerMoon,
+    Lightbulb,
+    Simple,
+    Within,
+  } from "@theme-toggles/svelte";
+  import "@theme-toggles/svelte/styles.css";
+  import ToggleCard from "./ToggleCard.svelte";
 
   const TOGGLES = [
-    { name: 'Classic', Component: Classic },
-    { name: 'Around', Component: Around },
-    { name: 'DarkInner', Component: DarkInner },
-    { name: 'DarkSide', Component: DarkSide },
-    { name: 'Eclipse', Component: Eclipse },
-    { name: 'Expand', Component: Expand },
-    { name: 'HalfSun', Component: HalfSun },
-    { name: 'Horizon', Component: Horizon },
-    { name: 'InnerMoon', Component: InnerMoon },
-    { name: 'Lightbulb', Component: Lightbulb },
-    { name: 'Simple', Component: Simple },
-    { name: 'Within', Component: Within },
-  ]
+    { name: "Classic", Component: Classic },
+    { name: "Around", Component: Around },
+    { name: "DarkInner", Component: DarkInner },
+    { name: "DarkSide", Component: DarkSide },
+    { name: "Eclipse", Component: Eclipse },
+    { name: "Expand", Component: Expand },
+    { name: "HalfSun", Component: HalfSun },
+    { name: "Horizon", Component: Horizon },
+    { name: "InnerMoon", Component: InnerMoon },
+    { name: "Lightbulb", Component: Lightbulb },
+    { name: "Simple", Component: Simple },
+    { name: "Within", Component: Within },
+  ];
 </script>
 
 <main>

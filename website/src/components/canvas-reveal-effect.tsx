@@ -1,7 +1,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
-import clsx from "clsx"
+import clsx from "clsx";
 
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
@@ -25,7 +25,12 @@ export const CanvasRevealEffect = ({
   showGradient?: boolean;
 }) => {
   return (
-    <div className={clsx("h-full relative bg-transparent w-full", containerClassName)}>
+    <div
+      className={clsx(
+        "h-full relative bg-transparent w-full",
+        containerClassName,
+      )}
+    >
       <div className="h-full w-full">
         <DotMatrix
           colors={colors ?? [[0, 255, 255]]}
@@ -202,7 +207,7 @@ const ShaderMaterial = ({
     const mat: any = ref.current.material;
     if (!mat.uniforms?.u_colors) return;
     mat.uniforms.u_colors.value = (uniforms.u_colors.value as number[][]).map(
-      (v: number[]) => new THREE.Vector3().fromArray(v)
+      (v: number[]) => new THREE.Vector3().fromArray(v),
     );
   }, [uniforms]);
 
@@ -241,7 +246,7 @@ const ShaderMaterial = ({
         case "uniform3fv":
           preparedUniforms[uniformName] = {
             value: uniform.value.map((v: number[]) =>
-              new THREE.Vector3().fromArray(v)
+              new THREE.Vector3().fromArray(v),
             ),
             type: "3fv",
           };

@@ -1,9 +1,10 @@
 <script lang="ts">
-  import type { Component as SvelteComponent } from 'svelte'
+  import type { Component as SvelteComponent } from "svelte";
 
-  let { name, Component }: { name: string; Component: SvelteComponent } = $props()
+  let { name, Component }: { name: string; Component: SvelteComponent } =
+    $props();
 
-  let dark = $state(false)
+  let dark = $state(false);
 </script>
 
 <div class="card" class:dark>

@@ -8,7 +8,10 @@ export const CardSpotlight = ({
   children,
   radius = 350,
   color = "transparent",
-  colors = [[59, 130, 246], [139, 92, 246]],
+  colors = [
+    [59, 130, 246],
+    [139, 92, 246],
+  ],
   className,
   ...props
 }: {
@@ -35,10 +38,7 @@ export const CardSpotlight = ({
   const handleMouseLeave = () => setIsHovering(false);
   return (
     <div
-      className={clsx(
-        "group/spotlight relative",
-        className
-      )}
+      className={clsx("group/spotlight relative", className)}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -59,7 +59,7 @@ export const CardSpotlight = ({
       >
         <CanvasRevealEffect
           animationSpeed={5}
-            flickerFrequency={500.0}
+          flickerFrequency={500.0}
           containerClassName={`bg-transparent absolute inset-0 pointer-events-none transition-opacity duration-300 ${isHovering ? "opacity-70" : "opacity-0"}`}
           colors={colors}
           dotSize={3}

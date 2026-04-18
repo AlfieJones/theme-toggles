@@ -14,7 +14,9 @@
   --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card-hover-bg { background-image: var(--c-gradient); }
+.card-hover-bg {
+  background-image: var(--c-gradient);
+}
 
 html[data-theme-transition]::view-transition-group(root) {
   animation-duration: 0.7s;

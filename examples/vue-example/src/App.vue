@@ -1,38 +1,55 @@
 <script setup lang="ts">
 import {
-  Around, Classic, DarkInner, DarkSide, Eclipse, Expand,
-  HalfSun, Horizon, InnerMoon, Lightbulb, Simple, Within
-} from '@theme-toggles/vue'
-import '@theme-toggles/vue/styles.css'
-import ToggleCard from './ToggleCard.vue'
+  Around,
+  Classic,
+  DarkInner,
+  DarkSide,
+  Eclipse,
+  Expand,
+  HalfSun,
+  Horizon,
+  InnerMoon,
+  Lightbulb,
+  Simple,
+  Within,
+} from "@theme-toggles/vue";
+import "@theme-toggles/vue/styles.css";
+import ToggleCard from "./ToggleCard.vue";
 
 const TOGGLES = [
-  { name: 'Classic', component: Classic },
-  { name: 'Around', component: Around },
-  { name: 'DarkInner', component: DarkInner },
-  { name: 'DarkSide', component: DarkSide },
-  { name: 'Eclipse', component: Eclipse },
-  { name: 'Expand', component: Expand },
-  { name: 'HalfSun', component: HalfSun },
-  { name: 'Horizon', component: Horizon },
-  { name: 'InnerMoon', component: InnerMoon },
-  { name: 'Lightbulb', component: Lightbulb },
-  { name: 'Simple', component: Simple },
-  { name: 'Within', component: Within },
-]
+  { name: "Classic", component: Classic },
+  { name: "Around", component: Around },
+  { name: "DarkInner", component: DarkInner },
+  { name: "DarkSide", component: DarkSide },
+  { name: "Eclipse", component: Eclipse },
+  { name: "Expand", component: Expand },
+  { name: "HalfSun", component: HalfSun },
+  { name: "Horizon", component: Horizon },
+  { name: "InnerMoon", component: InnerMoon },
+  { name: "Lightbulb", component: Lightbulb },
+  { name: "Simple", component: Simple },
+  { name: "Within", component: Within },
+];
 </script>
 
 <template>
   <main>
     <h1>Theme Toggles</h1>
     <div class="grid">
-      <ToggleCard v-for="t in TOGGLES" :key="t.name" :name="t.name" :component="t.component" />
+      <ToggleCard
+        v-for="t in TOGGLES"
+        :key="t.name"
+        :name="t.name"
+        :component="t.component"
+      />
     </div>
   </main>
 </template>
 
 <style>
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

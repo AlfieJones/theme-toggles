@@ -15,7 +15,10 @@ export function ThemeToggle({ className }: { className?: string }) {
       document.documentElement.classList.toggle("dark", next);
       localStorage.setItem("theme", next ? "dark" : "light");
     };
-    if (!document.startViewTransition) { update(); return; }
+    if (!document.startViewTransition) {
+      update();
+      return;
+    }
     document.documentElement.setAttribute("data-theme-transition", "");
     const transition = document.startViewTransition(update);
     transition.finished.finally(() => {

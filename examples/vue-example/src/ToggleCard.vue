@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { Component } from 'vue'
+import { ref } from "vue";
+import type { Component } from "vue";
 
-defineProps<{ name: string; component: Component }>()
+defineProps<{ name: string; component: Component }>();
 
-const dark = ref(false)
+const dark = ref(false);
 </script>
 
 <template>

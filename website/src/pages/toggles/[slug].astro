@@ -132,22 +132,22 @@ try {
           ></span>
           <div class="grid lg:grid-cols-2 overflow-hidden">
             <div class="lg:sticky lg:top-0 lg:self-start">
-            <div
-              transition:name={`toggle-card-${slug}`}
-              class="relative border-b lg:border-b-0 lg:border-r border-neutral-300 dark:border-neutral-700 flex items-center justify-center p-16 bg-neutral-50 dark:bg-neutral-900 h-116"
-            >
-              <span class="bolt top-4 left-4"></span>
-              <span class="bolt top-4 right-4"></span>
-              <span class="bolt bottom-4 left-4"></span>
-              <span class="bolt bottom-4 right-4"></span>
-              <Toggle
-                slug={slug as (typeof TOGGLE_SLUGS)[number]}
-                manageState
-                readUrlParam="toggled"
-                client:only="react"
-                className="text-9xl cursor-pointer [&_*]:cursor-pointer"
-              />
-            </div>
+              <div
+                transition:name={`toggle-card-${slug}`}
+                class="relative border-b lg:border-b-0 lg:border-r border-neutral-300 dark:border-neutral-700 flex items-center justify-center p-16 bg-neutral-50 dark:bg-neutral-900 h-116"
+              >
+                <span class="bolt top-4 left-4"></span>
+                <span class="bolt top-4 right-4"></span>
+                <span class="bolt bottom-4 left-4"></span>
+                <span class="bolt bottom-4 right-4"></span>
+                <Toggle
+                  slug={slug as (typeof TOGGLE_SLUGS)[number]}
+                  manageState
+                  readUrlParam="toggled"
+                  client:only="react"
+                  className="text-9xl cursor-pointer [&_*]:cursor-pointer"
+                />
+              </div>
             </div>
             <div
               class="bg-neutral-100 dark:bg-neutral-900 min-w-0 overflow-hidden"

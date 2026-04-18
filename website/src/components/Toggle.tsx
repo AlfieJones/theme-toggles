@@ -55,15 +55,15 @@ export function Toggle({
   initialToggled,
   readUrlParam,
   onToggle,
-  title
+  title,
 }: {
   slug: keyof typeof TOGGLES;
   className?: string;
   manageState?: boolean;
   initialToggled?: boolean;
   readUrlParam?: string;
-    onToggle?: (toggled: boolean) => void;
-  title?:string
+  onToggle?: (toggled: boolean) => void;
+  title?: string;
 }) {
   const [toggled, setToggled] = useState(() => {
     if (typeof window !== "undefined" && readUrlParam) {
@@ -79,7 +79,11 @@ export function Toggle({
     onToggle?.(next);
     if (readUrlParam) {
       const params = new URLSearchParams(window.location.search);
-      if (next) { params.set(readUrlParam, "1"); } else { params.delete(readUrlParam); }
+      if (next) {
+        params.set(readUrlParam, "1");
+      } else {
+        params.delete(readUrlParam);
+      }
       const qs = params.toString();
       history.replaceState(
         null,
