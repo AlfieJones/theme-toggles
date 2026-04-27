@@ -7,8 +7,11 @@
       "outputs": ["dist/**"]
     },
     "generate": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^generate"],
       "outputs": ["src/**", "dist/styles/**", "dist/styles.css"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
     }
   }
 }

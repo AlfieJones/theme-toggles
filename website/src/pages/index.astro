@@ -2,6 +2,7 @@
 export const prerender = true;
 import Header from "../components/hero/header.astro";
 import Layout from "../layouts/Layout.astro";
+import BoltCorners from "../components/BoltCorners.astro";
 import { TOGGLE_SLUGS } from "../components/Toggle";
 import { ToggleGrid } from "../components/ToggleGrid";
 ---
@@ -14,18 +15,7 @@ import { ToggleGrid } from "../components/ToggleGrid";
         <div
           class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-6 py-4 flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
         >
-          <span
-            class="bolt absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
-          ></span>
-          <span
-            class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
-          ></span>
-          <span
-            class="bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"
-          ></span>
-          <span
-            class="bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"
-          ></span>
+          <BoltCorners />
           <span>Enjoying the toggles? Consider</span>
           <a
             href="https://twitter.com/intent/tweet?text=possibly%20the%20greatest%20components%20ever%20made%20%40_AlfredoJones%20toggles.dev"

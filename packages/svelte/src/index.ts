@@ -4,6 +4,7 @@ export { default as DarkInner } from "./DarkInner.svelte";
 export { default as DarkSide } from "./DarkSide.svelte";
 export { default as Eclipse } from "./Eclipse.svelte";
 export { default as Expand } from "./Expand.svelte";
+export { default as Folded } from "./Folded.svelte";
 export { default as HalfSun } from "./HalfSun.svelte";
 export { default as Horizon } from "./Horizon.svelte";
 export { default as InnerMoon } from "./InnerMoon.svelte";

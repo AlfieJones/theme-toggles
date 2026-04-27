@@ -279,7 +279,7 @@ export function renderVueSvg(
     `  viewBox="${toggle.viewBox}"`,
     `  aria-hidden="true"`,
     svgAttrs ? `  ${svgAttrs}` : "",
-    `  :style="{ &quot;${toggle.cssVar}&quot;: \`\${props.duration}ms\` }"`,
+    `  :style="{ '${toggle.cssVar}': \`\${props.duration}ms\` }"`,
     ">",
     inner,
     "</svg>",

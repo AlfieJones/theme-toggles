@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from "react";
+import { useState, type ComponentType, type CSSProperties } from "react";
 
 import {
   Around,
@@ -7,6 +7,7 @@ import {
   DarkSide,
   Eclipse,
   Expand,
+  Folded,
   HalfSun,
   Horizon,
   InnerMoon,
@@ -22,6 +23,7 @@ export const TOGGLE_SLUGS = [
   "dark-side",
   "eclipse",
   "expand",
+  "folded",
   "half-sun",
   "horizon",
   "inner-moon",
@@ -37,6 +39,7 @@ const TOGGLES: Record<(typeof TOGGLE_SLUGS)[number], ComponentType<any>> = {
   "dark-side": DarkSide,
   eclipse: Eclipse,
   expand: Expand,
+  folded: Folded,
   "half-sun": HalfSun,
   horizon: Horizon,
   "inner-moon": InnerMoon,
@@ -53,9 +56,11 @@ export function Toggle({
   readUrlParam,
   onToggle,
   title,
+  style,
 }: {
   slug: keyof typeof TOGGLES;
   className?: string;
+  style?: CSSProperties;
   manageState?: boolean;
   initialToggled?: boolean;
   readUrlParam?: string;
@@ -99,6 +104,7 @@ export function Toggle({
   return (
     <ToggleComponent
       title={title}
+      style={style}
       className={[className, manageState && (toggled ? "dark" : "light")]
         .filter(Boolean)
         .join(" ")}

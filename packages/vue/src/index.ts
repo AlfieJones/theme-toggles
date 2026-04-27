@@ -4,6 +4,7 @@ export { default as DarkInner } from "./DarkInner.vue";
 export { default as DarkSide } from "./DarkSide.vue";
 export { default as Eclipse } from "./Eclipse.vue";
 export { default as Expand } from "./Expand.vue";
+export { default as Folded } from "./Folded.vue";
 export { default as HalfSun } from "./HalfSun.vue";
 export { default as Horizon } from "./Horizon.vue";
 export { default as InnerMoon } from "./InnerMoon.vue";

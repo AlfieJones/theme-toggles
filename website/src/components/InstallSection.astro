@@ -29,23 +29,23 @@ const pkgManagers = [
 ];
 ---
 
-<div data-install class="flex flex-col h-full">
+<div data-install data-toggle-slug={slug} class="flex flex-col h-full">
   <!-- Framework tabs -->
   <div class="flex border-b border-neutral-300 dark:border-neutral-700">
     <button
       data-fw-btn="react"
       data-active
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >react</button
     >
     <button
       data-fw-btn="svelte"
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >svelte</button
     >
     <button
       data-fw-btn="vue"
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >vue</button
     >
   </div>
@@ -58,17 +58,17 @@ const pkgManagers = [
     <button
       data-method-btn="shadcn"
       data-active
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >shadcn/ui</button
     >
     <button
       data-method-btn="npm"
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >npm</button
     >
     <button
       data-method-btn="manual"
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >Manual</button
     >
   </div>
@@ -82,12 +82,12 @@ const pkgManagers = [
     <button
       data-method-btn="npm"
       data-active
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >npm</button
     >
     <button
       data-method-btn="manual"
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >Manual</button
     >
   </div>
@@ -101,12 +101,12 @@ const pkgManagers = [
     <button
       data-method-btn="npm"
       data-active
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >npm</button
     >
     <button
       data-method-btn="manual"
-      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-100 data-[active]:text-neutral-900 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
       >Manual</button
     >
   </div>
@@ -193,7 +193,7 @@ const pkgManagers = [
         <div class="relative">
           <select
             data-pkg-select="react"
-            class="text-xs border border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+            class="text-xs border border-neutral-400 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-neutral-950 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
           >
             {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
           </select>
@@ -311,7 +311,7 @@ const pkgManagers = [
         <div class="relative">
           <select
             data-pkg-select="svelte"
-            class="text-xs border border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+            class="text-xs border border-neutral-400 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-neutral-950 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
           >
             {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
           </select>
@@ -429,7 +429,7 @@ const pkgManagers = [
         <div class="relative">
           <select
             data-pkg-select="vue"
-            class="text-xs border border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+            class="text-xs border border-neutral-400 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-neutral-950 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
           >
             {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
           </select>
@@ -542,13 +542,85 @@ const pkgManagers = [
 </style>
 
 <script>
-  function initInstallSection(section: Element) {
-    let fw = "react";
-    const methodByFw: Record<string, string> = {
-      react: "shadcn",
-      svelte: "npm",
-      vue: "npm",
+  const STORAGE_PREFIX = "theme-toggles:install-settings:";
+  const FRAMEWORKS = ["react", "svelte", "vue"] as const;
+  const METHODS_BY_FW: Record<string, string[]> = {
+    react: ["shadcn", "npm", "manual"],
+    svelte: ["npm", "manual"],
+    vue: ["npm", "manual"],
+  };
+  const PACKAGE_MANAGERS = ["npm", "pnpm", "yarn", "bun"] as const;
+
+  type InstallSettings = {
+    fw: string;
+    methodByFw: Record<string, string>;
+    pkgByFw: Record<string, string>;
+  };
+
+  function defaultSettings(): InstallSettings {
+    return {
+      fw: "react",
+      methodByFw: {
+        react: "shadcn",
+        svelte: "npm",
+        vue: "npm",
+      },
+      pkgByFw: {
+        react: "npm",
+        svelte: "npm",
+        vue: "npm",
+      },
     };
+  }
+
+  function storageKey(section: Element) {
+    const slug =
+      section instanceof HTMLElement ? section.dataset.toggleSlug : undefined;
+    return `${STORAGE_PREFIX}${slug ?? "default"}`;
+  }
+
+  function readSettings(section: Element): InstallSettings {
+    const settings = defaultSettings();
+    try {
+      const raw = localStorage.getItem(storageKey(section));
+      if (!raw) return settings;
+
+      const parsed = JSON.parse(raw) as Partial<InstallSettings>;
+      if (parsed.fw && FRAMEWORKS.includes(parsed.fw as any)) {
+        settings.fw = parsed.fw;
+      }
+
+      for (const fw of FRAMEWORKS) {
+        const method = parsed.methodByFw?.[fw];
+        if (method && METHODS_BY_FW[fw].includes(method)) {
+          settings.methodByFw[fw] = method;
+        }
+
+        const pkg = parsed.pkgByFw?.[fw];
+        if (pkg && PACKAGE_MANAGERS.includes(pkg as any)) {
+          settings.pkgByFw[fw] = pkg;
+        }
+      }
+    } catch {
+      return settings;
+    }
+    return settings;
+  }
+
+  function writeSettings(section: Element, settings: InstallSettings) {
+    try {
+      localStorage.setItem(storageKey(section), JSON.stringify(settings));
+    } catch {}
+  }
+
+  function initInstallSection(section: Element) {
+    if (section instanceof HTMLElement && section.dataset.initialized) return;
+    if (section instanceof HTMLElement) section.dataset.initialized = "";
+
+    const settings = readSettings(section);
+    let fw = settings.fw;
+    const methodByFw = settings.methodByFw;
+    const pkgByFw = settings.pkgByFw;
 
     const fwBtns = section.querySelectorAll<HTMLButtonElement>("[data-fw-btn]");
     const panels = section.querySelectorAll<HTMLElement>("[data-panel]");
@@ -562,20 +634,70 @@ const pkgManagers = [
       "[data-method-row='vue']",
     );
 
+    function showPackageManager(rowFw: string, pm: string) {
+      section
+        .querySelectorAll<HTMLElement>(`[data-pkg-code^="${rowFw}-"]`)
+        .forEach((el) => {
+          el.classList.toggle(
+            "hidden",
+            el.dataset.pkgCode !== `${rowFw}-${pm}`,
+          );
+        });
+    }
+
+    function updateActiveButtons() {
+      fwBtns.forEach((btn) => {
+        if (btn.dataset.fwBtn === fw) {
+          btn.dataset.active = "";
+        } else {
+          delete btn.dataset.active;
+        }
+      });
+
+      [reactMethodRow, svelteMethodRow, vueMethodRow].forEach((row) => {
+        if (!row) return;
+        const rowFw = row.dataset.methodRow!;
+        row.querySelectorAll<HTMLButtonElement>("[data-method-btn]").forEach(
+          (btn) => {
+            if (btn.dataset.methodBtn === methodByFw[rowFw]) {
+              btn.dataset.active = "";
+            } else {
+              delete btn.dataset.active;
+            }
+          },
+        );
+      });
+    }
+
+    function updatePackageManagers() {
+      section
+        .querySelectorAll<HTMLSelectElement>("[data-pkg-select]")
+        .forEach((select) => {
+          const rowFw = select.dataset.pkgSelect!;
+          const pm = pkgByFw[rowFw] ?? "npm";
+          select.value = pm;
+          showPackageManager(rowFw, pm);
+        });
+    }
+
+    function persist() {
+      writeSettings(section, { fw, methodByFw, pkgByFw });
+    }
+
     function showPanel() {
       const active = `${fw}-${methodByFw[fw]}`;
       panels.forEach((p) => (p.hidden = p.dataset.panel !== active));
       if (reactMethodRow) reactMethodRow.hidden = fw !== "react";
       if (svelteMethodRow) svelteMethodRow.hidden = fw !== "svelte";
       if (vueMethodRow) vueMethodRow.hidden = fw !== "vue";
+      updateActiveButtons();
     }
 
     fwBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         fw = btn.dataset.fwBtn!;
-        fwBtns.forEach((b) => delete b.dataset.active);
-        btn.dataset.active = "";
         showPanel();
+        persist();
       });
     });
 
@@ -587,11 +709,8 @@ const pkgManagers = [
         .forEach((btn) => {
           btn.addEventListener("click", () => {
             methodByFw[rowFw] = btn.dataset.methodBtn!;
-            row
-              .querySelectorAll("[data-method-btn]")
-              .forEach((b) => delete (b as HTMLElement).dataset.active);
-            btn.dataset.active = "";
             showPanel();
+            persist();
           });
         });
     });
@@ -602,15 +721,9 @@ const pkgManagers = [
         select.addEventListener("change", () => {
           const fw = select.dataset.pkgSelect!;
           const pm = select.value;
-          section
-            .querySelectorAll<HTMLElement>(`[data-pkg-code^="${fw}-"]`)
-            .forEach((el) => {
-              el.classList.toggle(
-                "hidden",
-                el.dataset.pkgCode !== `${fw}-${pm}`,
-              );
-            });
-          // update the copy button target for the visible code block
+          pkgByFw[fw] = pm;
+          showPackageManager(fw, pm);
+          persist();
         });
       });
 
@@ -630,6 +743,9 @@ const pkgManagers = [
           }
         });
       });
+
+    showPanel();
+    updatePackageManagers();
   }
 
   function init() {

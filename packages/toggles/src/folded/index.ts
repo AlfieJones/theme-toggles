@@ -1,12 +1,12 @@
 import { classicRays, clip } from "../shared";
 import type { ToggleDefinition } from "../types";
 
-const classic: ToggleDefinition = {
-  slug: "classic",
-  name: "Classic",
-  baseline: "src/classic/baseline.svg",
+const folded: ToggleDefinition = {
+  slug: "folded",
+  name: "Folded",
+  baseline: "src/folded/baseline.svg",
   defaultDuration: 400,
-  cssVar: "--toggles-dot-dev--duration",
+  cssVar: "--toggles-folded--duration",
   viewBox: "0 0 24 24",
   clipPaths: [
     {
@@ -17,9 +17,9 @@ const classic: ToggleDefinition = {
           attrs: { d: "M0 0h25a1 1 0 0010 10v14H0Z" },
           cls: {
             className:
-              "transition-[d,translate] duration-(--toggles-dot-dev--duration)",
+              "transition-[d,translate] duration-(--toggles-folded--duration)",
             darkClassName:
-              "delay-[calc(var(--toggles-dot-dev--duration)*0.15)] [d:path('M0_2h13a1_1_0_0010_10v14H0Z')] not-supports-[d:path('M0_0')]:-translate-x-3.25 not-supports-[d:path('M0_0')]:translate-y-0.5",
+              "delay-[calc(var(--toggles-folded--duration)*0.15)] [d:path('M0_2h13a1_1_0_0010_10v14H0Z')] not-supports-[d:path('M0_0')]:-translate-x-3.25 not-supports-[d:path('M0_0')]:translate-y-0.5",
           },
         },
       ],
@@ -41,7 +41,7 @@ const classic: ToggleDefinition = {
           },
           cls: {
             className:
-              "origin-center transition-transform duration-(--toggles-dot-dev--duration)",
+              "origin-center transition-transform duration-(--toggles-folded--duration)",
             darkClassName: "scale-170",
           },
         },
@@ -57,8 +57,8 @@ const classic: ToggleDefinition = {
           },
           cls: {
             className:
-              "transition-opacity duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0",
-            darkClassName: "opacity-0",
+              "[transform-box:fill-box] [transform-origin:center] [transition:transform_var(--toggles-folded--duration),opacity_var(--toggles-folded--duration)] delay-[calc(var(--toggles-folded--duration)*0.15)] dark:delay-0",
+            darkClassName: "[transform:scale(0.15)_rotate(45deg)] opacity-0",
           },
         })),
       ],
@@ -66,4 +66,4 @@ const classic: ToggleDefinition = {
   ],
 };
 
-export default classic;
+export default folded;

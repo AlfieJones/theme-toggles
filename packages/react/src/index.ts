@@ -4,6 +4,7 @@ export { DarkInner } from "./DarkInner";
 export { DarkSide } from "./DarkSide";
 export { Eclipse } from "./Eclipse";
 export { Expand } from "./Expand";
+export { Folded } from "./Folded";
 export { HalfSun } from "./HalfSun";
 export { Horizon } from "./Horizon";
 export { InnerMoon } from "./InnerMoon";

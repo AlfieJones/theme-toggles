@@ -14,7 +14,7 @@
     "test:react": "bun test packages/react",
     "test:svelte": "bun test packages/svelte",
     "test:vue": "bun test packages/vue",
-    "typecheck": "bun x tsc --noEmit",
+    "typecheck": "turbo run typecheck",
     "lint": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix",
     "check": "bun run lint && bun run typecheck && bun run build",

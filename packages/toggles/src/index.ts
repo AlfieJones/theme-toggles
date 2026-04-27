@@ -4,6 +4,7 @@ import darkInner from "./dark-inner/index";
 import darkSide from "./dark-side/index";
 import eclipse from "./eclipse/index";
 import expand from "./expand/index";
+import folded from "./folded/index";
 import halfSun from "./half-sun/index";
 import horizon from "./horizon/index";
 import innerMoon from "./inner-moon/index";
@@ -19,6 +20,7 @@ export const toggles: ToggleDefinition[] = [
   darkSide,
   eclipse,
   expand,
+  folded,
   halfSun,
   horizon,
   innerMoon,

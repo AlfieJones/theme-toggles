@@ -12,6 +12,7 @@
     "./types": "./dist/types.ts"
   },
   "scripts": {
-    "build": "bun run build.ts"
+    "build": "bun run build.ts",
+    "typecheck": "tsc --noEmit"
   }
 }
