@@ -1,0 +1,46 @@
+<script setup lang="ts">
+import { useAttrs } from "vue";
+
+interface Props {
+  duration?: number;
+  type?: "button" | "submit" | "reset";
+  title?: string;
+  ariaLabel?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  duration: 500,
+  type: "button",
+  title: "Toggle theme",
+  ariaLabel: "Toggle theme",
+});
+
+const attrs = useAttrs();
+</script>
+
+<template>
+  <button
+    v-bind="attrs"
+    :type="props.type"
+    :title="props.title"
+    :aria-label="props.ariaLabel"
+  >
+    <svg
+      width="1em"
+      height="1em"
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      :fill="'currentColor'"
+      :style="{ '--toggles-dark-inner--duration': `${props.duration}ms` }"
+    >
+      <path
+        :d="'M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7'"
+        :class="'origin-center transition-transform duration-(--toggles-dark-inner--duration) [transition-timing-function:ease] dark:rotate-180'"
+      />
+      <path
+        :d="'M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z'"
+        :class="'origin-center transition-transform duration-(--toggles-dark-inner--duration) [transition-timing-function:ease] dark:-rotate-180'"
+      />
+    </svg>
+  </button>
+</template>

@@ -1,0 +1,32 @@
+{
+  "name": "@theme-toggles/svelte",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/index.ts",
+    "./styles.css": "./dist/styles.css",
+    "./styles/*.css": "./dist/styles/*.css"
+  },
+  "scripts": {
+    "generate": "bun run generate.ts",
+    "build": "bun run build.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@theme-toggles/generator": "workspace:*",
+    "@theme-toggles/toggles": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "svelte": "^4.0.0 || ^5.0.0"
+  }
+}

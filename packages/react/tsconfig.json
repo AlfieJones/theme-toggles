@@ -1,3 +1,9 @@
 {
-  "extends": "./configs/base"
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.tsx", "src/**/*.test.ts"]
 }

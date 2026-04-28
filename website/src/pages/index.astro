@@ -1,0 +1,66 @@
+---
+export const prerender = true;
+import Header from "../components/hero/header.astro";
+import Layout from "../layouts/Layout.astro";
+import BoltCorners from "../components/BoltCorners.astro";
+import { TOGGLE_SLUGS } from "../components/Toggle";
+import { ToggleGrid } from "../components/ToggleGrid";
+---
+
+<Layout>
+  <div class="flex flex-col grow">
+    <Header />
+    <main class="flex flex-col flex-1">
+      <div class="border-b border-neutral-300 dark:border-neutral-700">
+        <div
+          class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-6 py-4 flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
+        >
+          <BoltCorners />
+          <span>Enjoying the toggles? Consider</span>
+          <a
+            href="https://twitter.com/intent/tweet?text=possibly%20the%20greatest%20components%20ever%20made%20%40_AlfredoJones%20toggles.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors font-medium"
+          >
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 1200 1227"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284zM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854z"
+              ></path>
+            </svg>
+            tweeting us
+          </a>
+          <span>and tagging</span>
+          <a
+            href="https://twitter.com/_AlfredoJones"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors font-medium"
+            >@_AlfredoJones</a
+          >
+        </div>
+      </div>
+      <div
+        class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900"
+      >
+        <span
+          class="bolt absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+        ></span>
+        <span
+          class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+        ></span>
+        <ToggleGrid
+          slugs={TOGGLE_SLUGS}
+          initialParams={Object.fromEntries(Astro.url.searchParams)}
+          client:load
+        />
+      </div>
+    </main>
+  </div>
+</Layout>

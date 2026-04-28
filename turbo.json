@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalPassThroughEnv": ["GITHUB_TOKEN"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "generate": {
+      "dependsOn": ["^generate"],
+      "outputs": ["src/**", "dist/styles/**", "dist/styles.css"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

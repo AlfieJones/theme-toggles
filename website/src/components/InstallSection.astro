@@ -1,0 +1,758 @@
+---
+import { Code } from "astro:components";
+
+interface Props {
+  slug: string;
+  reactSource: string;
+  svelteSource: string;
+  vueSource: string;
+}
+
+const { slug, reactSource, svelteSource, vueSource } = Astro.props;
+
+const componentName = slug
+  .split("-")
+  .map((s: string) => s[0].toUpperCase() + s.slice(1))
+  .join("");
+
+const shadcnInstall = `npx shadcn@latest add https://toggles.dev/r/${slug}`;
+const shadcnUsage = `import { ${componentName} } from "@/components/ui/${slug}";\n\nexport default function App() {\n  return <${componentName} />;\n}`;
+const npmUsage = `import { ${componentName} } from "@theme-toggles/react";\nimport "@theme-toggles/react/styles/${slug}.css";\n\nexport default function App() {\n  return <${componentName} />;\n}`;
+const svelteNpmUsage = `<script>\n  import { ${componentName} } from "@theme-toggles/svelte";\n  import "@theme-toggles/svelte/styles/${slug}.css";\n</script>\n\n<${componentName} />`;
+const vueNpmUsage = `<script setup lang="ts">\nimport { ${componentName} } from "@theme-toggles/vue";\nimport "@theme-toggles/vue/styles/${slug}.css";\n</script>\n\n<template>\n  <${componentName} />\n</template>`;
+
+const pkgManagers = [
+  { id: "npm", install: (pkg: string) => `npm install ${pkg}` },
+  { id: "pnpm", install: (pkg: string) => `pnpm add ${pkg}` },
+  { id: "yarn", install: (pkg: string) => `yarn add ${pkg}` },
+  { id: "bun", install: (pkg: string) => `bun add ${pkg}` },
+];
+---
+
+<div data-install data-toggle-slug={slug} class="flex flex-col h-full">
+  <!-- Framework tabs -->
+  <div class="flex border-b border-neutral-300 dark:border-neutral-700">
+    <button
+      data-fw-btn="react"
+      data-active
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >react</button
+    >
+    <button
+      data-fw-btn="svelte"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >svelte</button
+    >
+    <button
+      data-fw-btn="vue"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >vue</button
+    >
+  </div>
+
+  <!-- React method tabs -->
+  <div
+    data-method-row="react"
+    class="flex border-b border-neutral-300 dark:border-neutral-700"
+  >
+    <button
+      data-method-btn="shadcn"
+      data-active
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >shadcn/ui</button
+    >
+    <button
+      data-method-btn="npm"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >npm</button
+    >
+    <button
+      data-method-btn="manual"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >Manual</button
+    >
+  </div>
+
+  <!-- Svelte method tabs -->
+  <div
+    data-method-row="svelte"
+    hidden
+    class="flex border-b border-neutral-300 dark:border-neutral-700"
+  >
+    <button
+      data-method-btn="npm"
+      data-active
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >npm</button
+    >
+    <button
+      data-method-btn="manual"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >Manual</button
+    >
+  </div>
+
+  <!-- Vue method tabs -->
+  <div
+    data-method-row="vue"
+    hidden
+    class="flex border-b border-neutral-300 dark:border-neutral-700"
+  >
+    <button
+      data-method-btn="npm"
+      data-active
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >npm</button
+    >
+    <button
+      data-method-btn="manual"
+      class="px-6 py-3 text-sm cursor-pointer transition-colors text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 data-[active]:bg-neutral-950 data-[active]:text-neutral-50 dark:data-[active]:bg-neutral-800 dark:data-[active]:text-neutral-50 border-r border-neutral-300 dark:border-neutral-700"
+      >Manual</button
+    >
+  </div>
+
+  <!-- react + shadcn -->
+  <div data-panel="react-shadcn">
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Run the shadcn CLI</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={shadcnInstall}
+          lang="bash"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={shadcnUsage}
+          lang="tsx"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- react + npm -->
+  <div data-panel="react-npm" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center justify-between gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+            >1</span
+          >
+          <span class="text-xs text-neutral-500 dark:text-neutral-400"
+            >Install the package</span
+          >
+        </div>
+        <div class="relative">
+          <select
+            data-pkg-select="react"
+            class="text-xs border border-neutral-400 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-neutral-950 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+          >
+            {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
+          </select>
+          <span
+            class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"
+            >▾</span
+          >
+        </div>
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        {
+          pkgManagers.map((pm) => (
+            <div
+              data-pkg-code={`react-${pm.id}`}
+              class={pm.id !== "npm" ? "hidden" : ""}
+            >
+              <Code
+                code={pm.install("@theme-toggles/react")}
+                lang="bash"
+                themes={{ light: "github-light", dark: "github-dark" }}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={npmUsage}
+          lang="tsx"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- react + manual -->
+  <div data-panel="react-manual" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Copy the component</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={reactSource}
+          lang="tsx"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- svelte + npm -->
+  <div data-panel="svelte-npm" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center justify-between gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+            >1</span
+          >
+          <span class="text-xs text-neutral-500 dark:text-neutral-400"
+            >Install the package</span
+          >
+        </div>
+        <div class="relative">
+          <select
+            data-pkg-select="svelte"
+            class="text-xs border border-neutral-400 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-neutral-950 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+          >
+            {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
+          </select>
+          <span
+            class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"
+            >▾</span
+          >
+        </div>
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        {
+          pkgManagers.map((pm) => (
+            <div
+              data-pkg-code={`svelte-${pm.id}`}
+              class={pm.id !== "npm" ? "hidden" : ""}
+            >
+              <Code
+                code={pm.install("@theme-toggles/svelte")}
+                lang="bash"
+                themes={{ light: "github-light", dark: "github-dark" }}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={svelteNpmUsage}
+          lang="svelte"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- svelte + manual -->
+  <div data-panel="svelte-manual" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Copy the component</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={svelteSource}
+          lang="svelte"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- vue + npm -->
+  <div data-panel="vue-npm" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center justify-between gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+            >1</span
+          >
+          <span class="text-xs text-neutral-500 dark:text-neutral-400"
+            >Install the package</span
+          >
+        </div>
+        <div class="relative">
+          <select
+            data-pkg-select="vue"
+            class="text-xs border border-neutral-400 dark:border-neutral-600 bg-white dark:bg-neutral-900 text-neutral-950 dark:text-neutral-400 px-2 py-1 pr-6 cursor-pointer appearance-none"
+          >
+            {pkgManagers.map((pm) => <option value={pm.id}>{pm.id}</option>)}
+          </select>
+          <span
+            class="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs"
+            >▾</span
+          >
+        </div>
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        {
+          pkgManagers.map((pm) => (
+            <div
+              data-pkg-code={`vue-${pm.id}`}
+              class={pm.id !== "npm" ? "hidden" : ""}
+            >
+              <Code
+                code={pm.install("@theme-toggles/vue")}
+                lang="bash"
+                themes={{ light: "github-light", dark: "github-dark" }}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={vueNpmUsage}
+          lang="vue"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- vue + manual -->
+  <div data-panel="vue-manual" hidden>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >1</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Copy the component</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={vueSource}
+          lang="vue"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .astro-code {
+    background-color: var(--color-neutral-100) !important;
+  }
+  .dark .astro-code {
+    background-color: var(--color-neutral-900) !important;
+    color: var(--shiki-dark) !important;
+  }
+  .dark .astro-code span {
+    color: var(--shiki-dark) !important;
+  }
+</style>
+
+<script>
+  const STORAGE_PREFIX = "theme-toggles:install-settings:";
+  const PKG_STORAGE_KEY = "theme-toggles:pkg-manager";
+  const FRAMEWORKS = ["react", "svelte", "vue"] as const;
+  const METHODS_BY_FW: Record<string, string[]> = {
+    react: ["shadcn", "npm", "manual"],
+    svelte: ["npm", "manual"],
+    vue: ["npm", "manual"],
+  };
+  const PACKAGE_MANAGERS = ["npm", "pnpm", "yarn", "bun"] as const;
+
+  type InstallSettings = {
+    fw: string;
+    methodByFw: Record<string, string>;
+  };
+
+  function defaultSettings(): InstallSettings {
+    return {
+      fw: "react",
+      methodByFw: {
+        react: "shadcn",
+        svelte: "npm",
+        vue: "npm",
+      },
+    };
+  }
+
+  function readPkg(): string {
+    try {
+      const val = localStorage.getItem(PKG_STORAGE_KEY);
+      if (val && PACKAGE_MANAGERS.includes(val as any)) return val;
+    } catch {}
+    return "npm";
+  }
+
+  function writePkg(pkg: string) {
+    try {
+      localStorage.setItem(PKG_STORAGE_KEY, pkg);
+    } catch {}
+  }
+
+  function storageKey(section: Element) {
+    const slug =
+      section instanceof HTMLElement ? section.dataset.toggleSlug : undefined;
+    return `${STORAGE_PREFIX}${slug ?? "default"}`;
+  }
+
+  function readSettings(section: Element): InstallSettings {
+    const settings = defaultSettings();
+    try {
+      const raw = localStorage.getItem(storageKey(section));
+      if (!raw) return settings;
+
+      const parsed = JSON.parse(raw) as Partial<InstallSettings>;
+      if (parsed.fw && FRAMEWORKS.includes(parsed.fw as any)) {
+        settings.fw = parsed.fw;
+      }
+
+      for (const fw of FRAMEWORKS) {
+        const method = parsed.methodByFw?.[fw];
+        if (method && METHODS_BY_FW[fw].includes(method)) {
+          settings.methodByFw[fw] = method;
+        }
+      }
+    } catch {
+      return settings;
+    }
+    return settings;
+  }
+
+  function writeSettings(section: Element, settings: InstallSettings) {
+    try {
+      localStorage.setItem(storageKey(section), JSON.stringify(settings));
+    } catch {}
+  }
+
+  function initInstallSection(section: Element) {
+    if (section instanceof HTMLElement && section.dataset.initialized) return;
+    if (section instanceof HTMLElement) section.dataset.initialized = "";
+
+    const settings = readSettings(section);
+    let fw = settings.fw;
+    const methodByFw = settings.methodByFw;
+    let pkg = readPkg();
+
+    const fwBtns = section.querySelectorAll<HTMLButtonElement>("[data-fw-btn]");
+    const panels = section.querySelectorAll<HTMLElement>("[data-panel]");
+    const reactMethodRow = section.querySelector<HTMLElement>(
+      "[data-method-row='react']",
+    );
+    const svelteMethodRow = section.querySelector<HTMLElement>(
+      "[data-method-row='svelte']",
+    );
+    const vueMethodRow = section.querySelector<HTMLElement>(
+      "[data-method-row='vue']",
+    );
+
+    function showPackageManager(rowFw: string, pm: string) {
+      section
+        .querySelectorAll<HTMLElement>(`[data-pkg-code^="${rowFw}-"]`)
+        .forEach((el) => {
+          el.classList.toggle(
+            "hidden",
+            el.dataset.pkgCode !== `${rowFw}-${pm}`,
+          );
+        });
+    }
+
+    function updateActiveButtons() {
+      fwBtns.forEach((btn) => {
+        if (btn.dataset.fwBtn === fw) {
+          btn.dataset.active = "";
+        } else {
+          delete btn.dataset.active;
+        }
+      });
+
+      [reactMethodRow, svelteMethodRow, vueMethodRow].forEach((row) => {
+        if (!row) return;
+        const rowFw = row.dataset.methodRow!;
+        row
+          .querySelectorAll<HTMLButtonElement>("[data-method-btn]")
+          .forEach((btn) => {
+            if (btn.dataset.methodBtn === methodByFw[rowFw]) {
+              btn.dataset.active = "";
+            } else {
+              delete btn.dataset.active;
+            }
+          });
+      });
+    }
+
+    function updatePackageManagers() {
+      section
+        .querySelectorAll<HTMLSelectElement>("[data-pkg-select]")
+        .forEach((select) => {
+          const rowFw = select.dataset.pkgSelect!;
+          select.value = pkg;
+          showPackageManager(rowFw, pkg);
+        });
+    }
+
+    function persist() {
+      writeSettings(section, { fw, methodByFw });
+    }
+
+    function showPanel() {
+      const active = `${fw}-${methodByFw[fw]}`;
+      panels.forEach((p) => (p.hidden = p.dataset.panel !== active));
+      if (reactMethodRow) reactMethodRow.hidden = fw !== "react";
+      if (svelteMethodRow) svelteMethodRow.hidden = fw !== "svelte";
+      if (vueMethodRow) vueMethodRow.hidden = fw !== "vue";
+      updateActiveButtons();
+    }
+
+    fwBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        fw = btn.dataset.fwBtn!;
+        showPanel();
+        persist();
+      });
+    });
+
+    [reactMethodRow, svelteMethodRow, vueMethodRow].forEach((row) => {
+      if (!row) return;
+      const rowFw = row.dataset.methodRow!;
+      row
+        .querySelectorAll<HTMLButtonElement>("[data-method-btn]")
+        .forEach((btn) => {
+          btn.addEventListener("click", () => {
+            methodByFw[rowFw] = btn.dataset.methodBtn!;
+            showPanel();
+            persist();
+          });
+        });
+    });
+
+    section
+      .querySelectorAll<HTMLSelectElement>("[data-pkg-select]")
+      .forEach((select) => {
+        select.addEventListener("change", () => {
+          pkg = select.value;
+          writePkg(pkg);
+          updatePackageManagers();
+        });
+      });
+
+    section
+      .querySelectorAll<HTMLButtonElement>("[data-copy-btn]")
+      .forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const wrapper = btn.nextElementSibling as HTMLElement;
+          const pre = wrapper?.matches("pre")
+            ? wrapper
+            : (wrapper?.querySelector(":not(.hidden) pre") ??
+              (btn.nextElementSibling as HTMLPreElement));
+          if (pre) {
+            navigator.clipboard.writeText(pre.textContent ?? "");
+            btn.textContent = "Copied!";
+            setTimeout(() => (btn.textContent = "Copy"), 2000);
+          }
+        });
+      });
+
+    showPanel();
+    updatePackageManagers();
+  }
+
+  function init() {
+    document.querySelectorAll("[data-install]").forEach(initInstallSection);
+  }
+
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>

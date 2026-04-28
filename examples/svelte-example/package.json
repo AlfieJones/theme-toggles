@@ -1,0 +1,21 @@
+{
+  "name": "@theme-toggles/svelte-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@theme-toggles/svelte": "workspace:*"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.0.0",
+    "@tsconfig/svelte": "^5.0.8",
+    "svelte": "^5.55.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4"
+  }
+}

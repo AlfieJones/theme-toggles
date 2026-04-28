@@ -1,0 +1,3 @@
+{% for toggle in toggles -%}
+export { {{ toggle.name }} } from "./{{ toggle.name }}";
+{% endfor -%}

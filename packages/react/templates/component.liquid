@@ -1,0 +1,39 @@
+import {
+  type ButtonHTMLAttributes,
+  type CSSProperties,
+{% if clips.size > 0 %}  useId,
+{% endif %}
+} from "react";
+
+export interface {{ name }}Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+  duration?: number;
+  [key: `data-${string}`]: string | number | boolean | null | undefined;
+}
+
+export function {{ name }}({
+  duration = {{ defaultDuration }},
+  className,
+  type = "button",
+  title = "Toggle theme",
+  "aria-label": ariaLabel = "Toggle theme",
+  ...props
+}: {{ name }}Props) {
+{% if clips.size > 0 %}
+  const toggleId = useId();
+{% endif %}
+{% for clip in clips %}
+  const {{ clip.varName }} = `toggles.dev-{{ slug }}-{{ clip.id }}-${toggleId}`;
+{% endfor %}
+
+  return (
+    <button
+      type={type}
+      title={title}
+      aria-label={ariaLabel}
+      className={className}
+      {...props}
+    >
+{{ svg }}
+    </button>
+  );
+}

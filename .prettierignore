@@ -1,0 +1,6 @@
+node_modules
+.bun
+dist
+build
+.astro
+coverage

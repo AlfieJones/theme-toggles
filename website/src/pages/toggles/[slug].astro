@@ -1,0 +1,65 @@
+---
+import ToggleDetailLayout from "../../layouts/ToggleDetailLayout.astro";
+import { TOGGLE_SLUGS } from "../../components/Toggle";
+import { getStars } from "../../lib/github";
+import { readFileSync } from "fs";
+import { resolve } from "path";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return TOGGLE_SLUGS.map((slug) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const isValidSlug = TOGGLE_SLUGS.includes(
+  slug as (typeof TOGGLE_SLUGS)[number],
+);
+if (!isValidSlug) return Astro.rewrite("/404");
+
+const componentName = slug
+  .split("-")
+  .map((s: string) => s[0].toUpperCase() + s.slice(1))
+  .join("");
+
+const displayName = slug
+  .split("-")
+  .map((s: string) => s[0].toUpperCase() + s.slice(1))
+  .join(" ");
+
+const stars = await getStars();
+const root = resolve(process.cwd(), "..");
+
+let reactSource = "";
+let svelteSource = "";
+let vueSource = "";
+try {
+  reactSource = readFileSync(
+    resolve(root, `packages/react/src/${componentName}.tsx`),
+    "utf-8",
+  );
+} catch {}
+try {
+  svelteSource = readFileSync(
+    resolve(root, `packages/svelte/src/${componentName}.svelte`),
+    "utf-8",
+  );
+} catch {}
+try {
+  vueSource = readFileSync(
+    resolve(root, `packages/vue/src/${componentName}.vue`),
+    "utf-8",
+  );
+} catch {}
+---
+
+<ToggleDetailLayout
+  slug={slug as (typeof TOGGLE_SLUGS)[number]}
+  displayName={displayName}
+  stars={stars}
+  reactSource={reactSource}
+  svelteSource={svelteSource}
+  vueSource={vueSource}
+/>

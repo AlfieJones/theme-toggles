@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Toggles.dev</title>
+    <ClientRouter />
+  </head>
+  <body
+    class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 flex flex-col min-h-screen"
+  >
+    <script is:inline>
+      function applyTheme() {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        document.documentElement.classList.toggle(
+          "dark",
+          saved === "dark" || (!saved && prefersDark),
+        );
+      }
+      applyTheme();
+      document.addEventListener("astro:after-swap", applyTheme);
+    </script>
+    <main class="grow flex flex-col">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

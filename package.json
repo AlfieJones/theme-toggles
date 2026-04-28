@@ -1,25 +1,41 @@
 {
   "name": "theme-toggles",
-  "description": "A collection of theme toggles",
-  "license": "MIT",
-  "repository": "https://github.com/AlfieJones/theme-toggles",
   "private": true,
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/alfiejones"
-  },
+  "workspaces": [
+    "packages/*",
+    "website",
+    "examples/*"
+  ],
+  "type": "module",
   "scripts": {
-    "build": "lerna run build-core && pnpm lerna run build-frameworks",
-    "build-site": "pnpm build && pnpm -F @theme-toggles/website build",
-    "dev-site": "pnpm build && pnpm -F @theme-toggles/website dev"
-  },
-  "author": {
-    "name": "Alfie Jones",
-    "url": "https://ajones.uk"
+    "generate": "turbo run generate",
+    "build": "turbo run build",
+    "test": "bun test",
+    "test:react": "bun test packages/react",
+    "test:svelte": "bun test packages/svelte",
+    "test:vue": "bun test packages/vue",
+    "typecheck": "turbo run typecheck",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --fix",
+    "check": "bun run lint && bun run typecheck && bun run build",
+    "fmt": "prettier . --write --ignore-unknown",
+    "fmt:check": "prettier . --check --ignore-unknown",
+    "release": "changeset publish --provenance"
   },
   "devDependencies": {
-    "lerna": "^6.4.1",
-    "next": "^13.1.2"
+    "@changesets/cli": "^2.27.0",
+    "@types/node": "^25.6.0",
+    "turbo": "latest",
+    "oxlint": "^1.60.0",
+    "prettier": "^3.6.0",
+    "prettier-plugin-astro": "^0.14.0",
+    "prettier-plugin-svelte": "^3.4.0",
+    "svelte": "^5.55.4",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.0"
   },
-  "dependencies": {}
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "bun@1.3.12"
 }

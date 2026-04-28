@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "@theme-toggles/react/styles.css";
+
+@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
+
+@theme {
+  --font-sans: "Geist Mono Variable", ui-monospace, monospace;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+}
+
+:root {
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button {
+  cursor: pointer;
+}
+
+.card-hover-bg {
+  background-image: var(--c-gradient);
+}
+
+.bolt {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid var(--color-neutral-300);
+  background: var(--color-neutral-200);
+  z-index: 50;
+}
+
+.dark .bolt {
+  border-color: var(--color-neutral-700);
+  background: var(--color-neutral-800);
+}
+
+html[data-theme-transition]::view-transition-group(root) {
+  animation-duration: 0.7s;
+  animation-timing-function: var(--expo-out);
+}
+
+html[data-theme-transition]::view-transition-new(root) {
+  animation-name: reveal-light;
+  animation-fill-mode: both;
+}
+
+html[data-theme-transition]::view-transition-old(root),
+html.dark[data-theme-transition]::view-transition-old(root) {
+  animation: none;
+  animation-fill-mode: both;
+  z-index: -1;
+}
+
+html.dark[data-theme-transition]::view-transition-new(root) {
+  animation-name: reveal-dark;
+  animation-fill-mode: both;
+}
+
+@keyframes reveal-dark {
+  from {
+    clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
+  }
+  to {
+    clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
+  }
+}
+
+@keyframes reveal-light {
+  from {
+    clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+  }
+  to {
+    clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+  }
+}

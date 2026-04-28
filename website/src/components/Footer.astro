@@ -1,0 +1,50 @@
+---
+import { getStars } from "../lib/github";
+
+const stars = await getStars();
+---
+
+<footer class="border-t border-neutral-300 dark:border-neutral-700">
+  <div
+    class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-8 py-6 flex items-center justify-between"
+  >
+    <span class="bolt absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+    ></span>
+    <span class="bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+    ></span>
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      Built by <a
+        href="https://alfiejones.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="underline hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
+        >Alfie Jones</a
+      >
+    </p>
+    <div class="flex items-center gap-4">
+      <a
+        href="https://github.com/alfiejones/theme-toggles"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors"
+      >
+        View source
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .bolt {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--color-neutral-300);
+    background: var(--color-neutral-200);
+  }
+
+  :global(.dark) .bolt {
+    border-color: var(--color-neutral-700);
+    background: var(--color-neutral-800);
+  }
+</style>
