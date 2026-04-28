@@ -21,7 +21,8 @@
   },
   "devDependencies": {
     "@theme-toggles/generator": "workspace:*",
-    "@theme-toggles/toggles": "workspace:*"
+    "@theme-toggles/toggles": "workspace:*",
+    "@types/react": "^19.2.14"
   },
   "publishConfig": {
     "access": "public"
