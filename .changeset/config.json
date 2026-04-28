@@ -7,5 +7,12 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": [
+    "@theme-toggles/react-example",
+    "@theme-toggles/svelte-example",
+    "@theme-toggles/vue-example",
+    "@theme-toggles/website",
+    "@theme-toggles/generator",
+    "@theme-toggles/toggles"
+  ]
 }
