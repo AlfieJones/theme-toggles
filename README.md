@@ -1,4 +1,5 @@
-<img width="100%" src="./assets/showcase-light.gif" />
+<img width="100%" src="./assets/showcase-dark.gif#gh-dark-mode-only" />
+<img width="100%" src="./assets/showcase-light.gif#gh-light-mode-only" />
 
 <div align="center">
   <h1>Theme Toggles</h1>
