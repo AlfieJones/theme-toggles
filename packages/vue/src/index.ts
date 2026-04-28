@@ -11,5 +11,4 @@ export { default as InnerMoon } from "./InnerMoon.vue";
 export { default as Lightbulb } from "./Lightbulb.vue";
 export { default as LightSwitch } from "./LightSwitch.vue";
 export { default as Simple } from "./Simple.vue";
-export { default as Swap } from "./Swap.vue";
 export { default as Within } from "./Within.vue";

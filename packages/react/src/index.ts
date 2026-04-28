@@ -11,5 +11,4 @@ export { InnerMoon } from "./InnerMoon";
 export { Lightbulb } from "./Lightbulb";
 export { LightSwitch } from "./LightSwitch";
 export { Simple } from "./Simple";
-export { Swap } from "./Swap";
 export { Within } from "./Within";

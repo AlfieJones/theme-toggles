@@ -1,10 +1,10 @@
 import { classicRays, clip } from "../shared";
 import type { ToggleDefinition } from "../types";
 
-const folded: ToggleDefinition = {
+const spin: ToggleDefinition = {
   slug: "spin",
   name: "Spin",
-  baseline: "src/folded/baseline.svg",
+  baseline: "src/spin/baseline.svg",
   defaultDuration: 400,
   cssVar: "--toggles-spin--duration",
   viewBox: "0 0 24 24",
@@ -66,4 +66,4 @@ const folded: ToggleDefinition = {
   ],
 };
 
-export default folded;
+export default spin;

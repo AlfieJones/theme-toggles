@@ -11,5 +11,4 @@ export { default as InnerMoon } from "./InnerMoon.svelte";
 export { default as Lightbulb } from "./Lightbulb.svelte";
 export { default as LightSwitch } from "./LightSwitch.svelte";
 export { default as Simple } from "./Simple.svelte";
-export { default as Swap } from "./Swap.svelte";
 export { default as Within } from "./Within.svelte";

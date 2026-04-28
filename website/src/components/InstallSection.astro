@@ -661,15 +661,15 @@ const pkgManagers = [
       [reactMethodRow, svelteMethodRow, vueMethodRow].forEach((row) => {
         if (!row) return;
         const rowFw = row.dataset.methodRow!;
-        row.querySelectorAll<HTMLButtonElement>("[data-method-btn]").forEach(
-          (btn) => {
+        row
+          .querySelectorAll<HTMLButtonElement>("[data-method-btn]")
+          .forEach((btn) => {
             if (btn.dataset.methodBtn === methodByFw[rowFw]) {
               btn.dataset.active = "";
             } else {
               delete btn.dataset.active;
             }
-          },
-        );
+          });
       });
     }
 

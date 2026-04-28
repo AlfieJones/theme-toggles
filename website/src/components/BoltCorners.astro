@@ -5,7 +5,23 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<span class:list={["bolt absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2", className]}></span>
-<span class:list={["bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2", className]}></span>
-<span class:list={["bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2", className]}></span>
-<span class:list={["bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2", className]}></span>
+<span
+  class:list={[
+    "bolt absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2",
+    className,
+  ]}></span>
+<span
+  class:list={[
+    "bolt absolute top-0 right-0 translate-x-1/2 -translate-y-1/2",
+    className,
+  ]}></span>
+<span
+  class:list={[
+    "bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2",
+    className,
+  ]}></span>
+<span
+  class:list={[
+    "bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2",
+    className,
+  ]}></span>

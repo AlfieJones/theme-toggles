@@ -14,7 +14,9 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params as { slug: string };
-const isValidSlug = TOGGLE_SLUGS.includes(slug as (typeof TOGGLE_SLUGS)[number]);
+const isValidSlug = TOGGLE_SLUGS.includes(
+  slug as (typeof TOGGLE_SLUGS)[number],
+);
 if (!isValidSlug) return Astro.rewrite("/404");
 
 const componentName = slug
@@ -34,13 +36,22 @@ let reactSource = "";
 let svelteSource = "";
 let vueSource = "";
 try {
-  reactSource = readFileSync(resolve(root, `packages/react/src/${componentName}.tsx`), "utf-8");
+  reactSource = readFileSync(
+    resolve(root, `packages/react/src/${componentName}.tsx`),
+    "utf-8",
+  );
 } catch {}
 try {
-  svelteSource = readFileSync(resolve(root, `packages/svelte/src/${componentName}.svelte`), "utf-8");
+  svelteSource = readFileSync(
+    resolve(root, `packages/svelte/src/${componentName}.svelte`),
+    "utf-8",
+  );
 } catch {}
 try {
-  vueSource = readFileSync(resolve(root, `packages/vue/src/${componentName}.vue`), "utf-8");
+  vueSource = readFileSync(
+    resolve(root, `packages/vue/src/${componentName}.vue`),
+    "utf-8",
+  );
 } catch {}
 ---
 

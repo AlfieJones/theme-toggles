@@ -16,7 +16,8 @@ interface Props {
   vueSource: string;
 }
 
-const { slug, displayName, stars, reactSource, svelteSource, vueSource } = Astro.props;
+const { slug, displayName, stars, reactSource, svelteSource, vueSource } =
+  Astro.props;
 ---
 
 <Layout>
@@ -25,8 +26,12 @@ const { slug, displayName, stars, reactSource, svelteSource, vueSource } = Astro
       <div
         class="relative container mx-auto border-x border-neutral-300 dark:border-neutral-700 px-4 sm:px-8 py-4 flex items-center justify-between gap-3 min-w-0"
       >
-        <span class="bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"></span>
-        <span class="bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"></span>
+        <span
+          class="bolt absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"
+        ></span>
+        <span
+          class="bolt absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"
+        ></span>
         <BackLink
           slug={slug}
           className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors cursor-pointer shrink-0"
