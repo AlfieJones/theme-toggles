@@ -3,7 +3,7 @@
   "globalPassThroughEnv": ["GITHUB_TOKEN"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build", "generate"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
     "generate": {
