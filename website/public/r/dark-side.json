@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dark-side",
+  "title": "Dark Side Theme Toggle",
+  "files": [
+    {
+      "path": "src/DarkSide.tsx",
+      "content": "import { type ButtonHTMLAttributes, type CSSProperties } from \"react\";\n\nexport interface DarkSideProps extends Omit<\n  ButtonHTMLAttributes<HTMLButtonElement>,\n  \"children\"\n> {\n  duration?: number;\n  [key: `data-${string}`]: string | number | boolean | null | undefined;\n}\n\nexport function DarkSide({\n  duration = 500,\n  className,\n  type = \"button\",\n  title = \"Toggle theme\",\n  \"aria-label\": ariaLabel = \"Toggle theme\",\n  ...props\n}: DarkSideProps) {\n  return (\n    <button\n      type={type}\n      title={title}\n      aria-label={ariaLabel}\n      className={className}\n      {...props}\n    >\n      <svg\n        width=\"1em\"\n        height=\"1em\"\n        viewBox=\"0 0 32 32\"\n        aria-hidden=\"true\"\n        fill={\"currentColor\"}\n        style={\n          { \"--toggles-dark-side--duration\": `${duration}ms` } as CSSProperties\n        }\n      >\n        <path\n          d={\n            \"M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z\"\n          }\n          className=\"origin-center transition-transform duration-(--toggles-dark-side--duration) [transition-timing-function:ease] dark:rotate-180\"\n        />\n      </svg>\n    </button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/dark-side-theme-toggle.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

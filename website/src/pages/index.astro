@@ -5,9 +5,26 @@ import Layout from "../layouts/Layout.astro";
 import BoltCorners from "../components/BoltCorners.astro";
 import { TOGGLE_SLUGS } from "../components/Toggle";
 import { ToggleGrid } from "../components/ToggleGrid";
+
+const description =
+  "Browse open-source animated theme toggle components for React, Svelte, and Vue. Install with shadcn/ui, npm, or copy the source.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Toggles.dev",
+  url: "https://toggles.dev/",
+  description,
+  sameAs: ["https://github.com/alfiejones/theme-toggles"],
+};
 ---
 
-<Layout>
+<Layout
+  title="Beautiful Theme Toggles for React, Svelte, and Vue"
+  description={description}
+  canonicalPath="/"
+  jsonLd={jsonLd}
+>
   <div class="flex flex-col grow">
     <Header />
     <main class="flex flex-col flex-1">

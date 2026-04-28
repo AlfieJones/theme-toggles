@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "eclipse",
+  "title": "Eclipse Theme Toggle",
+  "files": [
+    {
+      "path": "src/Eclipse.tsx",
+      "content": "import { type ButtonHTMLAttributes, type CSSProperties, useId } from \"react\";\n\nexport interface EclipseProps extends Omit<\n  ButtonHTMLAttributes<HTMLButtonElement>,\n  \"children\"\n> {\n  duration?: number;\n  [key: `data-${string}`]: string | number | boolean | null | undefined;\n}\n\nexport function Eclipse({\n  duration = 500,\n  className,\n  type = \"button\",\n  title = \"Toggle theme\",\n  \"aria-label\": ariaLabel = \"Toggle theme\",\n  ...props\n}: EclipseProps) {\n  const toggleId = useId();\n\n  const clipMainId = `toggles.dev-eclipse-main-${toggleId}`;\n\n  return (\n    <button\n      type={type}\n      title={title}\n      aria-label={ariaLabel}\n      className={className}\n      {...props}\n    >\n      <svg\n        width=\"1em\"\n        height=\"1em\"\n        viewBox=\"0 0 32 32\"\n        aria-hidden=\"true\"\n        fill={\"currentColor\"}\n        style={\n          { \"--toggles-eclipse--duration\": `${duration}ms` } as CSSProperties\n        }\n      >\n        <defs>\n          <clipPath id={clipMainId}>\n            <path\n              d={\"M0 0h64v32h-64zm38 16a1 1 0 0020 0 1 1 0 00-20 0\"}\n              className=\"origin-center transition-[d,translate] [transition-duration:var(--toggles-eclipse--duration)] [transition-timing-function:cubic-bezier(0,0,0.05,1.15)] [transition-delay:0s] dark:[d:path('M-16_-16h64v64h-64zm22_32a1_1_0_0020_0_1_1_0_00-20_0')] dark:not-supports-[d:path('M0_0')]:-translate-x-[32px] dark:[transition-duration:calc(var(--toggles-eclipse--duration)_*_0.8)] dark:[transition-delay:calc(var(--toggles-eclipse--duration)_*_0.2)]\"\n            />\n          </clipPath>\n        </defs>\n        <g clipPath={`url(#${clipMainId})`}>\n          <circle\n            cx={16}\n            cy={16}\n            r={16}\n            className=\"[transform-origin:center] [transition-property:transform] [transition-duration:var(--toggles-eclipse--duration)] [transition-timing-function:cubic-bezier(0,0,0.05,1.15)]\"\n          />\n        </g>\n      </svg>\n    </button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/eclipse-theme-toggle.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "horizon",
+  "title": "Horizon Theme Toggle",
+  "files": [
+    {
+      "path": "src/Horizon.tsx",
+      "content": "import { type ButtonHTMLAttributes, type CSSProperties, useId } from \"react\";\n\nexport interface HorizonProps extends Omit<\n  ButtonHTMLAttributes<HTMLButtonElement>,\n  \"children\"\n> {\n  duration?: number;\n  [key: `data-${string}`]: string | number | boolean | null | undefined;\n}\n\nexport function Horizon({\n  duration = 500,\n  className,\n  type = \"button\",\n  title = \"Toggle theme\",\n  \"aria-label\": ariaLabel = \"Toggle theme\",\n  ...props\n}: HorizonProps) {\n  const toggleId = useId();\n\n  const clipMainId = `toggles.dev-horizon-main-${toggleId}`;\n\n  return (\n    <button\n      type={type}\n      title={title}\n      aria-label={ariaLabel}\n      className={className}\n      {...props}\n    >\n      <svg\n        width=\"1em\"\n        height=\"1em\"\n        viewBox=\"0 0 32 32\"\n        aria-hidden=\"true\"\n        fill={\"currentColor\"}\n        style={\n          { \"--toggles-horizon--duration\": `${duration}ms` } as CSSProperties\n        }\n      >\n        <defs>\n          <clipPath id={clipMainId}>\n            <path d={\"M0 0h32v29h-32z\"} />\n          </clipPath>\n        </defs>\n        <path\n          d={\n            \"M30.7 29.9H1.3c-.7 0-1.3.5-1.3 1.1 0 .6.6 1 1.3 1h29.3c.7 0 1.3-.5 1.3-1.1.1-.5-.5-1-1.2-1z\"\n          }\n        />\n        <g clipPath={`url(#${clipMainId})`}>\n          <path\n            d={\n              \"M16 8.8c-3.4 0-6.1 2.8-6.1 6.1s2.7 6.3 6.1 6.3 6.1-2.8 6.1-6.1-2.7-6.3-6.1-6.3zm13.3 11L26 15l3.3-4.8c.3-.5.1-1.1-.5-1.2l-5.7-1-1-5.7c-.1-.6-.8-.8-1.2-.5L16 5.1l-4.8-3.3c-.5-.4-1.2-.1-1.3.4L8.9 8 3.2 9c-.6.1-.8.8-.5 1.2L6 15l-3.3 4.8c-.3.5-.1 1.1.5 1.2l5.7 1 1 5.7c.1.6.8.8 1.2.5L16 25l4.8 3.3c.5.3 1.1.1 1.2-.5l1-5.7 5.7-1c.7-.1.9-.8.6-1.3zM16 22.5A7.6 7.6 0 0 1 8.3 15c0-4.2 3.5-7.5 7.7-7.5s7.7 3.4 7.7 7.5c0 4.2-3.4 7.5-7.7 7.5z\"\n            }\n            className=\"transition-transform duration-(--toggles-horizon--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1)] dark:translate-y-[50%]\"\n          />\n        </g>\n      </svg>\n    </button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/horizon-theme-toggle.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

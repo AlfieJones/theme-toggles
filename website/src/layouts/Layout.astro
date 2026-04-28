@@ -2,17 +2,75 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+  type?: "website" | "article";
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const site = Astro.site ?? new URL("https://toggles.dev");
+const {
+  title = "Beautiful Theme Toggles for React, Svelte, and Vue",
+  description = "Drop-in animated theme toggle components for React, Svelte, and Vue. Install with shadcn/ui, npm, or copy the source.",
+  canonicalPath = Astro.url.pathname,
+  image = "/og.svg",
+  type = "website",
+  jsonLd,
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, site);
+canonical.search = "";
+canonical.hash = "";
+
+const imageUrl = new URL(image, site);
+const siteName = "Toggles.dev";
+const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonical.toString()} />
     <meta name="generator" content={Astro.generator} />
-    <title>Toggles.dev</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="theme-color"
+      content="#fafafa"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171717"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.toString()} />
+    <meta property="og:image" content={imageUrl.toString()} />
+    <meta
+      property="og:image:alt"
+      content="Animated theme toggle components for modern web apps"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl.toString()} />
+    <title>{pageTitle}</title>
+    {
+      jsonLd && (
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      )
+    }
     <ClientRouter />
   </head>
   <body
@@ -32,9 +90,7 @@ import Footer from "../components/Footer.astro";
       applyTheme();
       document.addEventListener("astro:after-swap", applyTheme);
     </script>
-    <main class="grow flex flex-col">
-      <slot />
-    </main>
+    <slot />
     <Footer />
   </body>
 </html>

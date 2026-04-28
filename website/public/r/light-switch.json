@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "light-switch",
+  "title": "Light Switch Theme Toggle",
+  "files": [
+    {
+      "path": "src/LightSwitch.tsx",
+      "content": "import { type ButtonHTMLAttributes, type CSSProperties, useId } from \"react\";\n\nexport interface LightSwitchProps extends Omit<\n  ButtonHTMLAttributes<HTMLButtonElement>,\n  \"children\"\n> {\n  duration?: number;\n  [key: `data-${string}`]: string | number | boolean | null | undefined;\n}\n\nexport function LightSwitch({\n  duration = 350,\n  className,\n  type = \"button\",\n  title = \"Toggle theme\",\n  \"aria-label\": ariaLabel = \"Toggle theme\",\n  ...props\n}: LightSwitchProps) {\n  const toggleId = useId();\n\n  const clipPaddleId = `toggles.dev-light-switch-paddle-${toggleId}`;\n\n  return (\n    <button\n      type={type}\n      title={title}\n      aria-label={ariaLabel}\n      className={className}\n      {...props}\n    >\n      <svg\n        width=\"1em\"\n        height=\"1em\"\n        viewBox=\"0 0 24 24\"\n        aria-hidden=\"true\"\n        style={\n          {\n            \"--toggles-light-switch--duration\": `${duration}ms`,\n          } as CSSProperties\n        }\n      >\n        <defs>\n          <clipPath id={clipPaddleId}>\n            <path\n              d={\"M7 3h10v9H7Z\"}\n              className=\"transition-[d,translate] duration-(--toggles-light-switch--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M7_12h10v9H7Z')] dark:not-supports-[d:path('M0_0')]:translate-y-[9px]\"\n            />\n          </clipPath>\n        </defs>\n        <rect\n          x={5}\n          y={1}\n          width={14}\n          height={22}\n          rx={2}\n          stroke={\"currentColor\"}\n          fill={\"none\"}\n          strokeWidth={1.5}\n        />\n        <rect\n          x={7}\n          y={3}\n          width={10}\n          height={18}\n          rx={1}\n          stroke={\"currentColor\"}\n          fill={\"none\"}\n          strokeWidth={1}\n        />\n        <rect\n          x={8}\n          y={4}\n          width={8}\n          height={16}\n          rx={0.5}\n          fill={\"currentColor\"}\n          clipPath={`url(#${clipPaddleId})`}\n        />\n      </svg>\n    </button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/light-switch-theme-toggle.tsx"
+    }
+  ],
+  "type": "registry:block"
+}
