@@ -67,7 +67,7 @@ const COLORS: Record<
       [52, 211, 153],
     ],
   },
-  folded: {
+  spin: {
     untoggled: [
       [224, 242, 254],
       [186, 230, 253],
@@ -75,6 +75,16 @@ const COLORS: Record<
     toggled: [
       [186, 230, 253],
       [125, 211, 252],
+    ],
+  },
+  "light-switch": {
+    untoggled: [
+      [226, 232, 240],
+      [203, 213, 225],
+    ],
+    toggled: [
+      [203, 213, 225],
+      [148, 163, 184],
     ],
   },
   "half-sun": {

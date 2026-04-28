@@ -57,8 +57,8 @@ const classic: ToggleDefinition = {
           },
           cls: {
             className:
-              "transition-opacity duration-(--toggles-dot-dev--duration) delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0",
-            darkClassName: "opacity-0",
+              "[transform-box:view-box] [transform-origin:center] [transition:transform_var(--toggles-dot-dev--duration),opacity_var(--toggles-dot-dev--duration)] delay-[calc(var(--toggles-dot-dev--duration)*0.15)] dark:delay-0",
+            darkClassName: "[transform:scale(0)] opacity-0",
           },
         })),
       ],

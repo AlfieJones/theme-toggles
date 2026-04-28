@@ -2,11 +2,11 @@ import { classicRays, clip } from "../shared";
 import type { ToggleDefinition } from "../types";
 
 const folded: ToggleDefinition = {
-  slug: "folded",
-  name: "Folded",
+  slug: "spin",
+  name: "Spin",
   baseline: "src/folded/baseline.svg",
   defaultDuration: 400,
-  cssVar: "--toggles-folded--duration",
+  cssVar: "--toggles-spin--duration",
   viewBox: "0 0 24 24",
   clipPaths: [
     {
@@ -17,9 +17,9 @@ const folded: ToggleDefinition = {
           attrs: { d: "M0 0h25a1 1 0 0010 10v14H0Z" },
           cls: {
             className:
-              "transition-[d,translate] duration-(--toggles-folded--duration)",
+              "transition-[d,translate] duration-(--toggles-spin--duration)",
             darkClassName:
-              "delay-[calc(var(--toggles-folded--duration)*0.15)] [d:path('M0_2h13a1_1_0_0010_10v14H0Z')] not-supports-[d:path('M0_0')]:-translate-x-3.25 not-supports-[d:path('M0_0')]:translate-y-0.5",
+              "delay-[calc(var(--toggles-spin--duration)*0.15)] [d:path('M0_2h13a1_1_0_0010_10v14H0Z')] not-supports-[d:path('M0_0')]:-translate-x-3.25 not-supports-[d:path('M0_0')]:translate-y-0.5",
           },
         },
       ],
@@ -41,7 +41,7 @@ const folded: ToggleDefinition = {
           },
           cls: {
             className:
-              "origin-center transition-transform duration-(--toggles-folded--duration)",
+              "origin-center transition-transform duration-(--toggles-spin--duration)",
             darkClassName: "scale-170",
           },
         },
@@ -57,8 +57,8 @@ const folded: ToggleDefinition = {
           },
           cls: {
             className:
-              "[transform-box:fill-box] [transform-origin:center] [transition:transform_var(--toggles-folded--duration),opacity_var(--toggles-folded--duration)] delay-[calc(var(--toggles-folded--duration)*0.15)] dark:delay-0",
-            darkClassName: "[transform:scale(0.15)_rotate(45deg)] opacity-0",
+              "origin-center transition-transform duration-(--toggles-spin--duration) delay-[calc(var(--toggles-spin--duration)*0.15)] dark:delay-0",
+            darkClassName: "rotate-45 scale-0",
           },
         })),
       ],

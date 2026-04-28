@@ -543,6 +543,7 @@ const pkgManagers = [
 
 <script>
   const STORAGE_PREFIX = "theme-toggles:install-settings:";
+  const PKG_STORAGE_KEY = "theme-toggles:pkg-manager";
   const FRAMEWORKS = ["react", "svelte", "vue"] as const;
   const METHODS_BY_FW: Record<string, string[]> = {
     react: ["shadcn", "npm", "manual"],
@@ -554,7 +555,6 @@ const pkgManagers = [
   type InstallSettings = {
     fw: string;
     methodByFw: Record<string, string>;
-    pkgByFw: Record<string, string>;
   };
 
   function defaultSettings(): InstallSettings {
@@ -565,12 +565,21 @@ const pkgManagers = [
         svelte: "npm",
         vue: "npm",
       },
-      pkgByFw: {
-        react: "npm",
-        svelte: "npm",
-        vue: "npm",
-      },
     };
+  }
+
+  function readPkg(): string {
+    try {
+      const val = localStorage.getItem(PKG_STORAGE_KEY);
+      if (val && PACKAGE_MANAGERS.includes(val as any)) return val;
+    } catch {}
+    return "npm";
+  }
+
+  function writePkg(pkg: string) {
+    try {
+      localStorage.setItem(PKG_STORAGE_KEY, pkg);
+    } catch {}
   }
 
   function storageKey(section: Element) {
@@ -595,11 +604,6 @@ const pkgManagers = [
         if (method && METHODS_BY_FW[fw].includes(method)) {
           settings.methodByFw[fw] = method;
         }
-
-        const pkg = parsed.pkgByFw?.[fw];
-        if (pkg && PACKAGE_MANAGERS.includes(pkg as any)) {
-          settings.pkgByFw[fw] = pkg;
-        }
       }
     } catch {
       return settings;
@@ -620,7 +624,7 @@ const pkgManagers = [
     const settings = readSettings(section);
     let fw = settings.fw;
     const methodByFw = settings.methodByFw;
-    const pkgByFw = settings.pkgByFw;
+    let pkg = readPkg();
 
     const fwBtns = section.querySelectorAll<HTMLButtonElement>("[data-fw-btn]");
     const panels = section.querySelectorAll<HTMLElement>("[data-panel]");
@@ -674,14 +678,13 @@ const pkgManagers = [
         .querySelectorAll<HTMLSelectElement>("[data-pkg-select]")
         .forEach((select) => {
           const rowFw = select.dataset.pkgSelect!;
-          const pm = pkgByFw[rowFw] ?? "npm";
-          select.value = pm;
-          showPackageManager(rowFw, pm);
+          select.value = pkg;
+          showPackageManager(rowFw, pkg);
         });
     }
 
     function persist() {
-      writeSettings(section, { fw, methodByFw, pkgByFw });
+      writeSettings(section, { fw, methodByFw });
     }
 
     function showPanel() {
@@ -719,11 +722,9 @@ const pkgManagers = [
       .querySelectorAll<HTMLSelectElement>("[data-pkg-select]")
       .forEach((select) => {
         select.addEventListener("change", () => {
-          const fw = select.dataset.pkgSelect!;
-          const pm = select.value;
-          pkgByFw[fw] = pm;
-          showPackageManager(fw, pm);
-          persist();
+          pkg = select.value;
+          writePkg(pkg);
+          updatePackageManagers();
         });
       });
 
