@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Toggles.dev</title>
+  <desc id="desc">Classic theme toggle shown untoggled and toggled.</desc>
+  <rect width="1200" height="630" fill="#fafafa"/>
+  <path d="M0 120H1200M0 510H1200M180 0V630M1020 0V630" stroke="#d4d4d4" stroke-width="2"/>
+  <rect x="180" y="120" width="840" height="390" fill="#f5f5f5" stroke="#d4d4d4" stroke-width="2"/>
+
+  <g transform="translate(416 192) scale(7)" stroke="#171717" stroke-linecap="round">
+    <circle cx="12" cy="12" r="5" fill="#171717"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="M12 1.4v2.4" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="m20.3 3.7-2.5 2.5" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="M22.6 12h-2.4" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="M12 22.6v-2.4" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="M1.4 12h2.4" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="m20.3 20.3-2.5-2.5" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="m3.7 20.3 2.5-2.5" paint-order="stroke markers fill"/>
+    <path fill="none" stroke-linejoin="round" stroke-miterlimit="0" stroke-width="2" d="m3.7 3.7 2.5 2.5" paint-order="stroke markers fill"/>
+  </g>
+
+  <defs>
+    <clipPath id="classic-toggled-cutout">
+      <path d="M0 2h13a1 1 0 0 0 10 10v14H0Z"/>
+    </clipPath>
+  </defs>
+
+  <g transform="translate(616 192) scale(7)" stroke="#171717" stroke-linecap="round">
+    <circle cx="12" cy="12" r="8.5" fill="#171717" clip-path="url(#classic-toggled-cutout)"/>
+  </g>
+
+  <text x="600" y="420" text-anchor="middle" font-family="Geist, Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#171717">Toggles.dev</text>
+  <text x="600" y="472" text-anchor="middle" font-family="Geist, Inter, Arial, sans-serif" font-size="28" fill="#525252">Animated theme toggles for React, Svelte, and Vue</text>
+  <rect x="172" y="112" width="16" height="16" fill="#e5e5e5" stroke="#d4d4d4" stroke-width="2"/>
+  <rect x="1012" y="112" width="16" height="16" fill="#e5e5e5" stroke="#d4d4d4" stroke-width="2"/>
+  <rect x="172" y="502" width="16" height="16" fill="#e5e5e5" stroke="#d4d4d4" stroke-width="2"/>
+  <rect x="1012" y="502" width="16" height="16" fill="#e5e5e5" stroke="#d4d4d4" stroke-width="2"/>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inner-moon",
+  "title": "Inner Moon Theme Toggle",
+  "files": [
+    {
+      "path": "src/InnerMoon.tsx",
+      "content": "import { type ButtonHTMLAttributes, type CSSProperties } from \"react\";\n\nexport interface InnerMoonProps extends Omit<\n  ButtonHTMLAttributes<HTMLButtonElement>,\n  \"children\"\n> {\n  duration?: number;\n  [key: `data-${string}`]: string | number | boolean | null | undefined;\n}\n\nexport function InnerMoon({\n  duration = 500,\n  className,\n  type = \"button\",\n  title = \"Toggle theme\",\n  \"aria-label\": ariaLabel = \"Toggle theme\",\n  ...props\n}: InnerMoonProps) {\n  return (\n    <button\n      type={type}\n      title={title}\n      aria-label={ariaLabel}\n      className={className}\n      {...props}\n    >\n      <svg\n        width=\"1em\"\n        height=\"1em\"\n        viewBox=\"0 0 32 32\"\n        aria-hidden=\"true\"\n        fill={\"currentColor\"}\n        style={\n          { \"--toggles-inner-moon--duration\": `${duration}ms` } as CSSProperties\n        }\n      >\n        <path\n          d={\n            \"M27.5 11.5v-7h-7L16 0l-4.5 4.5h-7v7L0 16l4.5 4.5v7h7L16 32l4.5-4.5h7v-7L32 16l-4.5-4.5zM16 25.4a9.39 9.39 0 1 1 0-18.8 9.39 9.39 0 1 1 0 18.8z\"\n          }\n          className=\"origin-center transition-transform duration-(--toggles-inner-moon--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:rotate-180\"\n        />\n        <circle\n          cx={16}\n          cy={16}\n          r={7.6}\n          className=\"origin-center transition-transform [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [transition-duration:calc(var(--toggles-inner-moon--duration)/1.5)] dark:translate-x-[15%]\"\n        />\n      </svg>\n    </button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/inner-moon-theme-toggle.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

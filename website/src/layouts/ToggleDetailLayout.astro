@@ -10,17 +10,32 @@ import type { TOGGLE_SLUGS } from "../components/Toggle";
 interface Props {
   slug: (typeof TOGGLE_SLUGS)[number];
   displayName: string;
+  description: string;
+  jsonLd: Record<string, unknown>;
   stars: number | null;
   reactSource: string;
   svelteSource: string;
   vueSource: string;
 }
 
-const { slug, displayName, stars, reactSource, svelteSource, vueSource } =
-  Astro.props;
+const {
+  slug,
+  displayName,
+  description,
+  jsonLd,
+  stars,
+  reactSource,
+  svelteSource,
+  vueSource,
+} = Astro.props;
 ---
 
-<Layout>
+<Layout
+  title={`${displayName} Theme Toggle Component`}
+  description={description}
+  canonicalPath={`/toggles/${slug}`}
+  jsonLd={jsonLd}
+>
   <div class="flex flex-col grow">
     <div class="border-b border-neutral-300 dark:border-neutral-700">
       <div
@@ -116,6 +131,19 @@ const { slug, displayName, stars, reactSource, svelteSource, vueSource } =
             <div
               class="bg-neutral-100 dark:bg-neutral-900 min-w-0 overflow-hidden"
             >
+              <div
+                class="border-b border-neutral-300 dark:border-neutral-700 px-6 py-5"
+              >
+                <h1 class="text-2xl text-neutral-900 dark:text-neutral-50">
+                  {displayName} Theme Toggle
+                </h1>
+                <p
+                  class="mt-2 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400"
+                >
+                  Animated dark mode toggle component for React, Svelte, and
+                  Vue.
+                </p>
+              </div>
               <InstallSection
                 slug={slug}
                 reactSource={reactSource}

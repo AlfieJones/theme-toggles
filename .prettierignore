@@ -4,3 +4,4 @@ dist
 build
 .astro
 coverage
+website/public

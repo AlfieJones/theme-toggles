@@ -9,7 +9,7 @@
       "title": "Around Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Around.tsx",
+          "path": "src/Around.tsx",
           "type": "registry:component",
           "target": "components/around-theme-toggle.tsx"
         }
@@ -21,7 +21,7 @@
       "title": "Classic Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Classic.tsx",
+          "path": "src/Classic.tsx",
           "type": "registry:component",
           "target": "components/classic-theme-toggle.tsx"
         }
@@ -33,7 +33,7 @@
       "title": "Dark Inner Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/DarkInner.tsx",
+          "path": "src/DarkInner.tsx",
           "type": "registry:component",
           "target": "components/dark-inner-theme-toggle.tsx"
         }
@@ -45,7 +45,7 @@
       "title": "Dark Side Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/DarkSide.tsx",
+          "path": "src/DarkSide.tsx",
           "type": "registry:component",
           "target": "components/dark-side-theme-toggle.tsx"
         }
@@ -57,7 +57,7 @@
       "title": "Eclipse Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Eclipse.tsx",
+          "path": "src/Eclipse.tsx",
           "type": "registry:component",
           "target": "components/eclipse-theme-toggle.tsx"
         }
@@ -69,7 +69,7 @@
       "title": "Expand Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Expand.tsx",
+          "path": "src/Expand.tsx",
           "type": "registry:component",
           "target": "components/expand-theme-toggle.tsx"
         }
@@ -81,7 +81,7 @@
       "title": "Spin Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Spin.tsx",
+          "path": "src/Spin.tsx",
           "type": "registry:component",
           "target": "components/spin-theme-toggle.tsx"
         }
@@ -93,7 +93,7 @@
       "title": "Half Sun Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/HalfSun.tsx",
+          "path": "src/HalfSun.tsx",
           "type": "registry:component",
           "target": "components/half-sun-theme-toggle.tsx"
         }
@@ -105,7 +105,7 @@
       "title": "Horizon Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Horizon.tsx",
+          "path": "src/Horizon.tsx",
           "type": "registry:component",
           "target": "components/horizon-theme-toggle.tsx"
         }
@@ -117,7 +117,7 @@
       "title": "Inner Moon Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/InnerMoon.tsx",
+          "path": "src/InnerMoon.tsx",
           "type": "registry:component",
           "target": "components/inner-moon-theme-toggle.tsx"
         }
@@ -129,7 +129,7 @@
       "title": "Lightbulb Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Lightbulb.tsx",
+          "path": "src/Lightbulb.tsx",
           "type": "registry:component",
           "target": "components/lightbulb-theme-toggle.tsx"
         }
@@ -141,7 +141,7 @@
       "title": "Light Switch Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/LightSwitch.tsx",
+          "path": "src/LightSwitch.tsx",
           "type": "registry:component",
           "target": "components/light-switch-theme-toggle.tsx"
         }
@@ -153,7 +153,7 @@
       "title": "Simple Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Simple.tsx",
+          "path": "src/Simple.tsx",
           "type": "registry:component",
           "target": "components/simple-theme-toggle.tsx"
         }
@@ -165,7 +165,7 @@
       "title": "Within Theme Toggle",
       "files": [
         {
-          "path": "packages/react/src/Within.tsx",
+          "path": "src/Within.tsx",
           "type": "registry:component",
           "target": "components/within-theme-toggle.tsx"
         }

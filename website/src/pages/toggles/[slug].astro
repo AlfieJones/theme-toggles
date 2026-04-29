@@ -29,6 +29,20 @@ const displayName = slug
   .map((s: string) => s[0].toUpperCase() + s.slice(1))
   .join(" ");
 
+const description = `${displayName} is an animated theme toggle component for React, Svelte, and Vue. Install it with shadcn/ui, npm, or copy the source.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  name: `${displayName} theme toggle`,
+  description,
+  codeRepository: "https://github.com/alfiejones/theme-toggles",
+  programmingLanguage: ["TypeScript", "TSX", "Svelte", "Vue"],
+  runtimePlatform: ["React", "Svelte", "Vue"],
+  url: `https://toggles.dev/toggles/${slug}`,
+  license: "https://opensource.org/license/mit",
+};
+
 const stars = await getStars();
 const root = resolve(process.cwd(), "..");
 
@@ -58,6 +72,8 @@ try {
 <ToggleDetailLayout
   slug={slug as (typeof TOGGLE_SLUGS)[number]}
   displayName={displayName}
+  description={description}
+  jsonLd={jsonLd}
   stars={stars}
   reactSource={reactSource}
   svelteSource={svelteSource}
