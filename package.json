@@ -20,7 +20,7 @@
     "check": "bun run lint && bun run typecheck && bun run build",
     "fmt": "prettier . --write --ignore-unknown",
     "fmt:check": "prettier . --check --ignore-unknown",
-    "release": "changeset publish"
+    "release": "npm exec -- changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",
