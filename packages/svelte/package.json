@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfieJones/theme-toggles.git",
+    "directory": "packages/svelte"
+  },
   "sideEffects": [
     "**/*.css"
   ],
