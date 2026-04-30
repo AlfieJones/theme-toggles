@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlfieJones/theme-toggles.git",
+    "url": "https://github.com/AlfieJones/theme-toggles",
     "directory": "packages/vue"
   },
   "sideEffects": [
