@@ -12,10 +12,10 @@
     "@theme-toggles/svelte": "workspace:*"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^7.0.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
-    "svelte": "^5.55.1",
-    "typescript": "~6.0.2",
-    "vite": "^8.0.4"
+    "svelte": "^5.57.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.0"
   }
 }
