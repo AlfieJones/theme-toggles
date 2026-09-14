@@ -1,5 +1,11 @@
 # @theme-toggles/react
 
+## 5.0.1
+
+### Patch Changes
+
+- 510faa4: Publish compiled JavaScript and TypeScript declarations instead of raw TypeScript sources so the package works with Next.js Turbopack. Mark React components as client components for App Router compatibility.
+
 ## 5.0.0
 
 ### Major Changes
