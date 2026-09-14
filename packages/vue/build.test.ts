@@ -35,6 +35,9 @@ test("published Vue entry renders in Node without a Vue or TypeScript loader", (
   expect(files.filter((file) => file.endsWith(".vue.d.ts"))).toHaveLength(14);
   expect(files).toContain("styles.css");
   expect(
+    readFileSync(path.join(packageDir, "dist/styles.css"), "utf8"),
+  ).toContain("@media (prefers-reduced-motion: no-preference)");
+  expect(
     readFileSync(path.join(packageDir, "dist/index.d.ts"), "utf8"),
   ).toContain("Simple.vue");
 }, 30_000);
