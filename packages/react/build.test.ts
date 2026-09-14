@@ -44,6 +44,9 @@ test("published entry resolves in Node without a TypeScript or JSX loader", () =
   expect(classicStyles).not.toMatch(
     /@layer (?:theme|utilities|properties)(?=[\s;{])/,
   );
+  expect(readFileSync(path.join(distDir, "styles.css"), "utf8")).toContain(
+    "@media (prefers-reduced-motion: no-preference)",
+  );
   for (const file of files.filter(
     (file) => file.endsWith(".js") && file !== "index.js",
   )) {
