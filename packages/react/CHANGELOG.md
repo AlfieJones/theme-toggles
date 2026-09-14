@@ -1,5 +1,11 @@
 # @theme-toggles/react
 
+## 5.0.2
+
+### Patch Changes
+
+- bef4a3d: Namespace generated Tailwind cascade layers to prevent conflicts with consumer styles.
+
 ## 5.0.1
 
 ### Patch Changes
