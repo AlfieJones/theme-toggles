@@ -5,7 +5,7 @@ let nextId = 0;
 <script setup lang="ts">
 import { useAttrs } from "vue";
 
-interface Props {
+export interface Props {
   duration?: number;
   type?: "button" | "submit" | "reset";
   title?: string;
