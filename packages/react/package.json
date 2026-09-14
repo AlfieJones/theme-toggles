@@ -15,7 +15,10 @@
     "dist"
   ],
   "exports": {
-    ".": "./dist/index.ts",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./styles.css": "./dist/styles.css",
     "./styles/*.css": "./dist/styles/*.css"
   },
