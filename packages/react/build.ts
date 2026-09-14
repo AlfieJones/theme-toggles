@@ -1,5 +1,6 @@
 import path from "node:path";
-import { mkdir, rm } from "node:fs/promises";
+import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import ts from "typescript";
 import { toggles } from "../toggles/src/index";
 import {
   packageDirFromMeta,
@@ -25,6 +26,47 @@ await writeFrameworkSources({
   renderSvg: renderReactSvg,
   prefixClasses: true,
 });
+
+const sources = (await readdir(distDir))
+  .filter((file) => /\.tsx?$/.test(file))
+  .map((file) => path.join(distDir, file));
+
+for (const file of sources) {
+  const source = await readFile(file, "utf8");
+  await writeFile(
+    file,
+    file.endsWith(".tsx")
+      ? `"use client";\n\n${source}`
+      : source.replace(/from "\.\/([^".]+)"/g, 'from "./$1.js"'),
+  );
+}
+
+const program = ts.createProgram(sources, {
+  target: ts.ScriptTarget.ES2020,
+  module: ts.ModuleKind.ESNext,
+  moduleResolution: ts.ModuleResolutionKind.Bundler,
+  jsx: ts.JsxEmit.ReactJSX,
+  declaration: true,
+  strict: true,
+  skipLibCheck: true,
+  noEmitOnError: true,
+});
+const result = program.emit();
+const diagnostics = [
+  ...ts.getPreEmitDiagnostics(program),
+  ...result.diagnostics,
+];
+if (diagnostics.length > 0) {
+  throw new Error(
+    ts.formatDiagnosticsWithColorAndContext(diagnostics, {
+      getCanonicalFileName: (file) => file,
+      getCurrentDirectory: () => packageDir,
+      getNewLine: () => "\n",
+    }),
+  );
+}
+
+await Promise.all(sources.map((file) => rm(file)));
 
 await writeFrameworkStyles({
   packageDir: distDir,

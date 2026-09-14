@@ -15,7 +15,10 @@
     "dist"
   ],
   "exports": {
-    ".": "./dist/index.ts",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./styles.css": "./dist/styles.css",
     "./styles/*.css": "./dist/styles/*.css"
   },
@@ -26,7 +29,10 @@
   },
   "devDependencies": {
     "@theme-toggles/generator": "workspace:*",
-    "@theme-toggles/toggles": "workspace:*"
+    "@theme-toggles/toggles": "workspace:*",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.3.0",
+    "vue-tsc": "^3.3.11"
   },
   "publishConfig": {
     "access": "public"
