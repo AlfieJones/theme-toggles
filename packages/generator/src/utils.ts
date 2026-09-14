@@ -45,13 +45,14 @@ export function collectNodeClasses(node: Pick<ToggleNode, "cls">): string[] {
     classes.push(...toDarkClasses(node.cls.darkClassName));
   }
 
-  return [...new Set(classes)];
+  return [...new Set(classes.map(motionSafeClass))];
 }
 
 function findUtilityStart(value: string): number {
   let bracketDepth = 0;
   let parenDepth = 0;
   let quote: string | null = null;
+  let utilityStart = 0;
 
   for (let index = 0; index < value.length; index += 1) {
     const char = value[index];
@@ -90,11 +91,31 @@ function findUtilityStart(value: string): number {
     }
 
     if (char === ":" && bracketDepth === 0 && parenDepth === 0) {
-      return index + 1;
+      utilityStart = index + 1;
     }
   }
 
-  return 0;
+  return utilityStart;
+}
+
+/**
+ * Animations are opt-in so a browser that cannot report a motion preference
+ * remains still by default. Tailwind emits `motion-safe` utilities inside
+ * `@media (prefers-reduced-motion: no-preference)`.
+ */
+export function motionSafeClass(value: string): string {
+  const utility = value.slice(findUtilityStart(value));
+  const isMotionUtility =
+    utility === "transition" ||
+    utility.startsWith("transition-") ||
+    utility.startsWith("duration-") ||
+    utility.startsWith("delay-") ||
+    utility.startsWith("ease-") ||
+    utility.startsWith("animate-") ||
+    utility.startsWith("[transition") ||
+    utility.startsWith("[animation");
+
+  return isMotionUtility ? `motion-safe:${value}` : value;
 }
 
 export function prefixTailwindCandidate(value: string): string {

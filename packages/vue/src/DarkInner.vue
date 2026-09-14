@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useAttrs } from "vue";
 
-interface Props {
+export interface Props {
   duration?: number;
+  toggled?: boolean;
   type?: "button" | "submit" | "reset";
   title?: string;
   ariaLabel?: string;
@@ -24,6 +25,14 @@ const attrs = useAttrs();
     :type="props.type"
     :title="props.title"
     :aria-label="props.ariaLabel"
+    :aria-pressed="props.toggled ?? attrs['aria-pressed']"
+    :class="
+      props.toggled === true
+        ? 'dark'
+        : props.toggled === false
+          ? 'light'
+          : undefined
+    "
   >
     <svg
       width="1em"
@@ -35,11 +44,11 @@ const attrs = useAttrs();
     >
       <path
         :d="'M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7'"
-        :class="'origin-center transition-transform duration-(--toggles-dark-inner--duration) [transition-timing-function:ease] dark:rotate-180'"
+        :class="'origin-center motion-safe:transition-transform motion-safe:duration-(--toggles-dark-inner--duration) motion-safe:[transition-timing-function:ease] dark:rotate-180'"
       />
       <path
         :d="'M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z'"
-        :class="'origin-center transition-transform duration-(--toggles-dark-inner--duration) [transition-timing-function:ease] dark:-rotate-180'"
+        :class="'origin-center motion-safe:transition-transform motion-safe:duration-(--toggles-dark-inner--duration) motion-safe:[transition-timing-function:ease] dark:-rotate-180'"
       />
     </svg>
   </button>

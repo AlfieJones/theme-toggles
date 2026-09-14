@@ -3,11 +3,13 @@
 
   interface $$Props extends Omit<HTMLButtonAttributes, "children"> {
     duration?: number;
+    toggled?: boolean;
     ariaLabel?: string;
     class?: string;
   }
 
   export let duration = 500;
+  export let toggled: boolean | undefined = undefined;
   export let type: HTMLButtonAttributes["type"] = "button";
   export let title = "Toggle theme";
   export let ariaLabel = "Toggle theme";
@@ -16,12 +18,18 @@
 </script>
 
 <button
+  {...$$restProps}
   {type}
   {title}
   aria-label={ariaLabel}
-  class={className}
+  aria-pressed={toggled ?? $$restProps["aria-pressed"]}
+  class={[
+    className,
+    toggled === true ? "dark" : toggled === false ? "light" : undefined,
+  ]
+    .filter(Boolean)
+    .join(" ")}
   on:click
-  {...$$restProps}
 >
   <svg
     width="1em"
@@ -33,11 +41,11 @@
   >
     <path
       d={"M16 9c3.9 0 7 3.1 7 7s-3.1 7-7 7"}
-      class={"origin-center transition-transform duration-(--toggles-dark-inner--duration) [transition-timing-function:ease] dark:rotate-180"}
+      class={"origin-center motion-safe:transition-transform motion-safe:duration-(--toggles-dark-inner--duration) motion-safe:[transition-timing-function:ease] dark:rotate-180"}
     />
     <path
       d={"M16 .5C7.4.5.5 7.4.5 16S7.4 31.5 16 31.5 31.5 24.6 31.5 16 24.6.5 16 .5zm0 28.1V23c-3.9 0-7-3.1-7-7s3.1-7 7-7V3.4C23 3.4 28.6 9 28.6 16S23 28.6 16 28.6z"}
-      class={"origin-center transition-transform duration-(--toggles-dark-inner--duration) [transition-timing-function:ease] dark:-rotate-180"}
+      class={"origin-center motion-safe:transition-transform motion-safe:duration-(--toggles-dark-inner--duration) motion-safe:[transition-timing-function:ease] dark:-rotate-180"}
     />
   </svg>
 </button>

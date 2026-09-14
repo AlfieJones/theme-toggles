@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@theme-toggles/toggles": "workspace:*",
-    "liquidjs": "^10.20.0",
-    "tailwindcss": "^4.2.4"
+    "liquidjs": "^10.29.0",
+    "tailwindcss": "^4.3.3"
   }
 }

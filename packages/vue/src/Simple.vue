@@ -5,8 +5,9 @@ let nextId = 0;
 <script setup lang="ts">
 import { useAttrs } from "vue";
 
-interface Props {
+export interface Props {
   duration?: number;
+  toggled?: boolean;
   type?: "button" | "submit" | "reset";
   title?: string;
   ariaLabel?: string;
@@ -32,6 +33,14 @@ const clipMainId = `toggles.dev-simple-main-${toggleId}`;
     :type="props.type"
     :title="props.title"
     :aria-label="props.ariaLabel"
+    :aria-pressed="props.toggled ?? attrs['aria-pressed']"
+    :class="
+      props.toggled === true
+        ? 'dark'
+        : props.toggled === false
+          ? 'light'
+          : undefined
+    "
   >
     <svg
       width="1em"
@@ -45,7 +54,7 @@ const clipMainId = `toggles.dev-simple-main-${toggleId}`;
         <clipPath :id="clipMainId">
           <path
             :d="'M0-5h55v37h-55zm32 12a1 1 0 0025 0 1 1 0 00-25 0'"
-            :class="'transition-[d,translate] duration-(--toggles-simple--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path(\'M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0\')] dark:not-supports-[d:path(\'M0_0\')]:-translate-x-[19px] dark:not-supports-[d:path(\'M0_0\')]:translate-y-[5px]'"
+            :class="'motion-safe:transition-[d,translate] motion-safe:duration-(--toggles-simple--duration) motion-safe:[transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path(\'M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0\')] dark:not-supports-[d:path(\'M0_0\')]:-translate-x-[19px] dark:not-supports-[d:path(\'M0_0\')]:translate-y-[5px]'"
           />
         </clipPath>
       </defs>

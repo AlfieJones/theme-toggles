@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useAttrs } from "vue";
 
-interface Props {
+export interface Props {
   duration?: number;
+  toggled?: boolean;
   type?: "button" | "submit" | "reset";
   title?: string;
   ariaLabel?: string;
@@ -24,6 +25,14 @@ const attrs = useAttrs();
     :type="props.type"
     :title="props.title"
     :aria-label="props.ariaLabel"
+    :aria-pressed="props.toggled ?? attrs['aria-pressed']"
+    :class="
+      props.toggled === true
+        ? 'dark'
+        : props.toggled === false
+          ? 'light'
+          : undefined
+    "
   >
     <svg
       width="1em"
@@ -47,37 +56,37 @@ const attrs = useAttrs();
         :pathLength="1"
         :fill="'none'"
         :d="'M14.6 27.1c0-3.4 0-6.8-.1-10.2-.2-1-1.1-1.7-2-1.7-1.2-.1-2.3 1-2.2 2.3.1 1 .9 1.9 2.1 2h7.2c1.1-.1 2-1 2.1-2 .1-1.2-1-2.3-2.2-2.3-.9 0-1.7.7-2 1.7 0 3.4 0 6.8-.1 10.2'"
-        :class="'[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
+        :class="'[stroke-dasharray:1.1] motion-safe:transition-[stroke-dashoffset,opacity] motion-safe:duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
       />
       <path
         :d="'M16 5V1.3'"
         :pathLength="1"
         :stroke-width="1.5"
-        :class="'[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
+        :class="'[stroke-dasharray:1.1] motion-safe:transition-[stroke-dashoffset,opacity] motion-safe:duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
       />
       <path
         :d="'M27.5 15.8h3.9'"
         :pathLength="1"
         :stroke-width="1.5"
-        :class="'[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
+        :class="'[stroke-dasharray:1.1] motion-safe:transition-[stroke-dashoffset,opacity] motion-safe:duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
       />
       <path
         :d="'M23.6 7.9 26.3 5.4'"
         :pathLength="1"
         :stroke-width="1.5"
-        :class="'[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
+        :class="'[stroke-dasharray:1.1] motion-safe:transition-[stroke-dashoffset,opacity] motion-safe:duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
       />
       <path
         :d="'M8.4 7.9 5.7 5.4'"
         :pathLength="1"
         :stroke-width="1.5"
-        :class="'[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
+        :class="'[stroke-dasharray:1.1] motion-safe:transition-[stroke-dashoffset,opacity] motion-safe:duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
       />
       <path
         :d="'M4.5 15.8H.6'"
         :pathLength="1"
         :stroke-width="1.5"
-        :class="'[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
+        :class="'[stroke-dasharray:1.1] motion-safe:transition-[stroke-dashoffset,opacity] motion-safe:duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0'"
       />
     </svg>
   </button>

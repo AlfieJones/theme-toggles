@@ -5,8 +5,9 @@
 {% endif %}<script setup lang="ts">
   import { useAttrs } from "vue";
 
-  interface Props {
+  export interface Props {
     duration?: number;
+    toggled?: boolean;
     type?: "button" | "submit" | "reset";
     title?: string;
     ariaLabel?: string;
@@ -34,6 +35,8 @@
     :type="props.type"
     :title="props.title"
     :aria-label="props.ariaLabel"
+    :aria-pressed="props.toggled ?? attrs['aria-pressed']"
+    :class="props.toggled === true ? 'dark' : props.toggled === false ? 'light' : undefined"
   >
 {{ svg }}
   </button>

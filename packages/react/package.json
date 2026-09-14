@@ -1,6 +1,6 @@
 {
   "name": "@theme-toggles/react",
-  "version": "5.0.0",
+  "version": "5.0.2",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -15,7 +15,10 @@
     "dist"
   ],
   "exports": {
-    ".": "./dist/index.ts",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./styles.css": "./dist/styles.css",
     "./styles/*.css": "./dist/styles/*.css"
   },
@@ -28,7 +31,8 @@
   "devDependencies": {
     "@theme-toggles/generator": "workspace:*",
     "@theme-toggles/toggles": "workspace:*",
-    "@types/react": "^19.2.14"
+    "@types/react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "publishConfig": {
     "access": "public"
@@ -37,6 +41,6 @@
     "react": "^19.0.0"
   },
   "dependencies": {
-    "shadcn": "^4.6.0"
+    "shadcn": "^4.21.0"
   }
 }

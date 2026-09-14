@@ -7,11 +7,13 @@
 
   interface $$Props extends Omit<HTMLButtonAttributes, "children"> {
     duration?: number;
+    toggled?: boolean;
     ariaLabel?: string;
     class?: string;
   }
 
   export let duration = 500;
+  export let toggled: boolean | undefined = undefined;
   export let type: HTMLButtonAttributes["type"] = "button";
   export let title = "Toggle theme";
   export let ariaLabel = "Toggle theme";
@@ -24,12 +26,18 @@
 </script>
 
 <button
+  {...$$restProps}
   {type}
   {title}
   aria-label={ariaLabel}
-  class={className}
+  aria-pressed={toggled ?? $$restProps["aria-pressed"]}
+  class={[
+    className,
+    toggled === true ? "dark" : toggled === false ? "light" : undefined,
+  ]
+    .filter(Boolean)
+    .join(" ")}
   on:click
-  {...$$restProps}
 >
   <svg
     width="1em"
@@ -43,7 +51,7 @@
       <clipPath id={clipMainId}>
         <path
           d={"M0-5h55v37h-55zm32 12a1 1 0 0025 0 1 1 0 00-25 0"}
-          class={"transition-[d,translate] duration-(--toggles-simple--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0')] dark:not-supports-[d:path('M0_0')]:-translate-x-[19px] dark:not-supports-[d:path('M0_0')]:translate-y-[5px]"}
+          class={"motion-safe:transition-[d,translate] motion-safe:duration-(--toggles-simple--duration) motion-safe:[transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0')] dark:not-supports-[d:path('M0_0')]:-translate-x-[19px] dark:not-supports-[d:path('M0_0')]:translate-y-[5px]"}
         />
       </clipPath>
     </defs>

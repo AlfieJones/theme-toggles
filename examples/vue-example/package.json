@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@theme-toggles/vue": "workspace:*",
-    "vue": "^3.5.32"
+    "vue": "^3.5.42"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
-    "typescript": "~6.0.2",
-    "vite": "^8.0.4"
+    "typescript": "~6.0.3",
+    "vite": "^8.3.0"
   }
 }
