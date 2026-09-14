@@ -5,24 +5,34 @@ export interface LightbulbProps extends Omit<
   "children"
 > {
   duration?: number;
+  /** Whether the toggle should render in its dark-theme state. */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function Lightbulb({
   duration = 500,
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
   "aria-label": ariaLabel = "Toggle theme",
+  "aria-pressed": ariaPressed,
   ...props
 }: LightbulbProps) {
   return (
     <button
+      {...props}
       type={type}
       title={title}
       aria-label={ariaLabel}
-      className={className}
-      {...props}
+      aria-pressed={toggled ?? ariaPressed}
+      className={[
+        className,
+        toggled === true ? "dark" : toggled === false ? "light" : undefined,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       <svg
         width="1em"

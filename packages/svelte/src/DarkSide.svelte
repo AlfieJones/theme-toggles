@@ -3,11 +3,13 @@
 
   interface $$Props extends Omit<HTMLButtonAttributes, "children"> {
     duration?: number;
+    toggled?: boolean;
     ariaLabel?: string;
     class?: string;
   }
 
   export let duration = 500;
+  export let toggled: boolean | undefined = undefined;
   export let type: HTMLButtonAttributes["type"] = "button";
   export let title = "Toggle theme";
   export let ariaLabel = "Toggle theme";
@@ -16,12 +18,18 @@
 </script>
 
 <button
+  {...$$restProps}
   {type}
   {title}
   aria-label={ariaLabel}
-  class={className}
+  aria-pressed={toggled ?? $$restProps["aria-pressed"]}
+  class={[
+    className,
+    toggled === true ? "dark" : toggled === false ? "light" : undefined,
+  ]
+    .filter(Boolean)
+    .join(" ")}
   on:click
-  {...$$restProps}
 >
   <svg
     width="1em"

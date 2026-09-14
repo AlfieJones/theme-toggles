@@ -60,6 +60,30 @@ describe("@theme-toggles/svelte", () => {
     expect(body).toContain("--toggles-within--duration: 750ms");
   });
 
+  it("renders an explicit light or dark state from the toggled prop", async () => {
+    const Simple = await loadServerComponent("Simple");
+    const dark = render(Simple, { props: { toggled: true } }).body;
+    const light = render(Simple, { props: { toggled: false } }).body;
+
+    expect(dark).toContain('class="dark"');
+    expect(light).toContain('class="light"');
+    expect(dark).toContain('aria-pressed="true"');
+    expect(light).toContain('aria-pressed="false"');
+  });
+
+  it("preserves caller aria-pressed only when toggled is undefined", async () => {
+    const Simple = await loadServerComponent("Simple");
+    const caller = render(Simple, {
+      props: { "aria-pressed": "mixed" },
+    }).body;
+    const controlled = render(Simple, {
+      props: { toggled: true, "aria-pressed": false },
+    }).body;
+
+    expect(caller).toContain('aria-pressed="mixed"');
+    expect(controlled).toContain('aria-pressed="true"');
+  });
+
   it("generates distinct SVG ids across renders", async () => {
     const Simple = await loadServerComponent("Simple");
     const first = render(Simple, {}).body;
