@@ -5,11 +5,17 @@ export interface LightbulbProps extends Omit<
   "children"
 > {
   duration?: number;
+  /**
+   * Controls the toggle state when provided. When omitted, the component
+   * follows Tailwind's surrounding `.dark` class.
+   */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function Lightbulb({
   duration = 500,
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
@@ -52,37 +58,73 @@ export function Lightbulb({
           d={
             "M14.6 27.1c0-3.4 0-6.8-.1-10.2-.2-1-1.1-1.7-2-1.7-1.2-.1-2.3 1-2.2 2.3.1 1 .9 1.9 2.1 2h7.2c1.1-.1 2-1 2.1-2 .1-1.2-1-2.3-2.2-2.3-.9 0-1.7.7-2 1.7 0 3.4 0 6.8-.1 10.2"
           }
-          className="[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+          className={
+            toggled === undefined
+              ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+              : toggled
+                ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 [stroke-dashoffset:1] opacity-0"
+                : "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100"
+          }
         />
         <path
           d={"M16 5V1.3"}
           pathLength={1}
           strokeWidth={1.5}
-          className="[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+          className={
+            toggled === undefined
+              ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+              : toggled
+                ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 [stroke-dashoffset:1] opacity-0"
+                : "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100"
+          }
         />
         <path
           d={"M27.5 15.8h3.9"}
           pathLength={1}
           strokeWidth={1.5}
-          className="[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+          className={
+            toggled === undefined
+              ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+              : toggled
+                ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 [stroke-dashoffset:1] opacity-0"
+                : "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100"
+          }
         />
         <path
           d={"M23.6 7.9 26.3 5.4"}
           pathLength={1}
           strokeWidth={1.5}
-          className="[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+          className={
+            toggled === undefined
+              ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+              : toggled
+                ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 [stroke-dashoffset:1] opacity-0"
+                : "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100"
+          }
         />
         <path
           d={"M8.4 7.9 5.7 5.4"}
           pathLength={1}
           strokeWidth={1.5}
-          className="[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+          className={
+            toggled === undefined
+              ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+              : toggled
+                ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 [stroke-dashoffset:1] opacity-0"
+                : "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100"
+          }
         />
         <path
           d={"M4.5 15.8H.6"}
           pathLength={1}
           strokeWidth={1.5}
-          className="[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+          className={
+            toggled === undefined
+              ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 dark:[stroke-dashoffset:1] dark:opacity-0"
+              : toggled
+                ? "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100 [stroke-dashoffset:1] opacity-0"
+                : "[stroke-dasharray:1.1] transition-[stroke-dashoffset,opacity] duration-(--toggles-lightbulb--duration) [stroke-dashoffset:0] opacity-100"
+          }
         />
       </svg>
     </button>

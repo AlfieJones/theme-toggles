@@ -5,11 +5,17 @@ export interface InnerMoonProps extends Omit<
   "children"
 > {
   duration?: number;
+  /**
+   * Controls the toggle state when provided. When omitted, the component
+   * follows Tailwind's surrounding `.dark` class.
+   */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function InnerMoon({
   duration = 500,
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
@@ -38,13 +44,25 @@ export function InnerMoon({
           d={
             "M27.5 11.5v-7h-7L16 0l-4.5 4.5h-7v7L0 16l4.5 4.5v7h7L16 32l4.5-4.5h7v-7L32 16l-4.5-4.5zM16 25.4a9.39 9.39 0 1 1 0-18.8 9.39 9.39 0 1 1 0 18.8z"
           }
-          className="origin-center transition-transform duration-(--toggles-inner-moon--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:rotate-180"
+          className={
+            toggled === undefined
+              ? "origin-center transition-transform duration-(--toggles-inner-moon--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:rotate-180"
+              : toggled
+                ? "origin-center transition-transform duration-(--toggles-inner-moon--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] rotate-180"
+                : "origin-center transition-transform duration-(--toggles-inner-moon--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)]"
+          }
         />
         <circle
           cx={16}
           cy={16}
           r={7.6}
-          className="origin-center transition-transform [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [transition-duration:calc(var(--toggles-inner-moon--duration)/1.5)] dark:translate-x-[15%]"
+          className={
+            toggled === undefined
+              ? "origin-center transition-transform [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [transition-duration:calc(var(--toggles-inner-moon--duration)/1.5)] dark:translate-x-[15%]"
+              : toggled
+                ? "origin-center transition-transform [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [transition-duration:calc(var(--toggles-inner-moon--duration)/1.5)] translate-x-[15%]"
+                : "origin-center transition-transform [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] [transition-duration:calc(var(--toggles-inner-moon--duration)/1.5)]"
+          }
         />
       </svg>
     </button>

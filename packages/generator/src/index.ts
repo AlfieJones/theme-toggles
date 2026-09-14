@@ -9,7 +9,12 @@ import type {
   ToggleDefinition,
   ToggleNode,
 } from "../../toggles/src/types";
-import { clipVarName, collectNodeClasses, prefixCompiledCss } from "./utils";
+import {
+  clipVarName,
+  collectNodeClassGroups,
+  collectNodeClasses,
+  prefixCompiledCss,
+} from "./utils";
 
 export { renderReactSvg, renderSvelteSvg, renderVueSvg } from "./render";
 
@@ -27,7 +32,7 @@ export interface WriteFrameworkPackageOptions {
   indexTemplate: string;
   renderSvg: (
     toggle: ToggleDefinition,
-    options?: { prefixClasses?: boolean },
+    options?: { prefixClasses?: boolean; controlled?: boolean },
   ) => string;
   prefixClasses?: boolean;
 }
@@ -72,6 +77,13 @@ function collectToggleCandidates(toggle: ToggleDefinition): string[] {
 
   const visitNode = (node: ToggleNode | ClipPathDefinition) => {
     for (const className of collectNodeClasses(node)) {
+      candidates.add(className);
+    }
+
+    for (const className of [
+      ...collectNodeClassGroups(node).base,
+      ...collectNodeClassGroups(node).dark,
+    ]) {
       candidates.add(className);
     }
 

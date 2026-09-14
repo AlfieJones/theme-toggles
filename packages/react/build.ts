@@ -23,7 +23,8 @@ await writeFrameworkSources({
   componentTemplate: "component.liquid",
   componentExtension: "tsx",
   indexTemplate: "index.liquid",
-  renderSvg: renderReactSvg,
+  renderSvg: (toggle, options) =>
+    renderReactSvg(toggle, { ...options, controlled: true }),
   prefixClasses: true,
 });
 

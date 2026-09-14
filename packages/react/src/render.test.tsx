@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Simple, Within } from "./index";
+import { DarkInner, Simple, Within } from "./index";
 
 describe("@theme-toggles/react", () => {
   it("renders the default button contract", () => {
@@ -50,5 +50,20 @@ describe("@theme-toggles/react", () => {
     expect(ids[0]).not.toBe(ids[1]);
     expect(markup).toContain(`clip-path="url(#${ids[0]})"`);
     expect(markup).toContain(`clip-path="url(#${ids[1]})"`);
+  });
+
+  it("uses Tailwind dark mode by default and supports a controlled state", () => {
+    const defaultMarkup = renderToStaticMarkup(React.createElement(DarkInner));
+    const toggledMarkup = renderToStaticMarkup(
+      React.createElement(DarkInner, { toggled: true }),
+    );
+    const untoggledMarkup = renderToStaticMarkup(
+      React.createElement(DarkInner, { toggled: false }),
+    );
+
+    expect(defaultMarkup).toContain("dark:rotate-180");
+    expect(toggledMarkup).toContain("rotate-180");
+    expect(toggledMarkup).not.toContain("dark:rotate-180");
+    expect(untoggledMarkup).not.toContain("rotate-180");
   });
 });

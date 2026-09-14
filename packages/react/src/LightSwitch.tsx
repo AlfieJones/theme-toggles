@@ -5,11 +5,17 @@ export interface LightSwitchProps extends Omit<
   "children"
 > {
   duration?: number;
+  /**
+   * Controls the toggle state when provided. When omitted, the component
+   * follows Tailwind's surrounding `.dark` class.
+   */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function LightSwitch({
   duration = 350,
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
@@ -43,7 +49,13 @@ export function LightSwitch({
           <clipPath id={clipPaddleId}>
             <path
               d={"M7 3h10v9H7Z"}
-              className="transition-[d,translate] duration-(--toggles-light-switch--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M7_12h10v9H7Z')] dark:not-supports-[d:path('M0_0')]:translate-y-[9px]"
+              className={
+                toggled === undefined
+                  ? "transition-[d,translate] duration-(--toggles-light-switch--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M7_12h10v9H7Z')] dark:not-supports-[d:path('M0_0')]:translate-y-[9px]"
+                  : toggled
+                    ? "transition-[d,translate] duration-(--toggles-light-switch--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] [d:path('M7_12h10v9H7Z')] not-supports-[d:path('M0_0')]:translate-y-[9px]"
+                    : "transition-[d,translate] duration-(--toggles-light-switch--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)]"
+              }
             />
           </clipPath>
         </defs>

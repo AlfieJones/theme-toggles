@@ -7,11 +7,17 @@ import {
 
 export interface {{ name }}Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   duration?: number;
+  /**
+   * Controls the toggle state when provided. When omitted, the component
+   * follows Tailwind's surrounding `.dark` class.
+   */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function {{ name }}({
   duration = {{ defaultDuration }},
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",

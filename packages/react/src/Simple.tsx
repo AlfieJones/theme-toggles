@@ -5,11 +5,17 @@ export interface SimpleProps extends Omit<
   "children"
 > {
   duration?: number;
+  /**
+   * Controls the toggle state when provided. When omitted, the component
+   * follows Tailwind's surrounding `.dark` class.
+   */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function Simple({
   duration = 500,
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
@@ -42,7 +48,13 @@ export function Simple({
           <clipPath id={clipMainId}>
             <path
               d={"M0-5h55v37h-55zm32 12a1 1 0 0025 0 1 1 0 00-25 0"}
-              className="transition-[d,translate] duration-(--toggles-simple--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0')] dark:not-supports-[d:path('M0_0')]:-translate-x-[19px] dark:not-supports-[d:path('M0_0')]:translate-y-[5px]"
+              className={
+                toggled === undefined
+                  ? "transition-[d,translate] duration-(--toggles-simple--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path('M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0')] dark:not-supports-[d:path('M0_0')]:-translate-x-[19px] dark:not-supports-[d:path('M0_0')]:translate-y-[5px]"
+                  : toggled
+                    ? "transition-[d,translate] duration-(--toggles-simple--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] [d:path('M-18-1h55v37h-55zm32_12a1_1_0_0025_0_1_1_0_00-25_0')] not-supports-[d:path('M0_0')]:-translate-x-[19px] not-supports-[d:path('M0_0')]:translate-y-[5px]"
+                    : "transition-[d,translate] duration-(--toggles-simple--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)]"
+              }
             />
           </clipPath>
         </defs>

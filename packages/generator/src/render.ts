@@ -1,5 +1,6 @@
 import {
   clipVarName,
+  collectNodeClassGroups,
   collectNodeClasses,
   isClipRef,
   prefixTailwindCandidate,
@@ -17,6 +18,7 @@ type Framework = "react" | "svelte" | "vue";
 type LiteralValue = string | number | boolean;
 interface RenderClassOptions {
   prefixClasses?: boolean;
+  controlled?: boolean;
 }
 
 function escapeVueBinding(value: string): string {
@@ -110,12 +112,25 @@ function renderAttrs(
       ? [...new Set(classTokens.map((token) => prefixTailwindCandidate(token)))]
       : classTokens;
     const classValue = renderedClassTokens.join(" ");
+    const { base, dark } = collectNodeClassGroups(node);
+    const controlledOn = [...new Set([...base, ...dark])]
+      .map((token) =>
+        options.prefixClasses ? prefixTailwindCandidate(token) : token,
+      )
+      .join(" ");
+    const controlledOff = [...new Set(base)]
+      .map((token) =>
+        options.prefixClasses ? prefixTailwindCandidate(token) : token,
+      )
+      .join(" ");
     attrs.push(
-      framework === "react"
-        ? `className=${serializeLiteral(classValue)}`
-        : framework === "svelte"
-          ? `class={${serializeLiteral(classValue)}}`
-          : `:class="${escapeVueBinding(serializeLiteral(classValue))}"`,
+      framework === "react" && options.controlled
+        ? `className={toggled === undefined ? ${serializeLiteral(classValue)} : toggled ? ${serializeLiteral(controlledOn)} : ${serializeLiteral(controlledOff)}}`
+        : framework === "react"
+          ? `className=${serializeLiteral(classValue)}`
+          : framework === "svelte"
+            ? `class={${serializeLiteral(classValue)}}`
+            : `:class="${escapeVueBinding(serializeLiteral(classValue))}"`,
     );
   }
 
@@ -178,12 +193,25 @@ function renderDefs(
           ]
         : classTokens;
       const classValue = renderedClassTokens.join(" ");
+      const { base, dark } = collectNodeClassGroups(clipPath);
+      const controlledOn = [...new Set([...base, ...dark])]
+        .map((token) =>
+          options.prefixClasses ? prefixTailwindCandidate(token) : token,
+        )
+        .join(" ");
+      const controlledOff = [...new Set(base)]
+        .map((token) =>
+          options.prefixClasses ? prefixTailwindCandidate(token) : token,
+        )
+        .join(" ");
       attrs.push(
-        framework === "react"
-          ? `className=${serializeLiteral(classValue)}`
-          : framework === "svelte"
-            ? `class={${serializeLiteral(classValue)}}`
-            : `:class="${escapeVueBinding(serializeLiteral(classValue))}"`,
+        framework === "react" && options.controlled
+          ? `className={toggled === undefined ? ${serializeLiteral(classValue)} : toggled ? ${serializeLiteral(controlledOn)} : ${serializeLiteral(controlledOff)}}`
+          : framework === "react"
+            ? `className=${serializeLiteral(classValue)}`
+            : framework === "svelte"
+              ? `class={${serializeLiteral(classValue)}}`
+              : `:class="${escapeVueBinding(serializeLiteral(classValue))}"`,
       );
     }
 

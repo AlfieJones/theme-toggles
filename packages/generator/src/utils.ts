@@ -34,18 +34,19 @@ export function toDarkClasses(value: string): string[] {
   return splitClasses(value).map((token) => `dark:${token}`);
 }
 
+export function collectNodeClassGroups(node: Pick<ToggleNode, "cls">): {
+  base: string[];
+  dark: string[];
+} {
+  return {
+    base: node.cls?.className ? splitClasses(node.cls.className) : [],
+    dark: node.cls?.darkClassName ? splitClasses(node.cls.darkClassName) : [],
+  };
+}
+
 export function collectNodeClasses(node: Pick<ToggleNode, "cls">): string[] {
-  const classes: string[] = [];
-
-  if (node.cls?.className) {
-    classes.push(...splitClasses(node.cls.className));
-  }
-
-  if (node.cls?.darkClassName) {
-    classes.push(...toDarkClasses(node.cls.darkClassName));
-  }
-
-  return [...new Set(classes)];
+  const { base, dark } = collectNodeClassGroups(node);
+  return [...new Set([...base, ...toDarkClasses(dark.join(" "))])];
 }
 
 function findUtilityStart(value: string): number {
