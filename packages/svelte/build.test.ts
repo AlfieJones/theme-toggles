@@ -16,6 +16,9 @@ test("published Svelte components compile for browser and server with declaratio
   expect(files).toContain("index.js");
   expect(files).toContain("index.d.ts");
   expect(files).toContain("styles.css");
+  expect(await readFile(path.join(distDir, "styles.css"), "utf8")).toContain(
+    "@media (prefers-reduced-motion: no-preference)",
+  );
   const components = files.filter((file) => file.endsWith(".svelte"));
   expect(components).toHaveLength(14);
   const tempDir = await mkdtemp(path.join(packageDir, ".render-test-"));

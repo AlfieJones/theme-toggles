@@ -53,7 +53,7 @@ const clipPaddleId = `toggles.dev-light-switch-paddle-${toggleId}`;
         <clipPath :id="clipPaddleId">
           <path
             :d="'M7 3h10v9H7Z'"
-            :class="'transition-[d,translate] duration-(--toggles-light-switch--duration) [transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path(\'M7_12h10v9H7Z\')] dark:not-supports-[d:path(\'M0_0\')]:translate-y-[9px]'"
+            :class="'motion-safe:transition-[d,translate] motion-safe:duration-(--toggles-light-switch--duration) motion-safe:[transition-timing-function:cubic-bezier(0,0,0.15,1.25)] dark:[d:path(\'M7_12h10v9H7Z\')] dark:not-supports-[d:path(\'M0_0\')]:translate-y-[9px]'"
           />
         </clipPath>
       </defs>
