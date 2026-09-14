@@ -1,9 +1,10 @@
-import { type ButtonHTMLAttributes, type CSSProperties } from "react";
+import {
+  type ButtonHTMLAttributes,
+  type CSSProperties,
 
-export interface HalfSunProps extends Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  "children"
-> {
+} from "react";
+
+export interface HalfSunProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   duration?: number;
   /** Whether the toggle should render in its dark-theme state. */
   toggled?: boolean;
@@ -20,6 +21,9 @@ export function HalfSun({
   "aria-pressed": ariaPressed,
   ...props
 }: HalfSunProps) {
+
+
+
   return (
     <button
       {...props}
@@ -27,29 +31,19 @@ export function HalfSun({
       title={title}
       aria-label={ariaLabel}
       aria-pressed={toggled ?? ariaPressed}
-      className={[
-        className,
-        toggled === true ? "dark" : toggled === false ? "light" : undefined,
-      ]
+      className={[className, toggled === true ? "dark" : toggled === false ? "light" : undefined]
         .filter(Boolean)
         .join(" ")}
     >
-      <svg
+<svg
         width="1em"
         height="1em"
         viewBox="0 0 32 32"
         aria-hidden="true"
         fill={"currentColor"}
-        style={
-          { "--toggles-half-sun--duration": `${duration}ms` } as CSSProperties
-        }
+        style={{ "--toggles-half-sun--duration": `${duration}ms` } as CSSProperties}
       >
-        <path
-          d={
-            "M27.5 11.5v-7h-7L16 0l-4.5 4.5h-7v7L0 16l4.5 4.5v7h7L16 32l4.5-4.5h7v-7L32 16l-4.5-4.5zM16 25.4V6.6c5.2 0 9.4 4.2 9.4 9.4s-4.2 9.4-9.4 9.4z"
-          }
-          className="origin-center transition-transform duration-(--toggles-half-sun--duration) [transition-timing-function:ease] dark:rotate-180"
-        />
+            <path d={"M27.5 11.5v-7h-7L16 0l-4.5 4.5h-7v7L0 16l4.5 4.5v7h7L16 32l4.5-4.5h7v-7L32 16l-4.5-4.5zM16 25.4V6.6c5.2 0 9.4 4.2 9.4 9.4s-4.2 9.4-9.4 9.4z"} className="origin-center transition-transform duration-(--toggles-half-sun--duration) [transition-timing-function:ease] dark:rotate-180" />
       </svg>
     </button>
   );
