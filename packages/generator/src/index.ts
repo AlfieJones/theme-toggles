@@ -36,11 +36,22 @@ async function ensureDir(directory: string) {
   await mkdir(directory, { recursive: true });
 }
 
+const TAILWIND_LAYER_NAMESPACE = "theme-toggles";
+
 const TAILWIND_INPUT = `
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss/theme.css" layer(${TAILWIND_LAYER_NAMESPACE}.theme);
+@import "tailwindcss/utilities.css" layer(${TAILWIND_LAYER_NAMESPACE}.utilities);
 @custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
 `;
+
+function namespaceTailwindLayers(css: string): string {
+  // Tailwind emits its property registrations in a separate `properties` layer
+  // even when the theme and utilities imports are assigned a custom layer.
+  return css.replaceAll(
+    /@layer properties\b/g,
+    `@layer ${TAILWIND_LAYER_NAMESPACE}.properties`,
+  );
+}
 
 async function loadTailwindStylesheet(id: string, base?: string) {
   const resolved = id.startsWith("tailwindcss/")
@@ -63,7 +74,7 @@ async function buildTailwindCss(
     loadStylesheet: loadTailwindStylesheet,
   });
 
-  const css = tailwind.build(candidates);
+  const css = namespaceTailwindLayers(tailwind.build(candidates));
   return prefixClasses ? prefixCompiledCss(css, candidates) : css;
 }
 
