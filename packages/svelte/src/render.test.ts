@@ -60,6 +60,17 @@ describe("@theme-toggles/svelte", () => {
     expect(body).toContain("--toggles-within--duration: 750ms");
   });
 
+  it("renders an explicit light or dark state from the toggled prop", async () => {
+    const Simple = await loadServerComponent("Simple");
+    const dark = render(Simple, { props: { toggled: true } }).body;
+    const light = render(Simple, { props: { toggled: false } }).body;
+
+    expect(dark).toContain('class="dark"');
+    expect(light).toContain('class="light"');
+    expect(dark).toContain('aria-pressed="true"');
+    expect(light).toContain('aria-pressed="false"');
+  });
+
   it("generates distinct SVG ids across renders", async () => {
     const Simple = await loadServerComponent("Simple");
     const first = render(Simple, {}).body;

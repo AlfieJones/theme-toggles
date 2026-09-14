@@ -7,11 +7,14 @@ import {
 
 export interface {{ name }}Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   duration?: number;
+  /** Whether the toggle should render in its dark-theme state. */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function {{ name }}({
   duration = {{ defaultDuration }},
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
@@ -30,7 +33,10 @@ export function {{ name }}({
       type={type}
       title={title}
       aria-label={ariaLabel}
-      className={className}
+      aria-pressed={toggled}
+      className={[className, toggled === true ? "dark" : toggled === false ? "light" : undefined]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     >
 {{ svg }}

@@ -30,6 +30,16 @@ describe("@theme-toggles/vue", () => {
     expect(source).toContain(':aria-label="props.ariaLabel"');
   });
 
+  it("supports an explicit light or dark state from the toggled prop", async () => {
+    const source = await readComponent("Simple");
+
+    expect(source).toContain("toggled?: boolean");
+    expect(source).toContain(':aria-pressed="props.toggled"');
+    expect(source).toMatch(
+      /:class="\s*props\.toggled === true\s*\? 'dark'\s*:\s*props\.toggled === false\s*\? 'light'\s*:\s*undefined\s*"/,
+    );
+  });
+
   it("generates scoped SVG ids for clipped toggles", async () => {
     const source = await readComponent("Simple");
 

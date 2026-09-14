@@ -5,11 +5,14 @@ export interface EclipseProps extends Omit<
   "children"
 > {
   duration?: number;
+  /** Whether the toggle should render in its dark-theme state. */
+  toggled?: boolean;
   [key: `data-${string}`]: string | number | boolean | null | undefined;
 }
 
 export function Eclipse({
   duration = 500,
+  toggled,
   className,
   type = "button",
   title = "Toggle theme",
@@ -25,7 +28,13 @@ export function Eclipse({
       type={type}
       title={title}
       aria-label={ariaLabel}
-      className={className}
+      aria-pressed={toggled}
+      className={[
+        className,
+        toggled === true ? "dark" : toggled === false ? "light" : undefined,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     >
       <svg

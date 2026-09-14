@@ -16,10 +16,13 @@ const componentName = slug
   .join("");
 
 const shadcnInstall = `npx shadcn@latest add https://toggles.dev/r/${slug}`;
-const shadcnUsage = `import { ${componentName} } from "@/components/ui/${slug}";\n\nexport default function App() {\n  return <${componentName} />;\n}`;
-const npmUsage = `import { ${componentName} } from "@theme-toggles/react";\nimport "@theme-toggles/react/styles/${slug}.css";\n\nexport default function App() {\n  return <${componentName} />;\n}`;
-const svelteNpmUsage = `<script>\n  import { ${componentName} } from "@theme-toggles/svelte";\n  import "@theme-toggles/svelte/styles/${slug}.css";\n</script>\n\n<${componentName} />`;
-const vueNpmUsage = `<script setup lang="ts">\nimport { ${componentName} } from "@theme-toggles/vue";\nimport "@theme-toggles/vue/styles/${slug}.css";\n</script>\n\n<template>\n  <${componentName} />\n</template>`;
+const shadcnUsage = `"use client";\n\nimport { useState } from "react";\nimport { ${componentName} } from "@/components/ui/${slug}";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
+const npmUsage = `"use client";\n\nimport { useState } from "react";\nimport { ${componentName} } from "@theme-toggles/react";\nimport "@theme-toggles/react/styles/${slug}.css";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
+const svelteNpmUsage = `<script>\n  import { ${componentName} } from "@theme-toggles/svelte";\n  import "@theme-toggles/svelte/styles/${slug}.css";\n\n  let toggled = false;\n</script>\n\n<!-- Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n     to a root element—the toggle follows that class automatically. -->\n<${componentName} {toggled} on:click={() => (toggled = !toggled)} />`;
+const vueNpmUsage = `<script setup lang="ts">\nimport { ref } from "vue";\nimport { ${componentName} } from "@theme-toggles/vue";\nimport "@theme-toggles/vue/styles/${slug}.css";\n\nconst toggled = ref(false);\n</script>\n\n<template>\n  <!-- Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n       to a root element—the toggle follows that class automatically. -->\n  <${componentName} :toggled="toggled" @click="toggled = !toggled" />\n</template>`;
+const reactManualUsage = `"use client";\n\nimport { useState } from "react";\n// Update this path to where you copied the component.\nimport { ${componentName} } from "./${componentName}";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
+const svelteManualUsage = `<script>\n  // Update this path to where you copied the component.\n  import ${componentName} from "./${componentName}.svelte";\n\n  let toggled = false;\n</script>\n\n<!-- Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n     to a root element—the toggle follows that class automatically. -->\n<${componentName} {toggled} on:click={() => (toggled = !toggled)} />`;
+const vueManualUsage = `<script setup lang="ts">\nimport { ref } from "vue";\n// Update this path to where you copied the component.\nimport ${componentName} from "./${componentName}.vue";\n\nconst toggled = ref(false);\n</script>\n\n<template>\n  <!-- Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n       to a root element—the toggle follows that class automatically. -->\n  <${componentName} :toggled="toggled" @click="toggled = !toggled" />\n</template>`;
 
 const pkgManagers = [
   { id: "npm", install: (pkg: string) => `npm install ${pkg}` },
@@ -289,6 +292,35 @@ const pkgManagers = [
         />
       </div>
     </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={reactManualUsage}
+          lang="tsx"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
   </div>
 
   <!-- svelte + npm -->
@@ -407,6 +439,35 @@ const pkgManagers = [
         />
       </div>
     </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={svelteManualUsage}
+          lang="svelte"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
   </div>
 
   <!-- vue + npm -->
@@ -520,6 +581,35 @@ const pkgManagers = [
         >
         <Code
           code={vueSource}
+          lang="vue"
+          themes={{ light: "github-light", dark: "github-dark" }}
+        />
+      </div>
+    </div>
+    <div
+      class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0"
+    >
+      <div
+        class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800"
+      >
+        <span
+          class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0"
+          >2</span
+        >
+        <span class="text-xs text-neutral-500 dark:text-neutral-400"
+          >Import and use</span
+        >
+      </div>
+      <div
+        class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed"
+      >
+        <button
+          data-copy-btn
+          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
+          >Copy</button
+        >
+        <Code
+          code={vueManualUsage}
           lang="vue"
           themes={{ light: "github-light", dark: "github-dark" }}
         />

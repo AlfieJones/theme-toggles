@@ -3,6 +3,7 @@ import { useAttrs } from "vue";
 
 export interface Props {
   duration?: number;
+  toggled?: boolean;
   type?: "button" | "submit" | "reset";
   title?: string;
   ariaLabel?: string;
@@ -24,6 +25,14 @@ const attrs = useAttrs();
     :type="props.type"
     :title="props.title"
     :aria-label="props.ariaLabel"
+    :aria-pressed="props.toggled"
+    :class="
+      props.toggled === true
+        ? 'dark'
+        : props.toggled === false
+          ? 'light'
+          : undefined
+    "
   >
     <svg
       width="1em"

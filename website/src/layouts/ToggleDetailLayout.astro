@@ -116,16 +116,18 @@ const {
         >
           <BoltCorners />
           <div class="grid lg:grid-cols-2 overflow-hidden">
-            <div class="lg:sticky lg:top-0 lg:self-start">
-              <div
-                transition:name={`toggle-card-${slug}`}
-                class="relative border-b lg:border-b-0 lg:border-r border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 h-116 overflow-hidden"
-              >
-                <span class="bolt top-4 left-4"></span>
-                <span class="bolt top-4 right-4"></span>
-                <span class="bolt bottom-4 left-4"></span>
-                <span class="bolt bottom-4 right-4"></span>
-                <TogglePreview slug={slug} client:only="react" />
+            <div class="lg:border-r border-neutral-300 dark:border-neutral-700">
+              <div class="lg:sticky lg:top-0 lg:self-start">
+                <div
+                  transition:name={`toggle-card-${slug}`}
+                  class="relative border-b border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 h-116 overflow-hidden"
+                >
+                  <span class="bolt top-4 left-4"></span>
+                  <span class="bolt top-4 right-4"></span>
+                  <span class="bolt bottom-4 left-4"></span>
+                  <span class="bolt bottom-4 right-4"></span>
+                  <TogglePreview slug={slug} client:only="react" />
+                </div>
               </div>
             </div>
             <div
