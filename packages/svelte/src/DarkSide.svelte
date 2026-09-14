@@ -18,10 +18,11 @@
 </script>
 
 <button
+  {...$$restProps}
   {type}
   {title}
   aria-label={ariaLabel}
-  aria-pressed={toggled}
+  aria-pressed={toggled ?? $$restProps["aria-pressed"]}
   class={[
     className,
     toggled === true ? "dark" : toggled === false ? "light" : undefined,
@@ -29,7 +30,6 @@
     .filter(Boolean)
     .join(" ")}
   on:click
-  {...$$restProps}
 >
   <svg
     width="1em"

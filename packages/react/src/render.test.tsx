@@ -46,6 +46,18 @@ describe("@theme-toggles/react", () => {
     expect(lightMarkup).toContain('aria-pressed="false"');
   });
 
+  it("preserves caller aria-pressed only when toggled is undefined", () => {
+    const callerMarkup = renderToStaticMarkup(
+      React.createElement(Simple, { "aria-pressed": "mixed" }),
+    );
+    const controlledMarkup = renderToStaticMarkup(
+      React.createElement(Simple, { toggled: true, "aria-pressed": false }),
+    );
+
+    expect(callerMarkup).toContain('aria-pressed="mixed"');
+    expect(controlledMarkup).toContain('aria-pressed="true"');
+  });
+
   it("generates distinct SVG ids for multiple instances in one render", () => {
     const markup = renderToStaticMarkup(
       React.createElement(

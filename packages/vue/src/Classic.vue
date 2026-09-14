@@ -33,7 +33,7 @@ const clipMainId = `toggles.dev-classic-main-${toggleId}`;
     :type="props.type"
     :title="props.title"
     :aria-label="props.ariaLabel"
-    :aria-pressed="props.toggled"
+    :aria-pressed="props.toggled ?? attrs['aria-pressed']"
     :class="
       props.toggled === true
         ? 'dark'

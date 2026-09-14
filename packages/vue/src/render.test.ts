@@ -34,7 +34,9 @@ describe("@theme-toggles/vue", () => {
     const source = await readComponent("Simple");
 
     expect(source).toContain("toggled?: boolean");
-    expect(source).toContain(':aria-pressed="props.toggled"');
+    expect(source).toContain(
+      `:aria-pressed="props.toggled ?? attrs['aria-pressed']"`,
+    );
     expect(source).toMatch(
       /:class="\s*props\.toggled === true\s*\? 'dark'\s*:\s*props\.toggled === false\s*\? 'light'\s*:\s*undefined\s*"/,
     );

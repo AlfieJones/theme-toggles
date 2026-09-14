@@ -17,6 +17,7 @@ export function Classic({
   type = "button",
   title = "Toggle theme",
   "aria-label": ariaLabel = "Toggle theme",
+  "aria-pressed": ariaPressed,
   ...props
 }: ClassicProps) {
   const toggleId = useId();
@@ -25,17 +26,17 @@ export function Classic({
 
   return (
     <button
+      {...props}
       type={type}
       title={title}
       aria-label={ariaLabel}
-      aria-pressed={toggled}
+      aria-pressed={toggled ?? ariaPressed}
       className={[
         className,
         toggled === true ? "dark" : toggled === false ? "light" : undefined,
       ]
         .filter(Boolean)
         .join(" ")}
-      {...props}
     >
       <svg
         width="1em"

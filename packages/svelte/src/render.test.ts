@@ -71,6 +71,19 @@ describe("@theme-toggles/svelte", () => {
     expect(light).toContain('aria-pressed="false"');
   });
 
+  it("preserves caller aria-pressed only when toggled is undefined", async () => {
+    const Simple = await loadServerComponent("Simple");
+    const caller = render(Simple, {
+      props: { "aria-pressed": "mixed" },
+    }).body;
+    const controlled = render(Simple, {
+      props: { toggled: true, "aria-pressed": false },
+    }).body;
+
+    expect(caller).toContain('aria-pressed="mixed"');
+    expect(controlled).toContain('aria-pressed="true"');
+  });
+
   it("generates distinct SVG ids across renders", async () => {
     const Simple = await loadServerComponent("Simple");
     const first = render(Simple, {}).body;
