@@ -34,6 +34,16 @@ test("published entry resolves in Node without a TypeScript or JSX loader", () =
   expect(files.filter((file) => /(?<!\.d)\.tsx?$/.test(file))).toEqual([]);
   expect(files).toContain("index.d.ts");
   expect(files).toContain("styles.css");
+  const classicStyles = readFileSync(
+    path.join(distDir, "styles", "classic.css"),
+    "utf8",
+  );
+  expect(classicStyles).toContain("@layer theme-toggles.theme");
+  expect(classicStyles).toContain("@layer theme-toggles.utilities");
+  expect(classicStyles).toContain("@layer theme-toggles.properties");
+  expect(classicStyles).not.toMatch(
+    /@layer (?:theme|utilities|properties)(?=[\s;{])/,
+  );
   for (const file of files.filter(
     (file) => file.endsWith(".js") && file !== "index.js",
   )) {
