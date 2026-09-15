@@ -90,7 +90,9 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
       applyTheme();
       document.addEventListener("astro:after-swap", applyTheme);
     </script>
-    <slot />
-    <Footer />
+    <div class="w-[calc(100%-0.625rem)] mx-auto">
+      <slot />
+      <Footer />
+    </div>
   </body>
 </html>

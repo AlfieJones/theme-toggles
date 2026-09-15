@@ -14,10 +14,6 @@
   --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html {
-  overflow-x: clip;
-}
-
 button {
   cursor: pointer;
 }
