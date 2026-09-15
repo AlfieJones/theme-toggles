@@ -66,16 +66,15 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl.toString()} />
     <title>{pageTitle}</title>
-    {
-      jsonLd && (
-        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-      )
-    }
+    {jsonLd && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(jsonLd)}
+      ></script>
+    )}
     <ClientRouter />
   </head>
-  <body
-    class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 flex flex-col min-h-screen"
-  >
+  <body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 flex flex-col min-h-screen">
     <script is:inline>
       function applyTheme() {
         const saved = localStorage.getItem("theme");
