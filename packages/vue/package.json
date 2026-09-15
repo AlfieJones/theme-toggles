@@ -38,6 +38,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "vue": "^3.5.42"
+    "vue": "^3.4.0"
   }
 }
