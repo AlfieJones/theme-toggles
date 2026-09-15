@@ -38,6 +38,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "svelte": "^4.0.0 || ^5.0.0"
+    "svelte": "^5.57.0"
   }
 }

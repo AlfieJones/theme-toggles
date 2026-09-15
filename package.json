@@ -23,15 +23,15 @@
     "release": "npm exec -- changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.31.1",
-    "@types/node": "^25.9.6",
-    "turbo": "latest",
-    "oxlint": "^1.82.0",
+    "@changesets/cli": "^3.0.3",
+    "@types/node": "^26.5.1",
+    "turbo": "^2.10.13",
+    "oxlint": "^1.83.0",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-svelte": "^3.5.2",
+    "prettier-plugin-astro": "^1.0.0",
+    "prettier-plugin-svelte": "^4.1.1",
     "svelte": "^5.57.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "vue": "^3.5.42"
   },
   "engines": {

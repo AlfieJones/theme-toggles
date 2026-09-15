@@ -30,7 +30,7 @@
   "devDependencies": {
     "@theme-toggles/generator": "workspace:*",
     "@theme-toggles/toggles": "workspace:*",
-    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitejs/plugin-vue": "^6.0.9",
     "vite": "^8.3.0",
     "vue-tsc": "^3.3.11"
   },
@@ -38,6 +38,6 @@
     "access": "public"
   },
   "peerDependencies": {
-    "vue": "^3.4.0"
+    "vue": "^3.5.42"
   }
 }

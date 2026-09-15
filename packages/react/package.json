@@ -38,7 +38,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^19.0.0"
+    "react": "^19.3.0"
   },
   "dependencies": {
     "shadcn": "^4.21.0"
