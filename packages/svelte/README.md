@@ -18,7 +18,7 @@ npm install @theme-toggles/svelte
   let toggled = false;
 </script>
 
-<!-- Omit `toggled` if your app root uses `.dark`. -->
+<!-- Optionally omit `toggled` if your app uses `.dark` on its root to switch themes. -->
 <Classic {toggled} on:click={() => (toggled = !toggled)} />
 ```
 

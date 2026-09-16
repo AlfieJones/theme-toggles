@@ -20,7 +20,7 @@ const toggled = ref(false);
 </script>
 
 <template>
-  <!-- Omit `toggled` if your app root uses `.dark`. -->
+  <!-- Optionally omit `toggled` if your app uses `.dark` on its root to switch themes. -->
   <Classic :toggled="toggled" @click="toggled = !toggled" />
 </template>
 ```
