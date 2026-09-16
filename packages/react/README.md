@@ -18,6 +18,7 @@ import "@theme-toggles/react/styles/classic.css";
 export function ThemeToggle() {
   const [toggled, setToggled] = useState(false);
 
+  // Omit `toggled` if your app root uses `.dark`.
   return (
     <Classic toggled={toggled} onClick={() => setToggled((value) => !value)} />
   );
