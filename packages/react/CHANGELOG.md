@@ -1,5 +1,11 @@
 # @theme-toggles/react
 
+## 5.0.4
+
+### Patch Changes
+
+- 441b8c4: Add package READMEs with installation and usage instructions.
+
 ## 5.0.3
 
 ### Patch Changes
