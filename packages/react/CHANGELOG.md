@@ -1,5 +1,11 @@
 # @theme-toggles/react
 
+## 5.0.3
+
+### Patch Changes
+
+- ad8e0b5: Move shadcn to development dependencies so it is not installed by package consumers, and add React as a development dependency for local tooling while retaining it as a peer dependency for consumers.
+
 ## 5.0.2
 
 ### Patch Changes
