@@ -15,7 +15,6 @@ const componentName = slug
   .map((s: string) => s[0].toUpperCase() + s.slice(1))
   .join("");
 
-const shadcnRegistryInstall = "npx shadcn@latest registry add @toggles";
 const shadcnInstall = `npx shadcn@latest add @toggles/${slug}`;
 const shadcnUsage = `"use client";\n\nimport { useState } from "react";\nimport { ${componentName} } from "@/components/ui/${slug}";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
 const npmUsage = `"use client";\n\nimport { useState } from "react";\nimport { ${componentName} } from "@theme-toggles/react";\nimport "@theme-toggles/react/styles/${slug}.css";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
@@ -133,29 +132,6 @@ const pkgManagers = [
           1
         </span>
         <span class="text-xs text-neutral-500 dark:text-neutral-400">
-          Add the Theme Toggles registry
-        </span>
-      </div>
-      <div class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed">
-        <button
-          data-copy-btn
-          class="absolute top-3 right-3 z-10 text-xs px-3 py-1 border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 cursor-pointer transition-colors bg-transparent hover:bg-neutral-200 dark:hover:bg-neutral-700"
-        >
-          Copy
-        </button>
-        <Code
-          code={shadcnRegistryInstall}
-          lang="bash"
-          themes={{ light: "github-light", dark: "github-dark" }}
-        />
-      </div>
-    </div>
-    <div class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0">
-      <div class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800">
-        <span class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0">
-          2
-        </span>
-        <span class="text-xs text-neutral-500 dark:text-neutral-400">
           Install this toggle
         </span>
       </div>
@@ -176,7 +152,7 @@ const pkgManagers = [
     <div class="border-b border-neutral-300 dark:border-neutral-700 last:border-b-0">
       <div class="px-6 py-3 flex items-center gap-3 border-b border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800">
         <span class="border border-neutral-300 dark:border-neutral-600 w-5 h-5 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 shrink-0">
-          3
+          2
         </span>
         <span class="text-xs text-neutral-500 dark:text-neutral-400">
           Import and use
