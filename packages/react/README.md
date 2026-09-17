@@ -27,10 +27,16 @@ export function ThemeToggle() {
 
 ## shadcn/ui
 
-Install an individual toggle with the shadcn CLI:
+Add the Theme Toggles registry to the shadcn CLI:
 
 ```bash
-npx shadcn@latest add https://toggles.dev/r/classic
+npx shadcn@latest registry add @toggles
+```
+
+Then install an individual toggle:
+
+```bash
+npx shadcn@latest add @toggles/classic
 ```
 
 Browse the [full collection of toggles](https://toggles.dev).
