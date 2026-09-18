@@ -15,7 +15,7 @@ const componentName = slug
   .map((s: string) => s[0].toUpperCase() + s.slice(1))
   .join("");
 
-const shadcnInstall = `npx shadcn@latest add https://toggles.dev/r/${slug}`;
+const shadcnInstall = `npx shadcn@latest add @toggles/${slug}`;
 const shadcnUsage = `"use client";\n\nimport { useState } from "react";\nimport { ${componentName} } from "@/components/ui/${slug}";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
 const npmUsage = `"use client";\n\nimport { useState } from "react";\nimport { ${componentName} } from "@theme-toggles/react";\nimport "@theme-toggles/react/styles/${slug}.css";\n\nexport default function App() {\n  const [toggled, setToggled] = useState(false);\n\n  return (\n    <>\n      {/* Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n          to a root element—the toggle follows that class automatically. */}\n      <${componentName}\n        toggled={toggled}\n        onClick={() => setToggled((value) => !value)}\n      />\n    </>\n  );\n}`;
 const svelteNpmUsage = `<script>\n  import { ${componentName} } from "@theme-toggles/svelte";\n  import "@theme-toggles/svelte/styles/${slug}.css";\n\n  let toggled = false;\n</script>\n\n<!-- Alternatively, omit \`toggled\` when your app applies \`dark\` or \`light\`\n     to a root element—the toggle follows that class automatically. -->\n<${componentName} {toggled} on:click={() => (toggled = !toggled)} />`;
@@ -132,7 +132,7 @@ const pkgManagers = [
           1
         </span>
         <span class="text-xs text-neutral-500 dark:text-neutral-400">
-          Run the shadcn CLI
+          Install this toggle
         </span>
       </div>
       <div class="relative min-w-0 overflow-hidden [&_pre]:overflow-auto [&_pre]:max-h-72 [&_pre]:p-6 [&_pre]:text-xs [&_pre]:leading-relaxed">

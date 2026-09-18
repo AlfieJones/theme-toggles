@@ -30,7 +30,7 @@ export function ThemeToggle() {
 Install an individual toggle with the shadcn CLI:
 
 ```bash
-npx shadcn@latest add https://toggles.dev/r/classic
+npx shadcn@latest add @toggles/classic
 ```
 
 Browse the [full collection of toggles](https://toggles.dev).
