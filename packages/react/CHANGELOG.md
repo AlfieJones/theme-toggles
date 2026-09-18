@@ -1,5 +1,11 @@
 # @theme-toggles/react
 
+## 5.0.5
+
+### Patch Changes
+
+- 056516d: Update the shadcn installation instructions to use the published `@toggles` registry.
+
 ## 5.0.4
 
 ### Patch Changes
