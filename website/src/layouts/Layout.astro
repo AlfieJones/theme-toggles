@@ -102,7 +102,15 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
           const data: { stars?: unknown } = await response.json();
           if (typeof data.stars !== "number") return;
           for (const label of labels) {
-            label.textContent = `${data.stars.toLocaleString()} ★`;
+            const count = label.querySelector<HTMLElement>("[data-star-count]");
+            if (!count) continue;
+            count.querySelector("[data-star-number]")!.textContent =
+              data.stars.toLocaleString();
+            label
+              .querySelector("[data-github-label]")
+              ?.setAttribute("aria-hidden", "true");
+            count.removeAttribute("aria-hidden");
+            label.classList.add("has-stars");
           }
         } catch {
           // Keep the GitHub label when the count is unavailable.
