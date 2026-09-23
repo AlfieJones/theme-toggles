@@ -58,6 +58,43 @@ html.dark[data-theme-transition]::view-transition-new(root) {
   animation-fill-mode: both;
 }
 
+.github-stars {
+  display: inline-grid;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.github-stars > span {
+  grid-area: 1 / 1;
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+.github-stars [data-star-count] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.github-stars.has-stars [data-github-label] {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.github-stars.has-stars [data-star-count] {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-stars > span {
+    transition: none;
+  }
+}
+
 @keyframes reveal-dark {
   from {
     clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);

@@ -1,7 +1,6 @@
 ---
 import ToggleDetailLayout from "../../layouts/ToggleDetailLayout.astro";
 import { TOGGLE_SLUGS } from "../../components/Toggle";
-import { getStars } from "../../lib/github";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
@@ -43,7 +42,6 @@ const jsonLd = {
   license: "https://opensource.org/license/mit",
 };
 
-const stars = await getStars();
 const root = resolve(process.cwd(), "..");
 
 let reactSource = "";
@@ -74,7 +72,6 @@ try {
   displayName={displayName}
   description={description}
   jsonLd={jsonLd}
-  stars={stars}
   reactSource={reactSource}
   svelteSource={svelteSource}
   vueSource={vueSource}
