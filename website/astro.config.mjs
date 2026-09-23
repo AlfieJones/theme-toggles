@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 
 import vercel from "@astrojs/vercel";
+import { cacheVercel } from "@astrojs/vercel/cache";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,9 +19,8 @@ export default defineConfig({
 
   integrations: [react()],
   output: "server",
-  adapter: vercel({
-    isr: {
-      expiration: 60,
-    },
-  }),
+  adapter: vercel(),
+  cache: {
+    provider: cacheVercel(),
+  },
 });

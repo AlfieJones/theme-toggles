@@ -89,6 +89,28 @@ const pageTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
       applyTheme();
       document.addEventListener("astro:after-swap", applyTheme);
     </script>
+    <script>
+      async function updateGitHubStars() {
+        const labels = document.querySelectorAll<HTMLElement>(
+          "[data-github-stars]",
+        );
+        if (labels.length === 0) return;
+
+        try {
+          const response = await fetch("/api/stars");
+          if (!response.ok) return;
+          const data: { stars?: unknown } = await response.json();
+          if (typeof data.stars !== "number") return;
+          for (const label of labels) {
+            label.textContent = `${data.stars.toLocaleString()} ★`;
+          }
+        } catch {
+          // Keep the GitHub label when the count is unavailable.
+        }
+      }
+
+      document.addEventListener("astro:page-load", updateGitHubStars);
+    </script>
     <div class="flex flex-1 flex-col w-[calc(100%-0.625rem)] mx-auto">
       <slot />
       <Footer />

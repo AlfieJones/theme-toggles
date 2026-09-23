@@ -7,8 +7,11 @@ export async function getStars(): Promise<number | null> {
       "https://api.github.com/repos/alfiejones/theme-toggles",
       { headers },
     );
+    if (!res.ok) return null;
     const data = await res.json();
-    return data.stargazers_count ?? null;
+    return typeof data.stargazers_count === "number"
+      ? data.stargazers_count
+      : null;
   } catch {
     return null;
   }
